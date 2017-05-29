@@ -60,7 +60,8 @@ Para escribir en archivos `scss` usaremos la metodologia [BEM](https://cssguidel
 `ticket`. Aunque, en vez de separar con `__` los Blocks de los Elements se usará `-` y en caso de un Modifier se usará `_`.
 Ejemplo:
 
-`.ticket {
+```scss
+.ticket {
  &-title {
    color: green;
    &_icon: {
@@ -68,7 +69,7 @@ Ejemplo:
    }
  }
 }
-`
+```
 Esto hará que el elemento con clase `ticket-name` sea verde y `ticket-name_icon` sea azul. Esta metodología permite la creación de estilos de una manera más ordenada e intuitiva.
 
 
