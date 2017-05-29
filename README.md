@@ -48,7 +48,7 @@ Este paquete da soporte del lenguaje [Jade/Pug](https://github.com/merrihew/atom
 
 ## Tecnologías
 
-## Angular CLI
+### Angular CLI
 
 Version 1.0.4
 
