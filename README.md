@@ -44,6 +44,7 @@ Una vez que haya terminado de compilar con `npm start` el browser se refrescara.
 
 Este paquete es bastante útil a la hora de resolver [conflictos](https://github.com/smashwilson/merge-conflicts) de git.
 Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript) para Atom.
+Este paquete da soporte del lenguaje [Jade/Pug](https://github.com/merrihew/atom-jade).
 
 ## Tecnologías
 
