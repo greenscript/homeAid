@@ -58,18 +58,22 @@ Version 1.0.4
 Usaremos la última versión de `node`, la cual es la 7.10.0 y la 4.2.0 de `npm`.
 Recomiendo usar [NVM](https://github.com/creationix/nvm#installation) para el [manejo](https://github.com/creationix/nvm#usage) de `node` y sus versiones.
 
-### Firebase
-
-Comming soon.
-
 ## Bootstrap
 
 Usaremos `ngx-bootstrap`, es un paquete que posee todas las características de Bootstrap, pero para Angular 2. Aqui esta la [documentación](http://valor-software.com/ngx-bootstrap/#/).
+
+## Pug
+
+Usaremos Pug para agilizar el proceso de escribir HTML, Pug es una herramienta que ofrece una nueva sintaxis para escribir HTML, donde no son necesarios los tags y es por indentación, aca esta la [documentacion](https://pugjs.org/api/getting-started.html).
 
 ### SCSS
 
 Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión `.scss` e inclusive a la hora
 de ejecutar `ng generate component component-name` generará un archivo `.ts`, uno `.html` y uno `.scss`.
+
+### Firebase
+
+Comming soon.
 
 ## Estándares (Alpha)
 
@@ -115,18 +119,25 @@ Ejemplo:
 ```
 Esto hará que el elemento con clase `ticket-name` sea verde y `ticket-name_icon` sea azul. Esta metodología permite la creación de estilos de una manera más ordenada e intuitiva.
 
-### HTML
+### Pug
 
-Las clases en HTML serán escritas de la siguiente manera.
+Este es un ejemplo de código en Pug.
+
+```pug
+.ticket
+  h1.ticket-title {{title}}
+  p.ticket-description {{description}}
+  button.btn.btn-success((cliick)="sayDescription()") Say Hello
+```
+Esto compilara en esto:
 
 ```html
 <div class="ticket">
   <h1 class="ticket-title">{{title}}</h1>
   <p class="ticket-description">{{description}}</p>
-  <button (click)="sayDescription()">Say Hello</button>
+  <button class="btn btn-success" (cliick)="sayDescription()">Say Hello</button>
 </div>
 ```
-
 
 
 
