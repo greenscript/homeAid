@@ -47,7 +47,22 @@ Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript
 
 ## Tecnologías
 
-### CSS
+## Angular CLI
+
+Version 1.0.4
+
+`npm install -g @angular/cli`
+
+## Node
+
+Usaremos la última versión de `node`, la cual es la 7.10.0 y la 4.2.0 de `npm`.
+Recomiendo usar [NVM](https://github.com/creationix/nvm#installation) para el [manejo](https://github.com/creationix/nvm#usage) de `node` y sus versiones.
+
+### Firebase
+
+Comming soon.
+
+### SCSS
 
 Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión `.scss` e inclusive a la hora
 de ejecutar `ng generate component component-name` generará un archivo `.ts`, uno `.html` y uno `.scss`.
@@ -96,10 +111,17 @@ Ejemplo:
 ```
 Esto hará que el elemento con clase `ticket-name` sea verde y `ticket-name_icon` sea azul. Esta metodología permite la creación de estilos de una manera más ordenada e intuitiva.
 
+### HTML
 
+Las clases en HTML serán escritas de la siguiente manera.
 
-
-
+```html
+<div class="ticket">
+  <h1 class="ticket-title">{{title}}</h1>
+  <p class="ticket-description">{{description}}</p>
+  <button (click)="sayDescription()">Say Hello</button>
+</div>
+```
 
 
 
