@@ -54,9 +54,33 @@ de ejecutar `ng generate component component-name` generará un archivo `.ts`, u
 
 ## Estándares (Alpha)
 
+
+### TypeScript
+
+El siguiente es el ejemplo de cómo debería de estar escrito un componente, definiremos las propiedades de la clases con `public`, en caso de que el componente tenga un nombre extenso, será separado por un `-`, como por ejemplo `ticket-component`.
+
+```TypeScript
+   import { Component } from '@angular/core';
+
+   @Component({
+     selector: 'ticket',
+     templateUrl: './ticket.component.html',
+     styleUrls: ['./ticket.component.scss']
+   })
+   export class TicketComponent {
+     public title: string = 'Hello World';
+     public description: string = 'What up!';
+
+     sayDescription() {
+       console.log(this.description);
+     }
+   }
+```
+
+
 ### SCSS
 
-Para escribir en archivos `scss` usaremos la metodologia [BEM](https://cssguidelin.es/#bem-like-naming), en este link pueden ver ejemplos y también en el componente
+Para escribir en archivos `scss` usaremos la metodología [BEM](https://cssguidelin.es/#bem-like-naming), en este link pueden ver ejemplos y también en el componente
 `ticket`. Aunque, en vez de separar con `__` los Blocks de los Elements se usará `-` y en caso de un Modifier se usará `_`.
 Ejemplo:
 
