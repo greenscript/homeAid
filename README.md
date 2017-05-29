@@ -42,9 +42,9 @@ Una vez que haya terminado de compilar con `npm start` el browser se refrescara.
 
 ## Recomendaciones de paquetes de Atom
 
-Este paquete es bastante útil a la hora de resolver [conflictos](https://github.com/smashwilson/merge-conflicts) de git.
-Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript) para Atom.
-Este paquete da soporte del lenguaje [Jade/Pug](https://github.com/merrihew/atom-jade).
+ * Este paquete es bastante útil a la hora de resolver [conflictos](https://github.com/smashwilson/merge-conflicts) de git.
+ * Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript) para Atom.
+ * Este paquete da soporte del lenguaje [Jade/Pug](https://github.com/merrihew/atom-jade).
 
 ## Tecnologías
 
@@ -56,7 +56,7 @@ Version 1.0.4
 
 ## Node
 
-Usaremos la última versión de `node`, la cual es la 7.10.0 y la 4.2.0 de `npm`.
+Usaremos la última versión de `node`, la cual es la 7.10.0 y la 4.2.0 de `npm`.  
 Recomiendo usar [NVM](https://github.com/creationix/nvm#installation) para el [manejo](https://github.com/creationix/nvm#usage) de `node` y sus versiones.
 
 ## Bootstrap
