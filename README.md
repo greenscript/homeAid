@@ -64,7 +64,7 @@ Usaremos `ngx-bootstrap`, es un paquete que posee todas las características de 
 
 ## Pug
 
-Usaremos Pug para agilizar el proceso de escribir HTML, Pug es una herramienta que ofrece una nueva sintaxis para escribir HTML, donde no son necesarios los tags y es por indentación, aca esta la [documentacion](https://pugjs.org/api/getting-started.html).
+Usaremos Pug para agilizar el proceso de escribir HTML, Pug es una herramienta que ofrece una nueva sintaxis para escribir HTML, donde no son necesarios los tags y es por indentación, aca esta la [documentación](https://pugjs.org/api/getting-started.html).
 
 ### SCSS
 
@@ -127,7 +127,7 @@ Este es un ejemplo de código en Pug.
 .ticket
   h1.ticket-title {{title}}
   p.ticket-description {{description}}
-  button.btn.btn-success((cliick)="sayDescription()") Say Hello
+  button.btn.btn-success((click)="sayDescription()") Say Hello
 ```
 Esto compilara en esto:
 
@@ -135,7 +135,7 @@ Esto compilara en esto:
 <div class="ticket">
   <h1 class="ticket-title">{{title}}</h1>
   <p class="ticket-description">{{description}}</p>
-  <button class="btn btn-success" (cliick)="sayDescription()">Say Hello</button>
+  <button class="btn btn-success" (click)="sayDescription()">Say Hello</button>
 </div>
 ```
 
