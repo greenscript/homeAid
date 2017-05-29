@@ -20,7 +20,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Vamos a usar [Yarn](https://code.facebook.com/posts/1840075619545360) para las instalaciones de dependencias,
 para instalarlo, usen `npm install -g yarn`, despues nada mas hagan `cd` a el directorio de este proyecto y pongan el
-comando `yarn`.
+comando `yarn` para instalar las dependencias.
+
+Yarn es similar a `npm`, pero instala las dependencias mucho mas rapido. 
 
 
 <!-- ## Running unit tests
