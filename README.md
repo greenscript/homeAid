@@ -21,7 +21,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Vamos a usar [Yarn](https://yarnpkg.com/en/) para las instalaciones de dependencias,
 para instalarlo, usen `npm install -g yarn` o `sudo npm install -g yarn`, dependiendo de sus permisos, después nada más hagan `cd` al directorio de este proyecto y ejecute el comando `yarn` para instalar las dependencias.
 
-Yarn es similar a `npm`, pero instala las dependencias mucho más rápido.
+Yarn es similar a `npm`, pero instala las dependencias mucho más rápido.  
 Antes de ejecutar `yarn` para instalar las dependencias, lean la sección de Getting Started.
 
 ## Como instalar paquetes con Yarn
@@ -61,7 +61,8 @@ Recomiendo usar [NVM](https://github.com/creationix/nvm#installation) para el [m
 
 ## Bootstrap
 
-Usaremos `ngx-bootstrap`, es un paquete que posee todas las características de Bootstrap, pero para Angular 2. Aqui esta la [documentación](http://valor-software.com/ngx-bootstrap/#/).
+Usaremos `ngx-bootstrap`, es un paquete que posee todas las características de Bootstrap, pero para Angular 2.  
+Aqui esta la [documentación](http://valor-software.com/ngx-bootstrap/#/).
 
 ## Pug
 
