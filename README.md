@@ -18,7 +18,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Instalación
 
-Vamos a usar [Yarn](https://code.facebook.com/posts/1840075619545360) para las instalaciones de dependencias,
+Vamos a usar [Yarn](https://yarnpkg.com/en/) para las instalaciones de dependencias,
 para instalarlo, usen `npm install -g yarn` o `sudo npm install -g yarn`, dependiendo de sus permisos, después nada más hagan `cd` al directorio de este proyecto y ejecute el comando `yarn` para instalar las dependencias.
 
 Yarn es similar a `npm`, pero instala las dependencias mucho más rápido.
@@ -64,7 +64,7 @@ Comming soon.
 
 ## Bootstrap
 
-Usaremos `ngx-bootstrap`, es un paquete que posee todas las caracteristicas de Bootstrap, pero para Angular 2. Aqui esta la [documentacion](http://valor-software.com/ngx-bootstrap/#/).
+Usaremos `ngx-bootstrap`, es un paquete que posee todas las características de Bootstrap, pero para Angular 2. Aqui esta la [documentación](http://valor-software.com/ngx-bootstrap/#/).
 
 ### SCSS
 
