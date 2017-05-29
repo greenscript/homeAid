@@ -22,7 +22,13 @@ Vamos a usar [Yarn](https://code.facebook.com/posts/1840075619545360) para las i
 para instalarlo, usen `npm install -g yarn`, despues nada mas hagan `cd` a el directorio de este proyecto y pongan el
 comando `yarn` para instalar las dependencias.
 
-Yarn es similar a `npm`, pero instala las dependencias mucho mas rapido. 
+Yarn es similar a `npm`, pero instala las dependencias mucho mas rapido.
+
+## Development
+
+`git checkout dev` para pasarse al branch de Development.
+
+
 
 
 <!-- ## Running unit tests
