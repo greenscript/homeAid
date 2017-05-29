@@ -22,7 +22,7 @@ Vamos a usar [Yarn](https://yarnpkg.com/en/) para las instalaciones de dependenc
 para instalarlo, usen `npm install -g yarn` o `sudo npm install -g yarn`, dependiendo de sus permisos, después nada más hagan `cd` al directorio de este proyecto y ejecute el comando `yarn` para instalar las dependencias.
 
 Yarn es similar a `npm`, pero instala las dependencias mucho más rápido.  
-Antes de ejecutar `yarn` para instalar las dependencias, lean la sección de Getting Started.
+Antes de ejecutar `yarn` para instalar las dependencias, lean la sección de [Getting Started](https://github.com/greenscript/homeAid#getting-started).
 
 ## Como instalar paquetes con Yarn
 
