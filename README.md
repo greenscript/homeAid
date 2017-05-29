@@ -31,8 +31,9 @@ el `add` funciona igual que el `install` de `npm` y el `--dev` igual que `--save
 ## Getting Started
 
 Hice un comando [Shell](https://en.wikipedia.org/wiki/Shell_%28computing%29) que debería de usarse cada vez que alguien no haya trabajado en el repositorio en un rato o para la primera vez que corre el proyecto,
-para usarlo ejecuten el comando `sh start.sh` en el directorio de este proyecto, este comando, borrara la carpeta `node_modules` y los `yarn.lock` y volverá a instalar las dependencias, esto por si alguien instalo alguna dependencia el proyecto no se quiebre cuando lo traten de correr, también ejecutara `npm start` para no tener que hacerlo y
-abre el browser por defecto en su máquina en la ruta `http://localhost:4200/`. En resumen, ejecuta la instalación, `npm start` y les abre el browser.
+para usarlo ejecuten el comando `sh start.sh` en el directorio de este proyecto, este comando, borrara la carpeta `node_modules` y los `yarn.lock` y volverá a instalar las dependencias, esto por si alguien instalo alguna dependencia en el proyecto y cuando alguien más lo ejecute no se quiebre por la falta de esa dependencia, también ejecutará `npm start` para no tener que hacerlo y
+abre el browser por defecto en su máquina en la ruta `http://localhost:4200/`. En resumen, ejecuta la instalación, les abre el browser y ejecuta `npm start`.
+Una vez que haya terminado de compilar con `npm start` el browser se refrescara.
 
 ## Development
 
@@ -47,8 +48,8 @@ Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript
 
 ### CSS
 
-Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión .scss e inclusive a la hora
-de ejecutar `ng generate component component-name` generará un archivo .ts, uno .html y uno .scss.
+Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión `.scss` e inclusive a la hora
+de ejecutar `ng generate component component-name` generará un archivo `.ts`, uno `.html` y uno `.scss`.
 
 
 
