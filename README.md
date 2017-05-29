@@ -52,6 +52,38 @@ Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript
 Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión `.scss` e inclusive a la hora
 de ejecutar `ng generate component component-name` generará un archivo `.ts`, uno `.html` y uno `.scss`.
 
+## Estándares (Alpha)
+
+### SCSS
+
+Para escribir en archivos `scss` usaremos la metodologia [BEM](https://cssguidelin.es/#bem-like-naming), en este link pueden ver ejemplos y también en el componente
+`ticket`. Aunque, en vez de separar con `__` los Blocks de los Elements se usará `-` y en caso de un Modifier se usará `_`.
+Ejemplo:
+
+`.ticket {
+ &-title {
+   color: green;
+   &_icon: {
+     color: blue;
+   }
+ }
+}
+`
+Esto hará que el elemento con clase `ticket-name` sea verde y `ticket-name_icon` sea azul. Esta metodología permite la creación de estilos de una manera más ordenada e intuitiva.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
