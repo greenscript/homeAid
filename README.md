@@ -22,11 +22,12 @@ Vamos a usar [Yarn](https://code.facebook.com/posts/1840075619545360) para las i
 para instalarlo, usen `npm install -g yarn` o `sudo npm install -g yarn`, dependiendo de sus permisos, después nada más hagan `cd` al directorio de este proyecto y ejecute el comando `yarn` para instalar las dependencias.
 
 Yarn es similar a `npm`, pero instala las dependencias mucho más rápido.
+Antes de ejecutar `yarn` para instalar las dependencias, lean la sección de Getting Started.
 
 ## Como instalar paquetes con Yarn
 
 Para instalar paquetes con [Yarn](https://code.facebook.com/posts/1840075619545360) se hace de la siguiente manera: `yarn add node-sass --dev`.
-el `add` funciona igual que el `install` de `npm` y el `--dev` igual que `--save-dev`.
+el `add` funciona igual que el `install` de `npm` y el `--dev` igual que `--save-dev`, en el ejemplo anterior el paquete `node-sass` hace referencia a cualquier paquete que tambien este para `npm`, en raros casos, puede que el paquete no se encuentre disponible para Yarn, en ese caso se podría instalar de la manera regular, con `npm`.
 
 ## Getting Started
 
