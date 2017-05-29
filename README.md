@@ -19,9 +19,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Instalación
 
 Vamos a usar [Yarn](https://code.facebook.com/posts/1840075619545360) para las instalaciones de dependencias,
-para instalarlo, usen `npm install -g yarn` o `sudo npm install -g yarn`, dependiendo de sus permisos, despues nada mas hagan `cd` al directorio de este proyecto y ejecuten el comando `yarn` para instalar las dependencias.
+para instalarlo, usen `npm install -g yarn` o `sudo npm install -g yarn`, dependiendo de sus permisos, después nada más hagan `cd` al directorio de este proyecto y ejecute el comando `yarn` para instalar las dependencias.
 
-Yarn es similar a `npm`, pero instala las dependencias mucho mas rapido.
+Yarn es similar a `npm`, pero instala las dependencias mucho más rápido.
 
 ## Como instalar paquetes con Yarn
 
@@ -30,10 +30,9 @@ el `add` funciona igual que el `install` de `npm` y el `--dev` igual que `--save
 
 ## Getting Started
 
-Hice un comando Shell que deberia de usarse cada vez que alguien no haya trabajado en el respositorio en un rato o para la primera vez que corre el proyecto,
-para usarlo ejecuten el comando `sh start.sh`, este comando, borrara la carpeta `node_modules` y los `yarn.lock` y volvera a instalar las dependencias, esto
-para que si alguien instalo alguna dependencia el proyecto no se quiebre cuando lo traten de correr, tambien ejecutara `npm start` para no tener que hacerlo y
-abrira el browser por defecto en su maquina en la ruta `http://localhost:4200/`. En resumen, ejecuta la instalacion, `npm start` y les abre el browser.
+Hice un comando [Shell](https://en.wikipedia.org/wiki/Shell_%28computing%29) que debería de usarse cada vez que alguien no haya trabajado en el repositorio en un rato o para la primera vez que corre el proyecto,
+para usarlo ejecuten el comando `sh start.sh` en el directorio de este proyecto, este comando, borrara la carpeta `node_modules` y los `yarn.lock` y volverá a instalar las dependencias, esto por si alguien instalo alguna dependencia el proyecto no se quiebre cuando lo traten de correr, también ejecutara `npm start` para no tener que hacerlo y
+abre el browser por defecto en su máquina en la ruta `http://localhost:4200/`. En resumen, ejecuta la instalación, `npm start` y les abre el browser.
 
 ## Development
 
@@ -41,15 +40,15 @@ abrira el browser por defecto en su maquina en la ruta `http://localhost:4200/`.
 
 ## Recomendaciones de paquetes de Atom
 
-Este paquete es bastante util a la hora de resolver [conflictos](https://github.com/smashwilson/merge-conflicts) de git.
+Este paquete es bastante útil a la hora de resolver [conflictos](https://github.com/smashwilson/merge-conflicts) de git.
 Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript) para Atom.
 
 ## Tecnologías
 
 ### CSS
 
-Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extension .scss e inclusive a la hora
-de ejecutar `ng generate component component-name` generara un archivo .ts, uno .html y uno .scss. 
+Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión .scss e inclusive a la hora
+de ejecutar `ng generate component component-name` generará un archivo .ts, uno .html y uno .scss.
 
 
 
