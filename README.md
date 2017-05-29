@@ -62,6 +62,10 @@ Recomiendo usar [NVM](https://github.com/creationix/nvm#installation) para el [m
 
 Comming soon.
 
+## Bootstrap
+
+Usaremos `ngx-bootstrap`, es un paquete que posee todas las caracteristicas de Bootstrap, pero para Angular 2. Aqui esta la [documentacion](http://valor-software.com/ngx-bootstrap/#/).
+
 ### SCSS
 
 Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión `.scss` e inclusive a la hora
