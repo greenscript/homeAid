@@ -1,0 +1,44 @@
+section.row 
+  section.col-xs-12.register-header.flex-center
+    h1.register-title Register
+    
+section.row
+  section.col-xs-12.col-sm-12
+    form.register-form.flex-center.flex-column(#ngForm="ngForm")
+      .form-group.col-xs-10.register-form_wrapper
+        input.form-control.register-form_input(
+          type="text", 
+          name="name", 
+          [(ngModel)]="name",
+          placeholder="Name"
+        )
+      .form-group.col-xs-10.register-form_wrapper
+        input.form-control.register-form_input(
+          type="text", 
+          name="email", 
+          [(ngModel)]="email",
+          placeholder="Email"
+        )
+      .form-group.col-xs-10.register-form_wrapper
+        input.form-control.register-form_input(
+          type="number", 
+          name="members", 
+          [(ngModel)]="members",
+          placeholder="Number of Family Members"
+        )
+      .form-group.col-xs-10.register-form_wrapper
+        input.form-control.register-form_input(
+          type="password", 
+          name="password", 
+          [(ngModel)]="password",
+          placeholder="Password"
+        )
+      .form-group.col-xs-10.register-form_wrapper
+        input.form-control.register-form_input(
+          type="password", 
+          name="repeatPassword", 
+          [(ngModel)]="repeatPassword",
+          placeholder="Repeat Password"
+        )
+      .form-group.col-xs-10.flex-center.register-form_wrapper
+        button.btn.btn-default.register-form_button((click)="register()") Register

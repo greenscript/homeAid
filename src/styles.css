@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+
+/*
+  Centra todos los hijos de un contenedor con display: flex;
+*/
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*
+  Posiciona todos los hijos de un contenedor con display: flex;
+  en direccion de "row"
+*/
+.flex-row {
+  flex-direction: row;
+}
+/*
+  Posiciona todos los hijos de un contenedor con display: flex;
+  en direccion de "columna"
+*/
+.flex-column {
+  flex-direction: column;
+}

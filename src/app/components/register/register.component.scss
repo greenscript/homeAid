@@ -1,0 +1,51 @@
+$text-color: #FFF;
+
+input {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 320px) {
+  .register {
+    &-header {
+      height: 140px;
+      background-color: aquamarine;
+      border-radius: 50%;
+      margin-top: -10%;
+    }
+    &-title {
+      margin-top: 1.2em;
+      color: $text-color;
+    }
+    &-form {
+      padding: 1em 15px;
+      &_wrapper {
+        padding: 10px 0;
+      }
+      &_input {
+        padding: 10px;
+        border: none;
+        border-bottom: solid 2px #c9c9c9;
+        transition: border 0.8s;
+        &:focus, .focus {
+          border-bottom: solid 2px #969696;
+        }
+      }
+      &_button {
+        width: 100%;
+        background-color: aquamarine;
+        color: $text-color;
+        font-size: 22px;
+      }
+    }
+  }
+}
