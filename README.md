@@ -37,8 +37,8 @@ abre el browser por defecto en su máquina en la ruta `http://localhost:4200/`. 
 Una vez que haya terminado de compilar con `npm start` el browser se refrescara.
 
 Para evitar errores a la hora de instalacion instalar:
-npm install -g concurrently
-npm install -g pug-cli
+  * npm install -g concurrently
+  * npm install -g pug-cli
 
 ## Development
 
@@ -68,6 +68,10 @@ Recomiendo usar [NVM](https://github.com/creationix/nvm#installation) para el [m
 Usaremos `ngx-bootstrap`, es un paquete que posee todas las características de Bootstrap, pero para Angular 2.  
 Aqui esta la [documentación](http://valor-software.com/ngx-bootstrap/#/).
 
+## Angular Material
+
+Usaremos Angular Material junto con Bootstrap para la implementacion del UI
+Aqui esta la [documentación](https://material.angular.io/).
 ## Pug
 
 Usaremos Pug para agilizar el proceso de escribir HTML, Pug es una herramienta que ofrece una nueva sintaxis para escribir HTML, donde no son necesarios los tags y es por indentación, aca esta la [documentación](https://pugjs.org/api/getting-started.html).

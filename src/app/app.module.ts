@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { RegisterComponent } from './components/register/register.component';
 
+//angular material ui
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule,MdChipsModule,MdTooltipModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,15 @@ import { RegisterComponent } from './components/register/register.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdMenuModule,
+    MdCardModule,
+    MdToolbarModule,
+    MdIconModule,
+    MdChipsModule,
+    MdTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
