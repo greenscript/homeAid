@@ -36,6 +36,10 @@ para usarlo ejecuten el comando `sh start.sh` en el directorio de este proyecto,
 abre el browser por defecto en su máquina en la ruta `http://localhost:4200/`. En resumen, ejecuta la instalación, les abre el browser y ejecuta `npm start`.
 Una vez que haya terminado de compilar con `npm start` el browser se refrescara.
 
+Para evitar errores a la hora de instalacion instalar:
+npm install -g concurrently
+npm install -g pug-cli
+
 ## Development
 
 `git checkout dev` para pasarse al branch de Development.
@@ -44,7 +48,7 @@ Una vez que haya terminado de compilar con `npm start` el browser se refrescara.
 
  * Este paquete es bastante útil a la hora de resolver [conflictos](https://github.com/smashwilson/merge-conflicts) de git.
  * Este es el paquete de [TypeScript](https://github.com/TypeStrong/atom-typescript) para Atom.
- * Este paquete da soporte del lenguaje [Jade/Pug](https://github.com/merrihew/atom-jade).
+ * Este paquete da soporte del lenguaje [Jade/Pug] (https://atom.io/packages/language-pug/).
 
 ## Tecnologías
 
