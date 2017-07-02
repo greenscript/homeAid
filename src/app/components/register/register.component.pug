@@ -21,13 +21,6 @@ section.row
         )
       .form-group.col-xs-10.register-form_wrapper
         input.form-control.register-form_input(
-          type="number", 
-          name="members", 
-          [(ngModel)]="members",
-          placeholder="Number of Family Members"
-        )
-      .form-group.col-xs-10.register-form_wrapper
-        input.form-control.register-form_input(
           type="password", 
           name="password", 
           [(ngModel)]="password",
@@ -40,5 +33,15 @@ section.row
           [(ngModel)]="repeatPassword",
           placeholder="Repeat Password"
         )
+      .form-group.col-xs-10.register-form_wrapper
+        select.form.control.register-form_input(
+          name="securityQuestion", 
+          [(ngModel)]="securityQuestion",
+        )
+          option(
+            *ngFor="let securityQuestion of securityQuestions; let i = index;", 
+            [value]="securityQuestion.key"
+          ) {{securityQuestion.text}}
+            
       .form-group.col-xs-10.flex-center.register-form_wrapper
         button.btn.btn-default.register-form_button((click)="register()") Register

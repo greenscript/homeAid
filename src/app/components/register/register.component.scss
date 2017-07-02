@@ -18,7 +18,7 @@ input {
   .register {
     &-header {
       height: 140px;
-      background-color: aquamarine;
+      background-color: #28BCA7;
       border-radius: 50%;
       margin-top: -10%;
     }
@@ -36,13 +36,16 @@ input {
         border: none;
         border-bottom: solid 2px #c9c9c9;
         transition: border 0.8s;
+        width: 100%;
+        background: none;
+        color: #9F9999;
         &:focus, .focus {
           border-bottom: solid 2px #969696;
         }
       }
       &_button {
         width: 100%;
-        background-color: aquamarine;
+        background-color: #28BCA7;
         color: $text-color;
         font-size: 22px;
       }
