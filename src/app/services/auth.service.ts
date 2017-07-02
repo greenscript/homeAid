@@ -40,7 +40,7 @@ export class AuthService {
     this.af.auth.signOut();
   }
 
-  emailSignUp(pEmail:string, pPassword:string, pName:string, pUsers: User[], pWeeks: Week[]) {
+  emailSignUp(pEmail:string, pPassword:string, pName:string, pUsers: any, pWeeks: any) {
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
         this.authState = user
@@ -49,7 +49,7 @@ export class AuthService {
       .catch(error => console.log(error));
   }
 
-  private updateFamilyData(pName: string, pUsers: User[], pWeeks: Week[]): void {
+  private updateFamilyData(pName: string, pUsers: any, pWeeks: any): void {
 
     let path = `families/${this.currentUserId}`; // Endpoint on firebase
     let data = {
