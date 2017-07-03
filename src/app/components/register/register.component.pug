@@ -4,44 +4,60 @@ section.row
     
 section.row
   section.col-xs-12.col-sm-12
-    form.register-form.flex-center.flex-column(#ngForm="ngForm")
-      .form-group.col-xs-10.register-form_wrapper
-        input.form-control.register-form_input(
-          type="text", 
-          name="name", 
-          [(ngModel)]="name",
-          placeholder="Name"
-        )
-      .form-group.col-xs-10.register-form_wrapper
+    form.register-form.flex-center.flex-column([formGroup]="myform")
+      fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
+        .form-group.col-xs-12.register-form_wrapper.flex-center
+          input.form-control.register-form_input(
+            type="text", 
+            name="name", 
+            formControlName="firstName",
+            placeholder="First Name",
+            required
+          )
+          
+        .form-group.col-xs-12.register-form_wrapper.flex-center
+          input.form-control.register-form_input(
+            type="text", 
+            name="name", 
+            formControlName="lastName",
+            placeholder="Family Name",
+            required
+          )
+          
+      .form-group.col-xs-10.register-form_wrapper([ngClass]="{'has-danger': myform.controls.email.invalid && myform.controls.email.dirty, 'has-success': myform.controls.email.valid && myform.controls.email.dirty}")
         input.form-control.register-form_input(
           type="text", 
           name="email", 
-          [(ngModel)]="email",
-          placeholder="Email"
+          formControlName="email",
+          placeholder="Email",
+          required
         )
       .form-group.col-xs-10.register-form_wrapper
         input.form-control.register-form_input(
           type="password", 
           name="password", 
-          [(ngModel)]="password",
-          placeholder="Password"
+          formControlName="password",
+          placeholder="Password",
+          required
         )
+        .error(*ngIf="password.errors.minlength") Password must be 8 characters long
       .form-group.col-xs-10.register-form_wrapper
         input.form-control.register-form_input(
           type="password", 
           name="repeatPassword", 
-          [(ngModel)]="repeatPassword",
-          placeholder="Repeat Password"
+          formControlName="repeatPassword",
+          placeholder="Repeat Password",
+          required
         )
-      .form-group.col-xs-10.register-form_wrapper
-        select.form.control.register-form_input(
-          name="securityQuestion", 
-          [(ngModel)]="securityQuestion",
-        )
-          option(
-            *ngFor="let securityQuestion of securityQuestions; let i = index;", 
-            [value]="securityQuestion.key"
-          ) {{securityQuestion.text}}
+      //- .form-group.col-xs-10.register-form_wrapper
+      //-   select.form.control.register-form_input(
+      //-     name="securityQuestion", 
+      //-     [(ngModel)]="securityQuestion",
+      //-   )
+      //-     option(
+      //-       *ngFor="let securityQuestion of securityQuestions; let i = index;", 
+      //-       [value]="securityQuestion.key"
+      //-     ) {{securityQuestion.text}}
             
       .form-group.col-xs-10.flex-center.register-form_wrapper
         button.btn.btn-default.register-form_button((click)="register()") Register

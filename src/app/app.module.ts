@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 // models
 import { User } from './models/user.model';
 import { Week } from './models/week.model';
@@ -41,7 +42,7 @@ export const ROUTES: Routes = [
     TodoComponent,
     RegisterComponent,
     LoginComponent,
-    MenuAdminComponent
+    MenuAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +59,8 @@ export const ROUTES: Routes = [
     MdIconModule,
     MdChipsModule,
     MdTooltipModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
