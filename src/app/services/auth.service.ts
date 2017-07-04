@@ -14,7 +14,7 @@ export class AuthService {
 
   public authState: any = null;
 
-  constructor(public af: AngularFireAuth, private db: AngularFireDatabase) {
+  constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.af.authState.subscribe((auth) => {
       this.authState = auth
     });
@@ -28,8 +28,18 @@ export class AuthService {
     return this.authenticated ? this.authState.uid : '';
   }
 
-  loginWithGoogle() {
-    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  get currentUser(): any {
+    return this.authenticated ? this.authState : null;
+  }
+
+  googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    return this.socialSignIn(provider);
+  }
+
+  facebookLogin() {
+    const provider = new firebase.auth.FacebookAuthProvider()
+    return this.socialSignIn(provider);
   }
 
   loginWithEmail(pEmail: string, pPassword: string) {
@@ -63,6 +73,32 @@ export class AuthService {
     this.db.object(path).update(data)
     .catch(error => console.log(error));
 
+  }
+
+  private updateUserData(): void {
+    // Writes user name and email to realtime db
+    // useful if your app displays information about users or for admin features
+
+    let path = `families/${this.currentUserId}`; // Endpoint on firebase
+    let data = {
+                  email: this.authState.email,
+                  name: this.authState.displayName
+                }
+
+    this.db.object(path).update(data)
+    .catch(error => console.log(error));
+
+  }
+
+  private socialSignIn(provider) {
+    return this.af.auth.signInWithPopup(provider)
+      .then((credential) =>  {
+          console.log(credential)
+          this.authState = credential.user
+          this.updateFamilyData(credential.additionalUserInfo.profile.family_name, [], [])
+          this.router.navigateByUrl('/menu')
+      })
+      .catch(error => console.log(error));
   }
 
 }
