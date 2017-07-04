@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MdDialogModule } from '@angular/material';
+
 
 @Component({
   selector: 'app-createWeek-admin',

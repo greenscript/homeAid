@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuAdminComponent } from './components/menu-admin/menu-admin.component';
 import { CreateWeekAdminComponent } from './components/createWeek-admin/createWeek-admin.component';
+import { NewTodoComponent } from './components/new-todo/new-todo.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -35,7 +36,8 @@ export const ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenuAdminComponent },
-  { path: 'admin', component: CreateWeekAdminComponent }
+  { path: 'admin', component: CreateWeekAdminComponent },
+  { path: 'newTodo', component: NewTodoComponent }
 ];
 
 @NgModule({
@@ -45,7 +47,8 @@ export const ROUTES: Routes = [
     RegisterComponent,
     LoginComponent,
     MenuAdminComponent,
-    CreateWeekAdminComponent
+    CreateWeekAdminComponent,
+    NewTodoComponent
   ],
   imports: [
     BrowserModule,
