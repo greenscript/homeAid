@@ -1,12 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AuthService } from '../../services/auth.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Family } from '../../models/family.model';
 import { User } from '../../models/user.model';
 import { Week } from '../../models/week.model';
 
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-register',
@@ -17,27 +16,61 @@ import * as firebase from 'firebase/app';
 
 export class RegisterComponent implements OnInit {
 
-  @Input() name: string;
-  @Input() email: string;
-  @Input() password: string;
-  @Input() repeatPassword: string;
-
-  public securityQuestions = [
-    { key: 1, text: '¿asdasdasd?' },
-    { key: 2, text: '¿asdasde2113?' },
-    { key: 3, text: '¿asdasdasd123123?' },
-    { key: 4, text: '¿asdasdasdllll?' }
-  ]
+  public langs: string[] = [
+    'English',
+    'French',
+    'German',
+  ];
+  public myform: FormGroup;
+  public firstName: FormControl;
+  public lastName: FormControl;
+  public email: FormControl;
+  public password: FormControl;
+  public repeatPassword: FormControl;
+  public language: FormControl;
 
   constructor(public auth: AuthService) {
 
   }
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+  }
+
+  createFormControls() {
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('', Validators.required);
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.pattern("[^ @]*@[^ @]*")
+    ]);
+    this.password = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+    this.repeatPassword = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+    this.language = new FormControl('', Validators.required);
+  }
+
+  createForm() {
+    this.myform = new FormGroup({
+      name: new FormGroup({
+        firstName: this.firstName,
+        lastName: this.lastName,
+      }),
+      email: this.email,
+      password: this.password,
+      repeatPassword: this.repeatPassword,
+      language: this.language
+    });
   }
 
   register() {
-    this.auth.emailSignUp(this.email, this.password, this.name, [], []);
+
   }
 
   login() {
