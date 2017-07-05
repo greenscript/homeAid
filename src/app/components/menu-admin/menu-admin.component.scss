@@ -23,11 +23,13 @@ $text-size-mobile: 1.2em;
 			background-color: $header-color;
 			border-radius: 50%;
 			margin-top: -10%;
+
 		}
 
 		&-title {
 			margin-top: 1.2em;
 			color: $text-color;
+			font-weight: lighter;
 		}
 	}
 
