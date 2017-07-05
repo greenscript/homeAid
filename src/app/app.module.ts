@@ -38,7 +38,9 @@ export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenuAdminComponent },
   { path: 'admin', component: CreateWeekAdminComponent },
-  { path: 'newTodo', component: NewTodoComponent }
+  { path: 'newTodo', component: NewTodoComponent },
+  { path: 'newux', component: NewUserComponent }
+
 
 ];
 
