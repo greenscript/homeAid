@@ -20,6 +20,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuAdminComponent } from './components/menu-admin/menu-admin.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 import { CreateWeekAdminComponent } from './components/createWeek-admin/createWeek-admin.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
@@ -38,6 +39,7 @@ export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenuAdminComponent },
   { path: 'createWeek', component: CreateWeekAdminComponent },
+  { path: 'user', component: ProfileUserComponent },
   { path: 'newTodo', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent }
 
@@ -51,6 +53,7 @@ export const ROUTES: Routes = [
     RegisterComponent,
     LoginComponent,
     MenuAdminComponent,
+    ProfileUserComponent,
     CreateWeekAdminComponent,
     NewTodoComponent,
     NewUserComponent
