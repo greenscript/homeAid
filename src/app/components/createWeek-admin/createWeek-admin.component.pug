@@ -1,20 +1,22 @@
 
 section.row
-    section.col-xs-12.flex-center.admin-header
+    .col-xs-12.flex-center.admin-header
         h1.admin-title Crear Semana
 section.row.week
-    section.col-xs-4.flex-center
+    .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
             span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-    section.col-xs-4.flex-center
+    .col-xs-4.flex-center
         h2.admin-day Lunes
-    section.col-xs-4.flex-center
+    .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row.week
-    section.col-xs-12.flex-center.newTodo
-        .col-xs-6
-            h4 Nueva Tarea
-        .col-xs-6.text-right
-            a(href='newTodo')
-                img.addBotton(src='../../../assets/i-32.png', alt='')
+    .col-xs-12.flex-center
+        a.btn.btn-default.btn-admin(href='newTodo')
+            p.newTodoBottom Nueva tarea
+            img.addBotton(src='../../../assets/i-32.png', alt='')
+    .col-xs-12.flex-center
+        a.btn.btn-default.btn-admin(href='/')
+            img.todoBotton(src='../../../assets/i-22.png', alt='')
+            p.todoName Barrer prueba
