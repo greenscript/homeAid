@@ -40,7 +40,9 @@ export const ROUTES: Routes = [
   { path: 'menu', component: MenuAdminComponent },
   { path: 'user', component: ProfileUserComponent },
   { path: 'admin', component: CreateWeekAdminComponent },
-  { path: 'newTodo', component: NewTodoComponent }
+  { path: 'newTodo', component: NewTodoComponent },
+  { path: 'newux', component: NewUserComponent }
+
 
 ];
 
