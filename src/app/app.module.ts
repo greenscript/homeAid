@@ -19,6 +19,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuAdminComponent } from './components/menu-admin/menu-admin.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -32,7 +33,8 @@ export const firebaseConfig = {
 export const ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'menu', component: MenuAdminComponent }
+  { path: 'menu', component: MenuAdminComponent },
+  { path: 'user', component: ProfileUserComponent }
 ];
 
 @NgModule({
@@ -41,7 +43,8 @@ export const ROUTES: Routes = [
     TodoComponent,
     RegisterComponent,
     LoginComponent,
-    MenuAdminComponent
+    MenuAdminComponent,
+    ProfileUserComponent
   ],
   imports: [
     BrowserModule,
