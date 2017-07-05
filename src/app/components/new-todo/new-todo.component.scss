@@ -1,0 +1,28 @@
+$header-color: #EEC337;
+$text-color: #FFF;
+
+
+
+img {
+    width: 50px;
+}
+
+
+
+@media (min-width: 320px) {
+  .newtodo{
+    &-header{
+      height: 140px;
+			background-color: $header-color;
+			border-radius: 50%;
+			margin-top: -10%;
+    }
+    /*&-title {
+			margin-top: 1.2em;
+			color: $text-color;
+			font-weight: lighter;
+		}*/
+  }
+  .todo-container{
+  }
+}
