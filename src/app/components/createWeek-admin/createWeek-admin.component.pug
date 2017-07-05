@@ -1,13 +1,16 @@
+
 section.row
     section.col-xs-12.flex-center.admin-header
         h1.admin-title Crear Semana
 section.row.week
     section.col-xs-4.flex-center
-        a.previous.round(href='#') &lsaquo;
+        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
+            span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
     section.col-xs-4.flex-center
         h2.admin-day Lunes
     section.col-xs-4.flex-center
-        a.next.round(href='#') &rsaquo;
+        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
+            span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row.week
     section.col-xs-12.flex-center.newTodo
         .col-xs-6
@@ -15,11 +18,4 @@ section.row.week
         .col-xs-6.text-right
             a(href='newTodo')
                 img.addBotton(src='../../../assets/i-32.png', alt='')
-section.row.week
-    section.col-xs-12.flex-center.newTodo
-        .col-xs-6
-            img.addBotton(src='../../../assets/i-22.png', alt='')
-            p Carlos
-        .col-xs-6
-            h4 Limpiar platos
-            p 2:00 pm
+        button(md-button='') Click me!
