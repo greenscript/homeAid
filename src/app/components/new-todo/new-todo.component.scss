@@ -2,6 +2,9 @@ $header-color: #EEC337;
 $text-color: #FFF;
 $light-green: #00B097;
 
+h4 {
+  font-weight: 300;
+}
 
 /*classes for ng if to see which user is selected.*/
 .selected-ux {
@@ -56,9 +59,7 @@ $light-green: #00B097;
     }
   }
 
-  h4 {
-    font-weight: 300;
-  }
+
 
   .todo-user {
     padding-left: 2em;

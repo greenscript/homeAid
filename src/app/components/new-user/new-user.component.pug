@@ -1,1 +1,40 @@
-p hola
+section.row
+  section.col-xs-12.flex-center.newuser-header
+    h1.newuser-title Nuevo usuario
+
+section.row
+  section.col-xs-12.col-sm-12.container
+    h4 Seleccione un usuario
+      section.col-xs-12.flex-center.new-user-subcontainer
+        div
+          .col-xs-4.col-sm-4
+            a(href='')
+              img.selected-ux(src='../../../assets/i-22.png')
+          .col-xs-4.col-sm-4
+            a(href='')
+              img.no-selected-ux(src='../../../assets/i-24.png')
+          .col-xs-4.col-sm-4
+            a(href='')
+              img.no-selected-ux(src='../../../assets/i-23.png')
+  section.col-xs-12.col-sm-12.container
+    form.register-form.flex-center.flex-column
+      fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
+        .form-group.col-xs-12.register-form_wrapper.flex-center
+          input.form-control.newuserfield(
+            type="text", 
+            name="name", 
+            formControlName="user-name",
+            placeholder="Nombre",
+            required
+          )
+        .form-group.col-xs-12.register-form_wrapper.flex-center
+          input.form-control.newuserfield(
+            type="date", 
+            name="birthdate", 
+            formControlName="user-birthdate",
+            placeholder="Fecha de nacimiento",
+            required
+          )
+					.form-group.col-xs-12.register-form_wrapper.flex-center
+	          label.checkbox-inline 
+							input(type="checkbox" value="F")

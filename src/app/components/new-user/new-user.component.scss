@@ -1,0 +1,53 @@
+$header-color: #EEC337;
+$text-color: #FFF;
+$text-size-mobile: 1.2em;
+
+h4 {
+	font-weight: 300;
+	margin: 0px 0px 0px 1em;
+}
+/*classes for ng if to see which user is selected.*/
+.selected-ux {
+  border: 0.2em solid black;
+  border-radius: 5em;
+  width: 60% !important;
+
+}
+.no-selected-ux {
+  border: 0.2em solid grey;
+  border-radius: 5em;
+  opacity: 0.5;
+  width: 60% !important;
+}
+.newuserfield{
+	padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus{
+	outline:none;
+}
+
+
+
+@media (min-width: 320px) {
+  .newuser {
+    &-header {
+			height: 140px;
+			background-color: $header-color;
+			border-radius: 50%;
+			margin-top: -10%;
+		}
+		&-title {
+			margin-top: 1.2em;
+			color: $text-color;
+			font-weight: lighter;
+		}
+	}
+	.new-user-subcontainer{
+		padding-left: 2em;
+		margin: 2em 0px 2em 0px;
+	}
+}
