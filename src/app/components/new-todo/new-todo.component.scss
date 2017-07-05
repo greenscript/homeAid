@@ -1,28 +1,74 @@
 $header-color: #EEC337;
 $text-color: #FFF;
+$light-green: #00B097;
 
 
+/*classes for ng if to see which user is selected.*/
+.selected-ux {
+  border: 0.2em solid black;
+  border-radius: 5em;
+  width: 60% !important;
 
-img {
-    width: 50px;
+}
+.no-selected-ux {
+  border: 0.2em solid grey;
+  border-radius: 5em;
+  opacity: 0.5;
+  width: 60% !important;
+}
+
+.btn-category{
+  border: 0.1em solid lightgrey;
+  width: 70% !important;
+  opacity: 0.5;
+}
+
+.btn-category:hover{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  opacity: initial;
+}
+
+.btn-add-todo{
+  background-color: $light-green;
+  color: white;
+  height: 2em;
+  width: 80%;
+  border: aliceblue;
+  font-weight: 300;
+
 }
 
 
 
 @media (min-width: 320px) {
-  .newtodo{
-    &-header{
+  .newtodo {
+    &-header {
       height: 140px;
-			background-color: $header-color;
-			border-radius: 50%;
-			margin-top: -10%;
+      background-color: $header-color;
+      border-radius: 50%;
+      margin-top: -10%;
     }
-    /*&-title {
-			margin-top: 1.2em;
-			color: $text-color;
-			font-weight: lighter;
-		}*/
+
+    &-title {
+      margin-top: 1.2em;
+      color: $text-color;
+      font-weight: lighter;
+    }
   }
-  .todo-container{
+
+  h4 {
+    font-weight: 300;
   }
+
+  .todo-user {
+    padding-left: 2em;
+    margin: 2em 0px 2em 0px;
+  }
+
+  .todo-category {
+    margin: 2em 0px 2em 0px;
+
+  }
+
+  .select-ux {}
 }
