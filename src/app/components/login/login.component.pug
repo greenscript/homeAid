@@ -1,7 +1,16 @@
 section.row
   section.col-xs-12.flex-center.flex-column
     img.img-responsive(src="assets/homeAid-logo.png")
-    button.login-google(role="button", (click)="googleSingUp()")
-      span.login-google_icon
-      span.login-google_text Sign up With Google
+  
+  section.col-xs-12.flex-center.flex-column
+    button.login-social.login-facebook((click)="facebookSignUp()") 
+      span.login-social_icon.login-facebook_icon
+      span.login-social_text Sign up With Facebook
+    
+  section.col-xs-12.flex-center.flex-column    
+    button.login-social.login-google((click)="googleSignUp()")
+      span.login-social_icon.login-google_icon
+      span.login-social_text Sign up With Google
+  
+  section.col-xs-12.flex-center.flex-column
     a.login-register(href="register") Register

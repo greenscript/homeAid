@@ -11,23 +11,19 @@ import { Week } from '../../models/week.model';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, Validators]
 })
 
 export class RegisterComponent implements OnInit {
 
-  public langs: string[] = [
-    'English',
-    'French',
-    'German',
-  ];
   public myform: FormGroup;
   public firstName: FormControl;
   public lastName: FormControl;
   public email: FormControl;
   public password: FormControl;
   public repeatPassword: FormControl;
-  public language: FormControl;
+  public error: boolean = false;
+  public matchError: string;
 
   constructor(public auth: AuthService) {
 
@@ -53,7 +49,6 @@ export class RegisterComponent implements OnInit {
       Validators.required,
       Validators.minLength(8)
     ]);
-    this.language = new FormControl('', Validators.required);
   }
 
   createForm() {
@@ -65,12 +60,19 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password,
       repeatPassword: this.repeatPassword,
-      language: this.language
     });
   }
 
   register() {
-
+    console.log(this.email.value);
+    if (this.myform.valid) {
+      if(this.password.value === this.repeatPassword.value) {
+        this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value, [], []);
+      } else {
+        this.error = true;
+        this.matchError = `Passwords don't match.`;
+      }
+    }
   }
 
   login() {

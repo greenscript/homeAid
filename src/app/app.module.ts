@@ -24,6 +24,8 @@ import { ProfileUserComponent } from './components/profile-user/profile-user.com
 import { CreateWeekAdminComponent } from './components/createWeek-admin/createWeek-admin.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+// pipes
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -56,7 +58,8 @@ export const ROUTES: Routes = [
     ProfileUserComponent,
     CreateWeekAdminComponent,
     NewTodoComponent,
-    NewUserComponent
+    NewUserComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,6 @@
 emojis=( 👩‍👦 👪 🏡 🏆 👧🏽 👨 🍽 🐺 🐱)
 num_emojis=${#emojis[*]}
 
-
 echo "
       ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
       ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
@@ -19,13 +18,11 @@ echo "
 
       "
 
-echo "Hello Developer! Welcome to Home Aid. -greenscript"
+echo "Hello Developer! Welcome to Home Aid."
 echo "Select an option: start(runs the project), install(installs dependencies))"
-#read in user input into the action variable
 
 read action
 
-# if action is copy then continue proceed with the following
 if [ $action = "start" ]
 then
   echo "opening browser, when npm starts finishes it will refresh, in some cases :v"

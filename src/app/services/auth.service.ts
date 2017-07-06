@@ -55,6 +55,7 @@ export class AuthService {
       .then((user) => {
         this.authState = user
         this.updateFamilyData(pName, pUsers, pWeeks)
+        this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
   }
@@ -95,7 +96,7 @@ export class AuthService {
       .then((credential) =>  {
           console.log(credential)
           this.authState = credential.user
-          this.updateFamilyData(credential.additionalUserInfo.profile.family_name, [], [])
+          this.updateFamilyData(credential.additionalUserInfo.profile.name, [], [])
           this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
