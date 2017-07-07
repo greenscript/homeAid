@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewTodo } from '../../models/newTodo.model';
 
 @Component({
@@ -7,9 +7,10 @@ import { NewTodo } from '../../models/newTodo.model';
   styleUrls: ['./new-todo.component.scss']
 })
 export class NewTodoComponent implements OnInit {
-
+  @Input() CategorySelected;
   constructor() { }
 
   ngOnInit() {
+    console.log('3232', this.CategorySelected);
   }
 }
