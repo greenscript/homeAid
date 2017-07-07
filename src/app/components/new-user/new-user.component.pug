@@ -1,10 +1,10 @@
+
 section.row
   section.col-xs-12.flex-center.newuser-header
     h1.newuser-title Nuevo usuario
-
 section.row
   section.col-xs-12.col-sm-12.container
-    h4 Seleccione un usuario
+    h4
       section.col-xs-12.flex-center.new-user-subcontainer
         div
           .col-xs-4.col-sm-4
@@ -18,23 +18,17 @@ section.row
               img.no-selected-ux(src='../../../assets/i-23.png')
   section.col-xs-12.col-sm-12.container
     form.register-form.flex-center.flex-column
-      fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
-        .form-group.col-xs-12.register-form_wrapper.flex-center
-          input.form-control.newuserfield(
-            type="text", 
-            name="name", 
-            formControlName="user-name",
-            placeholder="Nombre",
-            required
-          )
-        .form-group.col-xs-12.register-form_wrapper.flex-center
-          input.form-control.newuserfield(
-            type="date", 
-            name="birthdate", 
-            formControlName="user-birthdate",
-            placeholder="Fecha de nacimiento",
-            required
-          )
-          .form-group.col-xs-12.register-form_wrapper.flex-center
-            label.checkbox-inline(for="user-gender") Sexo: 
-            input(type='checkbox' name='agreement' checked=true)
+      fieldset.col-xs-10.flex-center.flex-column.no-padding(formgroupname='name')
+        .form-group.register-form_wrapper
+          label(for='name') Nombre
+          input.form-control.newuserfield(type='text', name='name', formcontrolname='user-name', placeholder='Nombre', required='required')
+        .form-group.register-form_wrapper
+          label(for='name') Fecha de nacimiento
+          input.form-control.newuserfield(type='date', name='birthdate', formcontrolname='user-birthdate', placeholder='Fecha de nacimiento', required='required')
+          .form-group.register-form_wrapper
+            .radio.col-xs-6
+              label Femenino
+                input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+            .radio.col-xs-6
+              label Masculino
+                input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
