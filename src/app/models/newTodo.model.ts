@@ -6,6 +6,8 @@ export class NewTodo {
 
     constructor(pUser,pCategory,pTodo,pStatus) {
       this.setUser(pUser);
+      this.setCategory(pCategory);
+      this.setTodo(pTodo);
       this.setStatus(pStatus);
     }
     getUser() { return this.user; }
@@ -13,7 +15,8 @@ export class NewTodo {
     getTodo() { return this.todo; }
     getStatus() { return this.status; }
 
-
     setUser(pValue) { this.user = pValue; }
+    setCategory(pValue) { this.category = pValue; }
     setStatus(pValue) { this.status = pValue; }
+    setTodo(pValue) { this.todo = pValue; }
 }
