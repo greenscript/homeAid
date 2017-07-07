@@ -1,4 +1,5 @@
 #/bin/bash
+name=$(whoami)
 emojis=( 👩‍👦 👪 🏡 🏆 👧🏽 👨 🍽 🐺 🐱)
 num_emojis=${#emojis[*]}
 
@@ -18,7 +19,7 @@ echo "
 
       "
 
-echo "Hello Developer! Welcome to Home Aid."
+echo "Hello $name! Welcome to Home Aid."
 echo "Select an option: start(runs the project), install(installs dependencies))"
 
 read action
