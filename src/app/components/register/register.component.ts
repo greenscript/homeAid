@@ -64,7 +64,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.email.value);
     if (this.myform.valid) {
       if(this.password.value === this.repeatPassword.value) {
         this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value, [], []);

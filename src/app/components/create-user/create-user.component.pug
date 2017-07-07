@@ -1,0 +1,16 @@
+section.row
+  section.col-xs-12
+    .col-xs-8
+      h1  New User
+    .col-xs-4
+  section.col-xs-12
+    h2 Select An avatar
+    .avatar-container.col-xs-3(*ngFor="let avatar of avatars")
+      img.img-rounded([src]="avatar.url")
+  section.col-xs-12.flex-center
+    form.user-form([formGroup]="userForm")
+      .form-group
+        input(type="text", formControlName="name")
+      .form-group
+        material-datepicker([(date)]="yourModelDate")
+        

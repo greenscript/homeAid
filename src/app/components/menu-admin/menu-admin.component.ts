@@ -15,11 +15,14 @@ export class MenuAdminComponent implements OnInit {
   public adminName: string;
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) {
 
+  }
+
+  ngOnInit() {
     this.auth.authState.subscribe(res => {
       let props = this;
       if (res && res.uid) {
         console.log('logged in');
-        this.items = db.list(`/families/${res.uid}`, {preserveSnapshot: true});
+        this.items = this.db.list(`/families/${res.uid}`, {preserveSnapshot: true});
         this.items
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
@@ -34,14 +37,6 @@ export class MenuAdminComponent implements OnInit {
         console.log('user not logged in');
       }
     });
-
-
-
-
-  }
-
-  ngOnInit() {
-
   }
 
   assignProperties(pData) {
