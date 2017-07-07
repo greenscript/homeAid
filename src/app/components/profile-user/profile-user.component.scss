@@ -1,15 +1,24 @@
-$text-color: #FFF;
+$header-color: #5aabc5;
 
-.user {
-    &-title {
+.header {
+  margin-top: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+
+  .path{
+    fill:$header-color;
+  }
+
+  &-title {
         color: white;
         margin-top: 5vh;
         font-weight: lighter;
         text-align: center
     }
-    &-week{
-       padding: 5vh 0;
-    }
+}
+
+.user {
     &-img{
       background-color: white;
       border-radius: 50%;
@@ -21,8 +30,12 @@ $text-color: #FFF;
     }
 }
 
-h2{
-  margin-top: 18%;
+.week{
+    padding: 5vh 0;
+
+  &-day{
+      margin-top: 18%;
+  }
 }
 
 .arrow {
@@ -60,18 +73,6 @@ p {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-
-.cls-1{
-  fill:#5aabc5;
-}
-
-.head {
-      margin-top: 0;
-      position: absolute;
-      z-index: -1;
-      top: 0;
-    }
-
 @media (min-width: 650px) {
 	.btn-user {
 		margin-top: 4em;
@@ -82,16 +83,13 @@ p {
 		font-size: 1.2em;
 		padding-left: 1em;
 	}
-  .head{
+  .header{
   top: -10vw;
-  }
-
-  
+  } 
 }
 
 @media (min-width: 1000px) {
-
-  .head{
+  .header{
   top: -16vw;
   }
 }
