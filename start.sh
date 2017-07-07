@@ -4,18 +4,18 @@ emojis=( 👩‍👦 👪 🏡 🏆 👧🏽 👨 🍽 🐺 🐱)
 num_emojis=${#emojis[*]}
 
 echo "
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
-      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}                ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}              ${emojis[$((RANDOM%num_emojis))]}    ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}             ${emojis[$((RANDOM%num_emojis))]}      ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}            ${emojis[$((RANDOM%num_emojis))]}        ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}          ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]}          ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]} ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}         ${emojis[$((RANDOM%num_emojis))]}               ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}        ${emojis[$((RANDOM%num_emojis))]}                 ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}       ${emojis[$((RANDOM%num_emojis))]}                   ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}      ${emojis[$((RANDOM%num_emojis))]}                     ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}     ${emojis[$((RANDOM%num_emojis))]}                       ${emojis[$((RANDOM%num_emojis))]}
+      ${emojis[$((RANDOM%num_emojis))]}           ${emojis[$((RANDOM%num_emojis))]}    ${emojis[$((RANDOM%num_emojis))]}                         ${emojis[$((RANDOM%num_emojis))]}
 
       "
 
