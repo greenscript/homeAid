@@ -24,8 +24,8 @@ section.row
       section.col-xs-12.flex-center.todo-category
         div
           .col-xs-4.col-sm-4
-            a(href='')
-              img.btn-category(src='../../../assets/i-29.png')
+            button
+              img.btn-category(src='../../../assets/i-29.png', (ng-model)="CategorySelected",data-toggle="modal" data-target="#cat-acomodar")
             h5 Acomodar
           .col-xs-4.col-sm-4
             a(href='')
@@ -53,4 +53,15 @@ section.row
         button.btn-add-todo Agregar
 
 
-            
+#cat-acomodar.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+          h4#myModalLabel.modal-title New comment
+            .modal-body
+              p holaaaas      
+            .modal-footer
+              button.btn.closes(type='button', data-dismiss='modal') Close
+              button.btn.save(type='button', (click)='addNewPost(newPostTitle,newPostBody)') Save post
