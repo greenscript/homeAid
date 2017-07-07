@@ -1,6 +1,24 @@
-$header-color: #EEC337;
+$header-color: #efcf44;
 $text-color: #FFF;
 $text-size-mobile: 1.2em;
+
+.header {
+  margin-top: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+
+  .path{
+    fill:$header-color;
+  }
+
+  &-title {
+        color: white;
+        margin-top: 5vh;
+        font-weight: lighter;
+        text-align: center
+    }
+}
 
 h4 {
 	font-weight: 300;
@@ -48,6 +66,27 @@ input:focus{
 	}
 	.new-user-subcontainer{
 		padding-left: 2em;
-		margin: 2em 0px 2em 0px;
+		margin: 3em 0px 2em 0px;
 	}
+}
+
+@media (min-width: 650px) {
+	.btn-user {
+		margin-top: 4em;
+		margin-bottom: 10px;
+		height: 4em;
+		width: 80%;
+		margin: 2em;
+		font-size: 1.2em;
+		padding-left: 1em;
+	}
+  .header{
+  top: -10vw;
+  } 
+}
+
+@media (min-width: 1000px) {
+  .header{
+  top: -16vw;
+  }
 }
