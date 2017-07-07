@@ -27,6 +27,9 @@ import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+// bootstrap
+import { ModalModule } from 'ngx-bootstrap';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -78,7 +81,8 @@ export const ROUTES: Routes = [
     MdChipsModule,
     MdTooltipModule,
     RouterModule.forRoot(ROUTES),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

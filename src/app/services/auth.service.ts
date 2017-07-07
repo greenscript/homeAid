@@ -43,7 +43,10 @@ export class AuthService {
   }
 
   loginWithEmail(pEmail: string, pPassword: string) {
-    this.af.auth.signInWithEmailAndPassword(pEmail, pPassword);
+    this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) =>{
+      this.authState = response
+      this.router.navigateByUrl('/menu')
+    })
   }
 
   logout() {

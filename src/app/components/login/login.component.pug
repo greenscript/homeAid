@@ -1,7 +1,10 @@
 section.row
   section.col-xs-12.flex-center.flex-column
     img.img-responsive(src="assets/homeAid-logo.png")
-  
+      
+  section.col-xs-12.flex-center
+    button.login-login-btn((click)="smModal.show()") Login 
+    
   section.col-xs-12.flex-center.flex-column
     button.login-social.login-facebook((click)="facebookSignUp()") 
       span.login-social_icon.login-facebook_icon
@@ -14,3 +17,36 @@ section.row
   
   section.col-xs-12.flex-center.flex-column
     a.login-register(href="register") Register
+    
+.modal.fade(bsModal="", #smModal="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true")
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        h4.modal-title.pull-left Login
+        button.close.pull-right(type="button", aria-label="close", (click)="smModal.hide()")
+          span(aria-hidden="true") &times;
+      .modal-body
+        form([formGroup]="loginForm")
+          .form.group(
+            [ngClass]="{'has-danger': loginForm.controls.email.invalid && loginForm.controls.email.dirty, 'has-success': loginForm.controls.email.valid && loginForm.controls.email.dirty}"
+            )
+            input.form-control.register-form_input(
+              type="text", 
+              name="email", 
+              formControlName="email",
+              placeholder="Email",
+              required
+            )
+          .form-group
+            input.form-control.register-form_input(
+              type="password", 
+              name="password", 
+              formControlName="password",
+              placeholder="Password",
+              required
+            )
+            .error(*ngIf="loginForm.controls.password.dirty && !loginForm.controls.password.valid") Password must be 8 characters long
+
+          .form-group
+            button.btn.btn-success((click)="login()", [disabled]="loginForm.invalid") Login
+      
