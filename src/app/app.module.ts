@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // models
 import { User } from './models/user.model';
 import { Week } from './models/week.model';
+import { NewTodo } from './models/newTodo.model';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';

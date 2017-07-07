@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogModule } from '@angular/material';
-
+import { NewTodo } from '../../models/newTodo.model';
 
 @Component({
   selector: 'app-createWeek-admin',

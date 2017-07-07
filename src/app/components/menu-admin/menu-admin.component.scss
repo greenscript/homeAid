@@ -31,6 +31,15 @@ $text-size-mobile: 1.2em;
 			color: $text-color;
 			font-weight: lighter;
 		}
+
+		&-userAvatar {
+			width: 20%;
+			margin-top: -3em;
+		}
+
+		&-avatarBackgroundWhite {
+			background-color: $text-color;
+		}
 	}
 
 	.btn-menu-admin {

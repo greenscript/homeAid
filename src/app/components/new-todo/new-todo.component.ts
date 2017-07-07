@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewTodo } from '../../models/newTodo.model';
 
 @Component({
   selector: 'app-new-todo',
