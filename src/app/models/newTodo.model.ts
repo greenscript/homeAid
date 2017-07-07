@@ -1,5 +1,7 @@
+import { User } from './user.model';
+
 export class NewTodo {
-  private user: object;
+  private user: User[] = [];
   private category: string;
   private todo: string;
   private status: boolean = false;

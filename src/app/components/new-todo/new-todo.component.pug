@@ -24,44 +24,40 @@ section.row
       section.col-xs-12.flex-center.todo-category
         div
           .col-xs-4.col-sm-4
-            button
-              img.btn-category(src='../../../assets/i-29.png', (ng-model)="CategorySelected",data-toggle="modal" data-target="#cat-acomodar")
+            button.category-btn((click)="acomodar.show()") 
+              img.img-category(src='../../../assets/i-30.png')
             h5 Acomodar
           .col-xs-4.col-sm-4
             a(href='')
-              img.btn-category(src='../../../assets/i-30.png')
+              img.img-category(src='../../../assets/i-30.png')
             h5 Limpiar
           .col-xs-4.col-sm-4
             a(href='')
-              img.btn-category(src='../../../assets/i-32.png')
+              img.img-category(src='../../../assets/i-32.png')
             h5 Acomodar
       section.col-xs-12.flex-center
         div
           .col-xs-4.col-sm-4
             a(href='')
-              img.btn-category(src='../../../assets/i-22.png')
+              img.img-category(src='../../../assets/i-22.png')
             h5 Cocinar
           .col-xs-4.col-sm-4
             a(href='')
-              img.btn-category(src='../../../assets/i-27.png')
+              img.img-category(src='../../../assets/i-27.png')
             h5 Mascotas
           .col-xs-4.col-sm-4
             a(href='')
-              img.btn-category(src='../../../assets/i-28.png')
+              img.img-category(src='../../../assets/i-28.png')
             h5 Personal
       section.col-xs-12.flex-center
         button.btn-add-todo Agregar
 
-
-#cat-acomodar.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
-  .modal-dialog(role='document')
-    .modal-content
-      .modal-header
-          button.close(type='button', data-dismiss='modal', aria-label='Close')
-          span(aria-hidden='true') ×
-          h4#myModalLabel.modal-title New comment
-            .modal-body
-              p holaaaas      
-            .modal-footer
-              button.btn.closes(type='button', data-dismiss='modal') Close
-              button.btn.save(type='button', (click)='addNewPost(newPostTitle,newPostBody)') Save post
+  .modal.fade(bsModal="", #acomodar="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true")
+    .modal-dialog.modal-sm
+      .modal-content
+          .modal-header
+            h4.modal-title.pull-left Login
+            button.close.pull-right(type="button", aria-label="close", (click)="acomodar.hide()")
+              span(aria-hidden="true") &times;
+          .modal-body
+            p holas
