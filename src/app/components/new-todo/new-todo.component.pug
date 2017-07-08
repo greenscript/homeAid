@@ -25,7 +25,7 @@ section.row
         div
           .col-xs-4.col-sm-4
             button.category-btn((click)="acomodar.show()") 
-              img.img-category(src='../../../assets/i-30.png')
+              img.img-category(src='../../../assets/i-29.png')
             h5 Acomodar
           .col-xs-4.col-sm-4
             a(href='')
@@ -33,14 +33,10 @@ section.row
             h5 Limpiar
           .col-xs-4.col-sm-4
             a(href='')
-              img.img-category(src='../../../assets/i-32.png')
-            h5 Acomodar
-      section.col-xs-12.flex-center
-        div
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-22.png')
+              img.img-category(src='../../../assets/i-31.png')
             h5 Cocinar
+      section.col-xs-12.flex-center
+        div  
           .col-xs-4.col-sm-4
             a(href='')
               img.img-category(src='../../../assets/i-27.png')
@@ -49,6 +45,10 @@ section.row
             a(href='')
               img.img-category(src='../../../assets/i-28.png')
             h5 Personal
+          .col-xs-4.col-sm-4
+            a(href='')
+              img.img-category(src='../../../assets/i-32.png')
+            h5 Otras
       section.col-xs-12.flex-center
         button.btn-add-todo Agregar
 
@@ -56,8 +56,29 @@ section.row
     .modal-dialog.modal-sm
       .modal-content
           .modal-header
-            h4.modal-title.pull-left Login
+            h4.modal-title.pull-left Acomodar
             button.close.pull-right(type="button", aria-label="close", (click)="acomodar.hide()")
               span(aria-hidden="true") &times;
           .modal-body
-            p holas
+            form
+              .form-group
+                .radio
+                  label Alistar el comedor.
+                    input#optionsRadios1(type='radio', name='optionsRadios', value='option1')
+                .radio
+                  label Doblar ropa.
+                    input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+                .radio
+                  label Planchar ropa.
+                    input#optionsRadios3(type='radio', name='optionsRadios', value='option3')
+                .radio
+                  label Ordenar baños.
+                    input#optionsRadios4(type='radio', name='optionsRadios', value='option4')
+                .radio
+                  label Ordenar cocina.
+                    input#optionsRadios5(type='radio', name='optionsRadios', value='option5')
+                .radio
+                  label Ordenar sala.
+                    input#optionsRadios6(type='radio', name='optionsRadios', value='option6')
+              .form-group.flex-center
+                button.btn.btn-default.acomodarButton Agregar
