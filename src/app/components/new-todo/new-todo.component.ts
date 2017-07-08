@@ -16,7 +16,7 @@ export class NewTodoComponent implements OnInit {
 
   addTodo(value, event) {
     console.log('hg', value, event);
-    console.log(event.getAttribute());// console.log(document.getElementsByTagName('input').getAttribute('data-category'));
+    // console.log(document.getElementsByTagName('input').getAttribute('data-category'));
 
     // this.bee.posts.push(new Post(this.newIdPost, this.bee.getId(), this.titlePost, this.bodyPost));
     // console.log(this.bee.getPosts());
