@@ -7,10 +7,18 @@ import { NewTodo } from '../../models/newTodo.model';
   styleUrls: ['./new-todo.component.scss']
 })
 export class NewTodoComponent implements OnInit {
-  @Input() CategorySelected;
+  buttons = document.getElementsByTagName("input");
+  buttonsCount = this.buttons.length;
   constructor() { }
 
   ngOnInit() {
-    console.log('3232', this.CategorySelected);
+  }
+
+  addTodo(value, event) {
+    console.log('hg', value, event);
+    console.log(event.getAttribute());// console.log(document.getElementsByTagName('input').getAttribute('data-category'));
+
+    // this.bee.posts.push(new Post(this.newIdPost, this.bee.getId(), this.titlePost, this.bodyPost));
+    // console.log(this.bee.getPosts());
   }
 }

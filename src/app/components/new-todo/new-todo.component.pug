@@ -52,33 +52,33 @@ section.row
       section.col-xs-12.flex-center
         button.btn-add-todo Agregar
 
-  .modal.fade(bsModal="", #acomodar="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true")
+  .modal.fade(bsModal="", #acomodar="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true", #acomodar)
     .modal-dialog.modal-sm
       .modal-content
-          .modal-header
-            h4.modal-title.pull-left Acomodar
-            button.close.pull-right(type="button", aria-label="close", (click)="acomodar.hide()")
-              span(aria-hidden="true") &times;
-          .modal-body
-            form
-              .form-group
-                .radio
-                  label Alistar el comedor.
-                    input#optionsRadios1(type='radio', name='optionsRadios', value='option1')
-                .radio
-                  label Doblar ropa.
-                    input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
-                .radio
-                  label Planchar ropa.
-                    input#optionsRadios3(type='radio', name='optionsRadios', value='option3')
-                .radio
-                  label Ordenar baños.
-                    input#optionsRadios4(type='radio', name='optionsRadios', value='option4')
-                .radio
-                  label Ordenar cocina.
-                    input#optionsRadios5(type='radio', name='optionsRadios', value='option5')
-                .radio
-                  label Ordenar sala.
-                    input#optionsRadios6(type='radio', name='optionsRadios', value='option6')
-              .form-group.flex-center
-                button.btn.btn-default.acomodarButton Agregar
+        .modal-header
+          h4.modal-title.pull-left Acomodar
+          button.close.pull-right(type="button", aria-label="close", (click)="acomodar.hide()")
+            span(aria-hidden="true") &times;
+        .modal-body
+          form
+            .form-group
+              .radio
+                label Alistar el comedor.
+                  input#optionsRadios1(type='radio', name='Acomodar', value='Alistar el comedor', [(ngModel)]="value")
+              .radio
+                label Doblar ropa.
+                  input#optionsRadios2(type='radio', name='Acomodar', value='Doblar ropa', [(ngModel)]="value")
+              .radio
+                label Planchar ropa.
+                  input#optionsRadios3(type='radio', name='Acomodar', value='Planchar ropa', [(ngModel)]="value")
+              .radio
+                label Ordenar baños.
+                  input#optionsRadios4(type='radio', name='Acomodar', value='Ordenar baños', [(ngModel)]="value")
+              .radio
+                label Ordenar cocina.
+                  input#optionsRadios5(type='radio', name='Acomodar', value='Ordenar cocina', [(ngModel)]="value")
+              .radio
+                label Ordenar sala.
+                  input#optionsRadios6(type='radio', name='Acomodar', value='Ordenar sala', [(ngModel)]="value")
+            .form-group.flex-center
+              button.btn.btn-default.acomodarButton((click)='addTodo(value, this.id)') Agregar
