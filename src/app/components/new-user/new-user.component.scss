@@ -1,4 +1,4 @@
-$header-color: #efcf44;
+$header-color: #E3C338;
 $text-color: #FFF;
 $text-size-mobile: 1.2em;
 
@@ -48,7 +48,30 @@ input:focus{
 	outline:none;
 }
 
+.radio+.radio {
+    margin-top: 11px; 
+}
 
+.radio input[type=radio] {
+  position: inherit;
+  margin-left: -100px;
+}
+
+.blue {
+  background: #76A9C4 linear-gradient(0deg, #76A9C4 0%, #76A9C4 100%)
+}
+
+.yellow {
+  background: #E3C338 linear-gradient(0deg, #E3C338 0%, #E3C338 100%)
+}
+
+.green {
+  background: #8CB3AA linear-gradient(0deg, #8CB3AA 0%, #8CB3AA 100%)
+}
+
+.tema {
+  top: 50px;
+}
 
 @media (min-width: 320px) {
   .newuser {

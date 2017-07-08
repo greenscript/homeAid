@@ -26,10 +26,14 @@ section.row
         .form-group.register-form_wrapper
           label(for='name') Fecha de nacimiento
           input.form-control.newuserfield(type='date', name='birthdate', formcontrolname='user-birthdate', placeholder='Fecha de nacimiento', required='required')
-          .form-group.register-form_wrapper
-            .radio.col-xs-6
-              label Femenino
-                input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
-            .radio.col-xs-6
-              label Masculino
-                input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+        .form-group.register-form_wrapper
+          .radio.col-xs-6
+            label Femenino
+              input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+          .radio.col-xs-6
+             label Masculino
+              input#optionsRadios2(type='radio', name='optionsRadios', value='option2')               
+        select.form-control(multiple='')
+          option.blue(val='1')
+          option.yellow(val='2')
+          option.green(val='3')
