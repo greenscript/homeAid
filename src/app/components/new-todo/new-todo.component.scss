@@ -53,7 +53,40 @@ input[type=radio] {
   font-size: 20px;
 }
 
+// .acomodarModal {
+//     border: none;
+//     background-color: white;
+//     max-width: 110px;
+//     position: fixed;
+//     left: 30%;
+//     top: -15%;
+//     background-color: white;
+//     border-radius: 50%;
+//     opacity: 1;
+// }
 
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.img-category {
+  border: none;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
 @media (min-width: 320px) {
   .newtodo {
     &-header {
