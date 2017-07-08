@@ -62,9 +62,12 @@ section.row
         .modal-body
           form
             .form-group
-              .radio
+              radio(*ngFor="let description of todos.description")
+                input#cat-acomodar(type='radio', name='descript', value={{description}})
+                
+            //- .radio
                 label Alistar el comedor.
-                  input#optionsRadios1(type='radio', name='Acomodar', value='Alistar el comedor', [(ngModel)]="value")
+                  input#cat-acomodar(type='radio', name='Acomodar',value='Alistar el comedor', [(ngModel)]="Tododescription")
               .radio
                 label Doblar ropa.
                   input#optionsRadios2(type='radio', name='Acomodar', value='Doblar ropa', [(ngModel)]="value")
@@ -79,6 +82,6 @@ section.row
                   input#optionsRadios5(type='radio', name='Acomodar', value='Ordenar cocina', [(ngModel)]="value")
               .radio
                 label Ordenar sala.
-                  input#optionsRadios6(type='radio', name='Acomodar', value='Ordenar sala', [(ngModel)]="value")
+                  input#optionsRadios6(type='radio', name='Acomodar', value='Ordenar sala', [(ngModel)]="value") -//
             .form-group.flex-center
-              button.btn.btn-default.acomodarButton((click)='addTodo(value, this.id)') Agregar
+              button.btn.btn-default.acomodarButton((click)='addTodo(Tododescription)') Agregar

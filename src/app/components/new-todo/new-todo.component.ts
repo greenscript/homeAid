@@ -7,18 +7,29 @@ import { NewTodo } from '../../models/newTodo.model';
   styleUrls: ['./new-todo.component.scss']
 })
 export class NewTodoComponent implements OnInit {
-  buttons = document.getElementsByTagName("input");
-  buttonsCount = this.buttons.length;
+
+  todos = [
+    { category: "Pets", description: "Hacerle carinitos a Chanchillo." },
+    { category: "Pets", description: "Dar de comer a pecas" },
+    { category: "Acomodar", description: "Barrer popo de perritos" },
+  ]
+
+
+
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  addTodo(value, event) {
-    console.log('hg', value, event);
-    // console.log(document.getElementsByTagName('input').getAttribute('data-category'));
+  // addTodo(value, event) {
+  //   console.log('hg', value, event);
+  //   // console.log(document.getElementsByTagName('input').getAttribute('data-category'));
 
-    // this.bee.posts.push(new Post(this.newIdPost, this.bee.getId(), this.titlePost, this.bodyPost));
-    // console.log(this.bee.getPosts());
+  addTodo(pcategory) {
+    console.log('category', pcategory);
+
+
+    //console.log('test', this.todos);
   }
 }
