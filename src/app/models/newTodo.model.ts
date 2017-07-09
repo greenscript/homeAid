@@ -6,6 +6,9 @@ export class NewTodo {
   private todo: string;
   private status: boolean = false;
 //  private points: string;
+//todos temporal
+private todos: Array<any>;
+
 
 
     constructor(pCategory,pTodo,pStatus) {
@@ -27,4 +30,5 @@ export class NewTodo {
     setStatus(pValue) { this.status = pValue; }
   //  setPoints(pValue) { this.points = pValue; }
   //  push para tareas?
+   addTodoToTodos(Objtodo){ this.todos.push(Objtodo) }
 }

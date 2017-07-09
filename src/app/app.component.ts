@@ -21,7 +21,7 @@ export class AppComponent {
       for (var todo of data) {
         let todos = new NewTodo(todo.category, todo.todo, todo.status);
         this.allTodos.push(todos);
-        console.log('SDKAHSBDHA',this.allTodos);
+      //  console.log('SDKAHSBDHA',this.allTodos);
       }
 
     });

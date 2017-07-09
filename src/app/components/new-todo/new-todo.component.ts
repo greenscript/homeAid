@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewTodo } from '../../models/newTodo.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-new-todo',
@@ -9,16 +10,14 @@ import { NewTodo } from '../../models/newTodo.model';
 export class NewTodoComponent implements OnInit {
   categoryForModel;
   newTodoObj;
+  //todosArray : NewTodo [];
+
   todos = [
     { category: "Pets", description: "Hacerle carinitos a Chanchillo." },
     { category: "Pets", description: "Dar de comer a pecas" },
     { category: "Acomodar", description: "Barrer popo de perritos" },
     { category: "Acomodar", description: "Ordenar sala" }
   ]
-
-
-
-
 
   constructor() { }
 
@@ -34,12 +33,12 @@ export class NewTodoComponent implements OnInit {
         this.categoryForModel = this.todos[index].category;
         console.log('holi soy igual ', pvalue, ' y ', this.todos[index].description, 'y mi category es:', this.categoryForModel);
 
-        // this.newTodoObj = {
-        //   this.categoryForModel,
-        //   pvalue,
-        //   status: false
-        // }
-        console.log('OBJETO', this.newTodoObj);
+        this.newTodoObj = new NewTodo(this.categoryForModel, pvalue, false);
+
+        this.todos.push(this.newTodoObj);
+
+        console.log(this.todos);
+
       } else {
         console.log('apesto a pedo');
       }
