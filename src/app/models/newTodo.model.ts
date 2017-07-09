@@ -26,4 +26,5 @@ export class NewTodo {
     setTodo(pValue) { this.todo = pValue; }
     setStatus(pValue) { this.status = pValue; }
   //  setPoints(pValue) { this.points = pValue; }
+  //  push para tareas?
 }
