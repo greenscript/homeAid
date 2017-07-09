@@ -1,0 +1,38 @@
+[
+    {
+        "todoId": 1,
+        "category": "Acomodar",
+        "todo": "Alistar el comedor.",
+        "status": false
+    },
+    {
+        "todoId": 2,
+        "category": "Acomodar",
+        "todo": "Doblar ropa.",
+        "status": false
+    },
+    {
+        "todoId": 3,
+        "category": "Acomodar",
+        "todo": "Planchar ropa.",
+        "status": false
+    },
+    {
+        "todoId": 4,
+        "category": "Acomodar",
+        "todo": "Ordenar baños.",
+        "status": false
+    },
+    {
+        "todoId": 5,
+        "category": "Acomodar",
+        "todo": "Ordenar cocina.",
+        "status": false
+    },
+    {
+        "todoId": 6,
+        "category": "Acomodar",
+        "todo": "Ordenar sala.",
+        "status": false
+    }
+]
