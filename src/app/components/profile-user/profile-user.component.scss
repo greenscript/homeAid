@@ -16,6 +16,11 @@ $header-color: #5aabc5;
         font-weight: lighter;
         text-align: center
     }
+  &-icon{
+      width: 3.5rem;
+      position: relative;
+      top: -2rem;
+  }
 }
 
 .user {
@@ -27,6 +32,14 @@ $header-color: #5aabc5;
       width: 90px;
       height: 90px;
       margin: auto;
+    }
+    &-logOut{
+      margin-left: .8rem;
+      width: 3.5rem;
+    }
+    &-award{
+      margin-left: -1rem;
+      width: 3.5rem;
     }
 }
 
@@ -50,7 +63,7 @@ p {
 .btn-user {
 	border-radius: 0;
   width: 70vw;
-  margin: auto;
+  margin: 1.4rem auto;
 	text-align: left;
 	background-color: #FFF;
 	border: aliceblue;
@@ -76,13 +89,11 @@ p {
 
 @media (min-width: 650px) {
 	.btn-user {
-		margin-top: 4em;
-		margin-bottom: 10px;
 		height: 4em;
 		width: 80%;
-		margin: 2em;
 		font-size: 1.2em;
 		padding-left: 1em;
+    margin: 1rem auto;
 	}
   .header{
   top: -10vw;
