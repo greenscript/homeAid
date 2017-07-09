@@ -1,29 +1,29 @@
 import { User } from './user.model';
 
 export class NewTodo {
-  private user: User[] = [];
+  //private user: User[] = [];
   private category: string;
   private todo: string;
   private status: boolean = false;
-  private points: string;
+//  private points: string;
 
 
-    constructor(pUser,pCategory,pTodo,pStatus,pPoints) {
-      this.setUser(pUser);
+    constructor(pCategory,pTodo,pStatus) {
+    //  this.setUser(pUser);
       this.setCategory(pCategory);
       this.setTodo(pTodo);
       this.setStatus(pStatus);
-      this.setPoints(pPoints);
+    //  this.setPoints(pPoints);
     }
-    getUser() { return this.user; }
+  //  getUser() { return this.user; }
     getCategory() { return this.category; }
     getTodo() { return this.todo; }
     getStatus() { return this.status; }
-    getPoints() { return this.points; }
+  //  getPoints() { return this.points; }
 
-    setUser(pValue) { this.user = pValue; }
+  //  setUser(pValue) { this.user = pValue; }
     setCategory(pValue) { this.category = pValue; }
     setTodo(pValue) { this.todo = pValue; }
     setStatus(pValue) { this.status = pValue; }
-    setPoints(pValue) { this.points = pValue; }
+  //  setPoints(pValue) { this.points = pValue; }
 }

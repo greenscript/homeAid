@@ -8,6 +8,7 @@ import { NewTodo } from '../../models/newTodo.model';
 })
 export class NewTodoComponent implements OnInit {
   categoryForModel;
+  newTodoObj;
   todos = [
     { category: "Pets", description: "Hacerle carinitos a Chanchillo." },
     { category: "Pets", description: "Dar de comer a pecas" },
@@ -32,6 +33,13 @@ export class NewTodoComponent implements OnInit {
       if(pvalue == this.todos[index].description){
         this.categoryForModel = this.todos[index].category;
         console.log('holi soy igual ', pvalue , ' y ',this.todos[index].description, 'y mi category es:' , this.categoryForModel);
+      
+      this.newTodoObj = {
+        this.categoryForModel,
+        pvalue,
+        status: false
+      }
+      console.log('OBJETO',this.newTodoObj );
       }else{
         console.log('apesto a pedo');
       }
