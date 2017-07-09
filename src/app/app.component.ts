@@ -10,7 +10,7 @@ import { NewTodo } from './models/newTodo.model';
 })
 export class AppComponent {
   title = 'app works!';
-
+  allTodos = [];
   constructor(private http: Http) {
     this.loadFromJson();
   }
@@ -18,9 +18,10 @@ export class AppComponent {
   loadData(todosUrl: string) {
     this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
 
-      for (var user of data) {
-        let todos = new NewTodo(user.category, user.todo, user.state);
-        // this.todos.push(todos);
+      for (var todo of data) {
+        let todos = new NewTodo(todo.category, todo.todo, todo.status);
+        this.allTodos.push(todos);
+        console.log('SDKAHSBDHA',this.allTodos);
       }
 
     });
@@ -32,4 +33,3 @@ export class AppComponent {
   }
 
 }
-
