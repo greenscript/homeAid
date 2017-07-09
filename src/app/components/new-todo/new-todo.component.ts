@@ -30,17 +30,17 @@ export class NewTodoComponent implements OnInit {
     console.log("arreglo", this.todos[0].description);
 
     for (var index = 0; index < this.todos.length; index++) {
-      if(pvalue == this.todos[index].description){
+      if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
-        console.log('holi soy igual ', pvalue , ' y ',this.todos[index].description, 'y mi category es:' , this.categoryForModel);
-      
-      this.newTodoObj = {
-        this.categoryForModel,
-        pvalue,
-        status: false
-      }
-      console.log('OBJETO',this.newTodoObj );
-      }else{
+        console.log('holi soy igual ', pvalue, ' y ', this.todos[index].description, 'y mi category es:', this.categoryForModel);
+
+        // this.newTodoObj = {
+        //   this.categoryForModel,
+        //   pvalue,
+        //   status: false
+        // }
+        console.log('OBJETO', this.newTodoObj);
+      } else {
         console.log('apesto a pedo');
       }
     }

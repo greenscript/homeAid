@@ -1,87 +1,104 @@
-section.row
-  section.col-xs-12.flex-center.newtodo-header
-    h1.newtodo-title Nueva tarea
 
-section.row
-  section.col-xs-12.col-sm-12.todo-container
-    h4 Seleccione un usuario
-      section.col-xs-12.flex-center.todo-user
-        div
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.no-selected-ux(src='../../../assets/i-22.png')
-            h5 user.name
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.selected-ux(src='../../../assets/i-23.png')
-            h5 user.name
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.no-selected-ux(src='../../../assets/i-24.png')
-            h5 user.name
-
-    h4 Seleccione la tarea 
-      section.col-xs-12.flex-center.todo-category
-        div
-          .col-xs-4.col-sm-4
-            button.category-btn((click)="acomodar.show()") 
-              img.img-category(src='../../../assets/i-29.png')
-            h5 Acomodar
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-30.png')
-            h5 Limpiar
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-31.png')
-            h5 Cocinar
-      section.col-xs-12.flex-center
-        div  
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-27.png')
-            h5 Mascotas
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-28.png')
-            h5 Personal
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-32.png')
-            h5 Otras
-      section.col-xs-12.flex-center
-        button.btn-add-todo Agregar
-
-  .modal.fade(bsModal="", #acomodar="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true", #acomodar)
-    .modal-dialog.modal-sm
-      .modal-content
-        .modal-header
-          h4.modal-title.pull-left Acomodar
-          button.close.pull-right(type="button", aria-label="close", (click)="acomodar.hide()")
-            span(aria-hidden="true") &times;
-        .modal-body
-          form
-            .form-group
-              radio(*ngFor="let description of todos.description")
-                input#cat-acomodar(type='radio', name='descript', value={{description}})
-                
-            //- .radio
-                label Alistar el comedor.
-                  input#cat-acomodar(type='radio', name='Acomodar',value='Alistar el comedor', [(ngModel)]="Tododescription")
-              .radio
-                label Doblar ropa.
-                  input#optionsRadios2(type='radio', name='Acomodar', value='Doblar ropa', [(ngModel)]="value")
-              .radio
-                label Planchar ropa.
-                  input#optionsRadios3(type='radio', name='Acomodar', value='Planchar ropa', [(ngModel)]="value")
-              .radio
-                label Ordenar baños.
-                  input#optionsRadios4(type='radio', name='Acomodar', value='Ordenar baños', [(ngModel)]="value")
-              .radio
-                label Ordenar cocina.
-                  input#optionsRadios5(type='radio', name='Acomodar', value='Ordenar cocina', [(ngModel)]="value")
-              .radio
-                label Ordenar sala.
-                  input#optionsRadios6(type='radio', name='Acomodar', value='Ordenar sala', [(ngModel)]="value") -//
-            .form-group.flex-center
-              button.btn.btn-default.acomodarButton((click)='addTodo(Tododescription)') Agregar
+//- section.row
+//-   section.col-xs-12.flex-center.newtodo-header
+//-     h1.newtodo-title Nueva tarea
+//- section.row
+//-   section.col-xs-12.col-sm-12.todo-container
+//-     h4
+//-       section.col-xs-12.flex-center.todo-user
+//-         div
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.no-selected-ux(src='../../../assets/i-22.png')
+//-             h5 user.name
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.selected-ux(src='../../../assets/i-23.png')
+//-             h5 user.name
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.no-selected-ux(src='../../../assets/i-24.png')
+//-             h5 user.name
+//-     h4
+//-       section.col-xs-12.flex-center.todo-category
+//-         div
+//-           .col-xs-4.col-sm-4
+//-             button.category-btn((click)='acomodar.show()')
+//-               img.img-category(src='../../../assets/i-29.png')
+//-             h5 Acomodar
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.img-category(src='../../../assets/i-30.png')
+//-             h5 Limpiar
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.img-category(src='../../../assets/i-31.png')
+//-             h5 Cocinar
+//-       section.col-xs-12.flex-center
+//-         div
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.img-category(src='../../../assets/i-27.png')
+//-             h5 Mascotas
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.img-category(src='../../../assets/i-28.png')
+//-             h5 Personal
+//-           .col-xs-4.col-sm-4
+//-             a(href='')
+//-               img.img-category(src='../../../assets/i-32.png')
+//-             h5 Otras
+//-       section.col-xs-12.flex-center
+//-         button.btn-add-todo Agregar
+//-   .modal.fade(bsmodal='', #acomodar='bs-modal', tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+//-     .modal-dialog.modal-sm
+//-       .modal-content
+//-         .modal-header
+//-           h4.modal-title.pull-left Acomodar
+//-           button.close.pull-right(type='button', aria-label='close', (click)='acomodar.hide()')
+//-             span(aria-hidden='true') &times;
+//-         .modal-body(*ngfor='let category of todos')
+//-           li
+//-             label(for='category') {{category.description}}
+//-             input(type='radio', name='catDescription', [(ngmodel)]='value', [value]='category.description')
+//-         .form-group.flex-center
+//-           button#btnAddTodo.btn.btn-default.acomodarButton((click)='addTodo(value)') Agregar
+//- //
+//-   <form>
+//-   ng-click="toggleSelection(fruitName) > {{fruitName}}
+//-   <div class="form-group">
+//-   <div class="radio">
+//-   <label>Alistar el comedor.
+//-   <input id="optionsRadios1" type="radio" name="Acomodar" value="Alistar el comedor" [(ngModel)]="value"/>
+//-   </label>
+//-   </div>
+//-   <div class="radio">
+//-   <label>Doblar ropa.
+//-   <input id="optionsRadios2" type="radio" value="Doblar ropa" name="category" [(ngModel)]="value"/>
+//-   </label>
+//-   </div>
+//-   <div class="radio">
+//-   <label>Planchar ropa.
+//-   <input id="optionsRadios3" type="radio" value="Planchar ropa" name="category" [(ngModel)]="value"/>
+//-   </label>
+//-   </div>
+//-   <div class="radio">
+//-   <label>Ordenar baños.
+//-   <input id="optionsRadios4" type="radio" value="Ordenar baños" name="category" [(ngModel)]="value"/>
+//-   </label>
+//-   </div>
+//-   <div class="radio">
+//-   <label>Ordenar cocina.
+//-   <input id="optionsRadios5" type="radio" value="Ordenar cocina" name="category" [(ngModel)]="value"/>
+//-   </label>
+//-   </div>
+//-   <div class="radio">
+//-   <label>Ordenar sala.
+//-   <input id="optionsRadios6" type="radio" value="Ordenar sala" name="category" [(ngModel)]="value"/>
+//-   </label>
+//-   </div>
+//-   </div>
+//-   <div class="form-group flex-center">
+//-   <button class="btn btn-default acomodarButton" id="btnAddTodo" (click)="addTodo(this,value)">Agregar</button>
+//-   </div>
+//-   </form>
