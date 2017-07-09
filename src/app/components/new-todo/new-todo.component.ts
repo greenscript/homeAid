@@ -7,8 +7,7 @@ import { NewTodo } from '../../models/newTodo.model';
   styleUrls: ['./new-todo.component.scss']
 })
 export class NewTodoComponent implements OnInit {
-  category: string;
-
+  categoryForModel;
   todos = [
     { category: "Pets", description: "Hacerle carinitos a Chanchillo." },
     { category: "Pets", description: "Dar de comer a pecas" },
@@ -27,21 +26,15 @@ export class NewTodoComponent implements OnInit {
 
   addTodo(pvalue) {
     console.log('category', pvalue);
-    console.log("arreglo", this.todos[0]);
+    console.log("arreglo", this.todos[0].description);
 
     for (var index = 0; index < this.todos.length; index++) {
-      if (pvalue === this.todos[index]) {
-        console.log("igual");
-
-      } else {
-        console.log("no es igual");
-
+      if(pvalue == this.todos[index].description){
+        this.categoryForModel = this.todos[index].category;
+        console.log('holi soy igual ', pvalue , ' y ',this.todos[index].description, 'y mi category es:' , this.categoryForModel);
+      }else{
+        console.log('apesto a pedo');
       }
-
     }
-    // this.todos.push(new NewTodo(this.getUser(), this.getCategory(), this.getTodo(), this.getStatus(), this.getPoints());
-    // console.log(this.todos);
-
-    //console.log('test', this.todos);
   }
 }
