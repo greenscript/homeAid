@@ -1,8 +1,9 @@
-section.row 
+section.row
   section.col-xs-12.register-header.flex-center
     h1.register-title Register
+    a.back(href="/") Back
     
-section.row
+section.row.flex-center.full-height
   section.col-xs-12.col-sm-12
     form.register-form.flex-center.flex-column([formGroup]="myform")
       fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
