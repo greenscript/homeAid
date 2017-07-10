@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { User } from '../../models/user.model';
+import { NewTodo } from '../../models/newTodo.model';
+
 
 @Component({
   selector: 'app-profile-user',
@@ -6,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-user.component.scss']
 })
 export class ProfileUserComponent implements OnInit {
+  allTodos = new Array;
   todos;
   day = 0;
   days = [
@@ -17,22 +22,19 @@ export class ProfileUserComponent implements OnInit {
     {"name": "Sábado"},
     {"name": "Domingo"},
   ];
-
-  Data = [
-    {"todo": "lunes tarea", "day" : 0, "cate" : 31 },
-    {"todo": "martes tarea", "day" : 1, "cate" : 30 },
-    {"todo": "miercoles tarea", "day" : 2, "cate" : 31 },
-    {"todo": "jueves tarea", "day" : 3, "cate" : 29 },
-    {"todo": "viernes tarea", "day" : 4, "cate" : 28 },
-    {"todo": "sabado tarea", "day" : 5, "cate" : 27 },
-    {"todo": "tarea test", "day" : 0, "cate" : 30 },
-    {"todo": "Domingo test", "day" : 6, "cate" : 29 }
-  ];
   
-  constructor() { }
+  constructor(private http: Http) {
+    this.loadData('../assets/data/todos.json');
+  }
+
+  loadData(todosUrl: string) {
+    this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
+      this.allTodos = data;
+      this.getTodos(this.day);
+    });
+  }
 
   ngOnInit() {
-    this.getTodos(this.day)
   }
   
   next(){
@@ -53,12 +55,12 @@ export class ProfileUserComponent implements OnInit {
 
   getTodos(day){
     var newArray = new Array;
-    for (var i in this.Data){
-      if(this.Data[i].day == day)
-      newArray.push(this.Data[i])
+    for (var i in this.allTodos){
+      if(this.allTodos[i].day == day)
+      newArray.push(this.allTodos[i])
     }
     this.todos = newArray;
-    //console.log(this.todos);
+    
   }
 
 }

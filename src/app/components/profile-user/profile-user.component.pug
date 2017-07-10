@@ -17,7 +17,7 @@ section.row.week
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row.user-week
-    .col-xs-12.flex-center(*ngFor='let todo of todos')
+    .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todos')
         a.btn.btn-default.btn-user(href='/')
-            img.todoImg(src='../../../assets/i-{{todo.cate}}.png', alt='')
+            img.todoImg(src='../../../assets/i-29.png', alt='')
             p.todoName {{todo.todo}}
