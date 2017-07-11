@@ -4,41 +4,41 @@
         "category": "Acomodar",
         "todo": "Alistar el comedor.",
         "status": false,
-        "day": 0
+        "day": "Lunes"
     },
     {
         "todoId": 2,
         "category": "Acomodar",
         "todo": "Doblar ropa.",
         "status": false,
-        "day": 1
+        "day": "Martes"
     },
     {
         "todoId": 3,
         "category": "Acomodar",
         "todo": "Planchar ropa.",
         "status": false,
-        "day": 2
+        "day": "Miércoles"
     },
     {
         "todoId": 4,
         "category": "Acomodar",
         "todo": "Ordenar baños.",
         "status": false,
-        "day": 0
+        "day": "Lunes"
     },
     {
         "todoId": 5,
         "category": "Acomodar",
         "todo": "Ordenar cocina.",
         "status": false,
-        "day": 4
+        "day": "Viernes"
     },
     {
         "todoId": 6,
         "category": "Acomodar",
         "todo": "Ordenar sala.",
         "status": false,
-        "day": 5
+        "day": "Sábado"
     }
 ]

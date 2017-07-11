@@ -47,6 +47,8 @@ export class ProfileUserComponent implements OnInit {
 
   back(){
     this.day -= 1;
+    console.log(this.day);
+    
     if (this.day == -1)
     this.day = 6
 
@@ -56,7 +58,7 @@ export class ProfileUserComponent implements OnInit {
   getTodos(day){
     var newArray = new Array;
     for (var i in this.allTodos){
-      if(this.allTodos[i].day == day)
+      if(this.allTodos[i].day == this.days[this.day].name)
       newArray.push(this.allTodos[i])
     }
     this.todos = newArray;
