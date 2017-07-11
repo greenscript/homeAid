@@ -26,11 +26,13 @@ import { CreateWeekAdminComponent } from './components/createWeek-admin/createWe
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { UsersComponent } from './components/users/users.component'
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
 import { ModalModule } from 'ngx-bootstrap';
-import { DatepickerModule } from 'angular2-material-datepicker'
+import { DatepickerModule } from 'angular2-material-datepicker';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -49,7 +51,8 @@ export const ROUTES: Routes = [
   { path: 'user', component: ProfileUserComponent },
   { path: 'newTodo', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
-  { path: 'create-user', component: CreateUserComponent }
+  { path: 'create-user', component: CreateUserComponent },
+  { path: 'users', component: UsersComponent }
 ];
 
 @NgModule({
@@ -64,7 +67,8 @@ export const ROUTES: Routes = [
     NewTodoComponent,
     NewUserComponent,
     CapitalizePipe,
-    CreateUserComponent
+    CreateUserComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

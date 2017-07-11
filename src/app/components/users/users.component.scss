@@ -1,0 +1,24 @@
+$header-color: #5aabc5;
+
+.header {
+  margin-top: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+
+  .path{
+    fill:$header-color;
+  }
+
+  &-title {
+        color: white;
+        margin-top: 5vh;
+        font-weight: lighter;
+        text-align: center
+    }
+  &-icon{
+      width: 3.5rem;
+      position: relative;
+      top: -2rem;
+  }
+}
