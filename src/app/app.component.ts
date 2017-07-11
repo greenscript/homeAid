@@ -17,17 +17,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // es mejor llamarlo desde el init
-    // this.loadFromJson();
+    this.loadFromJson();
   }
 
   loadData(todosUrl: string) {
     this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
 
-      // for (var todo of data) {
-      //   // let todos = new NewTodo(todo.category, todo.todo, todo.status);
-      //   this.allTodos.push(todos);
-      // //  console.log('SDKAHSBDHA',this.allTodos);
-      // }
+      for (var todo of data) {
+        let todos = new NewTodo(todo.category, todo.todo, todo.status);
+        this.allTodos.push(todos);
+        //  console.log('SDKAHSBDHA',this.allTodos);
+      }
 
     });
   }

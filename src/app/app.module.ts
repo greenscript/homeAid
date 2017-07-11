@@ -30,7 +30,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
 import { ModalModule } from 'ngx-bootstrap';
-import { DatepickerModule } from 'angular2-material-datepicker'
+import { DatepickerModule } from 'angular2-material-datepicker';
+import { FamilyComponent } from './components/family/family.component'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -49,7 +50,8 @@ export const ROUTES: Routes = [
   { path: 'user', component: ProfileUserComponent },
   { path: 'newTodo', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
-  { path: 'create-user', component: CreateUserComponent }
+  { path: 'create-user', component: CreateUserComponent },
+  { path: 'familyTodos', component: FamilyComponent }
 ];
 
 @NgModule({
@@ -64,7 +66,8 @@ export const ROUTES: Routes = [
     NewTodoComponent,
     NewUserComponent,
     CapitalizePipe,
-    CreateUserComponent
+    CreateUserComponent,
+    FamilyComponent
   ],
   imports: [
     BrowserModule,

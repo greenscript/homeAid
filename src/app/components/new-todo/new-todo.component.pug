@@ -48,7 +48,7 @@ section.row
               img.img-category(src='../../../assets/i-32.png')
             h5 Otras
 
-.modal.fade(bsModal="", #smModal="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+.modal.fade(bsModal="", #acomodar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog.modal-sm
     .modal-content
       .modal-header
@@ -56,7 +56,7 @@ section.row
         button.close.pull-right(type='button', aria-label='close', (click)='acomodar.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
-        li
+        div(*ngIf='category.category == "Acomodar"')
           label(for='category') {{category.description}}
           input(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
       .form-group.flex-center

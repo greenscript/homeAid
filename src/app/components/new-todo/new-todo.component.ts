@@ -33,7 +33,7 @@ export class NewTodoComponent implements OnInit {
         this.categoryForModel = this.todos[index].category;
         console.log('holi soy igual ', pvalue, ' y ', this.todos[index].description, 'y mi category es:', this.categoryForModel);
 
-        // this.newTodoObj = new NewTodo(this.categoryForModel, pvalue, false);
+        this.newTodoObj = new NewTodo(this.categoryForModel, pvalue, false);
 
         this.todos.push(this.newTodoObj);
 
