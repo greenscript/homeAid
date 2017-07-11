@@ -26,13 +26,14 @@ import { CreateWeekAdminComponent } from './components/createWeek-admin/createWe
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
-import { UsersComponent } from './components/users/users.component'
+import { FamilyComponent } from './components/family/family.component';
+import { UsersComponent } from './components/users/users.component';
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
 import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
-import { FamilyComponent } from './components/family/family.component'
+
 
 
 export const firebaseConfig = {
@@ -53,11 +54,9 @@ export const ROUTES: Routes = [
   { path: 'newTodo', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
   { path: 'create-user', component: CreateUserComponent },
-<<<<<<< HEAD
-  { path: 'familyTodos', component: FamilyComponent }
-=======
+  { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent }
->>>>>>> 7c17f0bbc6f0cfa689f61348843b2be76f98190b
+
 ];
 
 @NgModule({
@@ -73,11 +72,9 @@ export const ROUTES: Routes = [
     NewUserComponent,
     CapitalizePipe,
     CreateUserComponent,
-<<<<<<< HEAD
-    FamilyComponent
-=======
+    FamilyComponent,
     UsersComponent
->>>>>>> 7c17f0bbc6f0cfa689f61348843b2be76f98190b
+
   ],
   imports: [
     BrowserModule,
