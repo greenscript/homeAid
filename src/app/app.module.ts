@@ -25,7 +25,6 @@ import { ProfileUserComponent } from './components/profile-user/profile-user.com
 import { CreateWeekAdminComponent } from './components/createWeek-admin/createWeek-admin.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
-import { CreateUserComponent } from './components/create-user/create-user.component';
 import { FamilyComponent } from './components/family/family.component';
 import { UsersComponent } from './components/users/users.component';
 // pipes
@@ -53,7 +52,6 @@ export const ROUTES: Routes = [
   { path: 'user', component: ProfileUserComponent },
   { path: 'newTodo', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
-  { path: 'create-user', component: CreateUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent }
 
@@ -71,7 +69,6 @@ export const ROUTES: Routes = [
     NewTodoComponent,
     NewUserComponent,
     CapitalizePipe,
-    CreateUserComponent,
     FamilyComponent,
     UsersComponent
 
