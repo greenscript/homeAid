@@ -49,10 +49,10 @@ export class NewTodoComponent implements OnInit {
                   value: snapshot.val()
                 })
               )
-              props.loadedUsers = true;
             }
           });
           console.log(props.usersdata)
+          props.loadedUsers = true;
         })
       } else {
         console.log('user not logged in');
