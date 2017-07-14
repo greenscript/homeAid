@@ -6,22 +6,9 @@ section.row
       h4 Seleccione un usuario
         section.col-xs-12.flex-center.todo-user
           .col-xs-4(*ngFor="let user of usersdata")
-            //- pre {{user.value.avatar}}
             a(role="button", (click)="selectUser(user.key)")
               img.no-selected-ux([src]='user.value.avatar')
-            
-            //- .col-xs-4.col-sm-4
-            //-   a(href='')
-            //-     img.no-selected-ux(src='../../../assets/i-22.png')
-            //-   h5 user.name
-            //- .col-xs-4.col-sm-4
-            //-   a(href='')
-            //-     img.selected-ux(src='../../../assets/i-23.png')
-            //-   h5 user.name
-            //- .col-xs-4.col-sm-4
-            //-   a(href='')
-            //-     img.no-selected-ux(src='../../../assets/i-24.png')
-            //-   h5 user.name
+
               
       h4 Seleccione la tarea
       section.col-xs-12.flex-center.todo-category

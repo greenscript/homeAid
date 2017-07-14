@@ -64,9 +64,6 @@ export class NewTodoComponent implements OnInit {
     console.log('category', pvalue);
     console.log("arreglo", this.todos[0].description);
 
-    // this.selectedUser = this.db.list(`/families/${this.userId}/users/todos/`, {preserveSnapshot: true});
-    // this.selectedUser.push(this.newTodoObj);
-
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
@@ -90,6 +87,7 @@ export class NewTodoComponent implements OnInit {
     // esto de abajo es como agregar el todo a la base de datos
     // deberia de ir en la funcion addTodo
     this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, {preserveSnapshot: true});
+    // en vez de este objeto, iria el new Todo(parametros)
     this.selectedUser.push({name: 'asd', description: 'asd', category: 'asd'});
   }
 }
