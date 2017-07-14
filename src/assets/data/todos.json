@@ -40,5 +40,152 @@
         "todo": "Ordenar sala.",
         "status": false,
         "day": "Sábado"
+    },
+    {
+        "todoId": 7,
+        "category": "Limpiar",
+        "todo": "Barrer.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 8,
+        "category": "Limpiar",
+        "todo": "Pasar el palo piso.",
+        "status": false,
+        "day": "Martes"
+    },
+    {
+        "todoId": 9,
+        "category": "Limpiar",
+        "todo": "Lavar platos.",
+        "status": false,
+        "day": "Miércoles"
+    },
+    {
+        "todoId": 10,
+        "category": "Limpiar",
+        "todo": "Aspirar la alfombra y muebles.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 11,
+        "category": "Limpiar",
+        "todo": "Limpiar el inodoro y la ducha.",
+        "status": false,
+        "day": "Viernes"
+    },
+    {
+        "todoId": 12,
+        "category": "Limpiar",
+        "todo": "Sacar la basura.",
+        "status": false,
+        "day": "Sábado"
+    },
+    {
+        "todoId": 13,
+        "category": "Cocinar",
+        "todo": "Desayuno.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 14,
+        "category": "Cocinar",
+        "todo": "Almuerzo.",
+        "status": false,
+        "day": "Martes"
+    },
+    {
+        "todoId": 15,
+        "category": "Cocinar",
+        "todo": "Merienda.",
+        "status": false,
+        "day": "Miércoles"
+    },
+    {
+        "todoId": 16,
+        "category": "Cocinar",
+        "todo": "Cena.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 17,
+        "category": "Mascotas",
+        "todo": "Alimentar la mascota.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 18,
+        "category": "Mascotas",
+        "todo": "Bañar la mascota.",
+        "status": false,
+        "day": "Martes"
+    },
+    {
+        "todoId": 19,
+        "category": "Mascotas",
+        "todo": "Pasear a la mascota.",
+        "status": false,
+        "day": "Miércoles"
+    },
+    {
+        "todoId": 20,
+        "category": "Mascotas",
+        "todo": "Limpiar la casa de la mascota.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 21,
+        "category": "Mascotas",
+        "todo": "Limpiar las necesidades de la mascota.",
+        "status": false,
+        "day": "Viernes"
+    },
+    {
+        "todoId": 22,
+        "category": "Personal",
+        "todo": "Limpiar el cuarto.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 23,
+        "category": "Personal",
+        "todo": "Acomodar el cuarto.",
+        "status": false,
+        "day": "Martes"
+    },
+    {
+        "todoId": 24,
+        "category": "Personal",
+        "todo": "Lavar y secar ropa sucia.",
+        "status": false,
+        "day": "Miércoles"
+    },
+    {
+        "todoId": 25,
+        "category": "Personal",
+        "todo": "Tender la cama.",
+        "status": false,
+        "day": "Lunes"
+    },
+    {
+        "todoId": 26,
+        "category": "Personal",
+        "todo": "Hacer tareas academicas.",
+        "status": false,
+        "day": "Viernes"
+    },
+    {
+        "todoId": 27,
+        "category": "Personal",
+        "todo": "Planchar y doblar ropa.",
+        "status": false,
+        "day": "Sábado"
     }
 ]
