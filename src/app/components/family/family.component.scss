@@ -1,0 +1,92 @@
+$header-color: #efcf44;
+.header {
+  margin-top: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+
+  .path{
+    fill:$header-color;
+  }
+
+  &-title {
+        color: white;
+        margin-top: 5vh;
+        font-weight: lighter;
+        text-align: center
+    }
+}
+.selected-ux {
+  border: 0.2em solid black;
+  border-radius: 5em;
+  width: 60% !important;
+
+}
+
+.no-selected-ux {
+  border: 0.2em solid grey;
+  border-radius: 5em;
+  opacity: 0.5;
+  width: 60% !important;
+}
+
+.week{
+    padding: 5vh 0;
+
+  &-day{
+      margin-top: 18%;
+  }
+}
+
+.arrow {
+   margin-top: 18%;
+    border: none;
+}
+
+.btn-user {
+	border-radius: 0;
+  width: 70vw;
+  margin: 1.4rem auto;
+	text-align: left;
+	background-color: #FFF;
+	border: aliceblue;
+	border-color: grey;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    .todoImg {
+    width: 50px;
+    float: left;
+    }
+
+    .todoName {
+        float: left;
+        margin-top: 15px;
+        margin-left: 10vw;
+    }
+}
+
+.btn-user:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+@media (min-width: 650px) {
+  .header{
+  top: -10vw;
+  } 
+}
+
+@media (min-width: 1000px) {
+  .header{
+  top: -18vw;
+  }
+}
+
+@media (min-width: 320px) {
+
+  .family {
+    padding-left: 2em;
+    margin: 2em 0px 2em 0px;
+  }
+
+}
