@@ -6,7 +6,6 @@ import { Family } from '../../models/family.model';
 import { User } from '../../models/user.model';
 import { Week } from '../../models/week.model';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,15 +24,15 @@ export class RegisterComponent implements OnInit {
   public error: boolean = false;
   public matchError: string;
 
-  constructor(public auth: AuthService) {
-
-  }
+  constructor(public auth: AuthService) {}
 
   ngOnInit() {
+    // ejecuta las funciones de la creacion del form
     this.createFormControls();
     this.createForm();
   }
 
+  // crea los form controls con sus respectivas validaciones
   createFormControls() {
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
@@ -50,7 +49,7 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(8)
     ]);
   }
-
+  // crea el formGroup o form y le añade sus form controls
   createForm() {
     this.myform = new FormGroup({
       name: new FormGroup({
@@ -64,17 +63,23 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    // si el form esta validado
     if (this.myform.valid) {
+      // si la repeticion del password coincide
       if(this.password.value === this.repeatPassword.value) {
-        this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value, [], []);
+        // llama al serivio AuthService y ejecuta la funcion emailSignUp
+        // pasando como parametros lo necesario para crear una familia
+        // pasando como un usuario en arreglo el usuario admin, o usuario 0 de la familia
+        // y habilitando la posibilidad de pushear nuevos usuarios a firebase
+        this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value,
+          [
+              new User(this.firstName.value, 'assets/i-22.png', 0, [], [], '')
+          ], {}, {});
       } else {
+        // las password no coincidieron y activa el flag de error y contenido del error
         this.error = true;
         this.matchError = `Passwords don't match.`;
       }
     }
-  }
-
-  login() {
-
   }
 }

@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
 //models
 import { User } from '../models/user.model';
 import { Week } from '../models/week.model';
+import { Family } from '../models/family.model';
 
 
 @Injectable()
@@ -53,26 +54,27 @@ export class AuthService {
     this.af.auth.signOut();
   }
 
-  emailSignUp(pEmail:string, pPassword:string, pName:string, pUsers: any, pWeeks: any) {
+  emailSignUp(pEmail:string, pPassword:string, pName:string, pUsers: any, pWeeks: any, pCurrentWeek: any) {
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
         this.authState = user
-        this.updateFamilyData(pName, pUsers, pWeeks)
+        this.updateFamilyData(pName, pUsers, pWeeks, pCurrentWeek)
         this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
   }
 
-  private updateFamilyData(pName: string, pUsers: any, pWeeks: any): void {
+  private updateFamilyData(pName: string, pUsers: any, pWeeks: any, pCurrentWeek: any): void {
 
     let path = `families/${this.currentUserId}`; // Endpoint on firebase
-    let data = {
-                  email: this.authState.email,
-                  displayName: this.authState.displayName,
-                  name: pName,
-                  users: pUsers,
-                  weeks: pWeeks
-                }
+    // let data = {
+    //               email: this.authState.email,
+    //               displayName: this.authState.displayName,
+    //               name: pName,
+    //               users: pUsers,
+    //               weeks: pWeeks
+    //             }
+    let data = new Family(this.authState.email, pName, pUsers, pWeeks, pCurrentWeek)
 
     this.db.object(path).update(data)
     .catch(error => console.log(error));
@@ -99,7 +101,7 @@ export class AuthService {
       .then((credential) =>  {
           console.log(credential)
           this.authState = credential.user
-          this.updateFamilyData(credential.additionalUserInfo.profile.name, [], [])
+          // this.updateFamilyData(credential.additionalUserInfo.profile.name, [], [])
           this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));

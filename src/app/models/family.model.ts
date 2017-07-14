@@ -3,23 +3,20 @@ import { Week } from './week.model';
 
 export class Family {
   private email: string;
-  private password: string;
+  private name: string;
   private users: User[] = [];
-  private securityQuestion: string;
   private weeks: Week[] = [];
   private currentWeek = new Week;
 
   constructor(
     pEmail:string,
-    pPassword: string,
+    pName: string,
     pUsers: User[],
-    pSecurytyQuestion: string,
     pWeeks: Week[],
     pCurrentWeek: Week) {
       this.setEmail(pEmail);
-      this.setPassword(pPassword);
+      this.setName(pName);
       this.setUsers(pUsers);
-      this.setSecurityQuestion(pSecurytyQuestion);
       this.setWeeks(pWeeks);
       this.setCurrentWeek(pCurrentWeek);
     }
@@ -28,16 +25,12 @@ export class Family {
     return this.email;
   }
 
-  getPassword() {
-    return this.password;
+  getName() {
+    return this.name;
   }
 
   getUsers() {
     return this.users;
-  }
-
-  getSecurityQuestion() {
-    return this.securityQuestion;
   }
 
   getWeeks() {
@@ -52,20 +45,16 @@ export class Family {
     this.email = pValue;
   }
 
-  setPassword(pValue) {
-    this.password = pValue;
+  setName(pValue) {
+    this.name = pValue;
   }
 
   setUsers(pValue) {
-    this.users = pValue || [];
-  }
-
-  setSecurityQuestion(pValue) {
-    this.securityQuestion = pValue;
+    this.users = pValue;
   }
 
   setWeeks(pValue) {
-    this.weeks = pValue || [];
+    this.weeks = pValue;
   }
 
   setCurrentWeek(pValue) {
