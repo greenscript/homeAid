@@ -1,0 +1,15 @@
+.bar {
+  &-container {
+    position: absolute;
+    display: block;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    bottom: 0;
+    background-color: #F4F4F4;
+  }
+  &-icons {
+    font-size: 32px;
+  }
+}
