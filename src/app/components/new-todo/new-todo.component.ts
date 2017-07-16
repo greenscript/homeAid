@@ -76,6 +76,7 @@ export class NewTodoComponent implements OnInit {
 
       } else {
         // xD
+        // dejelo tirarse pedos att -mbolanosc.
         console.log('apesto a pedo');
       }
     }
