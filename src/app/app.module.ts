@@ -27,14 +27,16 @@ import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { FamilyComponent } from './components/family/family.component';
 import { UsersComponent } from './components/users/users.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MobileBarComponent } from './components/mobile-bar/mobile-bar.component';
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
 import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
-import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
-
-
+// asd
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -55,8 +57,7 @@ export const ROUTES: Routes = [
   { path: 'newux', component: NewUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'detailTodo', component: DetailTodoComponent }
-
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
@@ -73,7 +74,8 @@ export const ROUTES: Routes = [
     CapitalizePipe,
     FamilyComponent,
     UsersComponent,
-    DetailTodoComponent
+    DashboardComponent,
+    MobileBarComponent
 
   ],
   imports: [
@@ -94,7 +96,9 @@ export const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    DatepickerModule
+    DatepickerModule,
+    RoundProgressModule,
+    Angular2FontawesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
