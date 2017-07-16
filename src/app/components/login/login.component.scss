@@ -7,12 +7,16 @@
   }
   &-whitesquare {
     padding: 15px;
-    background-color: white;
+    background-color: #FFF;
     box-shadow: 1px 1px 1px 1px #CFCFCF;
     height: calc(100vh - 50px);
   }
   &-button-rows {
     padding: 20px 0;
+  }
+  &-register-md {
+    width: 100%;
+    color: #FFF;
   }
   &-login-btn {
     background-color: #28BCA7;
