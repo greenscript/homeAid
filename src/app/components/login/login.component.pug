@@ -1,4 +1,28 @@
-section.row.flex-center.flex-column.full-height
+section.row.full-height.hidden-xs.login-background.flex-center
+  section.col-xs-12
+    section.container.flex-center.flex-column
+      .col-xs-9.flex-center.flex-column.login-whitesquare
+        .col-xs-4.flex-center
+          img.img-responsive(src="assets/homeAid-logo.png")
+          
+        section.row.login-button-rows
+          section.col-xs-6.flex-center
+            button.login-login-btn((click)="smModal.show()") Login
+          section.col-xs-6.flex-center
+            button.login-login-btn 
+              a(href="register") Register
+        section.row.login-button-rows
+          section.col-xs-6
+            button.login-social.login-google((click)="googleSignUp()")
+              span.login-social_icon.login-google_icon
+              span.login-social_text Sign up With Google
+            
+          section.col-xs-6
+            button.login-social.login-facebook((click)="facebookSignUp()") 
+              span.login-social_icon.login-facebook_icon
+              span.login-social_text Sign up With Facebook
+              
+section.row.flex-center.flex-column.full-height.hidden-sm
   section.col-xs-12.flex-center.flex-column
     .col-xs-9.flex-center
       img.img-responsive(src="assets/homeAid-logo.png")

@@ -1,4 +1,19 @@
 .login {
+  &-background {
+    background-image: url(../../../assets/background.png);
+    background-size: cover;
+    background-position: center center;
+    background-clip: padding-box;
+  }
+  &-whitesquare {
+    padding: 15px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px #CFCFCF;
+    height: calc(100vh - 50px);
+  }
+  &-button-rows {
+    padding: 20px 0;
+  }
   &-login-btn {
     background-color: #28BCA7;
     border: none;
