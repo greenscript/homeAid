@@ -36,6 +36,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
 // asd
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -96,7 +97,8 @@ export const ROUTES: Routes = [
     ReactiveFormsModule,
     ModalModule.forRoot(),
     DatepickerModule,
-    RoundProgressModule
+    RoundProgressModule,
+    Angular2FontawesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
