@@ -23,10 +23,38 @@ export class NewTodoComponent implements OnInit {
   //todosArray : NewTodo [];
 
   todos = [
-    { category: "Pets", description: "Hacerle carinitos a Chanchillo." },
-    { category: "Pets", description: "Dar de comer a pecas" },
-    { category: "Acomodar", description: "Barrer popo de perritos" },
-    { category: "Acomodar", description: "Ordenar sala" }
+    { category: "Acomodar", description: "Alistar el comedor.",status: false, relevance: 'none'},
+    { category: "Acomodar", description: "Doblar ropa.",status: false, relevance: 'none'},
+    { category: "Acomodar", description: "Planchar ropa.",status: false, relevance: 'none'},
+    { category: "Acomodar", description: "Ordenar baños.",status: false, relevance: 'none'},
+    { category: "Acomodar", description: "Ordenar cocinar.",status: false, relevance: 'none'},
+    { category: "Acomodar", description: "Ordenar sala.",status: false, relevance: 'none'},
+    //Cat: limpiar.
+    { category: "Limpiar", description: "Barrer.",status: false, relevance: 'none'},
+    { category: "Limpiar", description: "Pasar el palo piso.",status: false, relevance: 'none'},
+    { category: "Limpiar", description: "Lavar platos.",status: false, relevance: 'none'},
+    { category: "Limpiar", description: "Aspirar la alfombra y muebles.",status: false, relevance: 'none'},
+    { category: "Limpiar", description: "Limpiar el inodoro y la ducha.",status: false, relevance: 'none'},
+    { category: "Limpiar", description: "Sacar la basura.",status: false, relevance: 'none'},
+    //Cat: Cocinar.
+    { category: "Cocinar", description: "Desayuno.",status: false, relevance: 'none'},
+    { category: "Cocinar", description: "Almuerzo.",status: false, relevance: 'none'},
+    { category: "Cocinar", description: "Merienda.",status: false, relevance: 'none'},
+    { category: "Cocinar", description: "Cena.",status: false, relevance: 'none'},
+    //Cat: Mascotas.
+    { category: "Mascotas", description: "Alimentar la mascota.",status: false, relevance: 'none'},
+    { category: "Mascotas", description: "Bañar la mascota.",status: false, relevance: 'none'},
+    { category: "Mascotas", description: "Pasear a la mascota.",status: false, relevance: 'none'},
+    { category: "Mascotas", description: "Limpiar la casa de la mascota.",status: false, relevance: 'none'},
+    { category: "Mascotas", description: "Limpiar las necesidades de la mascota.",status: false, relevance: 'none'},
+    //Cat: Personal.
+    { category: "Personal", description: "Limpiar el cuarto.",status: false, relevance: 'none'},
+    { category: "Personal", description: "Acomodar el cuarto.",status: false, relevance: 'none'},
+    { category: "Personal", description: "Lavar y secar ropa sucia.",status: false, relevance: 'none'},
+    { category: "Personal", description: "Tender la cama.",status: false, relevance: 'none'},
+    { category: "Personal", description: "Hacer tareas academicas.",status: false, relevance: 'none'},
+    { category: "Personal", description: "Planchar y doblar ropa.",status: false, relevance: 'none'},
+
   ]
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) {}
@@ -69,14 +97,12 @@ export class NewTodoComponent implements OnInit {
         this.categoryForModel = this.todos[index].category;
         console.log('holi soy igual ', pvalue, ' y ', this.todos[index].description, 'y mi category es:', this.categoryForModel);
 
-        this.newTodoObj = new NewTodo(this.categoryForModel, pvalue, false);
-
-
-        console.log(this.todos);
+        //this.newTodoObj = new NewTodo(this.categoryForModel, pvalue, false);
+      //  console.log(this.todos);
 
       } else {
         // xD
-        // dejelo tirarse pedos att -mbolanosc.
+        // dejelo tirarse pedos att -mbolanosc
         console.log('apesto a pedo');
       }
     }
