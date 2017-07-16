@@ -29,6 +29,8 @@ import { FamilyComponent } from './components/family/family.component';
 import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MobileBarComponent } from './components/mobile-bar/mobile-bar.component';
+import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
+
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
@@ -57,7 +59,9 @@ export const ROUTES: Routes = [
   { path: 'newux', component: NewUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'detailTodo', component: DetailTodoComponent }
+
 ];
 
 @NgModule({
@@ -75,7 +79,8 @@ export const ROUTES: Routes = [
     FamilyComponent,
     UsersComponent,
     DashboardComponent,
-    MobileBarComponent
+    MobileBarComponent,
+    DetailTodoComponent
 
   ],
   imports: [
