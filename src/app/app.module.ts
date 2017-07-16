@@ -32,6 +32,7 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
 import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
+import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
 
 
 
@@ -53,7 +54,8 @@ export const ROUTES: Routes = [
   { path: 'newTodo', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
-  { path: 'users', component: UsersComponent }
+  { path: 'users', component: UsersComponent },
+  { path: 'detailTodo', component: DetailTodoComponent }
 
 ];
 
@@ -70,7 +72,8 @@ export const ROUTES: Routes = [
     NewUserComponent,
     CapitalizePipe,
     FamilyComponent,
-    UsersComponent
+    UsersComponent,
+    DetailTodoComponent
 
   ],
   imports: [
