@@ -3,42 +3,43 @@ section.row
     h1.newtodo-title Nueva tarea
   section.row
     section.col-xs-12.col-sm-12.todo-container
-      h4 Seleccione un usuario
-        section.col-xs-12.flex-center.todo-user
-          .col-xs-4(*ngFor="let user of usersdata")
-            a(role="button", (click)="selectUser(user.key)")
-              img.no-selected-ux([src]='user.value.avatar')
+      section.col-xs-12.col-sm-12
+        h4.userName Seleccione un usuario
+          section.col-xs-12.flex-center.todo-user
+            .col-xs-4(*ngFor="let user of usersdata")
+              a(role="button", (click)="selectUser(user.key)")
+                img.no-selected-ux([src]='user.value.avatar')
 
-              
-      h4 Seleccione la tarea
-      section.col-xs-12.flex-center.todo-category
-        div
-          .col-xs-4.col-sm-4
-            button.category-btn((click)='acomodar.show()')
-              img.img-category(src='../../../assets/i-29.png')
-            h5 Acomodar
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-30.png')
-            h5 Limpiar
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-31.png')
-            h5 Cocinar
-      section.col-xs-12.flex-center
-        div
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-27.png')
-            h5 Mascotas
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-28.png')
-            h5 Personal
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.img-category(src='../../../assets/i-32.png')
-            h5 Otras
+      section.col-xs-12.col-sm-12
+        h4.categories Seleccione la tarea
+        section.col-xs-12.flex-center.todo-category
+          div
+            .col-xs-4.col-sm-4
+              button.category-btn((click)='acomodar.show()')
+                img.img-category(src='../../../assets/i-29.png')
+              h5 Acomodar
+            .col-xs-4.col-sm-4
+              button.category-btn((click)='limpiar.show()')
+                img.img-category(src='../../../assets/i-30.png')
+              h5 Limpiar
+            .col-xs-4.col-sm-4
+              button.category-btn((click)='cocinar.show()')
+                img.img-category(src='../../../assets/i-31.png')
+              h5 Cocinar
+        section.col-xs-12.flex-center
+          div
+            .col-xs-4.col-sm-4
+              button.category-btn((click)='mascotas.show()')
+                img.img-category(src='../../../assets/i-27.png')
+              h5 Mascotas
+            .col-xs-4.col-sm-4
+              button.category-btn((click)='personal.show()')
+                img.img-category(src='../../../assets/i-28.png')
+              h5 Personal
+            .col-xs-4.col-sm-4
+              button.category-btn((click)='otras.show()')
+                img.img-category(src='../../../assets/i-32.png')
+              h5 Otras
 
 .modal.fade(bsModal="", #acomodar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog.modal-sm
@@ -49,7 +50,8 @@ section.row
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div(*ngIf='category.category == "Acomodar"')
-          label(for='category') {{category.description}}
-          input(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-      .form-group.flex-center
+          label.radioName-xs-3(for='category') {{category.description}}
+          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+      .form-group.flex-center.acomodarBtn
+        hr
         button#btnAddTodo.btn.btn-default.acomodarButton((click)='addTodo(value)') Agregar
