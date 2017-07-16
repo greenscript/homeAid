@@ -6,6 +6,10 @@ h4 {
   font-weight: 300;
 }
 
+h5 {
+  text-align: center;
+}
+
 /*classes for ng if to see which user is selected.*/
 .selected-ux {
   border: 0.2em solid black;
@@ -20,15 +24,38 @@ h4 {
   width: 60% !important;
 }
 
+.categories, .userName {
+  padding: 0px 30px;
+}
 .img-category{
   border: 0.1em solid lightgrey;
   width: 70% !important;
   opacity: 0.5;
 }
+.modal-content {
+  height: 30em;
+}
 
+
+input[type=radio][_ngcontent-c1] {
+    margin: 4px 8px;
+}
+.radioInput {
+  float: left;
+}
+
+.acomodarBtn {
+  position: relative;
+  top: -45em;
+}
 .btn-category:hover{
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   opacity: initial;
+}
+
+.category-btn{
+  background-color: white;
+  border: none;
 }
 
 .btn-add-todo{
@@ -53,17 +80,17 @@ input[type=radio] {
   font-size: 20px;
 }
 
-// .acomodarModal {
-//     border: none;
-//     background-color: white;
-//     max-width: 110px;
-//     position: fixed;
-//     left: 30%;
-//     top: -15%;
-//     background-color: white;
-//     border-radius: 50%;
-//     opacity: 1;
-// }
+.acomodarModal {
+    border: none;
+    background-color: white;
+    max-width: 110px;
+    position: fixed;
+    left: 30%;
+    top: -15%;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 1;
+}
 
 .modal {
   text-align: center;
