@@ -1,0 +1,33 @@
+.row.mobile.full-height.flex-center.flex-column
+  .col-xs-12
+    p.text-center Tu proxima tarea es: 
+  .col-xs-12.flex-center
+    .col-xs-8.todo-xs-container.flex-center
+      .col-xs-2
+        img(src="assets/google-icon.png")
+      .col-xs-6
+        p.todo-xs-name todo name
+        
+  .col-xs-12.flex-center.flex-column
+    round-progress(
+      [current]="current",
+      [max]="max",
+      [color]="'#45ccce'",
+      [background]="'#eaeaea'",
+      [radius]="100",
+      [stroke]="10",
+      [rounded]="true",
+      [clockwise]="true",
+      [responsive]="false",
+      [duration]="800",
+      [animation]="'easeInOutQuart'",
+      [animationDelay]="0")
+      
+  
+  .col-xs-12
+    .row
+      .col-xs-6
+        p 25 pts
+      .col-xs-6
+        p awards
+      
