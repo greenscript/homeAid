@@ -6,10 +6,10 @@ section.row
       section.col-xs-12.col-sm-12
         h4.userName Seleccione un usuario
           section.col-xs-12.flex-center.todo-user
-            .col-xs-4(*ngFor="let user of usersdata")
+            .col-xs-4.text-center(*ngFor="let user of usersdata")
               a(role="button", (click)="selectUser(user.key)")
                 img.no-selected-ux([src]='user.value.avatar')
-                p.no-selected-ux((click)= 'user.value.name')
+                p.perUserName {{user.value.name}}
 
       section.col-xs-12.col-sm-12
         h4.categories Seleccione la tarea
