@@ -11,9 +11,25 @@ section.row.week
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+section.row
+    .col-xs-12.newTodoDesktop
+        a.btn.btn-default.btn-admin.btn-newTodo(href='newTodo')
+            img.addBotton(src='../../../assets/i-37.png', alt='')
+            p.newTodoBottom Nueva tarea
+            
+section.row.weekDesktop
+    .col-xs-12.flex-center
+        button.btn.btn-default.btnDesktop Domingo
+        button.btn.btn-default.btnDesktop Lunes
+        button.btn.btn-default.btnDesktop Martes
+        button.btn.btn-default.btnDesktop Miércoles
+        button.btn.btn-default.btnDesktop Jueves
+        button.btn.btn-default.btnDesktop Viernes
+        button.btn.btn-default.btnDesktop Sábado
+
 section.row.admin-week
     .col-xs-12.flex-center
-        a.btn.btn-default.btn-admin(href='newTodo')
+        a.btn.btn-default.btn-admin.btn-newTodo(href='newTodo')
             p.newTodoBottom Nueva tarea
             img.addBotton(src='../../../assets/i-37.png', alt='')
     .col-xs-12.flex-center
