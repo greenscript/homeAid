@@ -1,8 +1,16 @@
-section
+section.section-header
     svg.header(width='100vw' viewBox='0 0 1085 296')
       path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     a.header-icon.pull-left 
-     img.user-logOut(src='../../../assets/i-39.png', alt='')
-    a.header-icon.pull-right 
-     img.user-award(src='../../../assets/i-33.png', alt='')
+     img.header-logOut(src='../../../assets/i-39.png', alt='')
     h3.header-title {{title}}
+section
+  .users
+    .users-gradient.users-gradient_top
+    .users-container
+      .col-xs-4.col-xs-offset-4.users-user(*ngFor="let user of usersdata")
+        a(role="button", (click)="selectUser(user.key)")
+          img.no-selected-ux([src]='user.value.avatar')
+          span {{user.value.name}}
+
+    .users-gradient.users-gradient_bottom

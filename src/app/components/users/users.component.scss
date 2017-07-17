@@ -1,10 +1,16 @@
 $header-color: #5aabc5;
 
+.section{
+  &-header{
+   z-index: 100
+  }
+}
+
 .header {
   margin-top: 0;
   position: absolute;
-  z-index: -1;
   top: 0;
+  z-index: 1;
 
   .path{
     fill:$header-color;
@@ -14,11 +20,60 @@ $header-color: #5aabc5;
         color: white;
         margin-top: 5vh;
         font-weight: lighter;
-        text-align: center
+        text-align: center;
+        position: relative;
+        z-index: 2
     }
   &-icon{
       width: 3.5rem;
-      position: relative;
-      top: -2rem;
+      position: absolute;
+      top: .8rem;
+      z-index: 2
+  }
+  &-logOut{
+    margin-left: .8rem;
+    width: 3.5rem;
+  }
+}
+
+img{
+  width: 100%;
+}
+
+.users{
+  &-gradient {
+    position: absolute;
+    height: 15vh;
+    width: 100vw;
+
+    &_top{
+      top: 16vh;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100 */
+      background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    }
+
+    &_bottom{
+      bottom: 0;
+      position: absolute;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+      background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    }
+  
+  }
+  &-container{
+    width: 100vw;
+    height: 80vh;
+    z-index: -3;
+    margin-top: 15vh;
+  }
+  &-user{
+    margin-bottom: 3vh;
+    text-align: center;
   }
 }
