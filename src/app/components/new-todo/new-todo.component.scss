@@ -33,9 +33,16 @@ h5 {
   opacity: 0.5;
 }
 .modal-content {
-  height: 30em;
+  height: 35em;
 }
 
+.modal-content2 {
+  height: 25em;
+}
+
+.modal-content3 {
+  height: 30em;
+}
 
 input[type=radio][_ngcontent-c1] {
     margin: 4px 8px;
@@ -44,10 +51,6 @@ input[type=radio][_ngcontent-c1] {
   float: left;
 }
 
-.acomodarBtn {
-  position: relative;
-  top: -45em;
-}
 .btn-category:hover{
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   opacity: initial;
@@ -70,26 +73,6 @@ input[type=radio][_ngcontent-c1] {
 
 input[type=radio] {
     margin: -17px -20px 0;
-
-}
-
-.acomodarButton {
-  width: 100%;
-  background-color: $light-green;
-  color: $text-color;
-  font-size: 20px;
-}
-
-.acomodarModal {
-    border: none;
-    background-color: white;
-    max-width: 110px;
-    position: fixed;
-    left: 30%;
-    top: -15%;
-    background-color: white;
-    border-radius: 50%;
-    opacity: 1;
 }
 
 .modal {
@@ -114,6 +97,54 @@ input[type=radio] {
   text-align: left;
   vertical-align: middle;
 }
+
+.acomodarBtn, .limpiarBtn, .personalBtn {
+  position: relative;
+  top: -40.7em;
+}
+
+.acomodarButton, .limpiarButton, .cocinarButton, .mascotasButton, .personalButton{
+  width: 100%;
+  background-color: $light-green;
+  color: $text-color;
+  font-size: 20px;
+}
+
+.limpiarTodos {
+  position: relative;
+  top: -12em;
+}
+
+.cocinarTodos {
+  position: relative;
+  top: -25em;
+}
+
+.cocinarBtn{
+  position: relative;
+  top: -47em;
+}
+
+.mascotasTodos {
+  position: relative;
+  top: -34em;
+}
+
+.mascotasBtn{
+  position: relative;
+  top: -43.9em;
+}
+
+.personalTodos {
+  position: relative;
+  top: -45em;
+}
+
+.form-control {
+  display: -webkit-inline-box;
+  width: 40px;
+  height: 20px;
+}
 @media (min-width: 320px) {
   .newtodo {
     &-header {
@@ -129,9 +160,10 @@ input[type=radio] {
       font-weight: lighter;
     }
   }
-
-
-
+  .perUserName {
+    font-size: 16px;
+    color: black;
+  }
   .todo-user {
     padding-left: 2em;
     margin: 2em 0px 2em 0px;

@@ -6,9 +6,10 @@ section.row
       section.col-xs-12.col-sm-12
         h4.userName Seleccione un usuario
           section.col-xs-12.flex-center.todo-user
-            .col-xs-4(*ngFor="let user of usersdata")
+            .col-xs-4.text-center(*ngFor="let user of usersdata")
               a(role="button", (click)="selectUser(user.key)")
                 img.no-selected-ux([src]='user.value.avatar')
+                p.perUserName {{user.value.name}}
 
       section.col-xs-12.col-sm-12
         h4.categories Seleccione la tarea
@@ -28,18 +29,14 @@ section.row
               h5 Cocinar
         section.col-xs-12.flex-center
           div
-            .col-xs-4.col-sm-4
+            .col-xs-6.col-sm-4
               button.category-btn((click)='mascotas.show()')
                 img.img-category(src='../../../assets/i-27.png')
               h5 Mascotas
-            .col-xs-4.col-sm-4
+            .col-xs-6.col-sm-4
               button.category-btn((click)='personal.show()')
                 img.img-category(src='../../../assets/i-28.png')
               h5 Personal
-            .col-xs-4.col-sm-4
-              button.category-btn((click)='otras.show()')
-                img.img-category(src='../../../assets/i-32.png')
-              h5 Otras
 
 .modal.fade(bsModal="", #acomodar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog.modal-sm
@@ -52,6 +49,122 @@ section.row
         div(*ngIf='category.category == "Acomodar"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          select.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7
+            option 8
+            option 9
+            option 10
+
       .form-group.flex-center.acomodarBtn
         hr
         button#btnAddTodo.btn.btn-default.acomodarButton((click)='addTodo(value)') Agregar
+      
+.modal.fade(bsModal="", #limpiar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        h4.modal-title.pull-left Limpiar
+        button.close.pull-right(type='button', aria-label='close', (click)='limpiar.hide()')
+          span(aria-hidden='true') 
+      .modal-body(*ngFor='let category of todos')
+        div.limpiarTodos(*ngIf='category.category == "Limpiar"')
+          label.radioName-xs-3(for='category') {{category.description}}
+          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          select.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7
+            option 8
+            option 9
+            option 10
+      .form-group.flex-center.limpiarBtn
+        hr
+        button#btnAddTodo.btn.btn-default.limpiarButton((click)='addTodo(value)') Agregar
+
+.modal.fade(bsModal="", #cocinar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+  .modal-dialog.modal-sm
+    .modal-content.modal-content2
+      .modal-header
+        h4.modal-title.pull-left Cocinar
+        button.close.pull-right(type='button', aria-label='close', (click)='cocinar.hide()')
+          span(aria-hidden='true') 
+      .modal-body(*ngFor='let category of todos')
+        div.cocinarTodos(*ngIf='category.category == "Cocinar"')
+          label.radioName-xs-3(for='category') {{category.description}}
+          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          select.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7
+            option 8
+            option 9
+            option 10
+      .form-group.flex-center.cocinarBtn
+        hr
+        button#btnAddTodo.btn.btn-default.cocinarButton((click)='addTodo(value)') Agregar
+      
+.modal.fade(bsModal="", #mascotas="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+  .modal-dialog.modal-sm
+    .modal-content.modal-content3
+      .modal-header
+        h4.modal-title.pull-left Mascotas
+        button.close.pull-right(type='button', aria-label='close', (click)='mascotas.hide()')
+          span(aria-hidden='true') 
+      .modal-body(*ngFor='let category of todos')
+        div.mascotasTodos(*ngIf='category.category == "Mascotas"')
+          label.radioName-xs-3(for='category') {{category.description}}
+          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          select.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7
+            option 8
+            option 9
+            option 10
+      .form-group.flex-center.mascotasBtn
+        hr
+        button#btnAddTodo.btn.btn-default.mascotasButton((click)='addTodo(value)') Agregar
+
+.modal.fade(bsModal="", #personal="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        h4.modal-title.pull-left Personal
+        button.close.pull-right(type='button', aria-label='close', (click)='personal.hide()')
+          span(aria-hidden='true') 
+      .modal-body(*ngFor='let category of todos')
+        div.personalTodos(*ngIf='category.category == "Personal"')
+          label.radioName-xs-3(for='category') {{category.description}}
+          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          select.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7
+            option 8
+            option 9
+            option 10
+      .form-group.flex-center.personalBtn
+        hr
+        button#btnAddTodo.btn.btn-default.personalButton((click)='addTodo(value)') Agregar
