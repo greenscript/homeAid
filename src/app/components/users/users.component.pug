@@ -9,7 +9,7 @@ section
     .users-gradient.users-gradient_top
     .users-container
       .col-xs-4.col-xs-offset-4.users-user(*ngFor="let user of usersdata")
-        a(role="button", (click)="selectUser(user.key)" href="user")
+        a(role="button", (click)="selectUser(user.key)", [routerLink]="['/user', user.key]")
           img.no-selected-ux([src]='user.value.avatar')
           span {{user.value.name}}
 

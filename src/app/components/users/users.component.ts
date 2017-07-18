@@ -3,6 +3,7 @@ import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users',
