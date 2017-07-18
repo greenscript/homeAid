@@ -90,11 +90,11 @@ export class NewTodoComponent implements OnInit {
   selectUser(pUid) {
     this.userId = pUid;
     console.log('2323',this.userId);
-    this.getNameOfUser(this.userId,this.userName);
+  //  this.getNameOfUser(this.userId,this.userName);
   }
 
   getNameOfUser(uxId,uxName) {
-    this.usersdata.map(function(ux){
+  this.usersdata.map(function(ux){
       console.log('@#@#@',ux);
       if(ux.key == uxId){
        this.userName = ux.value.name;
@@ -104,14 +104,14 @@ export class NewTodoComponent implements OnInit {
   }
 
 
-  addTodo(pvalue,userId) {
+  addTodo(pvalue,userId,selectedPoints) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
 
         this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
 
-        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none'});
+        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none', points: selectedPoints});
 
       } else {
         console.error('todo didnt made any match with a todo of the local object.');

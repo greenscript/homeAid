@@ -154,7 +154,7 @@ section.row
         div.personalTodos(*ngIf='category.category == "Personal"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-          select.form-control
+          select.form-control( [(ngModel)]='selectedPoints')
             option 1
             option 2
             option 3
@@ -167,4 +167,4 @@ section.row
             option 10
       .form-group.flex-center.personalBtn
         hr
-        button#btnAddTodo.btn.btn-default.personalButton((click)='addTodo(value)') Agregar
+        button#btnAddTodo.btn.btn-default.personalButton((click)='addTodo(value,selectedPoints)') Agregar
