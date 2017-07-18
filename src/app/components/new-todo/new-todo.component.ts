@@ -20,6 +20,7 @@ export class NewTodoComponent implements OnInit {
   public loadedUsers: boolean = false;
   categoryForModel;
   newTodoObj;
+  userName;
   //todosArray : NewTodo [];
 
   todos = [
@@ -79,42 +80,42 @@ export class NewTodoComponent implements OnInit {
                 )
               }
             });
-            console.log(props.usersdata)
             props.loadedUsers = true;
           })
       } else {
-        console.log('user not logged in');
+        console.error('user not logged in');
       }
     });
   }
+  selectUser(pUid) {
+    this.userId = pUid;
+    console.log('2323',this.userId);
+    this.getNameOfUser(this.userId,this.userName);
+  }
 
-  addTodo(pvalue) {
-    console.log('category', pvalue);
-    console.log("arreglo", this.todos[0].description);
+  getNameOfUser(uxId,uxName) {
+    this.usersdata.map(function(ux){
+      console.log('@#@#@',ux);
+      if(ux.key == uxId){
+       this.userName = ux.value.name;
+       console.log(this.userName);
+      }
+    })
+  }
 
+
+  addTodo(pvalue,userId) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
-        console.log('holi soy igual ', pvalue, ' y ', this.todos[index].description, 'y mi category es:', this.categoryForModel);
 
-        //this.newTodoObj = new NewTodo(this.categoryForModel, pvalue, false);
-        //  console.log(this.todos);
+        this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
+
+        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none'});
 
       } else {
-        // xD
-        // dejelo tirarse pedos att -mbolanosc
-        console.log('apesto a pedo');
+        console.error('todo didnt made any match with a todo of the local object.');
       }
     }
-  }
-
-  selectUser(pUid) {
-    console.log(pUid);
-    this.userId = pUid;
-    // esto de abajo es como agregar el todo a la base de datos
-    // deberia de ir en la funcion addTodo
-    this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-    // en vez de este objeto, iria el new Todo(parametros)
-    this.selectedUser.push({ name: 'asd', description: 'asd', category: 'asd' });
   }
 }
