@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewTodo } from '../../models/newTodo.model';
+import { CreateWeekAdminComponent } from '../../components/createWeek-admin/createWeek-admin.component';
 import { User } from '../../models/user.model';
-import {  AuthService } from '../../services/auth.service';
-import {  AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../services/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
@@ -21,6 +22,7 @@ export class NewTodoComponent implements OnInit {
   categoryForModel;
   newTodoObj;
   userName;
+
   //todosArray : NewTodo [];
 
   todos = [
@@ -89,29 +91,30 @@ export class NewTodoComponent implements OnInit {
   }
   selectUser(pUid) {
     this.userId = pUid;
-    console.log('2323',this.userId);
-  //  this.getNameOfUser(this.userId,this.userName);
+    console.log('2323', this.userId);
+    //  this.getNameOfUser(this.userId,this.userName);
   }
 
-  getNameOfUser(uxId,uxName) {
-  this.usersdata.map(function(ux){
-      console.log('@#@#@',ux);
-      if(ux.key == uxId){
-       this.userName = ux.value.name;
-       console.log(this.userName);
+  getNameOfUser(uxId, uxName) {
+    this.usersdata.map(function (ux) {
+      console.log('@#@#@', ux);
+      if (ux.key == uxId) {
+        this.userName = ux.value.name;
+        console.log(this.userName);
       }
     })
   }
 
 
-  addTodo(pvalue,userId,selectedPoints) {
+
+  addTodo(pvalue, userId, selectedPoints) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
 
         this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
 
-        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none', points: selectedPoints});
+        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', points: selectedPoints });
 
       } else {
         console.error('todo didnt made any match with a todo of the local object.');

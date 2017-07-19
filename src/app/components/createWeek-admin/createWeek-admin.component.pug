@@ -4,12 +4,12 @@ section
     h1.header-title Crear Semana
 section.row.week
     .col-xs-4.flex-center
-        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
+        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
             span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
     .col-xs-4.flex-center
-        h2.week-day Lunes
+        h2.week-day {{days[day].name}}
     .col-xs-4.flex-center
-        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align')
+        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row
     .col-xs-12.newTodoDesktop
@@ -29,10 +29,10 @@ section.row.weekDesktop
 
 section.row.admin-week
     .col-xs-12.flex-center
-        a.btn.btn-default.btn-admin.btn-newTodo(href='newTodo')
+        a.btn.btn-default.btn-admin.btn-newTodo((click)="sendDate([acualDay].name)" href='newTodo')
             p.newTodoBottom Nueva tarea
             img.addBotton(src='../../../assets/i-37.png', alt='')
-    .col-xs-12.flex-center
+    .col-xs-12.flex-center(*ngFor='let todo of todos')
         a.btn.btn-default.btn-admin(href='/')
             img.todoBotton(src='../../../assets/i-22.png', alt='')
-            p.todoName Barrer prueba
+            p.todoName {{todo.todo}}

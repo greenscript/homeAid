@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { User } from '../../models/user.model';
 import { NewTodo } from '../../models/newTodo.model';
+import { NewTodoComponent } from '../../components/new-todo/new-todo.component';
 
 @Component({
   selector: 'app-family',
