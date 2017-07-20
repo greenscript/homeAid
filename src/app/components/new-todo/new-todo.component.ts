@@ -5,6 +5,9 @@ import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Http } from '@angular/http';
+
 
 @Component({
   selector: 'app-new-todo',
@@ -19,9 +22,11 @@ export class NewTodoComponent implements OnInit {
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
-  categoryForModel;
-  newTodoObj;
-  userName;
+  public categoryForModel;
+  public newTodoObj;
+  public userName;
+  public currentDayNt;
+
 
   //todosArray : NewTodo [];
 
@@ -60,9 +65,13 @@ export class NewTodoComponent implements OnInit {
 
   ]
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) { }
+  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase,private http: Http, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+        this.currentDayNt = params['day'];
+        console.log("@#@#@#@#@# CURRENT DAY", this.currentDayNt);
+    });
     this.auth.authState.subscribe(res => {
       let props = this;
       if (res && res.uid) {
@@ -89,21 +98,12 @@ export class NewTodoComponent implements OnInit {
       }
     });
   }
+
   selectUser(pUid) {
     this.userId = pUid;
     console.log('2323', this.userId);
-    //  this.getNameOfUser(this.userId,this.userName);
-  }
+  };
 
-  getNameOfUser(uxId, uxName) {
-    this.usersdata.map(function (ux) {
-      console.log('@#@#@', ux);
-      if (ux.key == uxId) {
-        this.userName = ux.value.name;
-        console.log(this.userName);
-      }
-    })
-  }
   addTodo(pvalue,userId) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
@@ -111,10 +111,10 @@ export class NewTodoComponent implements OnInit {
 
         this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
 
-        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none'});
+        this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none',day:this.currentDayNt});
 
       } else {
-        console.error('todo didnt made any match with a todo of the local object.');
+        console.log('todo didnt made any match with a todo of the local object.');
       }
     }
   }

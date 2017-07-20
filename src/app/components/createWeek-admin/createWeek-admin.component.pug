@@ -13,7 +13,7 @@ section.row.week
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row
     .col-xs-12.newTodoDesktop
-        a.btn.btn-default.btn-admin.btn-newTodo((click)="sendDate([acualDay].name)" href='newTodo')
+        a.btn.btn-default.btn-admin.btn-newTodo
             img.addBotton(src='../../../assets/i-37.png', alt='')
             p.newTodoBottom Nueva tarea
             
@@ -29,7 +29,7 @@ section.row.weekDesktop
 
 section.row.admin-week
     .col-xs-12.flex-center
-        a.btn.btn-default.btn-admin.btn-newTodo((click)="sendDate([acualDay].name)" href='newTodo')
+        a.btn.btn-default.btn-admin.btn-newTodo((click)="sendDate([actualDay].name)")
             p.newTodoBottom Nueva tarea
             img.addBotton(src='../../../assets/i-37.png', alt='')
     .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todos')

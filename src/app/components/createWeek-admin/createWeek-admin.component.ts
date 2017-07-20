@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialogModule } from '@angular/material';
 import { NewTodo } from '../../models/newTodo.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-createWeek-admin',
@@ -12,7 +13,7 @@ export class CreateWeekAdminComponent implements OnInit {
   allTodos = new Array;
   todos;
   day = 0;
-  acualDay = "";
+  actualDay = "";
   days = [
     { "name": "Lunes" },
     { "name": "Martes" },
@@ -61,26 +62,29 @@ export class CreateWeekAdminComponent implements OnInit {
     this.todos = newArray;
 
   }
-  sendDate(acualDay) {
+  sendDate(actualDay) {
 
     if (this.days[this.day].name == "Lunes") {
-      this.acualDay = "Lunes"
+      this.actualDay = "Lunes"
     } else if (this.days[this.day].name == "Martes") {
-      this.acualDay = "Martes"
+      this.actualDay = "Martes"
     } else if (this.days[this.day].name == "Miércoles") {
-      this.acualDay = "Miércoles"
-      console.log(this.acualDay);
-
+      this.actualDay = "Miércoles"
     } else if (this.days[this.day].name == "Jueves") {
-      this.acualDay = "Jueves"
+      this.actualDay = "Jueves"
     } else if (this.days[this.day].name == "Viernes") {
-      this.acualDay = "Viernes"
+      this.actualDay = "Viernes"
     } else if (this.days[this.day].name == "Sábado") {
-      this.acualDay = "Sábado"
+      this.actualDay = "Sábado"
     } else if (this.days[this.day].name == "Domingo") {
-      this.acualDay = "Domingo"
+      this.actualDay = "Domingo"
     } else {
       console.log("No soy un día! Forever Alone!");
     }
+    window.location.replace("newTodo/"+this.actualDay);
+    //return this.actualDay;
   }
+
+
+
 }
