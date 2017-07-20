@@ -104,14 +104,14 @@ export class NewTodoComponent implements OnInit {
   }
 
 
-  addTodo(pvalue,userId,selectedPoints) {
+  addTodo(pvalue,userId) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
 
         this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
 
-        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none', points: selectedPoints});
+        this.selectedUser.push({ username: 'testing not working yet', description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none'});
 
       } else {
         console.error('todo didnt made any match with a todo of the local object.');
