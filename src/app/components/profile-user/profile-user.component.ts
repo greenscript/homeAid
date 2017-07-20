@@ -86,7 +86,8 @@ export class ProfileUserComponent implements OnInit {
         if(this.usersdata[i].key == params['id'])
            this.currentUser = this.usersdata[i];
       //console.log(params['id']);
-      console.log(this.currentUser);
+      console.log(this.currentUser.value.todos);
+      this.todos = this.currentUser.value.todos;
     });
   }
   
@@ -95,7 +96,7 @@ export class ProfileUserComponent implements OnInit {
    if (this.day == 7)
    this.day = 0
 
-   this.getTodos(this.day)
+   //this.getTodos(this.day)
   }
 
   back(){
@@ -105,7 +106,7 @@ export class ProfileUserComponent implements OnInit {
     if (this.day == -1)
     this.day = 6
 
-    this.getTodos(this.day)
+    //this.getTodos(this.day)
   }
 
   getTodos(day){
