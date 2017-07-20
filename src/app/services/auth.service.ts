@@ -99,9 +99,22 @@ export class AuthService {
   private socialSignIn(provider) {
     return this.af.auth.signInWithPopup(provider)
       .then((credential) =>  {
-          console.log(credential)
+          switch (credential.credential.providerId) {
+            case 'google.com':
+              this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
+                [
+                    new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
+                ], [], {})
+            break;
+            case 'facebook.com':
+              this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
+                [
+                    new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '')
+                ], [], {})
+            break;
+          }
           this.authState = credential.user
-          // this.updateFamilyData(credential.additionalUserInfo.profile.name, [], [])
+
           this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
