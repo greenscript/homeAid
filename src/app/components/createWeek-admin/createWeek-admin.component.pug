@@ -13,7 +13,7 @@ section.row.week
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row
     .col-xs-12.newTodoDesktop
-        a.btn.btn-default.btn-admin.btn-newTodo(href='newTodo')
+        a.btn.btn-default.btn-admin.btn-newTodo((click)="sendDate([acualDay].name)" href='newTodo')
             img.addBotton(src='../../../assets/i-37.png', alt='')
             p.newTodoBottom Nueva tarea
             

@@ -69,6 +69,8 @@ export class CreateWeekAdminComponent implements OnInit {
       this.acualDay = "Martes"
     } else if (this.days[this.day].name == "Miércoles") {
       this.acualDay = "Miércoles"
+      console.log(this.acualDay);
+
     } else if (this.days[this.day].name == "Jueves") {
       this.acualDay = "Jueves"
     } else if (this.days[this.day].name == "Viernes") {
