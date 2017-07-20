@@ -19,20 +19,20 @@ section.row
             
 section.row.weekDesktop
     .col-xs-12.flex-center
-        button.btn.btn-default.btnDesktop Domingo
-        button.btn.btn-default.btnDesktop Lunes
-        button.btn.btn-default.btnDesktop Martes
-        button.btn.btn-default.btnDesktop Miércoles
-        button.btn.btn-default.btnDesktop Jueves
-        button.btn.btn-default.btnDesktop Viernes
-        button.btn.btn-default.btnDesktop Sábado
+        button.btn.btn-default.btnDesktop {{days[6].name}}
+        button.btn.btn-default.btnDesktop {{days[0].name}}
+        button.btn.btn-default.btnDesktop {{days[1].name}}
+        button.btn.btn-default.btnDesktop {{days[2].name}}
+        button.btn.btn-default.btnDesktop {{days[3].name}}
+        button.btn.btn-default.btnDesktop {{days[4].name}}
+        button.btn.btn-default.btnDesktop {{days[5].name}}
 
 section.row.admin-week
     .col-xs-12.flex-center
         a.btn.btn-default.btn-admin.btn-newTodo((click)="sendDate([acualDay].name)" href='newTodo')
             p.newTodoBottom Nueva tarea
             img.addBotton(src='../../../assets/i-37.png', alt='')
-    .col-xs-12.flex-center(*ngFor='let todo of todos')
+    .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todos')
         a.btn.btn-default.btn-admin(href='/')
             img.todoBotton(src='../../../assets/i-22.png', alt='')
             p.todoName {{todo.todo}}
