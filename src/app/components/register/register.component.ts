@@ -71,10 +71,7 @@ export class RegisterComponent implements OnInit {
         // pasando como parametros lo necesario para crear una familia
         // pasando como un usuario en arreglo el usuario admin, o usuario 0 de la familia
         // y habilitando la posibilidad de pushear nuevos usuarios a firebase
-        this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value,
-          [
-              new User(this.firstName.value, 'assets/i-22.png', 0, [], [], '')
-          ], {}, {});
+        this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value);
       } else {
         // las password no coincidieron y activa el flag de error y contenido del error
         this.error = true;

@@ -2,20 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-
+import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-menu-admin',
   templateUrl: './menu-admin.component.html',
   styleUrls: ['./menu-admin.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, DataService]
 })
 export class MenuAdminComponent implements OnInit {
   public families: FirebaseListObservable<any>;
   public userdata: Array<Object> = [];
   public adminName: string;
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) {}
+  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, public ds: DataService) {}
 
   ngOnInit() {
+
+    this.ds.admin();
+
     // metodo del AuthService que se encarga de reconocer si el usuario esta loggeado
     // posiblemente necesario en todos los ngInit de la mayoria o todos los componentes
     this.auth.authState.subscribe(res => {
@@ -29,7 +32,6 @@ export class MenuAdminComponent implements OnInit {
       // ${res.uid} esto, jala el id en modo de string, el ${valor} es un selector de es6
       // de javascript, que se llama template string, como el uid del usuario cambia, se usa este metodo
       if (res && res.uid) {
-        console.log('logged in');
         this.families = this.db.list(`/families/${res.uid}`, {preserveSnapshot: true});
         this.families
         // forma de iterar sobre las propiedades de un objeto en firebase

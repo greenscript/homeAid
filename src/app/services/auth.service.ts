@@ -54,31 +54,23 @@ export class AuthService {
     this.af.auth.signOut();
   }
 
-  emailSignUp(pEmail:string, pPassword:string, pName:string, pUsers: any, pWeeks: any, pCurrentWeek: any) {
+  emailSignUp(pEmail:string, pPassword:string, pName:string) {
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
         this.authState = user
-        this.updateFamilyData(pName, pUsers, pWeeks, pCurrentWeek)
+        this.updateFamilyData(pName,
+          new User(pName,'assets/i-22.png', 0, [], [], '')
+          , [{}], {})
         this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
   }
 
   private updateFamilyData(pName: string, pUsers: any, pWeeks: any, pCurrentWeek: any): void {
-
-    let path = `families/${this.currentUserId}`; // Endpoint on firebase
-    // let data = {
-    //               email: this.authState.email,
-    //               displayName: this.authState.displayName,
-    //               name: pName,
-    //               users: pUsers,
-    //               weeks: pWeeks
-    //             }
+    let path = `families/${this.currentUserId}`;
     let data = new Family(this.authState.email, pName, pUsers, pWeeks, pCurrentWeek)
-
     this.db.object(path).update(data)
     .catch(error => console.log(error));
-
   }
 
   private updateUserData(): void {
