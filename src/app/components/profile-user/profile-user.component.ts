@@ -24,7 +24,7 @@ export class ProfileUserComponent implements OnInit {
 
   id;
   allTodos = new Array;
-  todos;
+  todos = new Array;
   day = 0;
   days = [
     {"name": "Lunes"},
@@ -43,7 +43,7 @@ export class ProfileUserComponent implements OnInit {
   loadData(todosUrl: string) {
     this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
       this.allTodos = data;
-      this.getTodos(this.day);
+      //this.getTodos(this.day);
     });
   }
 
@@ -68,7 +68,7 @@ export class ProfileUserComponent implements OnInit {
             }
           });
           console.log(props.usersdata)
-          props.loadedUsers = true;
+          //props.loadedUsers = true;
           props.getUser();
         })
       } else {
@@ -81,13 +81,19 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getUser(){
+    let newArray = new Array;
       this.id = this.route.params.subscribe(params => { 
       for (var i in this.usersdata)
         if(this.usersdata[i].key == params['id'])
            this.currentUser = this.usersdata[i];
-      //console.log(params['id']);
-      console.log(this.currentUser.value.todos);
-      this.todos = this.currentUser.value.todos;
+           for (var i in this.currentUser.value.todos){
+            console.log( this.currentUser.value.todos[i])
+            newArray.push(JSON.stringify(this.currentUser.value.todos))
+          }
+          this.todos =  newArray;
+          for (var i in this.todos){
+            console.log(this.todos[i]);
+          }
     });
   }
   
@@ -110,12 +116,13 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getTodos(day){
-    var newArray = new Array;
+    /*var newArray = new Array;
     for (var i in this.allTodos){
       if(this.allTodos[i].day == this.days[this.day].name)
       newArray.push(this.allTodos[i])
     }
-    this.todos = newArray;
+    this.todos = newArray;*/
+    this.todos = this.currentUser.value.todos;
     
   }
 
