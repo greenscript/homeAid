@@ -31,6 +31,10 @@ p {
     margin: 0px;
 }
 
+.btn {
+    margin-top: 0px;
+}
+
 .btn-admin {
     border-radius: 0;
     text-align: left;
@@ -57,13 +61,13 @@ p {
     }
 }
 
-.btn-admin:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
 .weekDesktop,
 .newTodoDesktop {
-    visibility: hidden;
+    display: none;
+}
+
+.btn-admin:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 @media (min-width: 650px) {
@@ -77,10 +81,11 @@ p {
         top: -16vw;
     }
     .week {
-        visibility: hidden;
+        display: none;
+        ;
     }
     .weekDesktop {
-        visibility: visible;
+        display: block;
         .btnDesktop {
             padding: 5px 20px;
             border-radius: 20px;
@@ -89,11 +94,24 @@ p {
             margin-left: 20px;
         }
     }
-    .btn-newTodo {
-        visibility: hidden;
+    .newTodoMobile {
+        display: none;
     }
     .newTodoDesktop {
-        visibility: visible;
+        display: block;
+        padding: 100px 0px 0px;
+        .btn-admin {
+            height: 0px;
+            width: 15%;
+            margin: 2em 4em;
+            box-shadow: none;
+            .addBotton {
+                float: left;
+            }
+            .newTodoBottom {
+                margin: -35px 70px;
+            }
+        }
     }
 }
 
