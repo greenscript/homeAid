@@ -30,6 +30,7 @@ import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MobileBarComponent } from './components/mobile-bar/mobile-bar.component';
 import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
+import { FamilyGoalComponent } from './components/family-goal/family-goal.component'
 
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
@@ -38,7 +39,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
 // asd
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -54,13 +55,15 @@ export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenuAdminComponent },
   { path: 'createWeek', component: CreateWeekAdminComponent },
-  { path: 'user/:id', component: ProfileUserComponent }, 
+  { path: 'user/:id', component: ProfileUserComponent },
   { path: 'newTodo/:day', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detailTodo', component: DetailTodoComponent }
+  { path: 'detailTodo', component: DetailTodoComponent },
+  { path: 'familyGoal', component: FamilyGoalComponent }
+
 
 ];
 
@@ -80,7 +83,8 @@ export const ROUTES: Routes = [
     UsersComponent,
     DashboardComponent,
     MobileBarComponent,
-    DetailTodoComponent
+    DetailTodoComponent,
+    FamilyGoalComponent
 
   ],
   imports: [
