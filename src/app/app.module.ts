@@ -54,7 +54,7 @@ export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenuAdminComponent },
   { path: 'createWeek', component: CreateWeekAdminComponent },
-  { path: 'user/:id', component: ProfileUserComponent },
+  { path: 'user/:id', component: ProfileUserComponent }, 
   { path: 'newTodo/:day', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
