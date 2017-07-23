@@ -9,7 +9,6 @@ import { User } from '../models/user.model';
 import { Week } from '../models/week.model';
 import { Family } from '../models/family.model';
 
-
 @Injectable()
 export class AuthService {
 
@@ -66,7 +65,7 @@ export class AuthService {
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
         this.authState = user
-        this.updateFamilyData(pName, adminUser, [{}], this.currentWeek)
+        this.updateFamilyData(pName, [adminUser], [{}], this.currentWeek)
         this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
@@ -77,21 +76,6 @@ export class AuthService {
     let data = new Family(this.authState.email, pName, pUsers, pWeeks, pCurrentWeek)
     this.db.object(path).update(data)
     .catch(error => console.log(error));
-  }
-
-  private updateUserData(): void {
-    // Writes user name and email to realtime db
-    // useful if your app displays information about users or for admin features
-
-    let path = `families/${this.currentUserId}`; // Endpoint on firebase
-    let data = {
-                  email: this.authState.email,
-                  name: this.authState.displayName
-                }
-
-    this.db.object(path).update(data)
-    .catch(error => console.log(error));
-
   }
 
   private socialSignIn(provider) {

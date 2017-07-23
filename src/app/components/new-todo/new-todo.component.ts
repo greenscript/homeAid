@@ -7,17 +7,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Http } from '@angular/http';
-
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-new-todo',
   templateUrl: './new-todo.component.html',
   styleUrls: ['./new-todo.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, DataService]
 })
 export class NewTodoComponent implements OnInit {
   public users: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
+  public currentWeek: FirebaseListObservable<any>;
   public userId: string = '';
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
@@ -65,13 +66,23 @@ export class NewTodoComponent implements OnInit {
 
   ]
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase,private http: Http, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private as: AuthService,
+    private ds: DataService,
+    public auth: AngularFireAuth,
+    public db: AngularFireDatabase,
+    private http: Http,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
         this.currentDayNt = params['day'];
         console.log("@#@#@#@#@# CURRENT DAY", this.currentDayNt);
     });
+
+    console.log(this.ds.users);
+
     this.auth.authState.subscribe(res => {
       let props = this;
       if (res && res.uid) {
