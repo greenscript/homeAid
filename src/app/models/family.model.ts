@@ -6,7 +6,7 @@ export class Family {
   private name: string;
   private users: User[] = [];
   private weeks: Week[] = [];
-  private currentWeek = new Week;
+  private currentWeek: any;
 
   constructor(
     pEmail:string,

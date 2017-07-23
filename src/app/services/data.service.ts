@@ -1,14 +1,31 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+
 
 @Injectable()
 export class DataService {
 
-  constructor(public auth: AngularFireAuth, public db: AngularFireDatabase) {}
 
-  users() {
+  public authState: any = null;
+
+  constructor(public auth: AngularFireAuth, public db: AngularFireDatabase) {
+    this.auth.authState.subscribe((auth) => {
+      this.authState = auth
+    });
+  }
+
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  get currentUserId(): string {
+    return this.authenticated ? this.authState.uid : '';
+  }
+
+  regularUsers() {
    this.auth.authState.subscribe(res => {
      let props = [];
      let loaded: Boolean = false;
@@ -21,9 +38,7 @@ export class DataService {
              props.push(({key: snapshot.key, value: snapshot.val()}))
             }
          });
-         console.log(props)
          loaded = true;
-         return props;
        })
      } else {
        console.log('user not logged in');
@@ -31,7 +46,7 @@ export class DataService {
    });
   }
 
-  admin() {
+  getAdmin() {
    this.auth.authState.subscribe(res => {
      let props = [];
      let loaded: Boolean = false;
@@ -77,6 +92,16 @@ export class DataService {
    });
   }
 
+  getCurrentWeek(): Observable<any> {
+    let currentWeek: FirebaseListObservable<any>;
+      currentWeek = this.db.list(`/families/${this.currentUserId}/currentWeek`, {preserveSnapshot: true});
+      // currentWeek.subscribe(snapshots => {
+      //    snapshots.forEach(snapshot => {
+      //       props.push(({key: snapshot.key, value: snapshot.val()}))
+      //   });
+      // })
+      return currentWeek;
+  }
 
 
 }

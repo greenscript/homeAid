@@ -81,7 +81,7 @@ export class NewTodoComponent implements OnInit {
         console.log("@#@#@#@#@# CURRENT DAY", this.currentDayNt);
     });
 
-    console.log(this.ds.users);
+    console.log(this.ds.regularUsers);
 
     this.auth.authState.subscribe(res => {
       let props = this;

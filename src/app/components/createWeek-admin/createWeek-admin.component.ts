@@ -3,11 +3,13 @@ import { Http } from '@angular/http';
 import { MdDialogModule } from '@angular/material';
 import { NewTodo } from '../../models/newTodo.model';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-createWeek-admin',
   templateUrl: './createWeek-admin.component.html',
-  styleUrls: ['./createWeek-admin.component.scss']
+  styleUrls: ['./createWeek-admin.component.scss'],
+  providers: [DataService]
 })
 export class CreateWeekAdminComponent implements OnInit {
   allTodos = new Array;
@@ -23,7 +25,7 @@ export class CreateWeekAdminComponent implements OnInit {
     { "name": "Sábado" },
     { "name": "Domingo" },
   ];
-  constructor(private http: Http) {
+  constructor(private http: Http, private ds: DataService) {
     this.loadData('../assets/data/todos.json');
   }
   loadData(todosUrl: string) {
@@ -32,8 +34,12 @@ export class CreateWeekAdminComponent implements OnInit {
       this.getTodos(this.day);
     });
   }
+
   ngOnInit() {
+
   }
+
+
 
   next() {
     this.day += 1;
@@ -41,6 +47,10 @@ export class CreateWeekAdminComponent implements OnInit {
       this.day = 0
 
     this.getTodos(this.day)
+    console.log(this.ds.currentUserId);
+    this.ds.getCurrentWeek().subscribe((res) => {
+      console.log(res)
+    })
   }
 
   back() {

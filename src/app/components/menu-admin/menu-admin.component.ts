@@ -17,7 +17,7 @@ export class MenuAdminComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ds.admin();
+    this.ds.getAdmin();
 
     // metodo del AuthService que se encarga de reconocer si el usuario esta loggeado
     // posiblemente necesario en todos los ngInit de la mayoria o todos los componentes
