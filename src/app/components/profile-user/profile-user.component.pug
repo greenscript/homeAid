@@ -5,9 +5,9 @@ section
      img.user-logOut(src='../../../assets/i-39.png', alt='')
     a.header-icon.pull-right 
      img.user-award(src='../../../assets/i-33.png', alt='')
-    h3.header-title name
+    h3.header-title Bienvenid@ {{userName}}
     img.user-img.center-block(src='../../../assets/i-22.png', alt='')
-section.row.week
+section.row.week 
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
             span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
@@ -21,3 +21,5 @@ section.row.user-week
         a.btn.btn-default.btn-user(href='/')
             img.todoImg(src='../../../assets/i-29.png', alt='')
             p.todoName {{todo.value.description}}
+            p {{todo.value.category}}
+app-mobile-bar
