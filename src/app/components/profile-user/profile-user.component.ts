@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-profile-user',
@@ -14,17 +15,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   providers: [AuthService]
 })
 export class ProfileUserComponent implements OnInit {
-  public users: FirebaseListObservable<any>;
+  public todos: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
   public userId: string = '';
-  public usersdata: Array<any> = [];
+  public tododata: Array<any> = [];
+  public todosView: Array<any> = [];
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
   public currentUser;
-
-  id;
-  allTodos = new Array;
-  todos = new Array;
+  
   day = 0;
   days = [
     {"name": "Lunes"},
@@ -37,14 +36,9 @@ export class ProfileUserComponent implements OnInit {
   ];
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute) {
-    this.loadData('../assets/data/todos.json');
-  }
-
-  loadData(todosUrl: string) {
-    this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
-      this.allTodos = data;
-      //this.getTodos(this.day);
-    });
+    //this.loadData('../assets/data/todos.json');
+    this.userId = route.snapshot.paramMap.get('id');
+    console.log(this.userId)
   }
 
   ngOnInit() {
@@ -52,14 +46,12 @@ export class ProfileUserComponent implements OnInit {
       let props = this;
       if (res && res.uid) {
         props.currentFamily = res.uid;
-        console.log('logged in');
-        this.users = this.db.list(`/families/${props.currentFamily}/users`, {preserveSnapshot: true});
-        this.users
+        this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, {preserveSnapshot: true});
+        this.todos
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            //console.log(snapshot.key)
             if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
-              props.usersdata.push(
+              props.tododata.push(
                 ({
                   key: snapshot.key,
                   value: snapshot.val()
@@ -67,63 +59,59 @@ export class ProfileUserComponent implements OnInit {
               )
             }
           });
-          console.log(props.usersdata)
-          //props.loadedUsers = true;
-          props.getUser();
+          console.log(props.tododata);
+          props.loadedUsers = true;
+          props.getTodos(this.day);
         })
       } else {
         console.log('user not logged in');
       }
     });
-
-   
-
   }
 
-  getUser(){
-    let newArray = new Array;
-      this.id = this.route.params.subscribe(params => { 
+  /*getUser(){
+    //let newArray = new Array;
+      //this.id = this.route.params.subscribe(params => { 
       for (var i in this.usersdata)
         if(this.usersdata[i].key == params['id'])
            this.currentUser = this.usersdata[i];
            for (var i in this.currentUser.value.todos){
-            console.log( this.currentUser.value.todos[i])
-            newArray.push(JSON.stringify(this.currentUser.value.todos))
+            console.log("all" + this.currentUser.value.todos[i])
+            newArray.push(JSON.stringify(this.currentUser.value.todos));
+            //newArray.push(this.currentUser.value.todos);
           }
           this.todos =  newArray;
           for (var i in this.todos){
-            console.log(this.todos[i]);
+           // console.log("i"+this.todos[i]);
+            console.log("0"+this.todos[i][0]);
           }
     });
-  }
+  }*/
   
   next(){
    this.day += 1;
    if (this.day == 7)
    this.day = 0
 
-   //this.getTodos(this.day)
+   this.getTodos(this.day)
   }
 
   back(){
-    this.day -= 1;
-    console.log(this.day);
-    
+    this.day -= 1; 
     if (this.day == -1)
     this.day = 6
 
-    //this.getTodos(this.day)
+    this.getTodos(this.day)
   }
 
   getTodos(day){
-    /*var newArray = new Array;
-    for (var i in this.allTodos){
-      if(this.allTodos[i].day == this.days[this.day].name)
-      newArray.push(this.allTodos[i])
+    this.todosView = [];
+    for (var i in this.tododata){
+      if(this.tododata[i].value.day == this.days[this.day].name)
+      this.todosView.push(this.tododata[i])
     }
-    this.todos = newArray;*/
-    this.todos = this.currentUser.value.todos;
-    
+    //this.todosView = newArray;
+    console.log(this.todosView)
   }
 
 }
