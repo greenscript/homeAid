@@ -14,6 +14,12 @@ import { Family } from '../models/family.model';
 export class AuthService {
 
   public authState: any = null;
+  public curr: any = new Date;
+  public first: any = this.curr.getDate() - this.curr.getDay();
+  public last: any = this.first + 6;
+  public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
+  public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
+  public currentWeek: any = new Week({}, this.firstday, this.lastday);
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.af.authState.subscribe((auth) => {
@@ -55,12 +61,12 @@ export class AuthService {
   }
 
   emailSignUp(pEmail:string, pPassword:string, pName:string) {
+    let adminUser: any = new User(pName,'assets/i-22.png', 0, [], [], '');
+
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
         this.authState = user
-        this.updateFamilyData(pName,
-          new User(pName,'assets/i-22.png', 0, [], [], '')
-          , [{}], {})
+        this.updateFamilyData(pName, adminUser, [{}], this.currentWeek)
         this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
@@ -96,13 +102,13 @@ export class AuthService {
               this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
                 [
                     new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
-                ], [], {})
+                ], [], this.currentWeek)
             break;
             case 'facebook.com':
               this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
                 [
                     new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '')
-                ], [], {})
+                ], [], this.currentWeek)
             break;
           }
           this.authState = credential.user
