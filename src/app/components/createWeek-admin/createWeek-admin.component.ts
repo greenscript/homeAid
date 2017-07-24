@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialogModule } from '@angular/material';
 import { NewTodo } from '../../models/newTodo.model';
@@ -13,7 +13,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./createWeek-admin.component.scss'],
   providers: [DataService, AuthService]
 })
-export class CreateWeekAdminComponent implements OnInit, OnChanges {
+export class CreateWeekAdminComponent implements OnInit {
   public allTodos = new Array;
   public todos;
   public day = 0;
@@ -26,15 +26,7 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   public currentDay: any;
   public currentDayIndex: number = 0;
 
-  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth) {
-    this.loadData('../assets/data/todos.json');
-  }
-  loadData(todosUrl: string) {
-    this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
-      this.allTodos = data;
-      // this.getTodos(this.day);
-    });
-  }
+  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth) {}
 
   ngOnInit() {
     this.afa.authState.subscribe(res => {
@@ -54,10 +46,6 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
     })
   }
 
-  ngOnChanges() {
-
-  }
-
   next() {
     console.log(this.currentDay);
     this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
@@ -74,7 +62,7 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
       this.currentDayIndex = 6;
     }
 
-    // this.getTodos(this.day)
+    this.getTodos(this.currentDayIndex)
   }
 
   getTodos(pDayIndex) {
