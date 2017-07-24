@@ -7,7 +7,7 @@ section.row.week
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
             span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
     .col-xs-4.flex-center
-        h2.week-day {{days[day].name}}
+        h2.week-day {{currentDay | date:'EEEE'}}
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
@@ -18,14 +18,15 @@ section.row
             p.newTodoBottom Nueva tarea
             
 section.row.weekDesktop
-    .col-xs-12.flex-center
-        button.btn.btn-default.btnDesktop {{days[6].name}}
-        button.btn.btn-default.btnDesktop {{days[0].name}}
-        button.btn.btn-default.btnDesktop {{days[1].name}}
-        button.btn.btn-default.btnDesktop {{days[2].name}}
-        button.btn.btn-default.btnDesktop {{days[3].name}}
-        button.btn.btn-default.btnDesktop {{days[4].name}}
-        button.btn.btn-default.btnDesktop {{days[5].name}}
+    .col-xs-12.flex-center(*ngFor="let day of days;")
+        button.btn.btn-default.btnDesktop {{day}}
+        //- button.btn.btn-default.btnDesktop {{days[6].name}}
+        //- button.btn.btn-default.btnDesktop {{days[0].name}}
+        //- button.btn.btn-default.btnDesktop {{days[1].name}}
+        //- button.btn.btn-default.btnDesktop {{days[2].name}}
+        //- button.btn.btn-default.btnDesktop {{days[3].name}}
+        //- button.btn.btn-default.btnDesktop {{days[4].name}}
+        //- button.btn.btn-default.btnDesktop {{days[5].name}}
 
 section.row.admin-week
     .col-xs-12.flex-center.newTodoMobile

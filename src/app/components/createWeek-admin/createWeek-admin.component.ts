@@ -1,56 +1,68 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialogModule } from '@angular/material';
 import { NewTodo } from '../../models/newTodo.model';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
-
+import { AuthService } from '../../services/auth.service';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 @Component({
   selector: 'app-createWeek-admin',
   templateUrl: './createWeek-admin.component.html',
   styleUrls: ['./createWeek-admin.component.scss'],
-  providers: [DataService]
+  providers: [DataService, AuthService]
 })
-export class CreateWeekAdminComponent implements OnInit {
+export class CreateWeekAdminComponent implements OnInit, OnChanges {
   allTodos = new Array;
   todos;
   day = 0;
   actualDay = "";
-  days = [
-    { "name": "Lunes" },
-    { "name": "Martes" },
-    { "name": "Miércoles" },
-    { "name": "Jueves" },
-    { "name": "Viernes" },
-    { "name": "Sábado" },
-    { "name": "Domingo" },
-  ];
-  constructor(private http: Http, private ds: DataService) {
+  days = [];
+
+  public weekData: Array<any> = [];
+  public currentWeek: FirebaseListObservable<any>;
+  public uid: string;
+  public currentDay: any;
+  public currentDayIndex: number = 0;
+
+  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth) {
     this.loadData('../assets/data/todos.json');
   }
   loadData(todosUrl: string) {
     this.http.get(todosUrl).map(res => res.json()).subscribe((data) => {
       this.allTodos = data;
-      this.getTodos(this.day);
+      // this.getTodos(this.day);
     });
   }
 
   ngOnInit() {
+    this.afa.authState.subscribe(res => {
+      if (res.uid) {
+        this.currentWeek = this.db.list(`/families/${res.uid}/currentWeek`, {preserveSnapshot: true});
+        this.currentWeek.subscribe(snapshots => {
+          snapshots.forEach(snapshot => {
+              this.weekData.push({key: snapshot.key, value: snapshot.val()})
+          });
+          console.log(this.weekData);
+          this.days = this.weekData[0].value;
+          console.log(this.days);
+          this.currentDay = this.days[0];
+        })
+      }
+    })
+  }
+
+  ngOnChanges() {
 
   }
 
-
-
   next() {
-    this.day += 1;
-    if (this.day == 7)
-      this.day = 0
-
-    this.getTodos(this.day)
-    console.log(this.ds.currentUserId);
-    this.ds.getCurrentWeek().subscribe((res) => {
-      console.log(res)
-    })
+    this.currentDay = this.days[this.currentDayIndex++];
+    if (this.currentDayIndex === 6) {
+      this.currentDayIndex = 0;
+    }
+    // this.getTodos(this.day)
   }
 
   back() {
@@ -60,7 +72,7 @@ export class CreateWeekAdminComponent implements OnInit {
     if (this.day == -1)
       this.day = 6
 
-    this.getTodos(this.day)
+    // this.getTodos(this.day)
   }
 
   getTodos(day) {

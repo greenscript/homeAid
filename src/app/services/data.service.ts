@@ -100,8 +100,13 @@ export class DataService {
       //       props.push(({key: snapshot.key, value: snapshot.val()}))
       //   });
       // })
+      console.log(currentWeek);
       return currentWeek;
   }
+
+
+
+
 
 
 }

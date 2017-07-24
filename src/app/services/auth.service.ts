@@ -18,7 +18,7 @@ export class AuthService {
   public last: any = this.first + 6;
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
-  public currentWeek: any = new Week({}, this.firstday, this.lastday);
+  public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday));
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.af.authState.subscribe((auth) => {
@@ -69,6 +69,23 @@ export class AuthService {
         this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
+  }
+
+  public getWeekDays(startDate, stopDate) {
+    console.log(startDate, stopDate)
+    let dateArray: Array<Date> = [];
+    let currentDate = startDate;
+    while (currentDate <= stopDate) {
+      console.log('asd')
+       dateArray.push( new Date (currentDate) )
+       for (let i = 0; i < 6; i++) {
+         currentDate = new Date(currentDate)
+         currentDate = currentDate.setDate(currentDate.getDate() + 1);
+         dateArray.push( new Date (currentDate) )
+       }
+    }
+    console.log(dateArray);
+    return dateArray;
   }
 
   private updateFamilyData(pName: string, pUsers: any, pWeeks: any, pCurrentWeek: any): void {

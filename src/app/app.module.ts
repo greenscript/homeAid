@@ -40,6 +40,8 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 // asd
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { MomentModule } from 'angular2-moment';
+// services
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAaVcA0wjZMDYdeXT6IRYInLbO4dYU6usE",
@@ -85,7 +87,6 @@ export const ROUTES: Routes = [
     MobileBarComponent,
     DetailTodoComponent,
     FamilyGoalComponent
-
   ],
   imports: [
     BrowserModule,
@@ -107,7 +108,8 @@ export const ROUTES: Routes = [
     ModalModule.forRoot(),
     DatepickerModule,
     RoundProgressModule,
-    Angular2FontawesomeModule
+    Angular2FontawesomeModule,
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
