@@ -3,19 +3,11 @@ section.row
         path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h1.header-title Familia
 section.row.family.col-xs-12.flex-center
-    div
-        .col-xs-4.col-sm-4
-            a(href='')
-                img.no-selected-ux(src='../../../assets/i-22.png')
-            h5 user.name
-        .col-xs-4.col-sm-4
-            a(href='')
-                img.selected-ux(src='../../../assets/i-23.png')
-            h5 user.name
-        .col-xs-4.col-sm-4
-            a(href='')
-                img.no-selected-ux(src='../../../assets/i-24.png')
-            h5 user.name
+    .col-xs-4.text-center(*ngFor="let user of usersdata")
+        a(role="button", (click)="selectUser(user.key)")
+            img.no-selected-ux([src]='user.value.avatar')
+            p.perUserName {{user.value.name}}
+
 section.row.week
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
@@ -26,7 +18,8 @@ section.row.week
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row.user-week
-    .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todos')
+    .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView')
         a.btn.btn-default.btn-user(href='/')
             img.todoImg(src='../../../assets/i-29.png', alt='')
-            p.todoName {{todo.todo}}
+            p.todoName {{todo.value.description}}
+            p {{todo.value.category}}
