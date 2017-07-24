@@ -14,14 +14,14 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   providers: [DataService, AuthService]
 })
 export class CreateWeekAdminComponent implements OnInit, OnChanges {
-  allTodos = new Array;
-  todos;
-  day = 0;
-  actualDay = "";
-  days = [];
-
+  public allTodos = new Array;
+  public todos;
+  public day = 0;
+  public actualDay = "";
+  public days = [];
   public weekData: Array<any> = [];
   public currentWeek: FirebaseListObservable<any>;
+  public currentTodos: FirebaseListObservable<any>;
   public uid: string;
   public currentDay: any;
   public currentDayIndex: number = 0;
@@ -39,15 +39,16 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.afa.authState.subscribe(res => {
       if (res.uid) {
-        this.currentWeek = this.db.list(`/families/${res.uid}/currentWeek`, {preserveSnapshot: true});
+        this.uid = res.uid;
+        this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek`, {preserveSnapshot: true});
         this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
               this.weekData.push({key: snapshot.key, value: snapshot.val()})
           });
           console.log(this.weekData);
           this.days = this.weekData[0].value;
-          console.log(this.days);
-          this.currentDay = this.days[0];
+          this.currentDay = this.days[0].day;
+          console.log(this.currentDay);
         })
       }
     })
@@ -58,55 +59,30 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   }
 
   next() {
-    this.currentDay = this.days[this.currentDayIndex++];
+    console.log(this.currentDay);
+    this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
     if (this.currentDayIndex === 6) {
       this.currentDayIndex = 0;
     }
-    // this.getTodos(this.day)
+
+    this.getTodos(this.currentDayIndex)
   }
 
   back() {
-    this.day -= 1;
-    console.log(this.day);
-
-    if (this.day == -1)
-      this.day = 6
+    this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex - 1].day;
+    if (this.currentDayIndex === 0) {
+      this.currentDayIndex = 6;
+    }
 
     // this.getTodos(this.day)
   }
 
-  getTodos(day) {
-    var newArray = new Array;
-    for (var i in this.allTodos) {
-      if (this.allTodos[i].day == this.days[this.day].name)
-        newArray.push(this.allTodos[i])
-    }
-    this.todos = newArray;
-
+  getTodos(pDayIndex) {
+    let a = `/families/${this.uid}/currentWeek/${pDayIndex}/todos/`
+    this.currentTodos = this.db.list(`/families/${this.uid}/currentWeek/days/${pDayIndex}/todos`, {
+      query: {
+        limitToLast: 20
+      }
+    });
   }
-  sendDate(actualDay) {
-
-    if (this.days[this.day].name == "Lunes") {
-      this.actualDay = "Lunes"
-    } else if (this.days[this.day].name == "Martes") {
-      this.actualDay = "Martes"
-    } else if (this.days[this.day].name == "Miércoles") {
-      this.actualDay = "Miércoles"
-    } else if (this.days[this.day].name == "Jueves") {
-      this.actualDay = "Jueves"
-    } else if (this.days[this.day].name == "Viernes") {
-      this.actualDay = "Viernes"
-    } else if (this.days[this.day].name == "Sábado") {
-      this.actualDay = "Sábado"
-    } else if (this.days[this.day].name == "Domingo") {
-      this.actualDay = "Domingo"
-    } else {
-      console.log("No soy un día! Forever Alone!");
-    }
-    window.location.replace("newTodo/"+this.actualDay);
-    //return this.actualDay;
-  }
-
-
-
 }

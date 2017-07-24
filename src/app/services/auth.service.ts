@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import { User } from '../models/user.model';
 import { Week } from '../models/week.model';
 import { Family } from '../models/family.model';
+import { Day } from '../models/day.model';
 
 @Injectable()
 export class AuthService {
@@ -73,15 +74,15 @@ export class AuthService {
 
   public getWeekDays(startDate, stopDate) {
     console.log(startDate, stopDate)
-    let dateArray: Array<Date> = [];
+    let dateArray: Array<any> = [];
     let currentDate = startDate;
-    while (currentDate <= stopDate) {
+    while (currentDate >= stopDate) {
       console.log('asd')
-       dateArray.push( new Date (currentDate) )
+       dateArray.push( new Day (new Date(currentDate)) )
        for (let i = 0; i < 6; i++) {
          currentDate = new Date(currentDate)
          currentDate = currentDate.setDate(currentDate.getDate() + 1);
-         dateArray.push( new Date (currentDate) )
+         dateArray.push( new Day (new Date(currentDate) ) )
        }
     }
     console.log(dateArray);

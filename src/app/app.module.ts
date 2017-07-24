@@ -58,7 +58,7 @@ export const ROUTES: Routes = [
   { path: 'menu', component: MenuAdminComponent },
   { path: 'createWeek', component: CreateWeekAdminComponent },
   { path: 'user/:id', component: ProfileUserComponent },
-  { path: 'newTodo/:day', component: NewTodoComponent },
+  { path: 'newTodo/:day/:index', component: NewTodoComponent },
   { path: 'newux', component: NewUserComponent },
   { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent },

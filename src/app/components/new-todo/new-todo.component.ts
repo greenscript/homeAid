@@ -5,7 +5,7 @@ import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Http } from '@angular/http';
 import { DataService } from '../../services/data.service';
 
@@ -19,6 +19,7 @@ export class NewTodoComponent implements OnInit {
   public users: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
   public currentWeek: FirebaseListObservable<any>;
+  public selectedDay: FirebaseListObservable<any>;
   public userId: string = '';
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
@@ -26,8 +27,11 @@ export class NewTodoComponent implements OnInit {
   public categoryForModel;
   public newTodoObj;
   public userName;
-  public currentDayNt;
-
+  public currentDayIn;
+  public currentDay;
+  public userSelected: boolean = false;
+  public error: boolean = false;
+  public errorMsg: string;
 
   //todosArray : NewTodo [];
 
@@ -77,8 +81,9 @@ export class NewTodoComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-        this.currentDayNt = params['day'];
-        console.log("@#@#@#@#@# CURRENT DAY", this.currentDayNt);
+        this.currentDayIn = params['index'];
+        this.currentDay = params['day'];
+        console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
     });
 
     console.log(this.ds.regularUsers);
@@ -88,7 +93,7 @@ export class NewTodoComponent implements OnInit {
       if (res && res.uid) {
         props.currentFamily = res.uid;
         console.log('logged in');
-        this.users = this.db.list(`/families/${props.currentFamily}/users`, { preserveSnapshot: true });
+        this.users = this.db.list(`/families/${props.currentFamily}/users/`, { preserveSnapshot: true });
         this.users
           .subscribe(snapshots => {
             snapshots.forEach(snapshot => {
@@ -112,18 +117,22 @@ export class NewTodoComponent implements OnInit {
 
   selectUser(pUid) {
     this.userId = pUid;
-    console.log('2323', this.userId);
+    this.userSelected = true;
   };
 
   addTodo(pvalue,userId) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
-
-        this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-
-        this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none',day:this.currentDayNt});
-
+        if (this.userSelected) {
+          this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
+          this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none',day:this.currentDayIn});
+          this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
+          this.selectedDay.push({ username: this.userId, description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none',day:this.currentDayIn});
+        } else {
+          this.error = true;
+          this.errorMsg = 'Please select a user first'
+        }
       } else {
         console.log('todo didnt made any match with a todo of the local object.');
       }
