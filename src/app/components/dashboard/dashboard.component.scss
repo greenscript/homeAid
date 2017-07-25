@@ -1,25 +1,25 @@
 .todo {
-  &-xs {
-    &-container {
-      padding: 15px 0;
-      margin: 15px 0  25px;
-      box-shadow: 1px 1px 1px 1px #CFCFCF;
+    &-xs {
+        &-container {
+            padding: 15px 0;
+            margin: 15px 0 25px;
+            box-shadow: 1px 1px 1px 1px #CFCFCF;
+        }
+        &-name {
+            font-size: 18px;
+            font-weight: 200;
+            margin: 0;
+        }
     }
-    &-name {
-      font-size: 18px;
-      font-weight: 200;
-      margin: 0;
-    }
-  }
 }
 
 .dashboard {
-  &-xs {
-    &-section {
-      padding: 2em 0;
+    &-xs {
+        &-section {
+            padding: 2em 0;
+        }
     }
-  }
-  &-next-todo {
-    font-size: 22px;
-  }
+    &-next-todo {
+        font-size: 22px;
+    }
 }
