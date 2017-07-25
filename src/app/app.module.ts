@@ -30,7 +30,8 @@ import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MobileBarComponent } from './components/mobile-bar/mobile-bar.component';
 import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
-import { FamilyGoalComponent } from './components/family-goal/family-goal.component'
+import { FamilyGoalComponent } from './components/family-goal/family-goal.component';
+import { HeaderComponent } from './components/header/header.component';
 
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
@@ -86,7 +87,8 @@ export const ROUTES: Routes = [
     DashboardComponent,
     MobileBarComponent,
     DetailTodoComponent,
-    FamilyGoalComponent
+    FamilyGoalComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
