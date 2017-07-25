@@ -25,18 +25,18 @@ h4 {
 	margin: 0px 0px 0px 1em;
 }
 /*classes for ng if to see which user is selected.*/
-.selected-ux {
-  border: 0.2em solid black;
-  border-radius: 5em;
-  width: 60% !important;
+.selected-user {
+  opacity: 1 !important;
 
 }
-.no-selected-ux {
+
+.user-image {
+  width: 60% !important;
   border: 0.2em solid grey;
   border-radius: 5em;
   opacity: 0.5;
-  width: 60% !important;
 }
+
 .newuserfield{
 	padding:10px 10px 10px 5px;
   display:block;
@@ -49,7 +49,7 @@ input:focus{
 }
 
 .radio+.radio {
-    margin-top: 11px; 
+    margin-top: 11px;
 }
 
 .radio input[type=radio] {
@@ -105,7 +105,7 @@ input:focus{
 	}
   .header{
   top: -10vw;
-  } 
+  }
 }
 
 @media (min-width: 1000px) {

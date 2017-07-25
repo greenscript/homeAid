@@ -5,6 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 
+
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -17,10 +18,14 @@ export class NewUserComponent implements OnInit {
   public userName: FormControl;
   public birthdate: FormControl;
   public avatars: Array<any> = [
-    {src: 'assets/i-22.png'},
-    {src: 'assets/i-24.png'},
-    {src: 'assets/i-23.png'}
+    {src: 'assets/i-22.png', active: false},
+    {src: 'assets/i-24.png', active: false},
+    {src: 'assets/i-23.png', active: false}
   ]
+  public selectedImage: string;
+  public toggleObject: any = {
+    item: -1
+  }
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) {}
 
@@ -52,9 +57,28 @@ export class NewUserComponent implements OnInit {
     });
   }
 
+  selectImage(pEvent, pActive) {
+    this.selectedImage = pEvent
+    let absPath = window.location.origin + '/'
+    if (this.selectedImage.includes(absPath)) {
+        this.selectedImage = this.selectedImage.replace(absPath, '')
+    }
+  }
+
+  currentImage(pObjs) {
+    let unactiveImage = this.avatars.filter((avatar) => {
+      console.log(avatar)
+    })
+
+  }
+
+
+
   createUser() {
     if (this.userform.valid) {
-      this.users.push(new User(this.userName.value, 'assets/i-22.png', 0, [], [], this.birthdate.value));
+      if (this.selectedImage) {
+        this.users.push(new User(this.userName.value, this.selectedImage, 0, [], [], this.birthdate.value));
+      }
     }
   }
 }

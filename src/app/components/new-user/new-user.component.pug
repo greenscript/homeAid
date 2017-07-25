@@ -7,16 +7,12 @@ section.row
   section.col-xs-12.col-sm-12.container
     h4
       section.col-xs-12.flex-center.new-user-subcontainer
-        div
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.selected-ux(src='assets/i-22.png')
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.no-selected-ux(src='assets/i-24.png')
-          .col-xs-4.col-sm-4
-            a(href='')
-              img.no-selected-ux(src='assets/i-23.png')
+        .col-xs-4.col-sm-4(*ngFor="let avatar of avatars; let i = index;")
+            img.user-image(
+              [src]='avatar.src', 
+              (click)="selectImage($event.target.src); toggleObject.item = i ",
+              [ngClass]="{'selected-user': toggleObject.item == i }")
+              
                 
   section.col-xs-12.col-sm-12.container
     form.flex-center.flex-column([formGroup]="userform")
@@ -55,3 +51,4 @@ section.row
         .form-group.user-form.flex-center
           button.btn.btn-success.user-form-button((click)="createUser()") Create
           
+app-mobile-bar
