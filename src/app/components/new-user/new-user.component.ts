@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
-
-
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -27,7 +27,17 @@ export class NewUserComponent implements OnInit {
     item: -1
   }
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) {}
+  constructor(
+    private as: AuthService,
+    public auth: AngularFireAuth,
+    public db: AngularFireDatabase,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
+    private router: Router
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+
+  }
 
   createFormControls() {
     this.userName = new FormControl('', [
@@ -55,6 +65,9 @@ export class NewUserComponent implements OnInit {
         console.log('user not logged in');
       }
     });
+
+
+
   }
 
   selectImage(pEvent, pActive) {
@@ -78,6 +91,7 @@ export class NewUserComponent implements OnInit {
     if (this.userform.valid) {
       if (this.selectedImage) {
         this.users.push(new User(this.userName.value, this.selectedImage, 0, [], [], this.birthdate.value));
+        this.toastr.success('Usuario creado!', 'Success!')
       }
     }
   }

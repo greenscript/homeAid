@@ -42,6 +42,7 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { MomentModule } from 'angular2-moment';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 // services
 
 export const firebaseConfig = {
@@ -111,7 +112,8 @@ export const ROUTES: Routes = [
     DatepickerModule,
     RoundProgressModule,
     Angular2FontawesomeModule,
-    MomentModule
+    MomentModule,
+    ToastModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
