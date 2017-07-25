@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   public days: Array<any> = [];
   public daysWithTodos: Array<any> = [];
   public totalTodos: Array<any> = [];
+  public undoneTodos: Array<any> = [];
 
   constructor(
     public db: AngularFireDatabase,
@@ -58,14 +59,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getWeekPercentage() {
-    let undoneTodos = [];
     let totalTodos = this.totalTodos.filter(todo => {
       if (todo.status === false) {
-        undoneTodos.push(todo);
+        this.undoneTodos.push(todo);
       }
     })
 
-    let todos = this.totalTodos.length - undoneTodos.length
+    let todos = this.totalTodos.length - this.undoneTodos.length
     let percentage = 100 * todos / this.max;
     this.current = percentage;
   }

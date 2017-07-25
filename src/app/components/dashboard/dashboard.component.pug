@@ -1,21 +1,21 @@
 .row.mobile.full-height.flex-center.flex-column
-  .col-xs-12
-    p.text-center Tu proxima tarea es: 
-  .col-xs-12.flex-center
+  .col-xs-12.dashboard-xs-section
+    p.text-center.dashboard-next-todo Tu proxima tarea es: 
+  .col-xs-12.flex-center.dashboard-xs-section
     .col-xs-8.todo-xs-container.flex-center
       .col-xs-2
         img(src="assets/google-icon.png")
       .col-xs-6
-        p.todo-xs-name todo name
+        p.todo-xs-name(*ngIf="undoneTodos.length > 0") {{undoneTodos[0].description}}
         
-  .col-xs-12.flex-center.flex-column
+  .col-xs-12.flex-center.flex-column.dashboard-xs-section
     round-progress(
       [current]="current",
       [max]="max",
       [color]="'#45ccce'",
       [background]="'#eaeaea'",
-      [radius]="100",
-      [stroke]="10",
+      [radius]="150",
+      [stroke]="20",
       [rounded]="true",
       [clockwise]="true",
       [responsive]="false",
@@ -24,11 +24,11 @@
       [animationDelay]="0")
       
   
-  .col-xs-12
+  .col-xs-12.dashboard-xs-section
     .row
-      .col-xs-6
+      .col-xs-6.flex-center
         p 25 pts
-      .col-xs-6
+      .col-xs-6.flex-center
         p awards
         
   app-mobile-bar

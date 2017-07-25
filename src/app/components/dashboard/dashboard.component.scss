@@ -12,3 +12,14 @@
     }
   }
 }
+
+.dashboard {
+  &-xs {
+    &-section {
+      padding: 2em 0;
+    }
+  }
+  &-next-todo {
+    font-size: 22px;
+  }
+}
