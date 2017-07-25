@@ -66,7 +66,6 @@ export class CreateWeekAdminComponent implements OnInit {
   }
 
   getTodos(pDayIndex) {
-    let a = `/families/${this.uid}/currentWeek/${pDayIndex}/todos/`
     this.currentTodos = this.db.list(`/families/${this.uid}/currentWeek/days/${pDayIndex}/todos`, {
       query: {
         limitToLast: 20
