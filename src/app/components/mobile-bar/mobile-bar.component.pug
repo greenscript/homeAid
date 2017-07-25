@@ -1,10 +1,13 @@
 .bar-container
   .col-xs-12.bar-icons-container
     .col-xs-3.flex-center
-      i.fa.fa-user.bar-icons( aria-hidden="true")
+      a.link(href="menu", [ngClass]="{'active': this.menu}")
+        i.fa.fa-user.bar-icons( aria-hidden="true")
     .col-xs-3.flex-center
-      i.fa.fa-users.bar-icons( aria-hidden="true")
+      a.link(href="users", [ngClass]="{'active': this.users}")
+        i.fa.fa-users.bar-icons( aria-hidden="true")
     .col-xs-3.flex-center
-      i.fa.fa-circle-o-notch.bar-icons( aria-hidden="true")
+      a.link(href="dashboard", [ngClass]="{'active': dashboard}")
+        i.fa.fa-circle-o-notch.bar-icons( aria-hidden="true")
     .col-xs-3.flex-center
       i.fa.fa-bell-o.bar-icons( aria-hidden="true")
