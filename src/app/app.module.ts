@@ -65,7 +65,7 @@ export const ROUTES: Routes = [
   { path: 'familyTodos', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detailTodo', component: DetailTodoComponent },
+  { path: 'detailTodo/:id', component: DetailTodoComponent },
   { path: 'familyGoal', component: FamilyGoalComponent }
 
 

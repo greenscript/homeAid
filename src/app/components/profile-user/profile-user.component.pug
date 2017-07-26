@@ -18,8 +18,8 @@ section.row.week
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row.user-week
     .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView')
-        a.btn.btn-default.btn-user(href='/')
+        a.btn.btn-default.btn-user(role="button", [routerLink]="['/detailTodo', todo.key]")
             img.todoImg(src='../../../assets/i-29.png', alt='')
             p.todoName {{todo.value.description}}
-            p {{todo.value.category}}
+            p {{todo.key}}
 app-mobile-bar
