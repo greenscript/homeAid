@@ -14,8 +14,6 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   providers: [DataService, AuthService]
 })
 export class CreateWeekAdminComponent implements OnInit {
-  public allTodos = new Array;
-  public todos;
   public day = 0;
   public actualDay = "";
   public days = [];
@@ -26,21 +24,22 @@ export class CreateWeekAdminComponent implements OnInit {
   public currentDay: any;
   public currentDayIndex: number = 0;
 
-  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth) {}
+  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth, af: AngularFireAuth) { }
 
   ngOnInit() {
     this.afa.authState.subscribe(res => {
       if (res.uid) {
         this.uid = res.uid;
-        this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek`, {preserveSnapshot: true});
+        this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek`, { preserveSnapshot: true });
         this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-              this.weekData.push({key: snapshot.key, value: snapshot.val()})
+            this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
           console.log(this.weekData);
           this.days = this.weekData[0].value;
           this.currentDay = this.days[0].day;
           console.log(this.currentDay);
+          this.getTodos(this.actualDay);
         })
       }
     })
