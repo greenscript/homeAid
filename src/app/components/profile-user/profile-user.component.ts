@@ -39,7 +39,7 @@ export class ProfileUserComponent implements OnInit {
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     //this.loadData('../assets/data/todos.json');
     this.userId = route.snapshot.paramMap.get('id');
-    console.log(this.userId)
+    //console.log(this.userId)
   }
 
   ngOnInit() {
@@ -50,6 +50,7 @@ export class ProfileUserComponent implements OnInit {
         this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, {preserveSnapshot: true});
         this.todos
         .subscribe(snapshots => {
+          console.log(snapshots);
           snapshots.forEach(snapshot => {
             if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
               props.tododata.push(
@@ -60,7 +61,7 @@ export class ProfileUserComponent implements OnInit {
               )
             }
           });
-          console.log(props.tododata);
+          console.log(props.tododata[0].value.description);
           props.loadedUsers = true;
           props.getTodos(this.day);
           props.getUser()
@@ -73,7 +74,7 @@ export class ProfileUserComponent implements OnInit {
 
   getUser(){
      this.ds.allUsers();
-     console.log(this.ds.allUsers());
+     //console.log(this.ds.allUsers());
       this.auth.authState.subscribe(res => {
       let props = this;
       if (res && res.uid) {
@@ -81,13 +82,13 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            console.log(props.userdata)
+            //console.log(props.userdata)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
             })
             // llama a la funcion assignProperties
-            console.log(props.userdata)
+            //console.log(props.userdata)
             props.assignProperties(props.userdata)
           });
         })
@@ -117,11 +118,13 @@ export class ProfileUserComponent implements OnInit {
     this.todosView = [];
     //Nota: El nombre del Día tiene que estar en Mayuscaula, tal como sale en el array days 
     //Si no aparecera []
+    console.log(this.tododata);
+    console.log(this.day);
     for (var i in this.tododata){
-      if(this.tododata[i].value.day == this.days[this.day].name)
+      if(this.tododata[i].value.day == this.day)
       this.todosView.push(this.tododata[i])
     }
-    console.log(this.todosView);
+   // console.log(this.todosView);
   }
 
   assignProperties(pData: Array<any>) {
@@ -131,7 +134,7 @@ export class ProfileUserComponent implements OnInit {
       if (pObject.key === 'name') {
         // se le asigna el nombre a adminName
         // esto para tener el nombre o apellido de la familia y mostrarlo en la vista
-        console.log(pObject.value);
+        //console.log(pObject.value);
         this.userName = pObject.value
       }
     })
