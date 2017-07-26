@@ -65,9 +65,6 @@ export class NewUserComponent implements OnInit {
         console.log('user not logged in');
       }
     });
-
-
-
   }
 
   selectImage(pEvent, pActive) {
@@ -82,10 +79,7 @@ export class NewUserComponent implements OnInit {
     let unactiveImage = this.avatars.filter((avatar) => {
       console.log(avatar)
     })
-
   }
-
-
 
   createUser() {
     if (this.userform.valid) {

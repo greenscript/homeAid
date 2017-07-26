@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Family } from '../../models/family.model';
 import { User } from '../../models/user.model';
 import { Week } from '../../models/week.model';
@@ -24,7 +24,11 @@ export class RegisterComponent implements OnInit {
   public error: boolean = false;
   public matchError: string;
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, public toastr: ToastsManager, vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+
+  }
 
   ngOnInit() {
     // ejecuta las funciones de la creacion del form
@@ -72,6 +76,7 @@ export class RegisterComponent implements OnInit {
         // pasando como un usuario en arreglo el usuario admin, o usuario 0 de la familia
         // y habilitando la posibilidad de pushear nuevos usuarios a firebase
         this.auth.emailSignUp(this.email.value, this.password.value, this.lastName.value);
+        this.toastr.success('Redireccionando...', 'Bienvenidos!')
       } else {
         // las password no coincidieron y activa el flag de error y contenido del error
         this.error = true;

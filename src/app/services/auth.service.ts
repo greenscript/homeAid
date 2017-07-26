@@ -20,6 +20,7 @@ export class AuthService {
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
   public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday));
+  public users: FirebaseListObservable<any>;
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.af.authState.subscribe((auth) => {
@@ -50,9 +51,20 @@ export class AuthService {
   }
 
   loginWithEmail(pEmail: string, pPassword: string) {
+    let props: Array<any> = [];
     this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) =>{
       this.authState = response
-      this.router.navigateByUrl('/menu')
+      this.users = this.db.list(`/families/${response.uid}/users/`, {preserveSnapshot: true});
+      this.users.subscribe(snapshots => {
+        snapshots.forEach(snapshot => {
+          props.push({ key: snapshot.key, value: snapshot.val() })
+        });
+        if (props.length > 1) {
+          this.router.navigateByUrl('/users')
+        } else {
+          this.router.navigateByUrl('/menu')
+        }
+      })
     })
   }
 

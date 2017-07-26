@@ -1,5 +1,5 @@
 a.back(href="/")
-  img.header-logOut(src='../../../assets/i-39.png', alt='')
+  img.header-logOut(src='assets/i-39.png', alt='')
 .register-whitesquare
   section.section-header
       svg.header(width='100vw' viewBox='0 0 1085 296')
@@ -9,7 +9,7 @@ a.back(href="/")
    section.col-xs-12.col-sm-12
     form.register-form.flex-center.flex-column([formGroup]="myform")
       fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
-      .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+       .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
           [ngClass]="{'has-danger': myform.controls.name.invalid && myform.controls.name.dirty, 'has-success': myform.controls.name.valid && myform.controls.name.dirty}"
           )
           input.form-control.register-form_input(
@@ -20,7 +20,7 @@ a.back(href="/")
             required
           )
           
-      .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+       .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
           [ngClass]="{'has-danger': myform.controls.name.invalid && myform.controls.name.dirty, 'has-success': myform.controls.name.valid && myform.controls.name.dirty}"
           )
           input.form-control.register-form_input(
