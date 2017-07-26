@@ -143,7 +143,7 @@ export class FamilyComponent implements OnInit {
     //Si no aparecera []
     for (var i in this.days) {
       console.log("hellos");
-      if (this.days[i].day == this.currentDayIndex) {
+      if (this.days[i].value.day == this.day) {
         this.todosView.push(this.days[i])
       }
       // if (this.days[i].value.currentDay == this.days[this.currentDay].this.todos.description)
