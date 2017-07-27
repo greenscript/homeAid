@@ -26,12 +26,13 @@ export class ProfileUserComponent implements OnInit {
   public currentWeek: FirebaseListObservable<any>;
   public currentDay: any;
   public weekData: Array<any> = [];
-  public currentDayIndex: number = 0;
-  public actualDay = "";
+  public days = [];
+  public actualDay: string;
+  public currentDayIndex:string;
 
   userName
   day = 0;
-  public days = [];
+  //public days = [];
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     //this.loadData('../assets/data/todos.json');
@@ -79,7 +80,7 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            //console.log(props.userdata)
+            //console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
@@ -88,6 +89,8 @@ export class ProfileUserComponent implements OnInit {
             //console.log(props.userdata)
             props.assignProperties(props.userdata)
           });
+           console.log(props.userdata);
+           props.assignProperties(props.userdata)
         })
       } else {
         console.log('user not logged in');
