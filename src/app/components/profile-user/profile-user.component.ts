@@ -27,7 +27,6 @@ export class ProfileUserComponent implements OnInit {
   public weekData: Array<any> = [];
   public days = [];
   
-
   userName
   day = 0;
  
@@ -76,7 +75,7 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            console.log("user", snapshot)
+            //console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
@@ -84,6 +83,7 @@ export class ProfileUserComponent implements OnInit {
             // llama a la funcion assignProperties
             //console.log(props.userdata)
           });
+           console.log(props.userdata);
            props.assignProperties(props.userdata)
         })
       } else {
@@ -145,5 +145,5 @@ export class ProfileUserComponent implements OnInit {
       }
     })
   }
-  
+
 }
