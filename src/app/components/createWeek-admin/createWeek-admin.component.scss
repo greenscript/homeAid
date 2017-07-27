@@ -1,4 +1,10 @@
 $header-color: #efcf44;
+
+.disable {
+  pointer-events: none;
+  cursor: default;
+}
+
 .header {
     margin-top: 0;
     position: absolute;

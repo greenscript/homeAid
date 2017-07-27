@@ -17,6 +17,7 @@ section.row
             img.addBotton(src='assets/i-37.png', alt='')
             p.newTodoBottom Nueva tarea
             
+            
 section.row.weekDesktop
     .col-xs-12.flex-center()
         button.btn.btn-default.btnDesktop 
@@ -31,10 +32,9 @@ section.row.weekDesktop
 section.row.admin-week
     .col-xs-12.flex-center.newTodoMobile
        button.btn.btn-default.btn-admin.btn-newTodo.flex-center([disabled]="pastDweller")
-         .col-xs-6
-           a.newTodoBottom(href="newTodo/{{currentDay | date:'EEEEMMMMd'}}/{{currentDayIndex}}") Nueva tarea
-         .col-xs-6
-           img.addBotton(src='assets/i-37.png', alt='')
+        a.newTodoBottom(href="newTodo/{{currentDay | date:'EEEEMMMMd'}}/{{currentDayIndex}}", [ngClass]="{'disable': pastDweller}") Nueva tarea
+        .col-xs-6
+          img.addBotton(src='assets/i-37.png', alt='')
     .col-xs-12.col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
         a.btn.btn-default.btn-admin(href='/')
             img.todoBotton(src='assets/i-22.png', alt='')
