@@ -24,13 +24,14 @@ export class ProfileUserComponent implements OnInit {
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
   public currentWeek: FirebaseListObservable<any>;
-  public currentDay: any;
   public weekData: Array<any> = [];
+  public actualDay: string = '';
   public currentDayIndex: number = 0;
-  public actualDay = "";
-  public userName: string;
-  public day = 0;
+  public currentDay: any;
   public days = [];
+  public userName: string
+  public day = 0;
+
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     this.userId = route.snapshot.paramMap.get('id');
@@ -67,6 +68,7 @@ export class ProfileUserComponent implements OnInit {
    if (this.day == 7)
    this.day = 0
 
+   console.log("day", this.weekData[this.day].value);
    this.getTodos(this.day)
   }
 
@@ -83,15 +85,13 @@ export class ProfileUserComponent implements OnInit {
 
       if (res.uid) {
         this.userId = res.uid;
-        this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek`, { preserveSnapshot: true });
+        this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek/days`, { preserveSnapshot: true });
         this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            this.weekData.push({ key: snapshot.key, value: snapshot.val() })
+            this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
           });
           this.days = this.weekData[0].value;
           this.currentDay = this.days[0].day;
-
-
           this.getTodos(this.actualDay);
           this.getTodos(this.currentDayIndex)
         })
@@ -101,12 +101,9 @@ export class ProfileUserComponent implements OnInit {
 
   getTodos(day){
     this.todosView = [];
-    //Nota: El nombre del Día tiene que estar en Mayuscaula, tal como sale en el array days
-    //Si no aparecera []
-    console.log(this.tododata);
     console.log(this.day);
     for (var i in this.tododata){
-      if(this.tododata[i].value.day == this.currentDayIndex)
+      if(this.tododata[i].value.day == this.day)
       this.todosView.push(this.tododata[i])
     }
   }
