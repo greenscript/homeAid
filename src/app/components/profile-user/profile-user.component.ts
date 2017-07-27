@@ -17,7 +17,7 @@ import { DataService } from '../../services/data.service';
 export class ProfileUserComponent implements OnInit {
   public todos: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
-  public userdata: Array<Object> = [];
+  public userdata: Array<any> = [];
   public userId: string = '';
   public tododata: Array<any> = [];
   public todosView: Array<any> = [];
@@ -26,71 +26,38 @@ export class ProfileUserComponent implements OnInit {
   public currentWeek: FirebaseListObservable<any>;
   public currentDay: any;
   public weekData: Array<any> = [];
+  public actualDay: string = '';
+  public currentDayIndex: number = 0;
+  public currentDay: any;
   public days = [];
-  public actualDay: string;
-  public currentDayIndex:string;
+  public userName: string
+  public day = 0;
 
-  userName
-  day = 0;
-  //public days = [];
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
-    //this.loadData('../assets/data/todos.json');
     this.userId = route.snapshot.paramMap.get('id');
     //console.log(this.userId)
   }
 
   ngOnInit() {
     this.auth.authState.subscribe(res => {
-      let props = this;
       if (res && res.uid) {
-        props.currentFamily = res.uid;
-        this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, {preserveSnapshot: true});
-        this.todos
-        .subscribe(snapshots => {
-          console.log(snapshots);
-          snapshots.forEach(snapshot => {
-            if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
-              props.tododata.push(
-                ({
-                  key: snapshot.key,
-                  value: snapshot.val()
-                })
-              )
-            }
-          });
-          console.log(props.tododata[0].value.description);
-          props.loadedUsers = true;
-          props.getTodos(this.day);
-          props.getUser()
-        })
-      } else {
-        console.log('user not logged in');
+         this.currentFamily = res.uid;
+         console.log(this.currentFamily)
+         this.getUser()
       }
     });
   }
 
   getUser(){
-     this.ds.allUsers();
-     //console.log(this.ds.allUsers());
       this.auth.authState.subscribe(res => {
-      let props = this;
       if (res && res.uid) {
-        this.selectedUser = this.db.list(`/families/${props.currentFamily}/users/${props.userId}`, {preserveSnapshot: true});
-        this.selectedUser
-        .subscribe(snapshots => {
+        this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}`, {preserveSnapshot: true});
+        this.selectedUser.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            //console.log("user", snapshot)
-            props.userdata.push({
-              key: snapshot.key,
-              value: snapshot.val()
-            })
-            // llama a la funcion assignProperties
-            //console.log(props.userdata)
-            props.assignProperties(props.userdata)
+            this.userdata.push({ key: snapshot.key, value: snapshot.val() })
           });
-           console.log(props.userdata);
-           props.assignProperties(props.userdata)
+          this.userName = this.userdata[2].value
         })
       } else {
         console.log('user not logged in');
@@ -108,7 +75,7 @@ export class ProfileUserComponent implements OnInit {
 
   back(){
     this.day -= 1;
-    if (this.day == -1)
+    if (this.day == -1 || this.day === 0)
     this.day = 6
 
     this.getTodos(this.day)
@@ -116,6 +83,7 @@ export class ProfileUserComponent implements OnInit {
 
    getDay() {
     this.auth.authState.subscribe(res => {
+
       if (res.uid) {
         this.userId = res.uid;
         this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek`, { preserveSnapshot: true });
@@ -123,10 +91,8 @@ export class ProfileUserComponent implements OnInit {
           snapshots.forEach(snapshot => {
             this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
-          console.log("weekData ", this.weekData);
           this.days = this.weekData[0].value;
           this.currentDay = this.days[0].day;
-          console.log("currentDay ", this.currentDay);
           this.getTodos(this.actualDay);
           this.getTodos(this.currentDayIndex)
         })
@@ -146,18 +112,4 @@ export class ProfileUserComponent implements OnInit {
     }
    // console.log(this.todosView);
   }
-
-  assignProperties(pData: Array<any>) {
-    // recibe como parametro un array
-    pData.forEach((pObject) => {
-      // si existe la propiedad nombre en los datos del usuario sacados de firebase
-      if (pObject.key === 'name') {
-        // se le asigna el nombre a adminName
-        // esto para tener el nombre o apellido de la familia y mostrarlo en la vista
-        //console.log(pObject.value);
-        this.userName = pObject.value
-      }
-    })
-  }
-
 }

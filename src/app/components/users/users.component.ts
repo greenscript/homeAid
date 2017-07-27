@@ -32,8 +32,7 @@ export class UsersComponent implements OnInit {
         this.users
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            //console.log(snapshot.key)
-            if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
+            if (props.loadedUsers === false) {
               props.usersdata.push(
                 ({
                   key: snapshot.key,
@@ -55,6 +54,6 @@ export class UsersComponent implements OnInit {
     console.log("select: " + pUid);
     this.userId = pUid;
   }
-  
+
 
 }

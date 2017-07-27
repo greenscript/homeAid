@@ -1,7 +1,7 @@
 section
     svg.header(width='100vw' viewBox='0 0 1085 296')
       path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-    h1.header-title Crear Semana
+    h1.header-title Manejar Semana
 section.row.week
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
@@ -30,9 +30,11 @@ section.row.weekDesktop
 
 section.row.admin-week
     .col-xs-12.flex-center.newTodoMobile
-       a.btn.btn-default.btn-admin.btn-newTodo(href="newTodo/{{currentDay | date:'EEEEMMMMd'}}/{{currentDayIndex}}")
-          p.newTodoBottom Nueva tarea
-          img.addBotton(src='assets/i-37.png', alt='')
+       button.btn.btn-default.btn-admin.btn-newTodo.flex-center([disabled]="pastDweller")
+         .col-xs-6
+           a.newTodoBottom(href="newTodo/{{currentDay | date:'EEEEMMMMd'}}/{{currentDayIndex}}") Nueva tarea
+         .col-xs-6
+           img.addBotton(src='assets/i-37.png', alt='')
     .col-xs-12.col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
         a.btn.btn-default.btn-admin(href='/')
             img.todoBotton(src='assets/i-22.png', alt='')
