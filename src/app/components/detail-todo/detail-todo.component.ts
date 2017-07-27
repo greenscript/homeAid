@@ -15,12 +15,15 @@ import { DataService } from '../../services/data.service';
 })
 export class DetailTodoComponent implements OnInit {
   todoId;
+  uxId;
   currentTodo;
   uid:string;
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
-    this.todoId = route.snapshot.paramMap.get('id');
-    console.log('id del todo',this.todoId);
+    this.todoId = route.snapshot.paramMap.get('todoid');
+    this.uxId = route.snapshot.paramMap.get('uxid');
+
+    console.log('id del todo',this.todoId , 'id del ux',this.uxId );
   }
 
   ngOnInit() {
