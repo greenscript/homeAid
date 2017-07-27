@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-detail-todo',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-todo.component.scss']
 })
 export class DetailTodoComponent implements OnInit {
-
-  constructor() { }
+  public userId: string;
+  constructor(private route: ActivatedRoute, ) {
+    this.userId = route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
   }
