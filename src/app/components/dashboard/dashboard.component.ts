@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   public daysWithTodos: Array<any> = [];
   public totalTodos: Array<any> = [];
   public undoneTodos: Array<any> = [];
+  public percentage: string;
 
   constructor(
     public db: AngularFireDatabase,
@@ -62,12 +63,18 @@ export class DashboardComponent implements OnInit {
     let totalTodos = this.totalTodos.filter(todo => {
       if (todo.status === false) {
         this.undoneTodos.push(todo);
+        console.log(this.undoneTodos)
       }
     })
 
     let todos = this.totalTodos.length - this.undoneTodos.length
-    let percentage = 100 * todos / this.max;
+    console.log(this.totalTodos.length, this.undoneTodos.length)
+    console.log(todos)
+    let percentage =  todos / this.totalTodos.length * this.max;
+    console.log(percentage)
     this.current = percentage;
+    this.percentage = `${percentage}%`
+    console.log(this.percentage)
   }
 
 }

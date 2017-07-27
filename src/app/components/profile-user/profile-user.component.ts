@@ -4,7 +4,7 @@ import { User } from '../../models/user.model';
 import { NewTodo } from '../../models/newTodo.model';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
@@ -26,7 +26,8 @@ export class ProfileUserComponent implements OnInit {
   public currentWeek: FirebaseListObservable<any>;
   public weekData: Array<any> = [];
   public days = [];
-
+  public currentDayTodoId: string;
+  public currentDayTodos: FirebaseObjectObservable<any>;
 
   userName
   day = 0;
@@ -59,6 +60,8 @@ export class ProfileUserComponent implements OnInit {
           props.loadedUsers = true;
           props.getTodos(this.day);
           props.getDay()
+          this.getCurrentDayTodoId()
+          console.log(this.userId)
         })
       } else {
         console.log('user not logged in');
@@ -98,6 +101,7 @@ export class ProfileUserComponent implements OnInit {
    this.day = 0
 
    console.log("day", this.weekData[this.day].value);
+   this.getCurrentDayTodoId()
    this.getTodos(this.day)
   }
 
@@ -110,17 +114,12 @@ export class ProfileUserComponent implements OnInit {
   }
 
    getDay() {
-    this.auth.authState.subscribe(res => {
-      if (res.uid) {
-        this.userId = res.uid;
-        this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek/days`, { preserveSnapshot: true });
-        this.currentWeek.subscribe(snapshots => {
-          snapshots.forEach(snapshot => {
-            this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
-          });
-          console.log("weekData ", this.weekData[0].value);
-        })
-      }
+    this.currentWeek = this.db.list(`/families/${this.currentFamily}/currentWeek/days`, { preserveSnapshot: true });
+    this.currentWeek.subscribe(snapshots => {
+      snapshots.forEach(snapshot => {
+        this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
+      });
+      console.log("weekData ", this.weekData);
     })
   }
 
@@ -142,6 +141,25 @@ export class ProfileUserComponent implements OnInit {
         // esto para tener el nombre o apellido de la familia y mostrarlo en la vista
         //console.log(pObject.value);
         this.userName = pObject.value
+      }
+    })
+  }
+
+  getCurrentDayTodoId() {
+    let currentDayTodos = []
+    this.currentDayTodos = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`, { preserveSnapshot: true });
+    console.log(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`)
+    this.currentDayTodos.subscribe(snapshots =>{
+      snapshots.forEach(snapshot => {
+        currentDayTodos.push({ key: snapshot.key, value : snapshot.val()})
+      })
+    })
+    currentDayTodos.filter((todo) => {
+      console.log('asaasd' ,todo.value.username)
+      if (todo.value.username === this.userId) {
+        console.log(todo.key)
+        this.currentDayTodoId = todo.key
+        console.log(this.currentDayTodoId)
       }
     })
   }

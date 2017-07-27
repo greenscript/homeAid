@@ -9,6 +9,7 @@
         p.todo-xs-name(*ngIf="undoneTodos.length > 0") {{undoneTodos[0].description}}
         
   .col-xs-12.flex-center.flex-column.dashboard-xs-section
+    p(*ngIf="percentage.length > 0", style="padding-bottom: 10px;") Tareas completadas esta semana: {{percentage}}
     round-progress(
       [current]="current",
       [max]="max",

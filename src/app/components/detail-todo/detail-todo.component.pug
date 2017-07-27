@@ -10,7 +10,7 @@ section.row
       h3#todo-title 
     select.select-detail
       option(value="Done") Completado
-    h3 Tarea completada: {{todo.value.status}}
+    //- h3 Tarea completada: {{todo.value.status}}
     button.btn-menu-admin((click)='completetask()') Completar tarea
     button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
@@ -20,3 +20,5 @@ section.row
 
       .modal-body
         button#btn-yellow.btn.btn-default(click='relevanceLaw.hide()') Aplicar ley
+
+app-mobile-bar
