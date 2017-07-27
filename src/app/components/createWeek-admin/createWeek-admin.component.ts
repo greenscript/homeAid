@@ -53,20 +53,23 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   }
 
   next() {
-    console.log(this.currentDay);
-    this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
-    if (this.currentDayIndex === 6) {
-      this.currentDayIndex = 0;
+    if (this.currentDayIndex == 6) {
+      this.currentDayIndex = -1;
+    } else if (this.currentDayIndex === 7) {
+      this.currentDayIndex = -1;
     }
+    this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
+
     this.checkDate()
     this.getTodos(this.currentDayIndex)
   }
 
   back() {
-    this.currentDay = this.currentDayIndex > 0 ? this.days[this.currentDayIndex = this.currentDayIndex - 1].day : this.days[0].day
-    if (this.currentDayIndex === 0) {
-      this.currentDayIndex = 6;
+    if (this.currentDayIndex === -1 || this.currentDayIndex === 0) {
+      this.currentDayIndex = 7;
     }
+    this.currentDay = this.currentDayIndex > 0 ? this.days[this.currentDayIndex = this.currentDayIndex - 1].day : this.days[0].day
+
     this.checkDate()
     this.getTodos(this.currentDayIndex)
   }

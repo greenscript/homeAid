@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   public daysWithTodos: Array<any> = [];
   public totalTodos: Array<any> = [];
   public undoneTodos: Array<any> = [];
-  public percentage: string;
+  public percentage: string = '';
 
   constructor(
     public db: AngularFireDatabase,

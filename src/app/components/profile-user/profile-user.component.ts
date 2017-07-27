@@ -28,7 +28,7 @@ export class ProfileUserComponent implements OnInit {
   public days = [];
   public currentDayTodoId: string;
   public currentDayTodos: FirebaseObjectObservable<any>;
-
+  public daysKeys: Array<any> = [];
   userName
   day = 0;
 
@@ -101,8 +101,9 @@ export class ProfileUserComponent implements OnInit {
    this.day = 0
 
    console.log("day", this.weekData[this.day].value);
-   this.getCurrentDayTodoId()
    this.getTodos(this.day)
+   this.getCurrentDayTodoId()
+
   }
 
   back(){
@@ -154,12 +155,13 @@ export class ProfileUserComponent implements OnInit {
         currentDayTodos.push({ key: snapshot.key, value : snapshot.val()})
       })
     })
+    console.log(currentDayTodos)
     currentDayTodos.filter((todo) => {
-      console.log('asaasd' ,todo.value.username)
+      console.log('asaasd' ,todo)
       if (todo.value.username === this.userId) {
         console.log(todo.key)
-        this.currentDayTodoId = todo.key
-        console.log(this.currentDayTodoId)
+        this.daysKeys.push(todo.key)
+        console.log(this.daysKeys)
       }
     })
   }

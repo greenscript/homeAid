@@ -74,6 +74,7 @@ export class DetailTodoComponent implements OnInit {
       'status': true,
       'username': currentTodoData[5].value
     })
+    console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`)
     this.currentDayTodo.set({
       'category': currentDayData[0].value,
       'day':  currentDayData[1].value,
