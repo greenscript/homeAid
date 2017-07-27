@@ -35,7 +35,7 @@ section.row
             placeholder='Fecha de nacimiento',
             required 
           )
-        .form-group
+        .form-group.col-xs-12
           .radio.col-xs-6
             label Femenino
               input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
@@ -44,9 +44,9 @@ section.row
               input#optionsRadios2(type='radio', name='optionsRadios', value='option2')  
                            
         select.form-control(multiple='')
-          option.blue(val='1')
-          option.yellow(val='2')
-          option.green(val='3')
+          option.option.blue(val='1')
+          option.option.yellow(val='2')
+          option.option.green(val='3')
             
         .form-group.user-form.flex-center
           button.btn.btn-success.user-form-button((click)="createUser()") Create
