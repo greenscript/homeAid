@@ -148,6 +148,8 @@ export class ProfileUserComponent implements OnInit {
 
   getCurrentDayTodoId() {
     let currentDayTodos = []
+    this.daysKeys = []
+
     this.currentDayTodos = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`, { preserveSnapshot: true });
     console.log(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`)
     this.currentDayTodos.subscribe(snapshots =>{
