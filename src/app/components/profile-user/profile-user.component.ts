@@ -24,19 +24,17 @@ export class ProfileUserComponent implements OnInit {
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
   public currentWeek: FirebaseListObservable<any>;
-  public currentDay: any;
   public weekData: Array<any> = [];
-  public currentDayIndex: number = 0;
-  public actualDay = "";
+  public days = [];
+  
 
   userName
   day = 0;
-  public days = [];
+ 
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     //this.loadData('../assets/data/todos.json');
     this.userId = route.snapshot.paramMap.get('id');
-    //console.log(this.userId)
   }
 
   ngOnInit() {
@@ -47,7 +45,6 @@ export class ProfileUserComponent implements OnInit {
         this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, {preserveSnapshot: true});
         this.todos
         .subscribe(snapshots => {
-          console.log(snapshots);
           snapshots.forEach(snapshot => {
             if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
               props.tododata.push(
@@ -58,10 +55,10 @@ export class ProfileUserComponent implements OnInit {
               )
             }
           });
-          console.log(props.tododata[0].value.description);
+          props.getUser()
           props.loadedUsers = true;
           props.getTodos(this.day);
-          props.getUser()
+          props.getDay()
         })
       } else {
         console.log('user not logged in');
@@ -79,15 +76,15 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            //console.log(props.userdata)
+            console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
             })
             // llama a la funcion assignProperties
             //console.log(props.userdata)
-            props.assignProperties(props.userdata)
           });
+           props.assignProperties(props.userdata)
         })
       } else {
         console.log('user not logged in');
@@ -100,6 +97,7 @@ export class ProfileUserComponent implements OnInit {
    if (this.day == 7)
    this.day = 0
 
+   console.log("day", this.weekData[this.day].value);
    this.getTodos(this.day)
   }
 
@@ -115,17 +113,12 @@ export class ProfileUserComponent implements OnInit {
     this.auth.authState.subscribe(res => {
       if (res.uid) {
         this.userId = res.uid;
-        this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek`, { preserveSnapshot: true });
+        this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek/days`, { preserveSnapshot: true });
         this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            this.weekData.push({ key: snapshot.key, value: snapshot.val() })
+            this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
           });
-          console.log("weekData ", this.weekData);
-          this.days = this.weekData[0].value;
-          this.currentDay = this.days[0].day;
-          console.log("currentDay ", this.currentDay);
-          this.getTodos(this.actualDay);
-          this.getTodos(this.currentDayIndex)
+          console.log("weekData ", this.weekData[0].value);
         })
       }
     })
@@ -133,15 +126,11 @@ export class ProfileUserComponent implements OnInit {
 
   getTodos(day){
     this.todosView = [];
-    //Nota: El nombre del Día tiene que estar en Mayuscaula, tal como sale en el array days 
-    //Si no aparecera []
-    console.log(this.tododata);
     console.log(this.day);
     for (var i in this.tododata){
-      if(this.tododata[i].value.day == this.currentDayIndex)
+      if(this.tododata[i].value.day == this.day)
       this.todosView.push(this.tododata[i])
     }
-   // console.log(this.todosView);
   }
 
   assignProperties(pData: Array<any>) {
@@ -156,5 +145,5 @@ export class ProfileUserComponent implements OnInit {
       }
     })
   }
-
+  
 }
