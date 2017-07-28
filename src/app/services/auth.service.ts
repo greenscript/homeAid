@@ -88,7 +88,7 @@ export class AuthService {
     console.log(startDate, stopDate)
     let dateArray: Array<any> = [];
     let currentDate = startDate;
-    while (currentDate >= stopDate) {
+    while (currentDate <= stopDate) {
       console.log('asd')
        dateArray.push( new Day (new Date(currentDate)) )
        for (let i = 0; i < 6; i++) {
@@ -116,7 +116,7 @@ export class AuthService {
               this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
                 [
                     new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
-                ], [], this.currentWeek)
+                ], [{}], this.currentWeek)
             break;
             case 'facebook.com':
               this.updateFamilyData(credential.additionalUserInfo.profile.last_name,

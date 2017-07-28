@@ -1,3 +1,4 @@
+
 a.back(href="/")
   img.header-logOut(src='assets/i-39.png', alt='')
 .register-whitesquare
@@ -31,7 +32,7 @@ a.back(href="/")
             required
           )
           
-      .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+      .form-group.col-xs-10.col-sm-6.register-form_wrapper.flex-center(
         [ngClass]="{'has-danger': myform.controls.email.invalid && myform.controls.email.dirty, 'has-success': myform.controls.email.valid && myform.controls.email.dirty}"
         )
         input.form-control.register-form_input(
@@ -41,7 +42,7 @@ a.back(href="/")
           placeholder="Email",
           required
         )
-      .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+      .form-group.col-xs-10.col-sm-6.register-form_wrapper.flex-center(
         [ngClass]="{'has-danger': myform.controls.password.invalid && myform.controls.password.dirty, 'has-success': myform.controls.password.valid && myform.controls.password.dirty}"
         )
         input.form-control.register-form_input(
@@ -52,7 +53,7 @@ a.back(href="/")
           required
         )
         .error(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") Password must be 8 characters long
-      .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+      .form-group.col-xs-10.col-sm-6.register-form_wrapper.flex-center(
         [ngClass]="{'has-danger': myform.controls.repeatPassword.invalid && myform.controls.repeatPassword.dirty, 'has-success': myform.controls.repeatPassword.valid && myform.controls.repeatPassword.dirty}"
         )
         input.form-control.register-form_input(
