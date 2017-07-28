@@ -88,7 +88,7 @@ export class AuthService {
     console.log(startDate, stopDate)
     let dateArray: Array<any> = [];
     let currentDate = startDate;
-    while (currentDate <= stopDate) {
+    while (currentDate >= stopDate) {
       console.log('asd')
        dateArray.push( new Day (new Date(currentDate)) )
        for (let i = 0; i < 6; i++) {

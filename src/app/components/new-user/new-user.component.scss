@@ -72,6 +72,16 @@ input:focus{
 .tema {
   top: 50px;
 }
+select[multiple]{
+  height: 4.3rem;
+  margin-bottom: 2rem;
+}
+.option{
+   width:  31%;
+   height: 2rem;
+   margin: 1%;
+   float: left;
+}
 
 @media (min-width: 320px) {
   .newuser {

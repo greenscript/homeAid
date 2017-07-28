@@ -1,5 +1,9 @@
 $header-color: #5aabc5;
 
+.none {
+  display: none;
+}
+
 .header {
   margin-top: 0;
   position: absolute;
@@ -97,7 +101,7 @@ p {
 	}
   .header{
   top: -10vw;
-  } 
+  }
 }
 
 @media (min-width: 1000px) {
@@ -105,8 +109,3 @@ p {
   top: -16vw;
   }
 }
-
-
-
-  
-
