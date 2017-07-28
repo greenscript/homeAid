@@ -68,25 +68,27 @@ export class FamilyComponent implements OnInit {
     });
   }
 
-  userTodo() {
+  userTodo(userId) {
     this.auth.authState.subscribe(res => {
       let props = this;
-       props.tododata = [];
+      props.tododata = [];
       if (res && res.uid) {
         props.currentFamily = res.uid;
-        this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, {preserveSnapshot: true});
+        this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, { preserveSnapshot: true });
         this.todos
-        .subscribe(snapshots => {
-          snapshots.forEach(snapshot => {
+          .subscribe(snapshots => {
+            snapshots.forEach(snapshot => {
               props.tododata.push(
                 ({
                   key: snapshot.key,
                   value: snapshot.val()
                 })
               )
-          });
-          this.getTodos(this.day)
-        })
+            });
+            console.log("lla", props.tododata);
+
+            //this.getTodos(this.day)
+          })
       } else {
         console.log('todos not logged in');
       }
@@ -100,7 +102,7 @@ export class FamilyComponent implements OnInit {
         this.currentWeek = this.db.list(`/families/${this.userId}/currentWeek/days`, { preserveSnapshot: true });
         this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
+            this.weekData.push({ key: snapshot.key, value: snapshot.val().day })
           });
         })
       }
@@ -110,33 +112,41 @@ export class FamilyComponent implements OnInit {
   selectUser(pUid) {
     console.log("select: " + pUid);
     this.userId = pUid;
-    this.userTodo();
+    this.userTodo(this.userId);
+    console.log("sjkadhf", this.userId);
+
   }
 
-   next(){
-   this.day += 1;
-   if (this.day == 7)
-   this.day = 0
+  next() {
+    this.day += 1;
+    if (this.day == 7)
+      this.day = 0
 
-   console.log("day", this.weekData[this.day].value);
-   this.getTodos(this.day)
+    console.log("day", this.weekData[this.day].value);
+    this.getTodos(this.day)
   }
 
-  back(){
-    this.day -= 1; 
+  back() {
+    this.day -= 1;
     if (this.day == -1)
-    this.day = 6
+      this.day = 6
 
     this.getTodos(this.day)
   }
 
   getTodos(day) {
+    console.log("day", day);
+    console.log("data", this.tododata);
     this.todosView = [];
-    for (var i in this.tododata){
-      if(this.tododata[i].value.day == this.day)
-      this.todosView.push(this.tododata[i])
+    for (var i in this.tododata) {
+      if (this.tododata[i].value.day == this.day)
+        this.todosView.push(this.tododata[i])
     }
+    console.log("sdkf", this.todosView);
+
   }
+
+
 
 
 }
