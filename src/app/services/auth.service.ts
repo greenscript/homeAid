@@ -109,8 +109,11 @@ export class AuthService {
   }
 
   private socialSignIn(provider) {
+
     return this.af.auth.signInWithPopup(provider)
+
       .then((credential) =>  {
+        console.log(credential)
           switch (credential.credential.providerId) {
             case 'google.com':
               this.updateFamilyData(credential.additionalUserInfo.profile.family_name,

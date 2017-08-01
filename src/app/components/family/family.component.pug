@@ -6,7 +6,7 @@ section.row.family.col-xs-12.flex-center
     .col-xs-4.text-center(*ngFor="let user of usersdata")
         a(role="button", (click)="selectUser(user.key)")
             img.no-selected-ux([src]='user.value.avatar')
-            p.perUserName {{user.value.name}}
+            p.perUserName(*ngIf="userdata.length > 0") {{user.value.name}}
 
 section.row.week
     .col-xs-4.flex-center
@@ -20,6 +20,6 @@ section.row.week
 section.row.user-week
     .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView')
         a.btn.btn-default.btn-user(href='/')
-            img.todoImg(src='../../../assets/i-29.png', alt='')
-            p.todoName {{todo.value.description}}
+            img.todoImg(src='assets/i-29.png', alt='')
+            p.todoName(*ngIf="tododata.length > 0") {{todo.value.description}}
 app-mobile-bar
