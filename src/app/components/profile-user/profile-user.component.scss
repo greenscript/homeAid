@@ -4,15 +4,24 @@ $header-color: #5aabc5;
   display: none;
 }
 
+.percent{
+ width: 100vw;
+ height: 18vh;
+ background-color: $header-color; 
+}
+
+.head{
+  background-color: red;
+}
+.path{
+    fill:$header-color;
+  }
+
 .header {
   margin-top: 0;
   position: absolute;
   z-index: -1;
   top: 0;
-
-  .path{
-    fill:$header-color;
-  }
 
   &-title {
         color: white;
@@ -22,8 +31,9 @@ $header-color: #5aabc5;
     }
   &-icon{
       width: 3.5rem;
-      position: relative;
-      top: -2rem;
+      position: absolute;
+      top: 2rem;
+      background-color: red;
   }
 }
 
@@ -33,9 +43,10 @@ $header-color: #5aabc5;
       border-radius: 50%;
       border: 6px solid #5aabc5;
       padding: 8px;
-      width: 90px;
       height: 90px;
       margin: auto;
+      position: relative;
+      top: -5rem;
     }
     &-logOut{
       margin-left: .8rem;
@@ -48,8 +59,6 @@ $header-color: #5aabc5;
 }
 
 .week{
-    padding: 5vh 0;
-
   &-day{
       margin-top: 18%;
   }

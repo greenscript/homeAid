@@ -29,9 +29,11 @@ export class ProfileUserComponent implements OnInit {
   public currentDayTodoId: string;
   public currentDayTodos: FirebaseObjectObservable<any>;
   public daysKeys: Array<any> = [];
+  public current: number= 50;
+  public max: number = 100;
   userName
-  day = 0;
-
+  actualDate = new Date();
+  day = this.actualDate.getDay();
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     //this.loadData('../assets/data/todos.json');
@@ -125,6 +127,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getTodos(day){
+    console.log("actualDat", this.actualDate.getDay());
     this.todosView = [];
     console.log(this.day);
     for (var i in this.tododata){
