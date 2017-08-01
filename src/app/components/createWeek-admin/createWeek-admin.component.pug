@@ -32,7 +32,7 @@ section.row.weekDesktop
 section.row.admin-week
     .col-xs-12.flex-center.newTodoMobile
        button.btn.btn-default.btn-admin.btn-newTodo.flex-center([disabled]="pastDweller")
-        a.newTodoBottom([routerLink]="['/newTodo', currentDayIndex]", [ngClass]="{'disable': pastDweller}") Nueva tarea
+        a.newTodoBottom([routerLink]="['/newTodo',currentDay,  currentDayIndex]", [ngClass]="{'disable': pastDweller}") Nueva tarea
         .col-xs-6
           img.addBotton(src='assets/i-37.png', alt='')
     .col-xs-12.col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
