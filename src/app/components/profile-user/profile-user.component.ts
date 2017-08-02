@@ -31,9 +31,12 @@ export class ProfileUserComponent implements OnInit {
   public daysKeys: Array<any> = [];
   public current: number= 50;
   public max: number = 100;
-  userName
-  actualDate = new Date();
-  day = this.actualDate.getDay();
+  userName;
+  actualDate: Date = new Date();
+  day: number = this.actualDate.getDay();
+  dayView : Date = this.actualDate;
+  myBooleanValue: boolean = false;
+  d = new Date();
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     //this.loadData('../assets/data/todos.json');
@@ -81,7 +84,7 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            console.log("user", snapshot)
+           // console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
@@ -98,11 +101,21 @@ export class ProfileUserComponent implements OnInit {
   }
 
   next(){
+  //día viejo
+  var d = this.dayView;
+  console.log(this.d)
+  //día nuevo
+  this.d.setDate(this.d.getDate() + 1)
+  console.log(this.d)
+  //this.dayView = this.d;
+
    this.day += 1;
    if (this.day == 7)
    this.day = 0
-
-   console.log("day", this.weekData[this.day].value);
+   
+   //console.log("day", this.weekData[this.day].value);
+   this.dayView = this.d;
+   console.log("view",this.dayView)
    this.getTodos(this.day)
    this.getCurrentDayTodoId()
 
@@ -169,6 +182,10 @@ export class ProfileUserComponent implements OnInit {
         console.log(this.daysKeys)
       }
     })
+  }
+
+  clickHide(){
+    this.myBooleanValue = true;
   }
 
 }
