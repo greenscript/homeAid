@@ -32,9 +32,9 @@ export class ProfileUserComponent implements OnInit {
   public current: number= 50;
   public max: number = 100;
   userName;
-  actualDate: Date = new Date();
-  day: number = this.actualDate.getDay();
-  dayView : Date = this.actualDate;
+  currentDate: Date = new Date();
+  day: number = this.currentDate.getDay();
+  dayView : Date = this.currentDate;
   myBooleanValue: boolean = false;
   d = new Date();
 
@@ -140,7 +140,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getTodos(day){
-    console.log("actualDat", this.actualDate.getDay());
+    console.log("actualDat", this.currentDate.getDay());
     this.todosView = [];
     console.log(this.day);
     for (var i in this.tododata){
