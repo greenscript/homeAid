@@ -11,23 +11,17 @@ section.row.week
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-section.row
-    .col-xs-12.newTodoDesktop
-        a.btn.btn-default.btn-admin.btn-newTodo
-            img.addBotton(src='assets/i-37.png', alt='')
-            p.newTodoBottom Nueva tarea
             
-            
-section.row.weekDesktop
-    .col-xs-12.flex-center()
-        button.btn.btn-default.btnDesktop 
-        //- button.btn.btn-default.btnDesktop {{days[6].name}}
-        //- button.btn.btn-default.btnDesktop {{days[0].name}}
-        //- button.btn.btn-default.btnDesktop {{days[1].name}}
-        //- button.btn.btn-default.btnDesktop {{days[2].name}}
-        //- button.btn.btn-default.btnDesktop {{days[3].name}}
-        //- button.btn.btn-default.btnDesktop {{days[4].name}}
-        //- button.btn.btn-default.btnDesktop {{days[5].name}}
+//- section.row.weekDesktop
+//-     .col-xs-12.flex-center()
+//-         button.btn.btn-default.btnDesktop 
+//-         button.btn.btn-default.btnDesktop {{days[6].name}}
+//-         button.btn.btn-default.btnDesktop {{days[0].name}}
+//-         button.btn.btn-default.btnDesktop {{days[1].name}}
+//-         button.btn.btn-default.btnDesktop {{days[2].name}}
+//-         button.btn.btn-default.btnDesktop {{days[3].name}}
+//-         button.btn.btn-default.btnDesktop {{days[4].name}}
+//-         button.btn.btn-default.btnDesktop {{days[5].name}}
 
 section.row.admin-week
     .col-xs-12.flex-center.newTodoMobile
@@ -36,7 +30,7 @@ section.row.admin-week
         .col-xs-6
           img.addBotton(src='assets/i-37.png', alt='')
     .col-xs-12.col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
-        a.btn.btn-default.btn-admin(href='/')
+        a.btn.btn-default.dayTodos(href='/')
             img.todoBotton(src='assets/i-22.png', alt='')
             p.todoName {{todo.description}}
 app-mobile-bar

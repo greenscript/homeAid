@@ -1,8 +1,7 @@
 $header-color: #efcf44;
-
 .disable {
-  pointer-events: none;
-  cursor: default;
+    pointer-events: none;
+    cursor: default;
 }
 
 .header {
@@ -41,38 +40,31 @@ p {
     margin-top: 0px;
 }
 
-.btn-admin {
-    border-radius: 0;
-    text-align: left;
-    background-color: #FFF;
-    border: aliceblue;
-    border-color: grey;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-    .addBotton {
-        width: 50px;
-        float: right;
-    }
-    .newTodoBottom {
-        margin: 15px 0px;
-    }
-    .todoBotton {
-        width: 50px;
-        float: left;
-    }
-    .todoName {
-        float: right;
-        margin-top: 15px;
-    }
+.addBotton {
+    width: 50px;
+    float: right;
 }
 
-.weekDesktop,
-.newTodoDesktop {
-    display: none;
+.newTodoBottom {
+    margin: 15px 0px;
+}
+
+.todoBotton {
+    width: 50px;
+    float: left;
 }
 
 .btn-admin:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: #6CBBA5;
+}
+
+.btn[disabled] {
+    opacity: 1;
+}
+
+button a {
+    color: #FFF;
 }
 
 @media (min-width: 650px) {
@@ -85,49 +77,32 @@ p {
     .header {
         top: -16vw;
     }
-    .week {
-        display: none;
-        ;
-    }
-    .weekDesktop {
-        display: block;
-        .btnDesktop {
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-weight: lighter;
-            border-color: darkgray;
-            margin-left: 20px;
-        }
-    }
-    .newTodoMobile {
-        display: none;
-    }
-    .newTodoDesktop {
-        display: block;
-        padding: 100px 0px 0px;
-        .btn-admin {
-            height: 0px;
-            width: 15%;
-            margin: 2em 4em;
-            box-shadow: none;
-            .addBotton {
-                float: left;
-            }
-            .newTodoBottom {
-                margin: -35px 70px;
-            }
-        }
-    }
 }
 
 @media (min-width: 320px) {
     .btn-admin {
-        margin-top: 4em;
         margin-bottom: 10px;
         height: 4em;
         width: 80%;
         margin: 2em;
         font-size: 1.2em;
         padding-left: 1em;
+        border-radius: 90px;
+        background-color: #6CBBA7;
+    }
+    .dayTodos {
+        margin-bottom: 10px;
+        height: 4em;
+        width: 90%;
+        margin: 2em;
+        font-size: 1em;
+        padding-left: 1em;
+        background-color: #FFF;
+        img {
+            width: 50px;
+        }
+    }
+    .glyphicon {
+        line-height: 5;
     }
 }
