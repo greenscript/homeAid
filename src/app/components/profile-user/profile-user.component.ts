@@ -34,9 +34,9 @@ export class ProfileUserComponent implements OnInit {
   userName;
   currentDate: Date = new Date();
   day: number = this.currentDate.getDay();
-  dayView : Date = this.currentDate;
+  dayView = this.currentDate.setDate(this.currentDate.getDate() + 1);
   myBooleanValue: boolean = false;
-  d = new Date();
+  d = this.currentDate;
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     //this.loadData('../assets/data/todos.json');
@@ -61,12 +61,12 @@ export class ProfileUserComponent implements OnInit {
               )
             }
           });
+          console.log("data", props.tododata)
           props.getUser()
           props.loadedUsers = true;
           props.getTodos(this.day);
           props.getDay()
           this.getCurrentDayTodoId()
-          console.log(this.userId)
         })
       } else {
         console.log('user not logged in');
@@ -101,27 +101,23 @@ export class ProfileUserComponent implements OnInit {
   }
 
   next(){
-  //día viejo
-  var d = this.dayView;
+
+  this.dayView = this.d.setDate(this.d.getDate() + 1)
   console.log(this.d)
-  //día nuevo
-  this.d.setDate(this.d.getDate() + 1)
-  console.log(this.d)
-  //this.dayView = this.d;
 
    this.day += 1;
-   if (this.day == 7)
-   this.day = 0
+   if (this.day == 7){
+     console.log("++++", this.day);
+     this.day = 0;
+   }
    
-   //console.log("day", this.weekData[this.day].value);
-   this.dayView = this.d;
-   console.log("view",this.dayView)
    this.getTodos(this.day)
    this.getCurrentDayTodoId()
 
   }
 
   back(){
+    this.dayView = this.d.setDate(this.d.getDate() - 1)
     this.day -= 1;
     if (this.day == -1)
     this.day = 6
@@ -139,13 +135,13 @@ export class ProfileUserComponent implements OnInit {
     })
   }
 
-  getTodos(day){
-    console.log("actualDat", this.currentDate.getDay());
+  getTodos(pday){
     this.todosView = [];
-    console.log(this.day);
+    console.log("pday", pday);
     for (var i in this.tododata){
-      if(this.tododata[i].value.day == this.day)
+      if(this.tododata[i].value.day == pday)
       this.todosView.push(this.tododata[i])
+      console.log("todoView", this.todosView)
     }
   }
 
@@ -175,8 +171,9 @@ export class ProfileUserComponent implements OnInit {
     })
     console.log(currentDayTodos)
     currentDayTodos.filter((todo) => {
-      console.log('asaasd' ,todo)
+      console.log('asaasd' ,todo) 
       if (todo.value.username === this.userId) {
+        //this.todosView.push(todo)
         console.log(todo.key)
         this.daysKeys.push(todo.key)
         console.log(this.daysKeys)
