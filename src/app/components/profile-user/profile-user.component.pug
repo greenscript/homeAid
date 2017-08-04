@@ -1,14 +1,29 @@
 section
     .percent([class.hidden]="myBooleanValue")
-    svg(width='100vw' viewBox='0 0 1085 296')
+        .col-xs-12.flex-center.flex-column.dashboard-xs-section.circle
+            round-progress(
+            [current]="current",
+            [max]="max",
+            [color]="'#45ccce'",
+            [background]="'#eaeaea'",
+            [radius]="64",
+            [stroke]="6",
+            [rounded]="true",
+            [clockwise]="true",
+            [responsive]="false",
+            [duration]="800",
+            [animation]="'easeInOutQuart'",
+            [animationDelay]="0")   
+    svg.header(width='100vw' viewBox='0 0 1085 296')
         path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-    img.user-img.center-block(src='assets/i-22.png', alt='', (click)="clickHide()")    
+    h4.header-title(*ngIf="userdata.length > 0") {{userName}}
+    img.user-img.center-block(src='assets/i-22.png', alt='', (click)="clickHide()")  
 section.row.week 
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
             span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
     .col-xs-4.flex-center
-        h2.week-day(*ngIf="weekData.length > 0")  {{ dayView | date:'EEEE MMMM d'}}
+        h3.week-day(*ngIf="weekData.length > 0")  {{ dayView | date:'EEEE MMMM d'}}
     .col-xs-4.flex-center
         button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
@@ -17,5 +32,6 @@ section.row.user-week
         a.btn.btn-default.btn-user( [routerLink]="['/detailTodo', userId, todo.key, day, daysKeys[i]]", role="button")
             img.todoImg(src='assets/i-29.png', alt='')
             p.todoName() {{todo.value.description}}
+            p {{todo.value.status}}
 
 app-mobile-bar
