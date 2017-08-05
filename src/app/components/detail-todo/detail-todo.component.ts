@@ -42,7 +42,7 @@ export class DetailTodoComponent implements OnInit {
           snapshots.forEach(snapshot => {
             this.todoData.push({ key: snapshot.key, value: snapshot.val() })
           });
-          console.log(this.todoData)
+          console.log('data ###',this.todoData)
         })
       }
     })
@@ -53,18 +53,18 @@ export class DetailTodoComponent implements OnInit {
     let currentDayData = []
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
     this.currentDayTodo =  this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
-    console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.todoId}`)
+    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.todoId}`)
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      console.log(currentTodoData)
+    //  console.log(currentTodoData)
     })
     this.currentDayTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      console.log(currentTodoData)
+    //  console.log(currentTodoData)
     })
     this.currentTodo.set({
       'category': currentTodoData[0].value,
@@ -74,7 +74,7 @@ export class DetailTodoComponent implements OnInit {
       'status': true,
       'username': currentTodoData[5].value
     })
-    console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`)
+    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`)
     this.currentDayTodo.set({
       'category': currentDayData[0].value,
       'day':  currentDayData[1].value,

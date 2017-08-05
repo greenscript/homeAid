@@ -6,11 +6,13 @@ section.row
 
 section.row
   section.col-xs-12.col-sm-12
-    div.main-todo
-      h3#todo-title 
-    select.select-detail
-      option(value="Done") Completado
-    //- h3 Tarea completada: {{todo.value.status}}
+    div.main-todo(*ngFor='let data of todoData')
+      h3#todo-title {{data.key}}
+      div.infotodo(*ngIf='data.key == "category"')
+        h5 {{data.value}}
+    //-div.showstatus(*ngIf="todoData.status == false") es false
+    //-div.showstatus(*ngIf="todoData.status == true") es true
+    h3 Tarea completada: 
     button.btn-menu-admin((click)='completetask()') Completar tarea
     button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
