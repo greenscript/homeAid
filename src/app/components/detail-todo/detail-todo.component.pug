@@ -6,16 +6,20 @@ section.row
 
 section.row
   section.col-xs-12.col-sm-12
-    div.main-todo(*ngFor='let data of todoData')
-      h3#todo-title {{data.key}}
-      div.infotodo(*ngIf='data.key == "category"')
-        h5 {{data.value}}
-    //-div.showstatus(*ngIf="todoData.status == false") es false
-    //-div.showstatus(*ngIf="todoData.status == true") es true
-    h3 Tarea completada: 
-    button.btn-menu-admin((click)='completetask()') Completar tarea
+    div.main-todo(*ngFor='let data of getDataStoraged')
+      div.infotodo(*ngIf='data.key == "status"') 
+        div.showstatus-container(*ngIf="data.value == false")
+          h3#todo-title Estado: 
+          p.todoNotCompleted {{data.value}}
+          button.btn-menu-admin((click)='completetask()') Completar tarea
+
+
     button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
+
+
+
+//-modal for relevanceLaw.
 .modal.fade(bsModal="", #relevanceLaw="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog.modal-sm
     .modal-content(style="border-radius:0px !important")

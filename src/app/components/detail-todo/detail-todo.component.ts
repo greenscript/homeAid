@@ -26,6 +26,10 @@ export class DetailTodoComponent implements OnInit {
   public dayId: string;
   public dayTodoId: string;
 
+  public storageData; //for starage the data into a variable.
+  public getDataStoraged;//to get the data from the localStorage.
+
+
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('userId');
@@ -34,6 +38,11 @@ export class DetailTodoComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.getDataStoraged = JSON.parse(localStorage.getItem("dataStorage"));
+    console.log('DATA FROM LOCAL STORAGE!',this.getDataStoraged);
+
+
     this.auth.authState.subscribe(res => {
       if (res.uid) {
         this.currentFamily = res.uid
@@ -42,7 +51,10 @@ export class DetailTodoComponent implements OnInit {
           snapshots.forEach(snapshot => {
             this.todoData.push({ key: snapshot.key, value: snapshot.val() })
           });
-          console.log('data ###',this.todoData)
+        //  console.log('data ###',this.todoData);
+          this.storageData = JSON.stringify(this.todoData);
+          localStorage.setItem("dataStorage",this.storageData);
+        //  console.log('pasarlo a obj',this.storageData);
         })
       }
     })
