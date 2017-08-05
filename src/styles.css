@@ -43,3 +43,28 @@ h1, h2, input {
     font-weight: lighter;
     border-radius: 20px;
 }
+/* Card todo */
+.btn-card{
+  border-radius: 0;
+  width: 80vw;
+  margin: 1.4rem auto;
+	text-align: left;
+	background-color: #FFF;
+	border: aliceblue;
+	border-color: grey;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  text-decoration: none;
+  padding: .8rem;
+
+}
+.todoImg {
+ width: 50px;
+ float: left;
+}
+
+.todoName {
+   float: left;
+   margin-top: 15px;
+   margin-left: 7vw;
+}
