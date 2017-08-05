@@ -32,7 +32,7 @@ import { MobileBarComponent } from './components/mobile-bar/mobile-bar.component
 import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
 import { FamilyGoalComponent } from './components/family-goal/family-goal.component';
 import { HeaderComponent } from './components/header/header.component';
-
+import { DesktopBarComponent } from './components/desktop-bar/desktop-bar.component';
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
@@ -67,8 +67,6 @@ export const ROUTES: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detailTodo/:userId/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
   { path: 'familyGoal', component: FamilyGoalComponent }
-
-
 ];
 
 @NgModule({
@@ -89,7 +87,8 @@ export const ROUTES: Routes = [
     MobileBarComponent,
     DetailTodoComponent,
     FamilyGoalComponent,
-    HeaderComponent
+    HeaderComponent,
+    DesktopBarComponent
   ],
   imports: [
     BrowserModule,
