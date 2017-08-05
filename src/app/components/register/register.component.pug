@@ -1,16 +1,16 @@
-
-a.back(href="/")
-  img.header-logOut(src='assets/i-39.png', alt='')
+.register-img
 .register-whitesquare
   section.section-header
-      svg.header(width='100vw' viewBox='0 0 1085 296')
-        path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")  
-      h3.header-title Registro      
+    svg.header(width='100vw' viewBox='0 0 1085 296')
+      path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z") 
+    a.header-icon([routerLink]="['/']") 
+      i.fa.fa-times-circle-o.fa-2x 
+    h2.header-title Registro      
   section.row.flex-center.register-form
    section.col-xs-12.col-sm-12
     form.register-form.flex-center.flex-column([formGroup]="myform")
       fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
-       .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+       .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
           [ngClass]="{'has-danger': myform.controls.name.invalid && myform.controls.name.dirty, 'has-success': myform.controls.name.valid && myform.controls.name.dirty}"
           )
           input.form-control.register-form_input(
@@ -19,9 +19,8 @@ a.back(href="/")
             formControlName="firstName",
             placeholder="First Name",
             required
-          )
-          
-       .form-group.col-xs-12.col-sm-6.register-form_wrapper.flex-center(
+          )   
+       .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
           [ngClass]="{'has-danger': myform.controls.name.invalid && myform.controls.name.dirty, 'has-success': myform.controls.name.valid && myform.controls.name.dirty}"
           )
           input.form-control.register-form_input(
@@ -31,38 +30,38 @@ a.back(href="/")
             placeholder="Family Name",
             required
           )
-          
-      .form-group.col-xs-10.col-sm-6.register-form_wrapper.flex-center(
-        [ngClass]="{'has-danger': myform.controls.email.invalid && myform.controls.email.dirty, 'has-success': myform.controls.email.valid && myform.controls.email.dirty}"
-        )
-        input.form-control.register-form_input(
-          type="text", 
-          name="email", 
-          formControlName="email",
-          placeholder="Email",
-          required
-        )
-      .form-group.col-xs-10.col-sm-6.register-form_wrapper.flex-center(
-        [ngClass]="{'has-danger': myform.controls.password.invalid && myform.controls.password.dirty, 'has-success': myform.controls.password.valid && myform.controls.password.dirty}"
-        )
-        input.form-control.register-form_input(
-          type="password", 
-          name="password", 
-          formControlName="password",
-          placeholder="Password",
-          required
-        )
-        .error(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") Password must be 8 characters long
-      .form-group.col-xs-10.col-sm-6.register-form_wrapper.flex-center(
-        [ngClass]="{'has-danger': myform.controls.repeatPassword.invalid && myform.controls.repeatPassword.dirty, 'has-success': myform.controls.repeatPassword.valid && myform.controls.repeatPassword.dirty}"
-        )
-        input.form-control.register-form_input(
-          type="password", 
-          name="repeatPassword", 
-          formControlName="repeatPassword",
-          placeholder="Repeat Password",
-          required
-        )
-        .error(*ngIf="error") {{matchError}}    
-      .form-group.col-xs-10.flex-center.register-form_wrapper
-        button.btn.btn-default.register-form_button((click)="register()", [disabled]="myform.invalid") Register
+       .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
+          [ngClass]="{'has-danger': myform.controls.email.invalid && myform.controls.email.dirty, 'has-success': myform.controls.email.valid && myform.controls.email.dirty}"
+          )
+          input.form-control.register-form_input(
+            type="text", 
+            name="email", 
+            formControlName="email",
+            placeholder="Email",
+            required
+          )
+       .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
+          [ngClass]="{'has-danger': myform.controls.password.invalid && myform.controls.password.dirty, 'has-success': myform.controls.password.valid && myform.controls.password.dirty}"
+          )
+          input.form-control.register-form_input(
+            type="password", 
+            name="password", 
+            formControlName="password",
+            placeholder="Password",
+            required
+          )
+          .error(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") Password must be 8 characters long
+       .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
+          [ngClass]="{'has-danger': myform.controls.repeatPassword.invalid && myform.controls.repeatPassword.dirty, 'has-success': myform.controls.repeatPassword.valid && myform.controls.repeatPassword.dirty}"
+          )
+          input.form-control.register-form_input(
+            type="password", 
+            name="repeatPassword", 
+            formControlName="repeatPassword",
+            placeholder="Repeat Password",
+            required
+          )
+          .error(*ngIf="error") {{matchError}}    
+       .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center
+          button.btn.btn-default.register-form_button((click)="register()", [disabled]="myform.invalid") Register 
+       

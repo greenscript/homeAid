@@ -2,7 +2,7 @@ $text-color: #FFF;
 $header-color: #28BCA7;
 
 section.section-header{
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 .header {
@@ -16,19 +16,15 @@ section.section-header{
   }
 
   &-title {
-        color: white;
-        margin-top: 0;
-        font-weight: lighter;
-        text-align: center
+      color: white;
+      text-align: center;
+      margin-top: 3rem;
     }
   &-icon{
-      width: 3.5rem;
-      position: absolute;
-      top: 1rem;
-  }
-  &-logOut{
-    margin-left: .8rem;
-    width: 3.5rem;
+    position: absolute;
+    right: 1rem;
+   color: #fff;
+   text-align: right;
   }
 }
 
@@ -61,6 +57,9 @@ input {
   }
   &-form{
     height: 90vh;
+  }
+  &-img{
+    background-color: red;
   }
 }
 
@@ -105,14 +104,14 @@ input {
 @media (min-width: 650px) {
   .header{
     top: -10vw;
-    width: 75vw;
+    width: 70vw;
   }
   .register{
     &-whitesquare {
       background-color: #FFF;
       box-shadow: 1px 1px 1px 1px #CFCFCF;
       height: calc(100vh - 50px);
-      width: 75vw;
+      width: 70vw;
       margin: auto;
     }
   }

@@ -34,7 +34,7 @@ export class ProfileUserComponent implements OnInit {
   userName;
   currentDate: Date = new Date();
   day: number = this.currentDate.getDay();
-  dayView = this.currentDate.setDate(this.currentDate.getDate() + 1);
+  dayView = this.currentDate.setDate(this.currentDate.getDate());
   myBooleanValue: boolean = false;
   d = this.currentDate;
 
@@ -90,7 +90,7 @@ export class ProfileUserComponent implements OnInit {
               value: snapshot.val()
             })
             // llama a la funcion assignProperties
-            //console.log(props.userdata)
+            //console.log( "user", props.userdata.values)
           });
            props.assignProperties(props.userdata)
         })
@@ -182,7 +182,8 @@ export class ProfileUserComponent implements OnInit {
   }
 
   clickHide(){
-    this.myBooleanValue = true;
+    this.myBooleanValue = !this.myBooleanValue;
+   // this.showHide = !this.showHide;
   }
 
 }
