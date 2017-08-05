@@ -10,10 +10,11 @@ section.row
       div.infotodo(*ngIf='data.key == "status"') 
         div.showstatus-container(*ngIf="data.value == false")
           h3#todo-title Estado: 
-          p.todoNotCompleted {{data.value}}
+          p.todoNotCompleted No completada
           button.btn-menu-admin((click)='completetask()') Completar tarea
-
-
+          //-si la tarea ya esta completa no ense;ar el boton?
+        div.showstatus-container(*ngIf="data.value == true")
+          
     button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
 
