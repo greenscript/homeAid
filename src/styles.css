@@ -5,6 +5,11 @@ body {
   overflow: hidden;
 }
 
+h1, h2, input {
+  overflow: hidden;
+  font-weight: lighter;
+}
+
 /*
   Centra todos los hijos de un contenedor con display: flex;
 */
@@ -30,4 +35,11 @@ body {
 
 .full-height {
   height: 100vh;
+}
+
+/*Button*/
+.btn{
+    font-size: 22px;
+    font-weight: lighter;
+    border-radius: 20px;
 }

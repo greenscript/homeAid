@@ -31,7 +31,7 @@ section.row.week
             span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 section.row.user-week
     .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView; let i = index;')
-        a.btn.btn-default.btn-user( [routerLink]="['/detailTodo', userId, todo.key, day, daysKeys[i]]", role="button")
+        a.btn-default.btn-user( [routerLink]="['/detailTodo', userId, todo.key, day, daysKeys[i]]", role="button")
             img.todoImg([ngClass]="{'completed-img': todo.value.status }", src='assets/i-29.png', alt='')
             p.todoName([ngClass]="{'completed-txt': todo.value.status }") {{todo.value.description}}
             i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
