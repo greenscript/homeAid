@@ -61,7 +61,7 @@ export class ProfileUserComponent implements OnInit {
               )
             }
           });
-          console.log("data", props.tododata)
+          console.log("data!", props.tododata)
           props.getUser()
           props.loadedUsers = true;
           props.getTodos(this.day);
@@ -69,7 +69,7 @@ export class ProfileUserComponent implements OnInit {
           this.getCurrentDayTodoId()
         })
       } else {
-        console.log('user not logged in');
+        //console.log('user not logged in');
       }
     });
   }
@@ -95,7 +95,7 @@ export class ProfileUserComponent implements OnInit {
            props.assignProperties(props.userdata)
         })
       } else {
-        console.log('user not logged in');
+      //  console.log('user not logged in');
       }
     });
   }
@@ -103,14 +103,14 @@ export class ProfileUserComponent implements OnInit {
   next(){
 
   this.dayView = this.d.setDate(this.d.getDate() + 1)
-  console.log(this.d)
+  //console.log(this.d)
 
    this.day += 1;
    if (this.day == 7){
-     console.log("++++", this.day);
+     //console.log("++++", this.day);
      this.day = 0;
    }
-   
+
    this.getTodos(this.day)
    this.getCurrentDayTodoId()
 
@@ -131,17 +131,17 @@ export class ProfileUserComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
       });
-      console.log("weekData ", this.weekData);
+    //  console.log("weekData ", this.weekData);
     })
   }
 
   getTodos(pday){
     this.todosView = [];
-    console.log("pday", pday);
+    //console.log("pday", pday);
     for (var i in this.tododata){
       if(this.tododata[i].value.day == pday)
       this.todosView.push(this.tododata[i])
-      console.log("todoView", this.todosView)
+    //  console.log("todoView", this.todosView)
     }
   }
 
@@ -163,20 +163,20 @@ export class ProfileUserComponent implements OnInit {
     this.daysKeys = []
 
     this.currentDayTodos = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`, { preserveSnapshot: true });
-    console.log(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`)
+    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`)
     this.currentDayTodos.subscribe(snapshots =>{
       snapshots.forEach(snapshot => {
         currentDayTodos.push({ key: snapshot.key, value : snapshot.val()})
       })
     })
-    console.log(currentDayTodos)
+    //console.log(currentDayTodos)
     currentDayTodos.filter((todo) => {
-      console.log('asaasd' ,todo) 
+    //  console.log('asaasd' ,todo)
       if (todo.value.username === this.userId) {
         //this.todosView.push(todo)
-        console.log(todo.key)
+      //  console.log(todo.key)
         this.daysKeys.push(todo.key)
-        console.log(this.daysKeys)
+      //  console.log(this.daysKeys)
       }
     })
   }

@@ -1,8 +1,30 @@
 $text-color: #FFF;
+$text-color-completed: green;
+$text-color-not-completed: red;
 $header-color: #EEC337;
 $text-size-mobile: 1.2em;
 $yellow: #EEC337;
 
+//texts.
+.todoCompleted,
+.todoNotCompleted{
+	font-weight: lighter;
+	text-align: center;
+	font-size: 2em;
+	text-decoration: underline;
+}
+.todoCompleted{
+	color:$text-color-completed;
+}
+.todoNotCompleted{
+	color:$text-color-not-completed;
+}
+#todo-title{
+	font-weight: lighter;
+	text-align: center;
+	font-size: 2em;
+	margin-top: 2em;
+}
 .btn-menu-admin {
 	border-radius: 0;
 	text-align: left;
@@ -29,11 +51,7 @@ $yellow: #EEC337;
 .btn-menu-admin:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
-#todo-title{
-	font-weight: lighter;
-	text-align: center;
-	font-size: 2em;
-}
+
 #btn-yellow{
 	background-color: $yellow;
 	border-radius: 0px;

@@ -76,8 +76,27 @@ h1, h2, input {
 
 .todoName {
    float: left;
-   margin-top: 15px;
-   margin-left: 7vw;
+   margin-top: 15px !important;
+   margin-left: 7vw !important;
+}
+@media (min-width: 650px) {
+    .header {
+        top: -10vw;
+    }
+    .btn-card{
+    width: 60vw;
+    margin: 5rem auto;
+  }
+}
+
+@media (min-width: 1000px) {
+    .btn-card{
+    width: 30vw;
+    margin: 5rem auto;
+  }
+  .todoName {
+    margin-left: 4vw !important;
+  }
 }
 
 .no-padding {

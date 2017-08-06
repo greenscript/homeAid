@@ -6,19 +6,20 @@ section.row
 
 section.row
   section.col-xs-12.col-sm-12
-    div.main-todo
-      h3#todo-title 
-    select.select-detail
-      option(value="Done") Completado
-    //- h3 Tarea completada: {{todo.value.status}}
-    button.btn-menu-admin((click)='completetask()') Completar tarea
+    div.main-todo(*ngFor='let data of getDataStoraged')
+      div.infotodo(*ngIf='data.key == "status"') 
+        div.showstatus-container(*ngIf="data.value == false")
+          h3#todo-title Estado: 
+          p.todoNotCompleted No completada
+          button.btn-menu-admin((click)='completetask()') Completar tarea
+          //-si la tarea ya esta completa no ense;ar el boton?
+        div.showstatus-container(*ngIf="data.value == true")
+          
     button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
-.modal.fade(bsModal="", #relevanceLaw="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-  .modal-dialog.modal-sm
-    .modal-content(style="border-radius:0px !important")
 
-      .modal-body
-        button#btn-yellow.btn.btn-default(click='relevanceLaw.hide()') Aplicar ley
+
+
+
 
 app-mobile-bar

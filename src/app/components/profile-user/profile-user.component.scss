@@ -1,4 +1,26 @@
 $header-color: #5aabc5;
+$text-color: #FFF;
+$text-color-completed: green;
+$text-color-not-completed: red;
+$text-size-mobile: 1.2em;
+$yellow: #EEC337;
+
+//mari cambios
+.btn-card{
+	border-radius: 0;
+	text-align: left;
+	background-color: $text-color;
+	border: aliceblue;
+	border-color: grey;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+	a {
+		color: #000;
+	}
+
+}
+
 
 .none {
   display: none;
@@ -7,7 +29,7 @@ $header-color: #5aabc5;
 .percent{
  width: 100vw;
  height: 24vh;
- background-color: $header-color; 
+ background-color: $header-color;
 }
 
 .circle{
@@ -78,7 +100,7 @@ p {
     margin: 0px;
     font-size: 16px;
 }
-.btn-user {
+btn-user {
 	border-radius: 0;
   width: 80vw;
   margin: 1.4rem auto;
@@ -90,18 +112,18 @@ p {
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   text-decoration: none;
   padding: .8rem;
+	.todoImg {
+	width: 50px;
+	float: left;
+	}
 
-    .todoImg {
-    width: 50px;
-    float: left;
-    }
-
-    .todoName {
-        float: left;
-        margin-top: 15px;
-        margin-left: 7vw;
-    }
+	.todoName {
+		float: left;
+		margin-top: 1em !important;
+		margin-left: 1em !important;
+	}
 }
+
 .completed{
   color: #28bca7;
   margin-top: .4rem;
@@ -127,6 +149,8 @@ p {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+
+//responsive
 @media (min-width: 650px) {
 	.btn-user {
 		height: 4em;
