@@ -31,9 +31,11 @@ export class FamilyComponent implements OnInit {
   public loadedUsers: boolean = false;
   public weekData: Array<any> = [];
   userName;
-  public day = 0;
-  public days = [];
-  public actualDay = "";
+  currentDate: Date = new Date();
+  day: number = this.currentDate.getDay();
+  dayView = this.currentDate.setDate(this.currentDate.getDate());
+  myBooleanValue: boolean = false;
+  d = this.currentDate;
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private route: ActivatedRoute, public ds: DataService) {
   }
@@ -87,7 +89,7 @@ export class FamilyComponent implements OnInit {
             });
             console.log("lla", props.tododata);
 
-            //this.getTodos(this.day)
+            this.getTodos(this.day)
           })
       } else {
         console.log('todos not logged in');
@@ -118,6 +120,9 @@ export class FamilyComponent implements OnInit {
   }
 
   next() {
+    this.dayView = this.d.setDate(this.d.getDate() + 1)
+     console.log(this.d)
+
     this.day += 1;
     if (this.day == 7)
       this.day = 0
@@ -127,6 +132,7 @@ export class FamilyComponent implements OnInit {
   }
 
   back() {
+    this.dayView = this.d.setDate(this.d.getDate() - 1)
     this.day -= 1;
     if (this.day == -1)
       this.day = 6
@@ -134,16 +140,14 @@ export class FamilyComponent implements OnInit {
     this.getTodos(this.day)
   }
 
-  getTodos(day) {
-    console.log("day", day);
-    console.log("data", this.tododata);
+  getTodos(pday) {
     this.todosView = [];
-    for (var i in this.tododata) {
-      if (this.tododata[i].value.day == this.day)
-        this.todosView.push(this.tododata[i])
+    console.log("pday", pday);
+    for (var i in this.tododata){
+      if(this.tododata[i].value.day == pday)
+      this.todosView.push(this.tododata[i])
+      console.log("todoView", this.todosView)
     }
-    console.log("sdkf", this.todosView);
-
   }
 
 
