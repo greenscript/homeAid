@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -19,6 +18,13 @@ export class UsersComponent implements OnInit {
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
   title = "Usuarios";
+  public swiperConfig: Object = {
+    pagination: '.swiper-pagination',
+    slidesPerView: 3,
+    paginationClickable: true,
+    spaceBetween: 30,
+    freeMode: true
+  };
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) { }
 

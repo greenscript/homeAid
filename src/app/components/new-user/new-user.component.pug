@@ -1,54 +1,60 @@
-section
-    svg.header(width='100vw' viewBox='0 0 1085 296')
-      path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-    h1.header-title  Nuevo usuario
 
-section.row
-  section.col-xs-12.col-sm-12.container
-    h4
-      section.col-xs-12.flex-center.new-user-subcontainer
-        .col-xs-4.col-sm-4(*ngFor="let avatar of avatars; let i = index;")
-            img.user-image(
-              [src]='avatar.src', 
-              (click)="selectImage($event.target.src); toggleObject.item = i ",
-              [ngClass]="{'selected-user': toggleObject.item == i }")
-              
+section.col-xs-3.no-padding
+  .hidden-xs
+    app-desktop-bar
+section.col-xs-12.col-sm-9.no-padding
+  section
+      svg.header(width='100vw' viewBox='0 0 1085 296')
+        path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+      h1.header-title  Nuevo usuario
+
+  section.row
+    section.col-xs-12.col-sm-12.container
+      h4
+        section.col-xs-12.flex-center.new-user-subcontainer
+          .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;")
+              img.user-image.img-responsive.col-xs-8.col-sm-4(
+                [src]='avatar.src', 
+                (click)="selectImage($event.target.src); toggleObject.item = i ",
+                [ngClass]="{'selected-user': toggleObject.item == i }")
                 
-  section.col-xs-12.col-sm-12.container
-    form.flex-center.flex-column([formGroup]="userform")
-      .col-xs-10.flex-center.flex-column.no-padding
-        .form-group
-          label(for='name') Nombre
-          input.form-control.newuserfield(
-            type="text", 
-            name='username', 
-            formControlName="userName", 
-            placeholder='Nombre', 
-            required
-          )
-        .form-group
-          label(for='name') Fecha de nacimiento
-          input.form-control.newuserfield(
-            type="date", 
-            name='birthdate', 
-            formControlName="birthdate", 
-            placeholder='Fecha de nacimiento',
-            required 
-          )
-        .form-group.col-xs-12
-          .radio.col-xs-6
-            label Femenino
-              input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
-          .radio.col-xs-6
-             label Masculino
-              input#optionsRadios2(type='radio', name='optionsRadios', value='option2')  
-                           
-        select.form-control(multiple='')
-          option.option.blue(val='1')
-          option.option.yellow(val='2')
-          option.option.green(val='3')
-            
-        .form-group.user-form.flex-center
-          button.btn.btn-success.user-form-button((click)="createUser()") Create
-          
-app-mobile-bar
+                  
+    section.col-xs-12.col-sm-12.container
+      form.flex-center.flex-column([formGroup]="userform")
+        .col-xs-10.flex-center.flex-column.no-padding
+          .form-group
+            label(for='name') Nombre
+            input.form-control.newuserfield(
+              type="text", 
+              name='username', 
+              formControlName="userName", 
+              placeholder='Nombre', 
+              required
+            )
+          .form-group
+            label(for='name') Fecha de nacimiento
+            input.form-control.newuserfield(
+              type="date", 
+              name='birthdate', 
+              formControlName="birthdate", 
+              placeholder='Fecha de nacimiento',
+              required 
+            )
+          .form-group.col-xs-12
+            .radio.col-xs-6
+              label Femenino
+                input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+            .radio.col-xs-6
+               label Masculino
+                input#optionsRadios2(type='radio', name='optionsRadios', value='option2')  
+                             
+          select.form-control(multiple='')
+            option.option.blue(val='1')
+            option.option.yellow(val='2')
+            option.option.green(val='3')
+              
+          .form-group.user-form.flex-center
+            button.btn.btn-success.user-form-button((click)="createUser()") Create
+
+.hidden-sm.hidden-md.hidden-lg         
+  app-mobile-bar

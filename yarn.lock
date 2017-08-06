@@ -8,6 +8,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/cdk@^2.0.0-beta.8":
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-2.0.0-beta.8.tgz#71961c851dfbeb19e085e898bf5e4461408f8b57"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/cli@1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.0.4.tgz#507c0b977ad43b02edad4b3ad32d745d599f9129"
@@ -282,6 +288,10 @@ angular2-moment@^1.6.0:
   resolved "https://registry.yarnpkg.com/angular2-moment/-/angular2-moment-1.6.0.tgz#2be11b63d9cbdff8fee06f575c1beee2d863d62b"
   dependencies:
     moment "^2.16.0"
+
+angular2-useful-swiper@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/angular2-useful-swiper/-/angular2-useful-swiper-4.0.6.tgz#1a56f764850cbcdbd771b4b5204222115c932063"
 
 angularfire2@^4.0.0-rc.1:
   version "4.0.0-rc0"

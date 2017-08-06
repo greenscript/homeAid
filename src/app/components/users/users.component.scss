@@ -77,4 +77,23 @@ img{
     margin-bottom: 3vh;
     text-align: center;
   }
+
+  &-md {
+    height: 100vh;
+    background-image: url(../../../assets/background.png);
+    background-size: cover;
+    background-position: center center;
+    background-clip: padding-box;
+    &-container {
+      padding: 15px;
+      background-color: #FFF;
+      box-shadow: 1px 1px 1px 1px #CFCFCF;
+      height: calc(100vh - 200px);
+    }
+  }
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 20px;
 }

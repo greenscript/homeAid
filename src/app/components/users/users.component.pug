@@ -1,16 +1,30 @@
-section.section-header
-    svg.header(width='100vw' viewBox='0 0 1085 296')
-      path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-    a.header-icon.pull-left([routerLink]="['/']") 
-     img.header-logOut(src='../../../assets/i-39.png', alt='')
-    h3.header-title {{title}}
-section
-  .users
-    .users-gradient.users-gradient_top
-    .users-container
-      .col-xs-4.col-xs-offset-4.users-user(*ngFor="let user of usersdata")
-        a(role="button", (click)="selectUser(user.key)", [routerLink]="['/user', user.key]")
-          img.no-selected-ux([src]='user.value.avatar')
-          span {{user.value.name}}
+section.hidden-xs
+  section.col-xs-12.users-md.flex-center
+    section.col-xs-8.users-md-container.flex-center.flex-column
+      h1.col-xs-12.text-center  Seleccione un usuario!
+      swiper.col-xs-12([config]="swiperConfig")
+        .swiper-wrapper
+          .swiper-slide.col-xs-4.users-user(*ngFor="let user of usersdata")
+            a(role="button", (click)="selectUser(user.key)", [routerLink]="['/user', user.key]")
+              img.no-selected-ux.img-responsive([src]='user.value.avatar')
+              span {{user.value.name}}
+        .swiper-pagination
+        
 
-    .users-gradient.users-gradient_bottom
+section.hidden-sm.hidden-md.hidden-lg
+  section.section-header
+      svg.header(width='100vw' viewBox='0 0 1085 296')
+        path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+      a.header-icon.pull-left([routerLink]="['/']") 
+       img.header-logOut(src='../../../assets/i-39.png', alt='')
+      h3.header-title {{title}}
+  section
+    .users
+      .users-gradient.users-gradient_top
+      .users-container
+        .col-xs-4.col-xs-offset-4.users-user(*ngFor="let user of usersdata")
+          a(role="button", (click)="selectUser(user.key)", [routerLink]="['/user', user.key]")
+            img.no-selected-ux([src]='user.value.avatar')
+            span {{user.value.name}}
+
+      .users-gradient.users-gradient_bottom

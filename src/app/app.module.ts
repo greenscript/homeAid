@@ -14,7 +14,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 //angular material ui
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdChipsModule, MdTooltipModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdChipsModule, MdTooltipModule, MdInputModule } from '@angular/material';
 // components
 import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo/todo.component';
@@ -41,10 +41,13 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
 // asd
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { MomentModule } from 'angular2-moment';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { SwiperModule } from 'angular2-useful-swiper';
+
+
 // services
 
 export const firebaseConfig = {
@@ -116,7 +119,9 @@ export const ROUTES: Routes = [
     RoundProgressModule,
     Angular2FontawesomeModule,
     MomentModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    SwiperModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
