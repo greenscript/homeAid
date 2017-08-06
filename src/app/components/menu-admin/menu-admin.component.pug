@@ -1,16 +1,39 @@
-section.row 
-  svg.admin-header(width='100vw' viewBox='0 0 1085 296')
-    path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-  h1.admin-title Administrador {{adminName | capitalize}} 
-  img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
-section.row
-  section.col-xs-12.col-sm-12
-    button.btn-menu-admin Ver mis tareas 
-    button.btn-menu-admin
-      a([routerLink]="['/createWeek']")  Manejar semana
-    button.btn-menu-admin 
-      a([routerLink]="['/newUser']") Crear usuario
-    button.btn-menu-admin 
-      a([routerLink]="['/familyGoal']") Crear premio familiar
-    button.btn-menu-admin Reportes
-app-mobile-bar
+section.row.hidden-xs
+  section.col-xs-12
+    section.row
+      section.col-xs-3.no-padding
+        app-desktop-bar
+      section.col-xs-9.no-padding.admin-md
+        svg.admin-header(width='100vw' viewBox='0 0 1085 296')
+          path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+        h1.admin-md-title Administrador {{adminName | capitalize}} 
+        .row.admin-md-buttons
+          .col-xs-12
+            .col-xs-4.flex-center
+              a.btn-card.admin-md-btn([routerLink]="['/newUser']") Ver tareas
+            .col-xs-4.flex-center
+              a.btn-card.admin-md-btn([routerLink]="['/createWeek']") Manejar semana
+            .col-xs-4.flex-center 
+              a.btn-card.admin-md-btn([routerLink]="['/newUser']") Crear Usuario
+        .row.flex-center.admin-md-reports
+          .col-xs-10
+            app-reports
+            
+
+section.hidden-sm.hidden-md.hidden-lg
+  section.row
+    svg.admin-header(width='100vw' viewBox='0 0 1085 296')
+      path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+    h1.admin-title Administrador {{adminName | capitalize}} 
+    img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
+  section.row
+    section.col-xs-12.col-sm-12
+      button.btn-menu-admin Ver mis tareas 
+      button.btn-menu-admin
+        a([routerLink]="['/createWeek']")  Manejar semana
+      button.btn-menu-admin 
+        a([routerLink]="['/newUser']") Crear usuario
+      button.btn-menu-admin 
+        a([routerLink]="['/familyGoal']") Crear premio familiar
+      button.btn-menu-admin Reportes
+  app-mobile-bar

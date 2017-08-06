@@ -1,0 +1,32 @@
+.desktop-bar {
+  &-container {
+    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
+
+.nav {
+  &-container {
+    flex-direction: column;
+  }
+  &-spacing {
+    margin: 40px 0;
+  }
+  &-icon {
+    font-size: 32px;
+  }
+  &-links {
+    color: #2b2b2b;
+    font-size: 18px;
+  }
+}
+
+.active {
+  * {
+    color: #34bfab;
+  }
+}

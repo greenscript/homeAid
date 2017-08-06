@@ -46,7 +46,6 @@ h1, h2, input {
 /* Card todo */
 .btn-card{
   border-radius: 0;
-  width: 80vw;
   margin: 1.4rem auto;
 	text-align: left;
 	background-color: #FFF;
@@ -56,8 +55,20 @@ h1, h2, input {
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   text-decoration: none;
   padding: .8rem;
-
 }
+
+@media (min-width: 320px) {
+  .btn-card {
+    width: 80vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn-card {
+    width: auto;
+  }
+}
+
 .todoImg {
  width: 50px;
  float: left;
@@ -67,4 +78,8 @@ h1, h2, input {
    float: left;
    margin-top: 15px;
    margin-left: 7vw;
+}
+
+.no-padding {
+  padding: 0;
 }

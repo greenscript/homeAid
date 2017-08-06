@@ -33,6 +33,8 @@ import { DetailTodoComponent } from './components/detail-todo/detail-todo.compon
 import { FamilyGoalComponent } from './components/family-goal/family-goal.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DesktopBarComponent } from './components/desktop-bar/desktop-bar.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { ReportComponent } from './components/report/report.component';
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
@@ -88,7 +90,9 @@ export const ROUTES: Routes = [
     DetailTodoComponent,
     FamilyGoalComponent,
     HeaderComponent,
-    DesktopBarComponent
+    DesktopBarComponent,
+    ReportsComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

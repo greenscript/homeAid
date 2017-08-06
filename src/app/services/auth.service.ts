@@ -70,6 +70,7 @@ export class AuthService {
 
   logout() {
     this.af.auth.signOut();
+    this.router.navigateByUrl('/');
   }
 
   emailSignUp(pEmail:string, pPassword:string, pName:string) {

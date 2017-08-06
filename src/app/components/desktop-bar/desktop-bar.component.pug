@@ -1,25 +1,44 @@
-.row
+.desktop-bar-container 
   .col-xs-12.flex-center
-    img(src="assets/homeAid-logo.png")
-.row 
-  .col-xs-12
-    .row
-      .col-xs-2
-        i.fa.fa-user
-      .col-xs-10
-        p  Adasd
-    .row
-      .col-xs-2
-        i.fa.fa-users
-      .col-xs-10
-        p Asdasd
-    .row 
-      .col-xs-2
-        i.fa.fa-circle-o-notch
-      .col-xs-10
-        p Asdasd
-    .row
-      .col-xs-2
-        i.fa.fa-bell-o
-      .col-xs-12
-        p Asdasd
+    .col-xs-6
+      img.img-responsive(src="assets/homeAid-logo.png")
+
+  .col-xs-12.nav-container
+    .container-fluid
+      .row.flex-center.nav-spacing([ngClass]="{'active': this.init}")
+        .col-xs-2.flex-center
+          i.fa.fa-user.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links([routerLink]="['/users']")  Inicio
+      .row.flex-center.nav-spacing([ngClass]="{'active': this.users}")
+        .col-xs-2.flex-center
+          i.fa.fa-users.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links([routerLink]="['/users']") Mi Perfil
+      .row.flex-center.nav-spacing([ngClass]="{'active': this.family}")
+        .col-xs-2.flex-center
+          i.fa.fa-circle-o-notch.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links([routerLink]="['/users']") Familia
+      .row.flex-center.nav-spacing([ngClass]="{'active': this.alarms}")
+        .col-xs-2.flex-center
+          i.fa.fa-bell-o.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links([routerLink]="['/users']") Alarmas
+      .row.flex-center.nav-spacing
+        .col-xs-2.flex-center
+          i.fa.fa-bell-o.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links((click)="smModal.show()") Cerrar Sesion
+          
+.modal.fade(bsModal="", #smModal="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true")
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        h4.modal-title.pull-left Quieres cerrar sesion? 
+        button.close.pull-right(type="button", aria-label="close", (click)="smModal.hide()")
+          span(aria-hidden="true") &times;
+      .modal-body
+        button.btn.btn-warning((click)="logout()") Si
+        button.btn.btn-default((click)="smModal.hide()") No
+        

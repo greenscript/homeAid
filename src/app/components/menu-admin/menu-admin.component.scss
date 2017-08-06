@@ -81,3 +81,47 @@ $text-size-mobile: 1.2em;
   top: -16vw;
   }
 }
+
+@media (min-width: 768px) {
+	.admin {
+		&-header {
+			width: 100%;
+			position: relative;
+			top: -5em;
+		}
+	}
+}
+
+@media (min-width: 1440px) {
+	.admin {
+		&-header {
+			top: -10em;
+		}
+	}
+}
+
+.admin {
+	&-md {
+		overflow: scroll;
+		height: 100vh;
+		overflow-x: hidden;
+		&-title {
+			position: absolute;
+			top: 5%;
+			left: 10%;
+			color: #FFF;
+		}
+		&-buttons {
+			margin-top: -5%;
+		}
+		&-btn {
+			font-size: 26px;
+			color: #000;
+			padding: 20px;
+			border-radius: 1em;
+		}
+		&-reports {
+			margin-top: 5%;
+		}
+	}
+}
