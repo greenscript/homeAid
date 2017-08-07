@@ -29,7 +29,7 @@ export class ProfileUserComponent implements OnInit {
   public currentDayTodoId: string;
   public currentDayTodos: FirebaseObjectObservable<any>;
   public daysKeys: Array<any> = [];
-  public current: number= 50;
+  public current: number = 0;
   public max: number = 100;
   public userName;
   public currentDate: Date = new Date();
@@ -196,11 +196,17 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getCompleted(){
-     //this.todosView
+    var percent;
+    var completed = 0;
+    this.current = 0;
      for (var i in this.todosView){
-      //if(this.todosView[i].value.day == pday)
-      console.log("compl", this.todosView[i].value.status);
-    }
+        if(this.todosView[i].value.status == true){
+          completed += 1;
+          percent = (100 / this.todosView.length);
+          
+        }
+      }
+    this.current = percent * completed;
   }
 
   backButton() {
