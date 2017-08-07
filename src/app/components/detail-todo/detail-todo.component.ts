@@ -22,10 +22,8 @@ export class DetailTodoComponent implements OnInit {
   public uid: string;
   public currentFamily: string = '';
   public todoData: Array<any> = [];
-  public todoCompleted;
   public dayId: string;
   public dayTodoId: string;
-  public location: Location;
 
   //public storageData; //for starage the data into a variable.
   //public getDataStoraged;//to get the data from the localStorage.
@@ -40,8 +38,8 @@ export class DetailTodoComponent implements OnInit {
 
   ngOnInit() {
 
-    //this.getDataStoraged = JSON.parse(localStorage.getItem("dataStorage"));
-    //console.log('DATA FROM LOCAL STORAGE!',this.getDataStoraged);
+  //  this.getDataStoraged = JSON.parse(localStorage.getItem("dataStorage"));
+  //  console.log('DATA FROM LOCAL STORAGE!',this.getDataStoraged);
 
 
     this.auth.authState.subscribe(res => {
@@ -54,7 +52,7 @@ export class DetailTodoComponent implements OnInit {
           });
         //  console.log('data ###',this.todoData);
         //  this.storageData = JSON.stringify(this.todoData);
-        //  localStorage.setItem("dataStorage",this.storageData);
+          //localStorage.setItem("dataStorage",this.storageData);
         //  console.log('pasarlo a obj',this.storageData);
         })
       }
@@ -64,20 +62,23 @@ export class DetailTodoComponent implements OnInit {
   completetask(){
     let currentTodoData = []
     let currentDayData = []
+    //todo
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
+    //todo x dia.
     this.currentDayTodo =  this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
     //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.todoId}`)
+
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
       });
-    //  console.log(currentTodoData)
+     console.log('CURRENT TODO DATA',currentTodoData);
     })
     this.currentDayTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-    //  console.log(currentTodoData)
+    console.log('current DAY data!!',currentDayData);
     })
     this.currentTodo.set({
       'category': currentTodoData[0].value,
@@ -87,7 +88,7 @@ export class DetailTodoComponent implements OnInit {
       'status': true,
       'username': currentTodoData[5].value
     })
-    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`)
+    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`);
     this.currentDayTodo.set({
       'category': currentDayData[0].value,
       'day':  currentDayData[1].value,
@@ -102,7 +103,7 @@ export class DetailTodoComponent implements OnInit {
     let targets = []
     let currentTodoData = []
     let currentDayData = []
-    targets.push(pUserTodo, pDayTodo)
+    targets.push(pUserTodo, pDayTodo);
     targets.forEach((o) => {
       o.subscribe(snapshots => {
         snapshots.forEach(snapshot => {
@@ -119,7 +120,4 @@ export class DetailTodoComponent implements OnInit {
       })
     })
   }
-  /*backButton() {
-    this.location.back();
-  }*/
 }
