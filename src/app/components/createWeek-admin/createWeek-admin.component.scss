@@ -30,8 +30,8 @@ $header-color: #efcf44;
 .arrow {
     margin-top: 18%;
     border: none;
+    background-color: transparent;
 }
-
 
 .btn {
     margin-top: 0px;
@@ -44,6 +44,7 @@ $header-color: #efcf44;
 
 .newTodoBottom {
     margin: 15px 0px;
+    font-size: 20px;
 }
 
 .todoBotton {
@@ -64,42 +65,59 @@ button a {
     color: #FFF;
 }
 
+.btn-admin {
+    margin-bottom: 10px;
+    height: 4em;
+    width: 82%;
+    margin: 2em;
+    font-size: 1.2em;
+    padding-left: 1em;
+    border-radius: 90px;
+    background-color: #6CBBA7;
+}
+
+.dayTodos {
+    margin-bottom: 10px;
+    height: 4em;
+    width: 90%;
+    margin: 2em;
+    font-size: 1em;
+    padding-left: 1em;
+    background-color: #FFF;
+    img {
+        width: 50px;
+    }
+}
+
+.glyphicon {
+    line-height: 5;
+}
+
+@media (min-width: 320px) {
+    .mobile {
+        margin-top: -50px;
+        .header-title {
+            padding: 25px 0px;
+        }
+    }
+}
+
 @media (min-width: 650px) {
     .header {
-        top: -10vw;
+        top: -8vw;
     }
 }
 
 @media (min-width: 1000px) {
     .header {
-        top: -16vw;
+        top: -18vw;
     }
-}
-
-@media (min-width: 320px) {
-    .btn-admin {
-        margin-bottom: 10px;
-        height: 4em;
-        width: 80%;
-        margin: 2em;
-        font-size: 1.2em;
-        padding-left: 1em;
-        border-radius: 90px;
-        background-color: #6CBBA7;
+    .btn-newTodo {
+        width: 300px;
+        margin-left: 100px;
     }
-    .dayTodos {
-        margin-bottom: 10px;
-        height: 4em;
-        width: 90%;
-        margin: 2em;
-        font-size: 1em;
-        padding-left: 1em;
-        background-color: #FFF;
-        img {
-            width: 50px;
-        }
-    }
-    .glyphicon {
-        line-height: 5;
+    .newTodoBottom {
+        float: left;
+        margin-left: 10px;
     }
 }
