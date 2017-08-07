@@ -1,18 +1,15 @@
-$header-color: #E3C338;
+$header-color: #EEC337;
 $text-color: #FFF;
 $text-size-mobile: 1.2em;
-
 .header {
-  margin-top: 0;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-
-  .path{
-    fill:$header-color;
-  }
-
-  &-title {
+    margin-top: 0;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    .path {
+        fill: $header-color;
+    }
+    &-title {
         color: white;
         margin-top: 5vh;
         font-weight: lighter;
@@ -21,30 +18,33 @@ $text-size-mobile: 1.2em;
 }
 
 h4 {
-	font-weight: 300;
-	margin: 0px 0px 0px 1em;
+    font-weight: 300;
+    margin: 0px 0px 0px 1em;
 }
-/*classes for ng if to see which user is selected.*/
-.selected-user {
-  opacity: 1 !important;
 
+
+/*classes for ng if to see which user is selected.*/
+
+.selected-user {
+    opacity: 1 !important;
 }
 
 .user-image {
-  border: 0.2em solid grey;
-  border-radius: 5em;
-  opacity: 0.5;
+    border: 0.2em solid grey;
+    border-radius: 5em;
+    opacity: 0.5;
 }
 
-.newuserfield{
-	padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
-  border:none;
-  border-bottom:1px solid #757575;
+.newuserfield {
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
 }
-input:focus{
-	outline:none;
+
+input:focus {
+    outline: none;
 }
 
 .radio+.radio {
@@ -52,73 +52,82 @@ input:focus{
 }
 
 .radio input[type=radio] {
-  position: inherit;
-  margin-left: -100px;
+    position: inherit;
+    margin-left: -100px;
 }
 
 .blue {
-  background: #76A9C4 linear-gradient(0deg, #76A9C4 0%, #76A9C4 100%)
+    background: #76A9C4 linear-gradient(0deg, #76A9C4 0%, #76A9C4 100%)
 }
 
 .yellow {
-  background: #E3C338 linear-gradient(0deg, #E3C338 0%, #E3C338 100%)
+    background: #E3C338 linear-gradient(0deg, #E3C338 0%, #E3C338 100%)
 }
 
 .green {
-  background: #8CB3AA linear-gradient(0deg, #8CB3AA 0%, #8CB3AA 100%)
+    background: #8CB3AA linear-gradient(0deg, #8CB3AA 0%, #8CB3AA 100%)
 }
 
 .tema {
-  top: 50px;
+    top: 50px;
 }
-select[multiple]{
-  height: 4.3rem;
-  margin-bottom: 2rem;
+
+select[multiple] {
+    height: 4.3rem;
+    margin-bottom: 2rem;
 }
-.option{
-   width:  31%;
-   height: 2rem;
-   margin: 1%;
-   float: left;
+
+.option {
+    width: 31%;
+    height: 2rem;
+    margin: 1%;
+    float: left;
 }
 
 @media (min-width: 320px) {
-  .newuser {
-    &-header {
-			height: 140px;
-			background-color: $header-color;
-			border-radius: 50%;
-			margin-top: -10%;
-		}
-		&-title {
-			margin-top: 1.2em;
-			color: $text-color;
-			font-weight: lighter;
-		}
-	}
-	.new-user-subcontainer{
-		padding-left: 2em;
-		margin: 3em 0px 2em 0px;
-	}
+    .newuser {
+        &-header {
+            height: 140px;
+            background-color: $header-color;
+            border-radius: 50%;
+            margin-top: -10%;
+        }
+        &-title {
+            margin-top: 1.2em;
+            color: $text-color;
+            font-weight: lighter;
+        }
+    }
+    .new-user-subcontainer {
+        padding-left: 2em;
+        margin: 6em 0px 2em 0px;
+    }
 }
 
 @media (min-width: 650px) {
-	.btn-user {
-		margin-top: 4em;
-		margin-bottom: 10px;
-		height: 4em;
-		width: 80%;
-		margin: 2em;
-		font-size: 1.2em;
-		padding-left: 1em;
-	}
-  .header{
-  top: -10vw;
-  }
+    .btn-user {
+        margin-top: 4em;
+        margin-bottom: 10px;
+        height: 4em;
+        width: 80%;
+        margin: 2em;
+        font-size: 1.2em;
+        padding-left: 1em;
+    }
+    .header {
+        top: -10vw;
+    }
 }
 
 @media (min-width: 1000px) {
-  .header{
-  top: -16vw;
-  }
+    .header {
+        top: -16vw;
+    }
+    .newuserfield {
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 1035px;
+        border: none;
+        border-bottom: 1px solid #757575;
+    }
 }
