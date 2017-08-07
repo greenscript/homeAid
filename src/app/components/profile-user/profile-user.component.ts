@@ -187,7 +187,7 @@ export class ProfileUserComponent implements OnInit {
    // this.showHide = !this.showHide;
   }
 
-    getCompleted(){
+  getCompleted(){
      //this.todosView
      for (var i in this.todosView){
       //if(this.todosView[i].value.day == pday)
