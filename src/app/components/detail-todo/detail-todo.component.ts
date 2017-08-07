@@ -25,9 +25,10 @@ export class DetailTodoComponent implements OnInit {
   public todoCompleted;
   public dayId: string;
   public dayTodoId: string;
+  public location: Location;
 
-  public storageData; //for starage the data into a variable.
-  public getDataStoraged;//to get the data from the localStorage.
+  //public storageData; //for starage the data into a variable.
+  //public getDataStoraged;//to get the data from the localStorage.
 
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
@@ -39,8 +40,8 @@ export class DetailTodoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getDataStoraged = JSON.parse(localStorage.getItem("dataStorage"));
-    console.log('DATA FROM LOCAL STORAGE!',this.getDataStoraged);
+    //this.getDataStoraged = JSON.parse(localStorage.getItem("dataStorage"));
+    //console.log('DATA FROM LOCAL STORAGE!',this.getDataStoraged);
 
 
     this.auth.authState.subscribe(res => {
@@ -52,8 +53,8 @@ export class DetailTodoComponent implements OnInit {
             this.todoData.push({ key: snapshot.key, value: snapshot.val() })
           });
         //  console.log('data ###',this.todoData);
-          this.storageData = JSON.stringify(this.todoData);
-          localStorage.setItem("dataStorage",this.storageData);
+        //  this.storageData = JSON.stringify(this.todoData);
+        //  localStorage.setItem("dataStorage",this.storageData);
         //  console.log('pasarlo a obj',this.storageData);
         })
       }
@@ -118,4 +119,7 @@ export class DetailTodoComponent implements OnInit {
       })
     })
   }
+  /*backButton() {
+    this.location.back();
+  }*/
 }
