@@ -1,13 +1,14 @@
 .bar-container
   .col-xs-12.bar-icons-container
     .col-xs-3.flex-center
-      a.link([routerLink]="['/menu']", [ngClass]="{'active': this.menu}")
+      a.link([routerLink]="['/users']", [ngClass]="{'active': this.menu}")
         i.fa.fa-user.bar-icons( aria-hidden="true")
     .col-xs-3.flex-center
-      a.link([routerLink]="['/users']", [ngClass]="{'active': this.users}")
+      a.link([routerLink]="['/familyTodos']", [ngClass]="{'active': this.users}")
         i.fa.fa-users.bar-icons( aria-hidden="true")
     .col-xs-3.flex-center
-      a.link([routerLink]="['/dashboard']", [ngClass]="{'active': dashboard}")
+      a.link([routerLink]="['/familyGoal']", [ngClass]="{'active': dashboard}")
         i.fa.fa-circle-o-notch.bar-icons( aria-hidden="true")
     .col-xs-3.flex-center
       i.fa.fa-bell-o.bar-icons( aria-hidden="true")
+    

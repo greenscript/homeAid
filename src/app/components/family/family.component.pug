@@ -1,3 +1,5 @@
+section.col-xs-3.hidden-xs.no-padding
+  app-desktop-bar([adminId]="userId")
 section
     svg.header(width='100vw' viewBox='0 0 1085 296')
         path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
@@ -23,4 +25,6 @@ section.row.user-week
             img.todoImg(src='assets/i-29.png', alt='')
             p.todoName(*ngIf="tododata.length > 0") {{todo.value.description}}
             i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
+
+.hidden-sm.hidden-md.hidden-lg
 app-mobile-bar
