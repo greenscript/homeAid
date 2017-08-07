@@ -14,6 +14,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   providers: [DataService, AuthService]
 })
 export class CreateWeekAdminComponent implements OnInit, OnChanges {
+  @Input() currentDay: any;
   public day = 0;
   public actualDay = "";
   public days = [];
@@ -21,11 +22,25 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   public currentWeek: FirebaseListObservable<any>;
   public currentTodos: FirebaseListObservable<any>;
   public uid: string;
-  @Input() currentDay: any;
   public currentDayIndex: number = 0;
   public pastDweller: boolean;
+  public routeId: string;
+  public curr: any = new Date;
+  public first: any = this.curr.getDate() - this.curr.getDay();
+  public last: any = this.first + 6;
+  public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
+  public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
 
-  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth, af: AngularFireAuth) { }
+  constructor(
+    private http: Http,
+    private ds: DataService,
+    private db: AngularFireDatabase,
+    private afa: AngularFireAuth,
+    public af: AngularFireAuth,
+    public ar: ActivatedRoute,
+    public as: AuthService) {
+      this.routeId = ar.snapshot.paramMap.get('id');
+    }
 
   ngOnInit() {
     this.afa.authState.subscribe(res => {
@@ -36,13 +51,9 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
           snapshots.forEach(snapshot => {
             this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
-          console.log(this.weekData);
-          this.days = this.weekData[0].value;
+          this.days = this.as.getWeekDays(this.firstday, this.lastday)
           this.currentDay = this.days[0].day;
-          console.log(this.currentDay);
-          this.getTodos(this.actualDay);
-          this.checkDate()
-          console.log(this.pastDweller)
+          console.log(this.days)
         })
       }
     })
@@ -59,7 +70,6 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
       this.currentDayIndex = -1;
     }
     this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
-
     this.checkDate()
     this.getTodos(this.currentDayIndex)
   }

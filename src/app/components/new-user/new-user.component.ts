@@ -5,7 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -26,6 +26,7 @@ export class NewUserComponent implements OnInit {
   public toggleObject: any = {
     item: -1
   }
+  public uid: string;
 
   constructor(
     private as: AuthService,
@@ -33,10 +34,11 @@ export class NewUserComponent implements OnInit {
     public db: AngularFireDatabase,
     public toastr: ToastsManager,
     vcr: ViewContainerRef,
-    private router: Router
+    private router: Router,
+    public ar: ActivatedRoute
   ) {
     this.toastr.setRootViewContainerRef(vcr);
-
+    this.uid = ar.snapshot.paramMap.get('id');
   }
 
   createFormControls() {

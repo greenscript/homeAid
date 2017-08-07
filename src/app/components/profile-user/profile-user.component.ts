@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../../services/data.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-profile-user',
   templateUrl: './profile-user.component.html',
@@ -31,14 +31,21 @@ export class ProfileUserComponent implements OnInit {
   public daysKeys: Array<any> = [];
   public current: number= 50;
   public max: number = 100;
-  userName;
-  currentDate: Date = new Date();
-  day: number = this.currentDate.getDay();
-  dayView = this.currentDate.setDate(this.currentDate.getDate());
-  myBooleanValue: boolean = false;
-  d = this.currentDate;
+  public userName;
+  public currentDate: Date = new Date();
+  public day: number = this.currentDate.getDay();
+  public dayView = this.currentDate.setDate(this.currentDate.getDate());
+  public myBooleanValue: boolean = false;
+  public d = this.currentDate;
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
+  constructor(
+    private as: AuthService,
+    public auth: AngularFireAuth,
+    public db: AngularFireDatabase,
+    private http: Http,
+    private route: ActivatedRoute,
+    public ds: DataService,
+    public location: Location) {
     //this.loadData('../assets/data/todos.json');
     this.userId = route.snapshot.paramMap.get('id');
   }
@@ -192,7 +199,11 @@ export class ProfileUserComponent implements OnInit {
      for (var i in this.todosView){
       //if(this.todosView[i].value.day == pday)
       console.log("compl", this.todosView[i].value.status);
-     }
+    }
   }
 
+  backButton() {
+    this.location.back();
+  }
+     
 }
