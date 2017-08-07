@@ -5,21 +5,26 @@
 
   .col-xs-12.nav-container
     .container-fluid
+      .row.flex-center.nav-spacing(*ngIf="isAdmin", [ngClass]="{'active': this.menu}")
+        .col-xs-2.flex-center
+          i.fa.fa-unlock-alt.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links([routerLink]="['/menu', adminId]")  {{navText}}
       .row.flex-center.nav-spacing([ngClass]="{'active': this.init}")
         .col-xs-2.flex-center
           i.fa.fa-user.nav-icon
         .col-xs-8.flex-center
           a.nav-links([routerLink]="['/users']")  Inicio
-      .row.flex-center.nav-spacing([ngClass]="{'active': this.users}")
+      .row.flex-center.nav-spacing([ngClass]="{'active': this.profile}")
+        .col-xs-2.flex-center
+          i.fa.fa-user.nav-icon
+        .col-xs-8.flex-center
+          a.nav-links([routerLink]="['/user', uid]") Mi Perfil
+      .row.flex-center.nav-spacing([ngClass]="{'active': this.family}")
         .col-xs-2.flex-center
           i.fa.fa-users.nav-icon
         .col-xs-8.flex-center
-          a.nav-links([routerLink]="['/users']") Mi Perfil
-      .row.flex-center.nav-spacing([ngClass]="{'active': this.family}")
-        .col-xs-2.flex-center
-          i.fa.fa-circle-o-notch.nav-icon
-        .col-xs-8.flex-center
-          a.nav-links([routerLink]="['/users']") Familia
+          a.nav-links([routerLink]="['/familyGoal']") Familia
       .row.flex-center.nav-spacing([ngClass]="{'active': this.alarms}")
         .col-xs-2.flex-center
           i.fa.fa-bell-o.nav-icon
@@ -27,7 +32,7 @@
           a.nav-links([routerLink]="['/users']") Alarmas
       .row.flex-center.nav-spacing
         .col-xs-2.flex-center
-          i.fa.fa-bell-o.nav-icon
+          i.fa.fa-sign-out.nav-icon
         .col-xs-8.flex-center
           a.nav-links((click)="smModal.show()") Cerrar Sesion
           

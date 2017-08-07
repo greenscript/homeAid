@@ -24,8 +24,17 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   @Input() currentDay: any;
   public currentDayIndex: number = 0;
   public pastDweller: boolean;
+  public routeId: string;
 
-  constructor(private http: Http, private ds: DataService, private db: AngularFireDatabase, private afa: AngularFireAuth, af: AngularFireAuth) { }
+  constructor(
+    private http: Http,
+    private ds: DataService,
+    private db: AngularFireDatabase,
+    private afa: AngularFireAuth,
+    public af: AngularFireAuth,
+    public ar: ActivatedRoute) {
+      this.routeId = ar.snapshot.paramMap.get('id');
+    }
 
   ngOnInit() {
     this.afa.authState.subscribe(res => {
