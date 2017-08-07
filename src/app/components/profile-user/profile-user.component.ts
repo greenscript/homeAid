@@ -37,6 +37,7 @@ export class ProfileUserComponent implements OnInit {
   public dayView = this.currentDate.setDate(this.currentDate.getDate());
   public myBooleanValue: boolean = false;
   public d = this.currentDate;
+  public userAvatar: string;
 
   constructor(
     private as: AuthService,
@@ -154,14 +155,14 @@ export class ProfileUserComponent implements OnInit {
 }
 
   assignProperties(pData: Array<any>) {
-    // recibe como parametro un array
     pData.forEach((pObject) => {
-      // si existe la propiedad nombre en los datos del usuario sacados de firebase
-      if (pObject.key === 'name') {
-        // se le asigna el nombre a adminName
-        // esto para tener el nombre o apellido de la familia y mostrarlo en la vista
-        //console.log(pObject.value);
-        this.userName = pObject.value
+      switch (pObject.key) {
+        case 'name':
+          this.userName = pObject.value
+        break;
+        case 'avatar':
+          this.userAvatar = pObject.value
+        break;
       }
     })
   }
@@ -211,5 +212,5 @@ export class ProfileUserComponent implements OnInit {
   backButton() {
     this.location.back();
   }
-     
+
 }
