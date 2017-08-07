@@ -142,8 +142,9 @@ export class ProfileUserComponent implements OnInit {
       if(this.tododata[i].value.day == pday)
       this.todosView.push(this.tododata[i])
     //  console.log("todoView", this.todosView)
-    }
   }
+  this.getCompleted();
+}
 
   assignProperties(pData: Array<any>) {
     // recibe como parametro un array
@@ -184,6 +185,14 @@ export class ProfileUserComponent implements OnInit {
   clickHide(){
     this.myBooleanValue = !this.myBooleanValue;
    // this.showHide = !this.showHide;
+  }
+
+    getCompleted(){
+     //this.todosView
+     for (var i in this.todosView){
+      //if(this.todosView[i].value.day == pday)
+      console.log("compl", this.todosView[i].value.status);
+     }
   }
 
 }

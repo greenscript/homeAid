@@ -88,7 +88,6 @@ export class FamilyComponent implements OnInit {
               )
             });
             console.log("lla", props.tododata);
-
             this.getTodos(this.day)
           })
       } else {
@@ -115,19 +114,14 @@ export class FamilyComponent implements OnInit {
     console.log("select: " + pUid);
     this.userId = pUid;
     this.userTodo(this.userId);
-    console.log("sjkadhf", this.userId);
-
   }
 
   next() {
     this.dayView = this.d.setDate(this.d.getDate() + 1)
-     console.log(this.d)
-
     this.day += 1;
     if (this.day == 7)
       this.day = 0
 
-    console.log("day", this.weekData[this.day].value);
     this.getTodos(this.day)
   }
 
@@ -149,8 +143,5 @@ export class FamilyComponent implements OnInit {
       console.log("todoView", this.todosView)
     }
   }
-
-
-
 
 }
