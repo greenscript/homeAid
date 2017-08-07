@@ -33,7 +33,7 @@ export class DesktopBarComponent implements OnInit {
         this.navText = 'Back to Menu';
         this.menu = true;
       break;
-      case '/familyGoal':
+      case '/familyTodos':
         this.family = true;
       break;
       case `/user/${this.uid}`:
