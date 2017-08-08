@@ -35,7 +35,7 @@ section.row
                 div.col-xs-4.users(*ngFor='let user of usersArr')
                   a(role="button", (click)="selectUser(user.key)")
                     img.user([src]='user.value.avatar')
-                    span.perUserName(*ngIf="usersArr.length > 0") {{user.value.name}}
+                    span.perUserName {{user.value.name}}
               .form-group.relevanceBtn
                 button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
 
