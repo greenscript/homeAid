@@ -52,7 +52,7 @@ export class AuthService {
 
   loginWithEmail(pEmail: string, pPassword: string) {
     let props: Array<any> = [];
-    this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) =>{
+    return this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) =>{
       this.authState = response
       this.users = this.db.list(`/families/${response.uid}/users/`, {preserveSnapshot: true});
       this.users.subscribe(snapshots => {
@@ -66,7 +66,10 @@ export class AuthService {
         }
       })
     })
-    .catch(error => console.log(error))
+    .catch((error)=> {
+      return error
+    })
+
   }
 
   logout() {

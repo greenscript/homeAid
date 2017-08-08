@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public email: FormControl;
   public password: FormControl;
+  public error: string = '';
 
   constructor(private as: AuthService) { }
 
@@ -40,7 +41,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.as.loginWithEmail(this.email.value, this.password.value)
+        this.as.loginWithEmail(this.email.value, this.password.value).then((error) => {
+          this.error = error.message;
+        })
+
+
+
     }
   }
 
