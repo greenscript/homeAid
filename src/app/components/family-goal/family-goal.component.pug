@@ -1,18 +1,23 @@
-section.col-xs-3.no-padding.hidden-xs
-  app-desktop-bar
+section.col-xs-3.hidden-xs.no-padding
+  app-desktop-bar([adminId]="userId")
 section.col-xs-12.col-sm-9
   section.row 
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
       path.familyGoal-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h1.familyGoal-title Premio familiar
   section.row
-    section.col-xs-12.col-sm-12.form-container
-      h4.userName Seleccione un usuario
-        section.col-xs-12.flex-center.users-container
-          p test
-      h4.userName Descripcion del premio
-        section.col-xs-12.flex-center.form-container
-          textarea 
-    .hidden-sm.hidden-md.hidden-lg
-      app-mobile-bar
+    section.col-xs-12.form-container
+      h4.titles Que deseas dar de premio familiar?
+        input.form-control.newGoalInput(placeholder="Salida al cine")
+      h4.titles Describe el premio
+        section.col-xs-12
+          textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!")
+      div.btn-add
+        div.effect-btn
+          a.btn-default(role="button") Agregar
+      
+      
+    
+      
+app-mobile-bar
     

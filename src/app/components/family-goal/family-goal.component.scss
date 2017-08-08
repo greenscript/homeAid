@@ -1,32 +1,90 @@
 $text-color: #FFF;
 $header-color: #EEC337;
 $text-size-mobile: 1.2em;
+$formWidth: 60%;
+$btn-color: #35B095;
+//texts
+.newGoalInput {
+	width: 100%;
+}
 
-.btn-menu-admin {
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+input,
+textarea {
+	height: 30px;
+	width: $formWidth;
+	background: none;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	color: #1e1d23;
+	display: block;
+	margin: 40px auto;
+	font-weight: 300;
+
+	&:focus {
+		border: 0;
+		outline: none;
+		border-bottom: 1px solid #ccc;
+	}
 }
-.form-container{
+
+.form-container {
 	margin-top: 2em;
 }
-.users-container{
-	margin-top: 2em;
-}
-h4{
+
+h4 {
 	font-weight: 300;
 }
-textarea{
+
+textarea {
 	width: 100%;
 	height: 8em;
 }
-.userName {
-  padding: 0px 30px;
+
+.titles {
+	padding: 0 30px;
 }
+//btns
+.btn-add {
+	background-color: $btn-color;
+	padding: 1em 2.5em 1em 2.5em;
+	width: 140px;
+	height: 50px;
+	border-radius: 1.5em;
+	float: left;
+	text-align: center;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	margin: 0 0 40px 50px;
+}
+.btn-add a{
+  text-decoration:none;
+ 	color: $text-color;
+ 	text-decoration:none;
+ 	transition:all .5s ease;
+ 	z-index:2;
+	background-color: $btn-color;
+}
+.effect-btn{
+  width:140px;
+  height:50px;
+  left:-140px;
+  background:#34495e;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+}
+.btn-add:hover .effect-btn{
+  left:0;
+}
+.btn-add:hover a{
+  color:#fff;
+}
+
+
+
+
+
 
 @media (min-width: 320px) {
 	.familyGoal {
@@ -37,15 +95,15 @@ textarea{
 			top: 0;
 		}
 
-		&-path{
-			fill:$header-color;
+		&-path {
+			fill: $header-color;
 		}
-		&-title {
-        color: white;
-        margin-top: 5vh;
-        font-weight: lighter;
-        text-align: center
-    }
 
+		&-title {
+			color: white;
+			margin-top: 5vh;
+			font-weight: lighter;
+			text-align: center;
+		}
 	}
 }
