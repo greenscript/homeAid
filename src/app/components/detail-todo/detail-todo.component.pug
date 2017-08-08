@@ -23,7 +23,22 @@ section.row
           div.card 
             p.cart-text Felicidades por completar esta tarea!
 
-
+        .modal.fade(bsModal="", #relevanceLaw="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+          .modal-dialog.modal-sm
+            .modal-content
+              .modal-header
+                h4.modal-title.pull-left Ley de la Relevancia
+                button.close.pull-right(type='button', aria-label='close', (click)='relevanceLaw.hide()')
+                  span(aria-hidden='true') 
+              .modal-body
+                h5.selectUser Seleccione a un usuario.
+                div.col-xs-4.users(*ngFor='let user of usersArr')
+                  a(role="button", (click)="selectUser(user.key)")
+                    img.user([src]='user.value.avatar')
+                    span.perUserName(*ngIf="usersArr.length > 0"){{user.value.name}}
+              .form-group.relevanceBtn
+                hr
+                button.btn.btn-default.relevanceButton((click)='send(value)') Enviar
 
 
 
