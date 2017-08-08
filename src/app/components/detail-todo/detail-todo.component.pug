@@ -37,8 +37,7 @@ section.row
                     img.user([src]='user.value.avatar')
                     span.perUserName(*ngIf="usersArr.length > 0"){{user.value.name}}
               .form-group.relevanceBtn
-                hr
-                button.btn.btn-default.relevanceButton((click)='send(value)') Enviar
+                button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
 
 
 
