@@ -5,22 +5,7 @@ $header-color: #409CB8;
 $text-size-mobile: 1.2em;
 $yellow: #EEC337;
 
-.card{
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-	padding-top: 1.5em;
-	padding-right: 1em;
-	text-align: center;
-	font-weight: 300;
-}
-.card:hover{
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
+
 //texts.
 .todoCompleted,
 .todoNotCompleted{
@@ -41,6 +26,25 @@ $yellow: #EEC337;
 	font-size: 2em;
 	margin-top: 2em;
 }
+
+.card{
+	border-radius: 0;
+	text-align: left;
+	background-color: $text-color;
+	border: aliceblue;
+	border-color: grey;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	padding-top: 1.5em;
+	padding-right: 1em;
+	text-align: center;
+	font-weight: 300;
+}
+.card:hover{
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+//botones
 .btn-menu-admin {
 	border-radius: 0;
 	text-align: left;
@@ -54,20 +58,9 @@ $yellow: #EEC337;
 		color: #000;
 	}
 }
-.select-detail{
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
 .btn-menu-admin:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
-
 #btn-yellow{
 	background-color: $yellow;
 	border-radius: 0px;
@@ -81,6 +74,21 @@ $yellow: #EEC337;
   top: .8rem;
   left: .8rem;
 }
+
+//???
+.select-detail{
+	border-radius: 0;
+	text-align: left;
+	background-color: $text-color;
+	border: aliceblue;
+	border-color: grey;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+
+
+
 
 @media (min-width: 320px) {
 	.admin {
@@ -158,233 +166,3 @@ $yellow: #EEC337;
   top: -16vw;
   }
 }
-/*$text-color: #FFF;
-$header-color: #EEC337;
-$text-size-mobile: 1.2em;
-$yellow: #EEC337;
-
-.btn-menu-admin {
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-	a {
-		color: #000;
-	}
-}
-.select-detail{
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.btn-menu-admin:hover {
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-#todo-title{
-	font-weight: lighter;
-	text-align: center;
-	font-size: 2em;
-}
-#btn-yellow{
-	background-color: $yellow;
-	border-radius: 0px;
-	color:$text-color;
-	font-weight: lighter;
-	text-align: center;
-	border-color: $yellow;
-}
-
-@media (min-width: 320px) {
-	.admin {
-		&-header {
-			margin-top: 0;
-			position: absolute;
-			z-index: -1;
-			top: 0;
-		}
-
-		&-path{
-			fill:$header-color;
-		}
-
-		&-title {
-			color: white;
-			font-weight: lighter;
-			text-align: center;
-		}
-
-		&-userAvatar {
-			width: 20%;
-			margin-top: -3em;
-		}
-
-		&-avatarBackgroundWhite {
-			background-color: $text-color;
-		}
-
-		&-img{
-			background-color: white;
-			border-radius: 50%;
-			border: 6px solid $header-color;
-			padding: 8px;
-			width: 90px;
-			height: 90px;
-			margin: 0 auto;
-		}
-	}
-	.btn-menu-admin {
-		margin-top: 4em;
-		margin-bottom: 10px;
-		height: 4em;
-		width: 80%;
-		margin: 2em;
-		font-size: $text-size-mobile;
-		padding-left: 2em;
-	}
-
-	.select-detail{
-		margin-top: 4em;
-		margin-bottom: 10px;
-		height: 4em;
-		width: 80%;
-		margin: 2em;$text-color: #FFF;
-		$header-color: #EEC337;
-		$text-size-mobile: 1.2em;
-		$yellow: #EEC337;
-}
-.btn-menu-admin {
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-	a {
-		color: #000;
-	}
-}
-
-.select-detail {
-	border-radius: 0;
-	text-align: left;
-	background-color: $text-color;
-	border: aliceblue;
-	border-color: grey;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.btn-menu-admin:hover {
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
-#todo-title {
-	font-weight: lighter;
-	text-align: center;
-	font-size: 2em;
-}
-
-#btn-yellow {
-	background-color: $yellow;
-	border-radius: 0;
-	color: $text-color;
-	font-weight: lighter;
-	text-align: center;
-	border-color: $yellow;
-}
-@media (min-width: 320px) {
-	.admin {
-		&-header {
-			margin-top: 0;
-			position: absolute;
-			z-index: -1;
-			top: 0;
-		}
-
-		&-path {
-			fill: $header-color;
-		}
-
-		&-title {
-			color: white;
-			font-weight: lighter;
-			text-align: center;
-		}
-
-		&-userAvatar {
-			width: 20%;
-			margin-top: -3em;
-		}
-
-		&-avatarBackgroundWhite {
-			background-color: $text-color;
-		}
-
-		&-img {
-			background-color: white;
-			border-radius: 50%;
-			border: 6px solid $header-color;
-			padding: 8px;
-			width: 90px;
-			height: 90px;
-			margin: 0 auto;
-		}
-	}
-
-	.btn-menu-admin {
-		margin-top: 4em;
-		margin-bottom: 10px;
-		height: 4em;
-		width: 80%;
-		margin: 2em;
-		font-size: $text-size-mobile;
-		padding-left: 2em;
-	}
-
-	.select-detail {
-		margin-top: 4em;
-		margin-bottom: 10px;
-		height: 4em;
-		width: 80%;
-		margin: 2em;
-		font-size: $text-size-mobile;
-		padding-left: 2em;
-	}
-}
-@media (min-width: 650px) {
-	.admin {
-		top: -10vw;
-	}
-}
-@media (min-width: 1000px) {
-	.admin {
-		top: -16vw;
-	}
-}
-		font-size: $text-size-mobile;
-		padding-left: 2em;
-	}
-}
-
-@media (min-width: 650px) {
-  .admin{
-  top: -10vw;
-  }
-}
-
-@media (min-width: 1000px) {
-  .admin{
-  top: -16vw;
-  }
-}*/
