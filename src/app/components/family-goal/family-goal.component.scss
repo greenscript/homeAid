@@ -44,28 +44,29 @@ textarea {
 	padding: 0 30px;
 }
 //btns
-.btn-add {
-	background-color: $btn-color;
-	padding: 1em 2.5em 1em 2.5em;
-	width: 140px;
-	height: 50px;
-	border-radius: 1.5em;
-	float: left;
-	text-align: center;
-	position: relative;
-	box-sizing: border-box;
-	overflow: hidden;
-	margin: 0 0 40px 50px;
+.button-4{
+  width:140px;
+  height:50px;
+  border:2px solid #34495e;
+  float:left;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+  margin:0 0 40px 50px;
 }
-.btn-add a{
+.button-4 a{
+  font-family:arial;
+  font-size:16px;
+  color:red !important;
   text-decoration:none;
- 	color: $text-color;
- 	text-decoration:none;
- 	transition:all .5s ease;
- 	z-index:2;
-	background-color: $btn-color;
+  line-height:50px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
 }
-.effect-btn{
+.eff-4{
   width:140px;
   height:50px;
   left:-140px;
@@ -74,10 +75,10 @@ textarea {
   transition:all .5s ease;
   z-index:1;
 }
-.btn-add:hover .effect-btn{
+.button-4:hover .eff-4{
   left:0;
 }
-.btn-add:hover a{
+.button-4:hover a{
   color:#fff;
 }
 
