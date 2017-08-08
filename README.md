@@ -81,6 +81,8 @@ Usaremos Pug para agilizar el proceso de escribir HTML, Pug es una herramienta q
 Para manejar los estilos, usaremos `scss`, ya configure el proyecto para que reconociera los archivos con extensión `.scss` e inclusive a la hora
 de ejecutar `ng generate component component-name` generará un archivo `.ts`, uno `.html` y uno `.scss`.
 
+
+
 ### Firebase
 
 Comming soon.
@@ -149,10 +151,11 @@ Esto compilara en esto:
 </div>
 ```
 
+
+### CSS hover
+
 Para utilizar el hover de los botones:
   http://ianlunn.github.io/Hover/
-
-
 
 
 
