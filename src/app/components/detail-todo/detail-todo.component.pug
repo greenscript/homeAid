@@ -1,6 +1,6 @@
 section.row 
   a.back((click)="backButton()", role="button") 
-     img.admin-logOut(src='../../../assets/i-39.png', alt='')
+    img.admin-logOut(src='../../../assets/i-39.png', alt='')
   svg.admin-header(width='100vw' viewBox='0 0 1085 296')
     path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
   h1.admin-title 
@@ -38,8 +38,5 @@ section.row
                     span.perUserName(*ngIf="usersArr.length > 0"){{user.value.name}}
               .form-group.relevanceBtn
                 button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
-
-
-
 
 app-mobile-bar
