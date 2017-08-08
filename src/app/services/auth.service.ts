@@ -66,6 +66,7 @@ export class AuthService {
         }
       })
     })
+    .catch(error => console.log(error))
   }
 
   logout() {
@@ -86,17 +87,16 @@ export class AuthService {
   }
 
   public getWeekDays(startDate, stopDate) {
-    console.log(startDate, stopDate)
     let dateArray: Array<any> = [];
     let currentDate = startDate;
-    while (currentDate <= stopDate) {
-      console.log('asd')
+    while (currentDate > stopDate) {
        dateArray.push( new Day (new Date(currentDate)) )
        for (let i = 0; i < 6; i++) {
          currentDate = new Date(currentDate)
          currentDate = currentDate.setDate(currentDate.getDate() + 1);
          dateArray.push( new Day (new Date(currentDate) ) )
        }
+       break;
     }
     console.log(dateArray);
     return dateArray;

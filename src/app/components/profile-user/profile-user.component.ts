@@ -170,22 +170,18 @@ export class ProfileUserComponent implements OnInit {
   getCurrentDayTodoId() {
     let currentDayTodos = []
     this.daysKeys = []
-
     this.currentDayTodos = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`, { preserveSnapshot: true });
-    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`)
     this.currentDayTodos.subscribe(snapshots =>{
       snapshots.forEach(snapshot => {
         currentDayTodos.push({ key: snapshot.key, value : snapshot.val()})
       })
     })
-    //console.log(currentDayTodos)
     currentDayTodos.filter((todo) => {
-    //  console.log('asaasd' ,todo)
+      console.log(todo)
       if (todo.value.username === this.userId) {
-        //this.todosView.push(todo)
-      //  console.log(todo.key)
         this.daysKeys.push(todo.key)
-      //  console.log(this.daysKeys)
+        console.log(this.daysKeys)
+
       }
     })
   }
@@ -203,7 +199,7 @@ export class ProfileUserComponent implements OnInit {
         if(this.todosView[i].value.status == true){
           completed += 1;
           percent = (100 / this.todosView.length);
-          
+
         }
       }
     this.current = percent * completed;

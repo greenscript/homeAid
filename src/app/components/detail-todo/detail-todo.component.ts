@@ -27,24 +27,17 @@ export class DetailTodoComponent implements OnInit {
   public todoData: Array<any> = [];
   public dayId: string;
   public dayTodoId: string;
-
-  //public storageData; //for starage the data into a variable.
-  //public getDataStoraged;//to get the data from the localStorage.
-
+  public currentTodoData: Array<any> = [];
+  public currentDayData: Array<any> = [];
 
   constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('userId');
-    this.dayId = route.snapshot.paramMap.get('dayId')
+    this.dayId = route.snapshot.paramMap.get('dayId');
     this.dayTodoId = route.snapshot.paramMap.get('todoDayId');
   }
 
   ngOnInit() {
-
-    //  this.getDataStoraged = JSON.parse(localStorage.getItem("dataStorage"));
-    //  console.log('DATA FROM LOCAL STORAGE!',this.getDataStoraged);
-
-
     this.auth.authState.subscribe(res => {
       if (res.uid) {
         this.currentFamily = res.uid
@@ -53,10 +46,6 @@ export class DetailTodoComponent implements OnInit {
           snapshots.forEach(snapshot => {
             this.todoData.push({ key: snapshot.key, value: snapshot.val() })
           });
-          //  console.log('data ###',this.todoData);
-          //  this.storageData = JSON.stringify(this.todoData);
-          //localStorage.setItem("dataStorage",this.storageData);
-          //  console.log('pasarlo a obj',this.storageData);
         })
       }
     })
@@ -79,9 +68,7 @@ export class DetailTodoComponent implements OnInit {
                 )
               }
             });
-            console.log(props.usersArr[0].key);
-            this.selectUser(props.usersArr[0].key)
-
+            this.currentTodoAndDayData();
             props.loadedUsers = true;
           })
       } else {
@@ -89,48 +76,42 @@ export class DetailTodoComponent implements OnInit {
       }
     });
   }
-  selectUser(pUid) {
-    console.log("select: " + pUid);
-    this.userId = pUid;
-  }
 
-  completetask() {
-    let currentTodoData = []
-    let currentDayData = []
-    //todo
+  currentTodoAndDayData() {
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
-    //todo x dia.
+    console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
     this.currentDayTodo = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
-    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.todoId}`)
-
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
-        currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
+        this.currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      console.log('CURRENT TODO DATA', currentTodoData);
+
+      console.log(this.currentTodoData)
     })
     this.currentDayTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
-        currentDayData.push({ key: snapshot.key, value: snapshot.val() })
+        this.currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      console.log('current DAY data!!', currentDayData);
+      console.log(this.currentDayData)
     })
+  }
+
+  completetask() {
     this.currentTodo.set({
-      'category': currentTodoData[0].value,
-      'day': currentTodoData[1].value,
-      'description': currentTodoData[2].value,
-      'relevance': currentTodoData[3].value,
+      'category': this.currentTodoData[0].value,
+      'day': this.currentTodoData[1].value,
+      'description': this.currentTodoData[2].value,
+      'relevance': this.currentTodoData[3].value,
       'status': true,
-      'username': currentTodoData[5].value
+      'username': this.currentTodoData[5].value
     })
-    //console.log(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`);
     this.currentDayTodo.set({
-      'category': currentDayData[0].value,
-      'day': currentDayData[1].value,
-      'description': currentDayData[2].value,
-      'relevance': currentDayData[3].value,
+      'category': this.currentDayData[0].value,
+      'day': this.currentDayData[1].value,
+      'description': this.currentDayData[2].value,
+      'relevance': this.currentDayData[3].value,
       'status': true,
-      'username': currentDayData[5].value
+      'username': this.currentDayData[5].value
     })
   }
 

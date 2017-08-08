@@ -24,7 +24,7 @@
         .col-xs-2.flex-center
           i.fa.fa-users.nav-icon
         .col-xs-8.flex-center
-          a.nav-links([routerLink]="['/familyTodos']") Familia
+          a.nav-links([routerLink]="['/familyTodos', uid]") Familia
       .row.flex-center.nav-spacing([ngClass]="{'active': this.familyTodo}")
         .col-xs-2.flex-center
           i.fa.fa-circle-o-notch.nav-icon

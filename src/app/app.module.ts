@@ -67,7 +67,7 @@ export const ROUTES: Routes = [
   { path: 'menu/:id/createWeek', component: CreateWeekAdminComponent },
   { path: 'user/:id', component: ProfileUserComponent },
   { path: 'newTodo/:day/:index', component: NewTodoComponent },
-  { path: 'familyTodos', component: FamilyComponent },
+  { path: 'familyTodos/:id', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detailTodo/:userId/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
