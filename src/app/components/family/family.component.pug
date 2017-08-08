@@ -1,30 +1,32 @@
 section.col-xs-3.hidden-xs.no-padding
   app-desktop-bar([adminId]="userId")
-section
+  
+section.col-xs-12.col-sm-9.no-padding
     svg.header(width='100vw' viewBox='0 0 1085 296')
         path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h2.text-center.header-title Familia
-section.row.family.col-xs-12.flex-center
-    .col-xs-4.col-md-2.text-center(*ngFor="let user of usersdata")
-        a(role="button", (click)="selectUser(user.key)")
-            img.users([src]='user.value.avatar')
-            p.perUserName(*ngIf="userdata.length > 0") {{user.value.name}}
+    
+    section.row.family.col-xs-12.flex-center
+        .col-xs-4.col-md-2.text-center(*ngFor="let user of usersdata")
+            a(role="button", (click)="selectUser(user.key)")
+                img.users([src]='user.value.avatar')
+                p.perUserName(*ngIf="userdata.length > 0") {{user.value.name}}
 
-section.row.week
-    .col-xs-4.flex-center
-        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
-            span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-    .col-xs-4.flex-center
-        h3.week-day.text-center  {{ dayView | date:'EEEE MMMM d'}}
-    .col-xs-4.flex-center
-        button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
-            span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-section.row.user-week
-    .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView')
-        a.btn-default.btn-card(href='/')
-            img.todoImg(src='assets/i-29.png', alt='')
-            p.todoName(*ngIf="tododata.length > 0") {{todo.value.description}}
-            i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
+    section.row.week
+        .col-xs-4.flex-center
+            button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
+                span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+        .col-xs-4.flex-center
+            h3.week-day.text-center  {{ dayView | date:'EEEE MMMM d'}}
+        .col-xs-4.flex-center
+            button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
+                span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+    section.row.user-week
+        .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView')
+            a.btn-default.btn-card(href='/')
+                img.todoImg(src='assets/i-29.png', alt='')
+                p.todoName(*ngIf="tododata.length > 0") {{todo.value.description}}
+                i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
 
 .hidden-sm.hidden-md.hidden-lg
-app-mobile-bar
+  app-mobile-bar
