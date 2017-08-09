@@ -8,23 +8,30 @@ $btn-color: #35B095;
 	width: 100%;
 }
 
-input,
-textarea {
+input,{
 	height: 30px;
 	width: $formWidth;
-	background: none;
 	border: 0;
 	border-bottom: 1px solid #ccc;
-	color: #1e1d23;
-	display: block;
-	margin: 40px auto;
-	font-weight: 300;
 
 	&:focus {
 		border: 0;
 		outline: none;
 		border-bottom: 1px solid #ccc;
 	}
+}
+textarea,input{
+	color: #1e1d23;
+	background: none;
+	display: block;
+	margin: 40px auto;
+	font-weight: 300;
+	resize: none;
+
+}
+
+textarea::placeholder {
+	font-size: 13px;
 }
 
 .form-container {
