@@ -13,7 +13,9 @@ section.row
         div.showstatus-container(*ngIf="data.value == false")
           h3#todo-title Estado: 
           p.todoNotCompleted No completada
-          button.btn-menu-admin((click)='completetask()') Completar tarea
+          button.btn-menu-admin((click)='completetask()')
+            a([routerLink]="['/user', id]")  Completar tarea
+
           button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
           //-si la tarea ya esta completa no ense;ar el boton?
