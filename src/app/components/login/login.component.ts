@@ -44,9 +44,6 @@ export class LoginComponent implements OnInit {
         this.as.loginWithEmail(this.email.value, this.password.value).then((error) => {
           this.error = error.message;
         })
-
-
-
     }
   }
 
