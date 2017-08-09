@@ -110,13 +110,17 @@ export class ProfileUserComponent implements OnInit {
 
   next(){
 
-  this.dayView = this.d.setDate(this.d.getDate() + 1)
-  //console.log(this.d)
+   console.log("next", this.day);
 
-   this.day += 1;
-   if (this.day == 7){
+   //this.day += 1;
+   if (this.day == 6){
      //console.log("++++", this.day);
+     //me devuelve al lunes de la semana en la que se encutre.
+     this.dayView = this.d.setDate(this.d.getDate() - 6)
      this.day = 0;
+   }else{
+    this.dayView = this.d.setDate(this.d.getDate() + 1)
+    this.day += 1; 
    }
 
    this.getTodos(this.day)
@@ -125,11 +129,15 @@ export class ProfileUserComponent implements OnInit {
   }
 
   back(){
-    this.dayView = this.d.setDate(this.d.getDate() - 1)
-    this.day -= 1;
-    if (this.day == -1)
-    this.day = 6
-
+    console.log("back", this.day);
+    if (this.day == 1){
+     this.dayView = this.d.setDate(this.d.getDate() + 6)
+     this.day = 6
+    }else{
+      this.dayView = this.d.setDate(this.d.getDate() - 1)
+      this.day -= 1;
+    }
+    
     this.getTodos(this.day)
   }
 
@@ -144,6 +152,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getTodos(pday){
+    //console.log("get", pday)
     this.todosView = [];
     //console.log("pday", pday);
     for (var i in this.tododata){
