@@ -105,7 +105,7 @@ export class DetailTodoComponent implements OnInit {
       //console.log(this.currentDayData)
       isCompleted = true;
       if (isCompleted) {
-        this.location.back();
+        // this.location.back();
       }
 
     })

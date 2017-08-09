@@ -15,32 +15,37 @@ export class MenuAdminComponent implements OnInit {
   public userdata: Array<Object> = [];
   public adminName: string;
   public adminId: string;
+  public usersData: FirebaseListObservable<any>;
+  public usersdata: Array<any> = [];
+  public uData: Array<any> = [];
+  public uid: string;
+  public usersWithTodos: Array<any> = [];
+  public completedTodos: Array<Object> = [];
+
   constructor(
     private as: AuthService,
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
     public ds: DataService,
-    public route: ActivatedRoute) {
+    public route: ActivatedRoute,
+    public router: Router) {
       this.adminId = route.snapshot.paramMap.get('id');
     }
 
   ngOnInit() {
     this.auth.authState.subscribe(res => {
-      let props = this;
       if (res && res.uid) {
-        this.families = this.db.list(`/families/${res.uid}`, {preserveSnapshot: true});
-        this.families
-        .subscribe(snapshots => {
+        this.uid = res.uid;
+        this.families = this.db.list(`/families/${this.uid}`, {preserveSnapshot: true});
+        this.families.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            props.userdata.push({
-              key: snapshot.key,
-              value: snapshot.val()
-            })
-            props.assignProperties(props.userdata)
+            this.userdata.push({ key: snapshot.key, value: snapshot.val() })
           });
+          this.assignProperties(this.userdata)
+          this.getUsersData();
         })
       } else {
-        console.log('user not logged in');
+        this.router.navigateByUrl('/');
       }
     });
   }
@@ -51,5 +56,46 @@ export class MenuAdminComponent implements OnInit {
         this.adminName = pObject.value
       }
     })
+  }
+
+  getUsersData() {
+    this.usersData = this.db.list(`families/${this.uid}/users/`, {preserveSnapshot: true});
+    this.usersData.subscribe(snapshots => {
+      snapshots.forEach(snapshot => { this.usersdata.push({ key: snapshot.key, value: snapshot.val() }) });
+      this.getUsersWithTodos();
+      this.getUsersWeekTodos(this.usersWithTodos)
+    });
+  }
+
+  getUsersWithTodos() {
+    this.usersdata.filter((user)=> {
+      if (!(user.value.todos === undefined)) {
+        this.usersWithTodos.push(user)
+        console.log(this.usersWithTodos)
+        this.getCompletedTodos(this.usersWithTodos);
+      }
+    })
+  }
+
+  getUsersWeekTodos(pUsers) {
+    pUsers.forEach(o => {
+      Object.keys(o);
+    })
+  }
+
+
+  getCompletedTodos(pUsers) {
+    pUsers.forEach(o => {
+      Object.values(o.value.todos).filter(todo => {
+        if (todo.status === true) {
+          this.completedTodos.push({ user: todo.username, todos: todo })
+          console.log(this.completedTodos)
+        }
+      })
+    })
+  }
+
+  generateReports() {
+
   }
 }

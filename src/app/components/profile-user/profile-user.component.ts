@@ -120,7 +120,7 @@ export class ProfileUserComponent implements OnInit {
      this.day = 0;
    }else{
     this.dayView = this.d.setDate(this.d.getDate() + 1)
-    this.day += 1; 
+    this.day += 1;
    }
 
    this.getTodos(this.day)
@@ -137,7 +137,7 @@ export class ProfileUserComponent implements OnInit {
       this.dayView = this.d.setDate(this.d.getDate() - 1)
       this.day -= 1;
     }
-    
+
     this.getTodos(this.day)
   }
 
@@ -147,6 +147,7 @@ export class ProfileUserComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
       });
+      console.log(this.weekData)
     //  console.log("weekData ", this.weekData);
     })
   }

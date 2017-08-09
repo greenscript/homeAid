@@ -11,7 +11,7 @@ section.row.hidden-xs
         .row.admin-md-buttons
           .col-xs-12
             .col-xs-4.flex-center
-              a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Ver tareas
+              a.btn-card.admin-md-btn((click)="generateReports()") Generar Reportes
             .col-xs-4.flex-center
               a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'createWeek']") Manejar semana
             .col-xs-4.flex-center 
