@@ -44,22 +44,23 @@ textarea {
 	padding: 0 30px;
 }
 //btns
-.button-4{
+.btn-add{
   width:140px;
   height:50px;
-  border:2px solid #34495e;
-  float:left;
+	background-color: $btn-color;
+	float:left;
   text-align:center;
   cursor:pointer;
   position:relative;
   box-sizing:border-box;
   overflow:hidden;
-  margin:0 0 40px 50px;
+  margin:0 0 40px 30%;
+	border-radius: 2em;
+
 }
-.button-4 a{
-  font-family:arial;
-  font-size:16px;
-  color:red !important;
+.btn-add a{
+	font-weight: 300;
+  color:$text-color !important;
   text-decoration:none;
   line-height:50px;
   transition:all .5s ease;
@@ -70,15 +71,15 @@ textarea {
   width:140px;
   height:50px;
   left:-140px;
-  background:#34495e;
+  background: tomato;
   position:absolute;
   transition:all .5s ease;
   z-index:1;
 }
-.button-4:hover .eff-4{
+.btn-add:hover .eff-4{
   left:0;
 }
-.button-4:hover a{
+.btn-add:hover a{
   color:#fff;
 }
 
