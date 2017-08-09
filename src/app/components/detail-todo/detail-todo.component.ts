@@ -30,8 +30,6 @@ export class DetailTodoComponent implements OnInit {
   public currentTodoData: Array<any> = [];
   public currentDayData: Array<any> = [];
 
-
-
   constructor(
     private as: AuthService,
     public auth: AngularFireAuth,
@@ -39,8 +37,7 @@ export class DetailTodoComponent implements OnInit {
     private http: Http,
     private route: ActivatedRoute,
     public ds: DataService,
-    public location: Location
-  ) {
+    public location: Location) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('userId');
     this.dayId = route.snapshot.paramMap.get('dayId');
@@ -88,8 +85,7 @@ export class DetailTodoComponent implements OnInit {
   }
 
   currentTodoAndDayData() {
-    let isCompleted = false;
-    let isCompleted_todo = false;
+    //let isCompleted_todo= false;
 
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
     console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
@@ -105,12 +101,7 @@ export class DetailTodoComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      console.log(this.currentDayData)
-      isCompleted = true;
-      if (isCompleted) {
-        this.location.back();
-      }
-
+      //console.log(this.currentDayData)
     })
   }
 
@@ -131,6 +122,7 @@ export class DetailTodoComponent implements OnInit {
       'status': true,
       'username': this.currentDayData[5].value
     })
+    this.location.back();
   }
 
   updateOnBothEnds(pUserTodo, pDayTodo) {
