@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../../services/data.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-detail-todo',
   templateUrl: './detail-todo.component.html',
@@ -39,7 +39,7 @@ export class DetailTodoComponent implements OnInit {
     private http: Http,
     private route: ActivatedRoute,
     public ds: DataService,
-    // public location: Location
+    public location: Location
   ) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('userId');
@@ -88,8 +88,8 @@ export class DetailTodoComponent implements OnInit {
   }
 
   currentTodoAndDayData() {
-    // let isCompleted = false;
-    //let isCompleted_todo= false;
+    let isCompleted = false;
+    let isCompleted_todo = false;
 
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
     console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
@@ -105,11 +105,11 @@ export class DetailTodoComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      //console.log(this.currentDayData)
-      // isCompleted = true;
-      // if (isCompleted) {
-      //   this.location.back();
-      // }
+      console.log(this.currentDayData)
+      isCompleted = true;
+      if (isCompleted) {
+        this.location.back();
+      }
 
     })
   }
