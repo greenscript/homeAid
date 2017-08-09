@@ -142,17 +142,6 @@ export class DetailTodoComponent implements OnInit {
   }
 
   send() {
-    for (var i = 0; i < this.usersArr.length; i++) {
-      if (this.userId) {
-        this.usersArr.push(this.currentTodo)
-        console.log("user id: ", this.userId);
-        console.log("user array: ", this.usersArr);
-        console.log("user todo: ", this.currentTodo);
-
-      } else {
-        console.log("select a user first please");
-
-      }
-    }
+    console.log("hello");
   }
 }
