@@ -146,14 +146,15 @@ export class DetailTodoComponent implements OnInit {
       })
     })
   }
+
   selectUser(pUid) {
-    console.log("select: " + pUid);
     this.userId = pUid;
   }
 
   send() {
+    console.log("select: " + this.userId);
     for (var i = 0; i < this.usersArr.length; i++) {
-      if (this.userId) {
+      if (this.userId == this.usersArr[i]) {
         this.usersArr.push(this.currentTodo)
         console.log("user id: ", this.userId);
         console.log("user array: ", this.usersArr);
