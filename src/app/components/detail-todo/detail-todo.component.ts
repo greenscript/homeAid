@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../../services/data.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-detail-todo',
   templateUrl: './detail-todo.component.html',
