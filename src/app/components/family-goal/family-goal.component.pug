@@ -1,5 +1,5 @@
 section.col-xs-3.hidden-xs.no-padding
-  app-desktop-bar([adminId]="uid")
+  app-desktop-bar([adminId]="userId")
 section.col-xs-12.col-sm-9
   section.row 
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
@@ -7,12 +7,14 @@ section.col-xs-12.col-sm-9
     h1.familyGoal-title Premio familiar
   section.row
     section.col-xs-12.form-container
-      h4.titles Que deseas dar de premio familiar?
+      h4.titles.main Que deseas dar de premio familiar?
         input.form-control.newGoalInput(placeholder="Salida al cine")
       h4.titles Describe el premio
         section.col-xs-12
           textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!")
-      a.button(href='#') Checkout
+      .btn-add
+        .eff-4
+        a(href='#')  Agregar 
 
 
     

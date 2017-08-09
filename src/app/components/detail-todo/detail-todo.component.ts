@@ -85,7 +85,6 @@ export class DetailTodoComponent implements OnInit {
   }
 
   currentTodoAndDayData() {
-    let isCompleted = false;
     //let isCompleted_todo= false;
 
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
@@ -103,11 +102,6 @@ export class DetailTodoComponent implements OnInit {
         this.currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
       //console.log(this.currentDayData)
-      isCompleted = true;
-      if (isCompleted) {
-        // this.location.back();
-      }
-
     })
   }
 
@@ -128,6 +122,7 @@ export class DetailTodoComponent implements OnInit {
       'status': true,
       'username': this.currentDayData[5].value
     })
+    this.location.back();
   }
 
   updateOnBothEnds(pUserTodo, pDayTodo) {
@@ -151,14 +146,15 @@ export class DetailTodoComponent implements OnInit {
       })
     })
   }
+
   selectUser(pUid) {
-    console.log("select: " + pUid);
     this.userId = pUid;
   }
 
   send() {
+    console.log("select: " + this.userId);
     for (var i = 0; i < this.usersArr.length; i++) {
-      if (this.userId) {
+      if (this.userId == this.usersArr[i]) {
         this.usersArr.push(this.currentTodo)
         console.log("user id: ", this.userId);
         console.log("user array: ", this.usersArr);
