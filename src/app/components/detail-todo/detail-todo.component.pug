@@ -5,7 +5,7 @@ section.col-xs-12.col-sm-9.no-padding
     a.back((click)="backButton()", role="button") 
       img.admin-logOut(src='../../../assets/i-39.png', alt='')
     svg.admin-header(width='100vw' viewBox='0 0 1085 296')
-      path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+      path.admin-path(d="M.2.4V250.1S504,358,1085,225.1V0Z")
     h1.admin-title 
     img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
 
@@ -41,5 +41,6 @@ section.col-xs-12.col-sm-9.no-padding
                       span.perUserName {{user.value.name}}
                 .form-group.relevanceBtn
                   button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
+                  
 .hidden-sm.hidden-lg.hidden-md
   app-mobile-bar
