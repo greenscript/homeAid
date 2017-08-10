@@ -154,7 +154,8 @@ export class DetailTodoComponent implements OnInit {
   send() {
     for (var i = 0; i < this.usersArr.length; i++) {
       if (this.userId == this.usersArr[i]) {
-        this.usersArr.push(this.currentTodo)
+        this.usersArr.push(this.todoId);
+        this.usersArr.push(this.dayTodoId);
       } else {
         console.log("select a user first please");
 
@@ -162,7 +163,9 @@ export class DetailTodoComponent implements OnInit {
     }
     console.log("select: " + this.userId);
     console.log("arr: " + this.usersArr[i]);
-    console.log("current todo: " + this.currentTodo);
+    console.log("arr: " + this.usersArr);
+    console.log("day: " + this.dayTodoId);
+    console.log("todo: " + this.todoId);
 
   }
 }
