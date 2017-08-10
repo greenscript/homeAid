@@ -10,7 +10,7 @@ section.col-xs-12.col-sm-9.no-padding
         .col-xs-4.col-md-2.text-center(*ngFor="let user of usersdata")
             a(role="button", (click)="selectUser(user.key)")
                 img.users([src]='user.value.avatar')
-                p.perUserName(*ngIf="userdata.length > 0") {{user.value.name}}
+                p.perUserName(*ngIf="usersdata.length > 0") {{user.value.name}}
 
     section.row.week
         .col-xs-4.flex-center
