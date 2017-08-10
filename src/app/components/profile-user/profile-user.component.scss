@@ -187,3 +187,11 @@ btn-user {
 .back {
 	z-index: 999;
 }
+
+.md {
+	&-column {
+		height: 100vh;
+		overflow: scroll;
+		overflow-x: hidden;
+	}
+}
