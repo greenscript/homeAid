@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../../services/data.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-detail-todo',
   templateUrl: './detail-todo.component.html',
@@ -30,7 +30,14 @@ export class DetailTodoComponent implements OnInit {
   public currentTodoData: Array<any> = [];
   public currentDayData: Array<any> = [];
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private http: Http, private route: ActivatedRoute, public ds: DataService) {
+  constructor(
+    private as: AuthService,
+    public auth: AngularFireAuth,
+    public db: AngularFireDatabase,
+    private http: Http,
+    private route: ActivatedRoute,
+    public ds: DataService,
+    public location: Location) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('userId');
     this.dayId = route.snapshot.paramMap.get('dayId');
@@ -78,6 +85,8 @@ export class DetailTodoComponent implements OnInit {
   }
 
   currentTodoAndDayData() {
+    //let isCompleted_todo= false;
+
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
     console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
     this.currentDayTodo = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
@@ -86,13 +95,13 @@ export class DetailTodoComponent implements OnInit {
         this.currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
       });
 
-      console.log(this.currentTodoData)
+      //console.log(this.currentTodoData)
     })
     this.currentDayTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         this.currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      console.log(this.currentDayData)
+      //console.log(this.currentDayData)
     })
   }
 
@@ -113,6 +122,7 @@ export class DetailTodoComponent implements OnInit {
       'status': true,
       'username': this.currentDayData[5].value
     })
+    this.location.back();
   }
 
   updateOnBothEnds(pUserTodo, pDayTodo) {
@@ -135,5 +145,25 @@ export class DetailTodoComponent implements OnInit {
         'username': currentTodoData[5].value
       })
     })
+  }
+
+  selectUser(pUid) {
+    this.userId = pUid;
+  }
+
+  send() {
+    console.log("select: " + this.userId);
+    for (var i = 0; i < this.usersArr.length; i++) {
+      if (this.userId == this.usersArr[i]) {
+        this.usersArr.push(this.currentTodo)
+        console.log("user id: ", this.userId);
+        console.log("user array: ", this.usersArr);
+        console.log("user todo: ", this.currentTodo);
+
+      } else {
+        console.log("select a user first please");
+
+      }
+    }
   }
 }

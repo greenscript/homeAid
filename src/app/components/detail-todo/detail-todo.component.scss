@@ -90,6 +90,11 @@ $yellow: #EEC337;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
+.relevanceButton {
+    background-color: $header-color;
+    color: $text-color;
+}
+
 @media (min-width: 320px) {
     .admin {
         &-header {

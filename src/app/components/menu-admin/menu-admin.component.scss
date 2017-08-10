@@ -18,7 +18,7 @@ $text-size-mobile: 1.2em;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.admin-md-title[_ngcontent-c1] {
+.admin-md-title {
     left: 35%;
 }
 
@@ -84,6 +84,11 @@ $text-size-mobile: 1.2em;
 @media (min-width: 1000px) {
     .admin {
         top: -18vw;
+        &-img {
+          position: absolute;
+          top: 8%;
+          left: 2%;
+        }
     }
     .admin-md-title[_ngcontent-c1] {
         top: 5px;
@@ -104,12 +109,12 @@ $text-size-mobile: 1.2em;
             top: -5em;
         }
     }
-    .admin-md-title[_ngcontent-c1] {
+    .admin-md-title {
         top: 2px;
         left: 35%;
     }
-    .admin-img[_ngcontent-c1] {
-        top: 5%;
+    .admin-img {
+        top: 15%;
         left: 58%;
         position: fixed;
     }
@@ -121,11 +126,11 @@ $text-size-mobile: 1.2em;
             top: -10em;
         }
     }
-    .admin-md-title[_ngcontent-c1] {
+    .admin-md-title{
         top: 2px;
         left: 35%;
     }
-    .admin-img[_ngcontent-c1] {
+    .admin-img{
         top: 12%;
         left: 58%;
         position: fixed;

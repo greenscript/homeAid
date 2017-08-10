@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
-import { AuthService } from '../../services/auth.service';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../services/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UsersComponent implements OnInit {
   public users: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
-  public userId: string = '';
+  public userId: string;
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
@@ -26,7 +26,9 @@ export class UsersComponent implements OnInit {
     freeMode: true
   };
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) { }
+  constructor(private route: ActivatedRoute, private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase) {
+    this.userId = route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
     this.auth.authState.subscribe(res => {
@@ -34,22 +36,22 @@ export class UsersComponent implements OnInit {
       if (res && res.uid) {
         props.currentFamily = res.uid;
         console.log('logged in');
-        this.users = this.db.list(`/families/${props.currentFamily}/users`, {preserveSnapshot: true});
+        this.users = this.db.list(`/families/${props.currentFamily}/users`, { preserveSnapshot: true });
         this.users
-        .subscribe(snapshots => {
-          snapshots.forEach(snapshot => {
-            if (props.loadedUsers === false) {
-              props.usersdata.push(
-                ({
-                  key: snapshot.key,
-                  value: snapshot.val()
-                })
-              )
-            }
-          });
-          console.log(props.usersdata)
-          props.loadedUsers = true;
-        })
+          .subscribe(snapshots => {
+            snapshots.forEach(snapshot => {
+              if (props.loadedUsers === false) {
+                props.usersdata.push(
+                  ({
+                    key: snapshot.key,
+                    value: snapshot.val()
+                  })
+                )
+              }
+            });
+            console.log(props.usersdata)
+            props.loadedUsers = true;
+          })
       } else {
         console.log('user not logged in');
       }
