@@ -1,4 +1,4 @@
-$header-color: #efcf44;
+$header-color: #EEC337;
 .header {
     margin-top: 0;
     position: absolute;
@@ -67,7 +67,10 @@ $header-color: #efcf44;
     padding: .5rem;
     opacity: 0.5;
 }
-
+.perUserName{
+     font-size: 16px;
+    color: black;
+}
 .completed{
   color: #28bca7;
   margin-top: .4rem;

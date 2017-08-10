@@ -1,45 +1,45 @@
-section.row
-  section.col-xs-12.flex-center.newtodo-header
-    h1.newtodo-title Nueva tarea
+section
+  section.col-xs-12.col-sm-12.no-padding
+    svg.header(viewBox='0 0 1085 296')
+        path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+    h2.text-center.header-title Nueva Tarea
   section.row
     section.col-xs-12.col-sm-12.todo-container
-      section.col-xs-12.col-sm-12
+      section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
         h4.userName Seleccione un usuario
-          section.col-xs-12.flex-center.todo-user
+          section.row.family.col-xs-12.flex-center.col-sm-12
             .col-xs-4.text-center(*ngFor="let user of usersdata")
               a(role="button", (click)="selectUser(user.key)")
-                img.no-selected-ux([src]='user.value.avatar')
+                img.users([src]='user.value.avatar')
                 p.perUserName {{user.value.name}}
         h5(*ngIf="error") {{errorMsg}}
-      section.col-xs-12.col-sm-12
+      section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
         h4.categories Seleccione la tarea
-        section.col-xs-12.flex-center.todo-category
-          div
-            .col-xs-4.col-sm-4
-              button.category-btn((click)='acomodar.show()')
-                img.img-category(src='../../../assets/i-29.png')
-              h5 Acomodar
-            .col-xs-4.col-sm-4
-              button.category-btn((click)='limpiar.show()')
-                img.img-category(src='../../../assets/i-30.png')
-              h5 Limpiar
-            .col-xs-4.col-sm-4
-              button.category-btn((click)='cocinar.show()')
-                img.img-category(src='../../../assets/i-31.png')
-              h5 Cocinar
         section.col-xs-12.flex-center
           div
-            .col-xs-6.col-sm-4
+            .col-xs-4.col-sm-2.col-md-1
+              button.category-btn((click)='acomodar.show()')
+                img.img-category(src='../../../assets/i-29.png')
+                h5 Acomodar
+            .col-xs-4.col-sm-2.col-md-1
+              button.category-btn((click)='limpiar.show()')
+                img.img-category(src='../../../assets/i-30.png')
+                h5 Limpiar
+            .col-xs-4.col-sm-2.col-md-1
+              button.category-btn((click)='cocinar.show()')
+                img.img-category(src='../../../assets/i-31.png')
+                h5 Cocinar
+            .col-xs-4.col-sm-2.col-md-1
               button.category-btn((click)='mascotas.show()')
                 img.img-category(src='../../../assets/i-27.png')
-              h5 Mascotas
-            .col-xs-6.col-sm-4
+                h5 Mascotas
+            .col-xs-4.col-sm-2.col-md-1
               button.category-btn((click)='personal.show()')
                 img.img-category(src='../../../assets/i-28.png')
-              h5 Personal
+                h5 Personal
 
 .modal.fade(bsModal="", #acomodar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-  .modal-dialog.modal-sm
+  .modal-dialog
     .modal-content
       .modal-header
         h4.modal-title.pull-left Acomodar
@@ -66,7 +66,7 @@ section.row
         button#btnAddTodo.btn.btn-default.acomodarButton((click)='addTodo(value)') Agregar
       
 .modal.fade(bsModal="", #limpiar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-  .modal-dialog.modal-sm
+  .modal-dialog
     .modal-content
       .modal-header
         h4.modal-title.pull-left Limpiar
@@ -92,7 +92,7 @@ section.row
         button#btnAddTodo.btn.btn-default.limpiarButton((click)='addTodo(value)') Agregar
 
 .modal.fade(bsModal="", #cocinar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-  .modal-dialog.modal-sm
+  .modal-dialog
     .modal-content.modal-content2
       .modal-header
         h4.modal-title.pull-left Cocinar
@@ -118,7 +118,7 @@ section.row
         button#btnAddTodo.btn.btn-default.cocinarButton((click)='addTodo(value)') Agregar
       
 .modal.fade(bsModal="", #mascotas="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-  .modal-dialog.modal-sm
+  .modal-dialog
     .modal-content.modal-content3
       .modal-header
         h4.modal-title.pull-left Mascotas
@@ -144,7 +144,7 @@ section.row
         button#btnAddTodo.btn.btn-default.mascotasButton((click)='addTodo(value)') Agregar
 
 .modal.fade(bsModal="", #personal="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-  .modal-dialog.modal-sm
+  .modal-dialog
     .modal-content
       .modal-header
         h4.modal-title.pull-left Personal
