@@ -121,3 +121,11 @@ button a {
         margin-left: 10px;
     }
 }
+
+.desktop {
+  &-column {
+    overflow: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+}

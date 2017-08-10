@@ -1,42 +1,45 @@
-section.row 
-  a.back((click)="backButton()", role="button") 
-    img.admin-logOut(src='../../../assets/i-39.png', alt='')
-  svg.admin-header(width='100vw' viewBox='0 0 1085 296')
-    path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-  h1.admin-title 
-  img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
+section.col-xs-3.hidden-xs.no-padding
+  app-desktop-bar([adminId]="userId")
+section.col-xs-12.col-sm-9.no-padding
+  section.row 
+    a.back((click)="backButton()", role="button") 
+      img.admin-logOut(src='../../../assets/i-39.png', alt='')
+    svg.admin-header(width='100vw' viewBox='0 0 1085 296')
+      path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+    h1.admin-title 
+    img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
 
-section.row
-  section.col-xs-12.col-sm-12
-    div.main-todo(*ngFor='let data of todoData')
-      div.infotodo(*ngIf='data.key == "status"') 
-        div.showstatus-container(*ngIf="data.value == false")
-          h3#todo-title Estado: 
-          p.todoNotCompleted No completada
-          button.btn-menu-admin((click)='completetask()') Completar tarea
-          button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
+  section.row
+    section.col-xs-12.col-sm-12
+      div.main-todo(*ngFor='let data of todoData')
+        div.infotodo(*ngIf='data.key == "status"') 
+          div.showstatus-container(*ngIf="data.value == false")
+            h3#todo-title Estado: 
+            p.todoNotCompleted No completada
+            button.btn-menu-admin((click)='completetask()') Completar tarea
+            button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
 
-          //-si la tarea ya esta completa no ense;ar el boton?
-        div.showstatus-container(*ngIf="data.value == true")
-          h3#todo-title Estado: 
-          p.todoCompleted Completada
-          div.card 
-            p.cart-text Felicidades por completar esta tarea!
+            //-si la tarea ya esta completa no ense;ar el boton?
+          div.showstatus-container(*ngIf="data.value == true")
+            h3#todo-title Estado: 
+            p.todoCompleted Completada
+            div.card 
+              p.cart-text Felicidades por completar esta tarea!
 
-        .modal.fade(bsModal="", #relevanceLaw="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
-          .modal-dialog.modal-sm
-            .modal-content
-              .modal-header
-                h4.modal-title.pull-left Ley de la Relevancia
-                button.close.pull-right(type='button', aria-label='close', (click)='relevanceLaw.hide()')
-                  span(aria-hidden='true') 
-              .modal-body
-                h5.selectUser Seleccione a un usuario.
-                div.col-xs-4.users(*ngFor='let user of usersArr')
-                  a(role="button", (click)="selectUser(user.key)")
-                    img.user([src]='user.value.avatar')
-                    span.perUserName {{user.value.name}}
-              .form-group.relevanceBtn
-                button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
-
-app-mobile-bar
+          .modal.fade(bsModal="", #relevanceLaw="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+            .modal-dialog.modal-sm
+              .modal-content
+                .modal-header
+                  h4.modal-title.pull-left Ley de la Relevancia
+                  button.close.pull-right(type='button', aria-label='close', (click)='relevanceLaw.hide()')
+                    span(aria-hidden='true') 
+                .modal-body
+                  h5.selectUser Seleccione a un usuario.
+                  div.col-xs-4.users(*ngFor='let user of usersArr')
+                    a(role="button", (click)="selectUser(user.key)")
+                      img.user([src]='user.value.avatar')
+                      span.perUserName {{user.value.name}}
+                .form-group.relevanceBtn
+                  button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
+.hidden-sm.hidden-lg.hidden-md
+  app-mobile-bar

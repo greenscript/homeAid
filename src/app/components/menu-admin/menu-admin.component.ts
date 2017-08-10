@@ -17,9 +17,14 @@ export class MenuAdminComponent implements OnInit {
   public adminId: string;
   public usersData: FirebaseListObservable<any>;
   public usersdata: Array<any> = [];
+  public daysData: FirebaseListObservable<any>;
+  public daysdata: Array<any> = [];
   public uData: Array<any> = [];
   public uid: string;
   public usersWithTodos: Array<any> = [];
+  public daysWithTodos: Array<any> = [];
+  public usersTodos: Array<any> = [];
+  public totalWeekTodos: Array<any> = [];
   public completedTodos: Array<Object> = [];
 
   constructor(
@@ -43,6 +48,7 @@ export class MenuAdminComponent implements OnInit {
           });
           this.assignProperties(this.userdata)
           this.getUsersData();
+          this.getDaysData();
         })
       } else {
         this.router.navigateByUrl('/');
@@ -63,15 +69,64 @@ export class MenuAdminComponent implements OnInit {
     this.usersData.subscribe(snapshots => {
       snapshots.forEach(snapshot => { this.usersdata.push({ key: snapshot.key, value: snapshot.val() }) });
       this.getUsersWithTodos();
-      this.getUsersWeekTodos(this.usersWithTodos)
     });
   }
+
+  getDaysData() {
+    this.daysData = this.db.list(`families/${this.uid}/currentWeek/days`, {preserveSnapshot: true});
+    this.daysData.subscribe(snapshots => {
+      snapshots.forEach(snapshot => { this.daysdata.push({ key: snapshot.key, value: snapshot.val() }) });
+      this.getDaysWithTodos();
+      this.getWeekPercentage();
+      this.getTotalWeekTodos();
+
+    })
+  }
+
+  getDaysWithTodos() {
+    this.daysdata.filter((day)=>{
+      if (!(day.value.todos === undefined)) {
+        this.daysWithTodos.push(day)
+      }
+    })
+  }
+
+  getTotalWeekTodos() {
+    this.daysWithTodos.filter( day => {
+      if (day.value.todos) {
+        this.totalWeekTodos.push(Object.values(day.value.todos))
+      }
+    })
+    this.totalWeekTodos = this.totalWeekTodos[0].concat(this.totalWeekTodos[1])
+    console.log(this.totalWeekTodos)
+  }
+
+  getWeekPercentage() {
+    
+  }
+
+  // getWeekPercentage2() {
+  //   let totalTodos = this.totalTodos.filter(todo => {
+  //     if (todo.status === false) {
+  //       this.undoneTodos.push(todo);
+  //       console.log(this.undoneTodos)
+  //     }
+  //   })
+  //
+  //   let todos = this.totalTodos.length - this.undoneTodos.length
+  //   console.log(this.totalTodos.length, this.undoneTodos.length)
+  //   console.log(todos)
+  //   let percentage =  todos / this.totalTodos.length * this.max;
+  //   console.log(percentage)
+  //   this.current = percentage;
+  //   this.percentage = `${percentage}%`
+  //   console.log(this.percentage)
+  // }
 
   getUsersWithTodos() {
     this.usersdata.filter((user)=> {
       if (!(user.value.todos === undefined)) {
         this.usersWithTodos.push(user)
-        console.log(this.usersWithTodos)
         this.getCompletedTodos(this.usersWithTodos);
       }
     })
@@ -79,20 +134,34 @@ export class MenuAdminComponent implements OnInit {
 
   getUsersWeekTodos(pUsers) {
     pUsers.forEach(o => {
-      Object.keys(o);
+      let a = Object.keys(o);
+      // let user: FirebaseListObservable<any> = this.db.list(`families/${this.uid}/users/${a}/days/`)
     })
   }
 
 
-  getCompletedTodos(pUsers) {
-    pUsers.forEach(o => {
+  getCompletedTodos(pArray) {
+    pArray.forEach(o => {
       Object.values(o.value.todos).filter(todo => {
         if (todo.status === true) {
           this.completedTodos.push({ user: todo.username, todos: todo })
-          console.log(this.completedTodos)
         }
       })
     })
+  }
+
+  matchUserAndWeek() {
+    this.getCompletedTodos(this.daysWithTodos);
+    this.completedTodos.forEach(o => {
+      let username = Object.values(o).shift()
+      let todoUser = Object.values(o)[1].username;
+      let todoData = Object.values(o)[1];
+
+      if (username === todoUser) {
+
+      }
+    })
+
   }
 
   generateReports() {
