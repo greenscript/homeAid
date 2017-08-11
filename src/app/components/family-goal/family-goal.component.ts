@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,12 +7,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./family-goal.component.scss']
 })
 export class FamilyGoalComponent implements OnInit {
+  @Input() titleGoal;
+  @Input() descriptionGoal;
   public uid: string;
+
   constructor(public ar: ActivatedRoute) {
     this.uid = ar.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+  }
+  sendFamGoal(titleGoal,descriptionGoal){
+    console.log('!!!!',titleGoal, ' - ', descriptionGoal);
+    if(titleGoal == null || descriptionGoal == null){
+      console.log('!!!!',titleGoal, ' - ', descriptionGoal);
+
+    }else{
+      console.log('emppty fields');
+    }
   }
 
 }
