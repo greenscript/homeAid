@@ -26,6 +26,7 @@ export class MenuAdminComponent implements OnInit {
   public usersTodos: Array<any> = [];
   public totalWeekTodos: Array<any> = [];
   public completedTodos: Array<Object> = [];
+  public reports: Array<any> = [];
 
   constructor(
     private as: AuthService,
@@ -48,7 +49,6 @@ export class MenuAdminComponent implements OnInit {
           });
           this.assignProperties(this.userdata)
           this.getUsersData();
-          this.getDaysData();
         })
       } else {
         this.router.navigateByUrl('/');
@@ -70,39 +70,6 @@ export class MenuAdminComponent implements OnInit {
       snapshots.forEach(snapshot => { this.usersdata.push({ key: snapshot.key, value: snapshot.val() }) });
       this.getUsersWithTodos();
     });
-  }
-
-  getDaysData() {
-    this.daysData = this.db.list(`families/${this.uid}/currentWeek/days`, {preserveSnapshot: true});
-    this.daysData.subscribe(snapshots => {
-      snapshots.forEach(snapshot => { this.daysdata.push({ key: snapshot.key, value: snapshot.val() }) });
-      this.getDaysWithTodos();
-      this.getWeekPercentage();
-      this.getTotalWeekTodos();
-
-    })
-  }
-
-  getDaysWithTodos() {
-    this.daysdata.filter((day)=>{
-      if (!(day.value.todos === undefined)) {
-        this.daysWithTodos.push(day)
-      }
-    })
-  }
-
-  getTotalWeekTodos() {
-    this.daysWithTodos.filter( day => {
-      if (day.value.todos) {
-        this.totalWeekTodos.push(Object.values(day.value.todos))
-      }
-    })
-    this.totalWeekTodos = this.totalWeekTodos[0].concat(this.totalWeekTodos[1])
-    console.log(this.totalWeekTodos)
-  }
-
-  getWeekPercentage() {
-    
   }
 
   // getWeekPercentage2() {
@@ -127,42 +94,29 @@ export class MenuAdminComponent implements OnInit {
     this.usersdata.filter((user)=> {
       if (!(user.value.todos === undefined)) {
         this.usersWithTodos.push(user)
-        this.getCompletedTodos(this.usersWithTodos);
+        console.log(this.usersWithTodos);
       }
     })
+    this.getDoneTodos()
   }
 
-  getUsersWeekTodos(pUsers) {
-    pUsers.forEach(o => {
-      let a = Object.keys(o);
-      // let user: FirebaseListObservable<any> = this.db.list(`families/${this.uid}/users/${a}/days/`)
+  getDoneTodos() {
+    let a = []
+    let b;
+    this.usersWithTodos.forEach(o => {
+      a.push(Object.values(o.value.todos))
     })
-  }
+    console.log(a)
 
+    a.forEach(array => {
 
-  getCompletedTodos(pArray) {
-    pArray.forEach(o => {
-      Object.values(o.value.todos).filter(todo => {
-        if (todo.status === true) {
-          this.completedTodos.push({ user: todo.username, todos: todo })
-        }
-      })
-    })
-  }
+      b = array.filter(array => array.status)
 
-  matchUserAndWeek() {
-    this.getCompletedTodos(this.daysWithTodos);
-    this.completedTodos.forEach(o => {
-      let username = Object.values(o).shift()
-      let todoUser = Object.values(o)[1].username;
-      let todoData = Object.values(o)[1];
-
-      if (username === todoUser) {
-
-      }
+      console.log(b)
     })
 
   }
+
 
   generateReports() {
 

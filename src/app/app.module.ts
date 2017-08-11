@@ -35,6 +35,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { DesktopBarComponent } from './components/desktop-bar/desktop-bar.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { ReportComponent } from './components/report/report.component';
+import { BackComponent } from './components/back/back.component';
+
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
@@ -70,8 +72,8 @@ export const ROUTES: Routes = [
   { path: 'familyTodos/:id', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detailTodo/:userId/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
-  { path: 'familyGoal', component: FamilyGoalComponent }
+  { path: 'detailTodo/:id/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
+  { path: 'familyGoal/:id', component: FamilyGoalComponent }
 ];
 
 @NgModule({
@@ -95,7 +97,8 @@ export const ROUTES: Routes = [
     HeaderComponent,
     DesktopBarComponent,
     ReportsComponent,
-    ReportComponent
+    ReportComponent,
+    BackComponent
   ],
   imports: [
     BrowserModule,

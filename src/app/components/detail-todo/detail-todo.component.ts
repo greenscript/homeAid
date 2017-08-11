@@ -39,7 +39,7 @@ export class DetailTodoComponent implements OnInit {
     public ds: DataService,
     public location: Location) {
     this.todoId = route.snapshot.paramMap.get('todoid');
-    this.userId = route.snapshot.paramMap.get('userId');
+    this.userId = route.snapshot.paramMap.get('id');
     this.dayId = route.snapshot.paramMap.get('dayId');
     this.dayTodoId = route.snapshot.paramMap.get('todoDayId');
   }
