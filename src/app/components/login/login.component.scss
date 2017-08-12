@@ -1,6 +1,7 @@
 $green-color: #35B095;
 $yellow-color: #EEC337;
 $white-color: #FFF;
+$main-font-weigth: 200;
 
 .login {
   &-background {
@@ -21,6 +22,8 @@ $white-color: #FFF;
   &-register-md {
     width: 100%;
     color: #FFF;
+    text-decoration: none;
+    font-weight: $main-font-weigth;
   }
   &-login-btn {
     background-color: #28BCA7;
@@ -32,9 +35,11 @@ $white-color: #FFF;
     margin-bottom: 23px;
     box-shadow: 1px 1px 1px 1px #CFCFCF;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    font-weight: $main-font-weigth;
     &:hover {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
   }
   &-social {
     display: inline-block;
@@ -144,5 +149,5 @@ $white-color: #FFF;
   margin-top: 0.5em;
 }
 input{
-  font-weight: 200;
+  font-weight: $main-font-weigth;
 }
