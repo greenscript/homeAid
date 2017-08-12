@@ -3,5 +3,5 @@ section.reports-container
     .col-xs-12
       h2.reports-title Reportes
       .col-xs-12.no-padding.reports-spacer
-        .col-xs-12.col-sm-5.reports-repeater(*ngFor="let report of reports; let i = index;")
+        .col-xs-12.col-sm-6.reports-repeater(*ngFor="let report of reports; let i = index;", [ngClass]="{'another-row': i > 1 }")
           app-report([report]="report")
