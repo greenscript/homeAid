@@ -48,7 +48,7 @@
               placeholder="Contraseña",
               required
             )
-            .error(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") La contraseña tiene que tener 8 dígitos como mínimo.
+          .error.col-xs-12.text-center(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") La contraseña tiene que tener 8 dígitos como mínimo.
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
             [ngClass]="{'has-danger': myform.controls.repeatPassword.invalid && myform.controls.repeatPassword.dirty, 'has-success': myform.controls.repeatPassword.valid && myform.controls.repeatPassword.dirty}"
             )
@@ -59,7 +59,7 @@
               placeholder="Repite la contraseña",
               required
             )
-            .error(*ngIf="error") {{matchError}}    
+          .error.col-xs-12.text-center(*ngIf="error") {{matchError}}    
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center
             .btn-add
               .eff-4

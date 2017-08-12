@@ -10,7 +10,7 @@ section.row.full-height.hidden-xs.login-background.flex-center
             button.login-login-btn((click)="smModal.show()") Login
           section.col-xs-6.flex-center
             button.login-login-btn 
-              a.login-register-md(href="register") Registro
+              a.login-register-md([routerLink]="['/register']") Registro
         section.row.login-button-rows
           section.col-xs-6
             button.login-social.login-google((click)="googleSignUp()")
