@@ -1,6 +1,6 @@
-$btn-color: #35B095;
-$header-color: #EEC337;
-$text-color: #FFF;
+$green-color: #35B095;
+$yellow-color: #EEC337;
+$white-color: #FFF;
 
 .login {
   &-background {
@@ -91,7 +91,7 @@ $text-color: #FFF;
 .btn-add {
     width: 115px;
     height: 45px;
-    background-color: $btn-color;
+    background-color: $green-color;
     float: left;
     text-align: center;
     cursor: pointer;
@@ -100,11 +100,12 @@ $text-color: #FFF;
     overflow: hidden;
     margin: 0 0 40px;
     border-radius: 2em;
+    cursor: pointer;
 }
 
 .btn-add button {
     font-weight: 300;
-    color: $text-color !important;
+    color: $white-color !important;
     text-decoration: none;
     line-height: 40px;
     transition: all .5s ease;
@@ -118,10 +119,11 @@ $text-color: #FFF;
     width: 115px;
     height: 45px;
     left: -140px;
-    background: $header-color;
+    background: $yellow-color;
     position: absolute;
     transition: all .5s ease;
     z-index: 1;
+    cursor: pointer !important;
 }
 
 .btn-add:hover .eff-4 {
@@ -140,4 +142,7 @@ $text-color: #FFF;
 }
 .form-control{
   margin-top: 0.5em;
+}
+input{
+  font-weight: 200;
 }
