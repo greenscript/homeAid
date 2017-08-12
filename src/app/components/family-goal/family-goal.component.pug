@@ -5,8 +5,9 @@ section.col-xs-12.col-sm-9
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
       path.familyGoal-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h1.familyGoal-title Premio familiar
+  section.row.col.xs-1.col-md-3
   section.row
-    section.col-xs-12.form-container
+    section.col-xs-6.form-container
       h4.titles.main Que deseas dar de premio familiar?
         input.form-control.newGoalInput(placeholder="Salida al cine", [(ngModel)]="titleGoal")
       h4.titles Describe el premio
@@ -15,6 +16,7 @@ section.col-xs-12.col-sm-9
       .btn-add
         .eff-4
         a(role="button",(click)="sendFamGoal(titleGoal,descriptionGoal)")  Agregar 
+  section.row.col.xs-1.col-md-3
 
 
   
