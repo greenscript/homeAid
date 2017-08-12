@@ -3,7 +3,6 @@ $green-color: #35B095;
 $yellow-color: #EEC337;
 $white-color: #FFF;
 $main-font-weigth: 200;
-
 .header {
     margin-top: 0;
     position: absolute;
@@ -116,6 +115,7 @@ select[multiple] {
 .col-sm-12 {
     width: 100%;
 }
+
 //btns
 .btn-add {
     width: 115px;
@@ -162,6 +162,7 @@ select[multiple] {
 .btn-add:hover button {
     color: #fff;
 }
+
 @media (min-width: 320px) {
     .newuser {
         &-header {
@@ -182,7 +183,7 @@ select[multiple] {
 }
 
 .userName {
-    padding: 5em 0em 0em;
+    padding: 9em 0em 0em;
     float: left;
     position: relative;
     left: -21.5%;
