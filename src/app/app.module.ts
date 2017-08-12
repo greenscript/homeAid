@@ -73,7 +73,7 @@ export const ROUTES: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detailTodo/:id/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
-  { path: 'familyGoal', component: FamilyGoalComponent }
+  { path: 'familyGoal/:famid', component: FamilyGoalComponent }
 ];
 
 @NgModule({
