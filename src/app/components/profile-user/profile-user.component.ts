@@ -71,12 +71,14 @@ export class ProfileUserComponent implements OnInit {
             }
           });
           console.log("data!", props.tododata)
-          props.getUser()
           props.loadedUsers = true;
-          props.getTodos(this.day);
-          props.getDay()
-          this.getCurrentDayTodoId()
+
         })
+        props.getTodos(this.day);
+        props.getDay()
+        this.getCurrentDayTodoId()
+        props.getUser()
+
       } else {
         //console.log('user not logged in');
       }

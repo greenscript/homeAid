@@ -100,7 +100,6 @@ export class AuthService {
         dateArray.push(new Day(new Date(currentDate)))
       }
     }
-    console.log(dateArray, 'days')
     return dateArray;
   }
 
