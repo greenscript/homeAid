@@ -33,41 +33,42 @@ export class NewTodoComponent implements OnInit {
   public error: boolean = false;
   public errorMsg: string;
 
+
   //todosArray : NewTodo [];
 
   todos = [
-    { category: "Acomodar", description: "Alistar el comedor.", status: false, relevance: 'none' },
-    { category: "Acomodar", description: "Doblar ropa.", status: false, relevance: 'none' },
-    { category: "Acomodar", description: "Planchar ropa.", status: false, relevance: 'none' },
-    { category: "Acomodar", description: "Ordenar baños.", status: false, relevance: 'none' },
-    { category: "Acomodar", description: "Ordenar cocinar.", status: false, relevance: 'none' },
-    { category: "Acomodar", description: "Ordenar sala.", status: false, relevance: 'none' },
+    { category: "Acomodar", description: "Alistar el comedor.", status: false, relevance: 'none', points: 1 },
+    { category: "Acomodar", description: "Doblar ropa.", status: false, relevance: 'none', points: 2 },
+    { category: "Acomodar", description: "Planchar ropa.", status: false, relevance: 'none', points: 4 },
+    { category: "Acomodar", description: "Ordenar baños.", status: false, relevance: 'none', points: 3 },
+    { category: "Acomodar", description: "Ordenar cocinar.", status: false, relevance: 'none', points: 3 },
+    { category: "Acomodar", description: "Ordenar sala.", status: false, relevance: 'none', points: 3 },
     //Cat: limpiar.
-    { category: "Limpiar", description: "Barrer.", status: false, relevance: 'none' },
-    { category: "Limpiar", description: "Pasar el palo piso.", status: false, relevance: 'none' },
-    { category: "Limpiar", description: "Lavar platos.", status: false, relevance: 'none' },
-    { category: "Limpiar", description: "Aspirar la alfombra y muebles.", status: false, relevance: 'none' },
-    { category: "Limpiar", description: "Limpiar el inodoro y la ducha.", status: false, relevance: 'none' },
-    { category: "Limpiar", description: "Sacar la basura.", status: false, relevance: 'none' },
-    //Cat: Cocinar.
-    { category: "Cocinar", description: "Desayuno.", status: false, relevance: 'none' },
-    { category: "Cocinar", description: "Almuerzo.", status: false, relevance: 'none' },
-    { category: "Cocinar", description: "Merienda.", status: false, relevance: 'none' },
-    { category: "Cocinar", description: "Cena.", status: false, relevance: 'none' },
-    //Cat: Mascotas.
-    { category: "Mascotas", description: "Alimentar la mascota.", status: false, relevance: 'none' },
-    { category: "Mascotas", description: "Bañar la mascota.", status: false, relevance: 'none' },
-    { category: "Mascotas", description: "Pasear a la mascota.", status: false, relevance: 'none' },
-    { category: "Mascotas", description: "Limpiar la casa de la mascota.", status: false, relevance: 'none' },
-    { category: "Mascotas", description: "Limpiar el popo de la mascota.", status: false, relevance: 'none' },
-    //Cat: Personal.
-    { category: "Personal", description: "Limpiar el cuarto.", status: false, relevance: 'none' },
-    { category: "Personal", description: "Acomodar el cuarto.", status: false, relevance: 'none' },
-    { category: "Personal", description: "Lavar y secar ropa sucia.", status: false, relevance: 'none' },
-    { category: "Personal", description: "Tender la cama.", status: false, relevance: 'none' },
-    { category: "Personal", description: "Hacer tareas academicas.", status: false, relevance: 'none' },
-    { category: "Personal", description: "Planchar y doblar ropa.", status: false, relevance: 'none' },
+    { category: "Limpiar", description: "Barrer.", status: false, relevance: 'none', points: 1 },
+    { category: "Limpiar", description: "Pasar el palo piso.", status: false, relevance: 'none', points: 2 },
+    { category: "Limpiar", description: "Lavar platos.", status: false, relevance: 'none', points: 2 },
+    { category: "Limpiar", description: "Aspirar la alfombra y muebles.", status: false, relevance: 'none', points: 4 },
+    { category: "Limpiar", description: "Limpiar el inodoro y la ducha.", status: false, relevance: 'none', points: 4 },
+    { category: "Limpiar", description: "Sacar la basura.", status: false, relevance: 'none', points: 1 },
+    { category: "Limpiar", description: "Limpiar Jardin.", status: false, relevance: 'none', points: 4 },
 
+    //Cat: Cocinar.
+    { category: "Cocinar", description: "Desayuno.", status: false, relevance: 'none', points: 5 },
+    { category: "Cocinar", description: "Almuerzo.", status: false, relevance: 'none', points: 5 },
+    { category: "Cocinar", description: "Merienda.", status: false, relevance: 'none', points: 5 },
+    { category: "Cocinar", description: "Cena.", status: false, relevance: 'none', points: 5 },
+    //Cat: Mascotas.
+    { category: "Mascotas", description: "Alimentar la mascota.", status: false, relevance: 'none', points: 1 },
+    { category: "Mascotas", description: "Bañar la mascota.", status: false, relevance: 'none', points: 3 },
+    { category: "Mascotas", description: "Pasear a la mascota.", status: false, relevance: 'none', points: 3 },
+    { category: "Mascotas", description: "Limpiar la casa de la mascota.", status: false, relevance: 'none', points: 2 },
+    { category: "Mascotas", description: "Limpiar el popo de la mascota.", status: false, relevance: 'none', points: 1 },
+    //Cat: Personal.
+    { category: "Personal", description: "Limpiar el cuarto.", status: false, relevance: 'none', points: 5 },
+    { category: "Personal", description: "Acomodar el cuarto.", status: false, relevance: 'none', points: 3 },
+    { category: "Personal", description: "Lavar y secar ropa sucia.", status: false, relevance: 'none', points: 1 },
+    { category: "Personal", description: "Tender la cama.", status: false, relevance: 'none', points: 1 },
+    { category: "Personal", description: "Hacer tareas academicas.", status: false, relevance: 'none', points: 5 }
   ]
 
   constructor(
@@ -81,9 +82,9 @@ export class NewTodoComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-        this.currentDayIn = params['index'];
-        this.currentDay = params['day'];
-        console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
+      this.currentDayIn = params['index'];
+      this.currentDay = params['day'];
+      console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
     });
 
     console.log(this.ds.regularUsers);
@@ -120,15 +121,15 @@ export class NewTodoComponent implements OnInit {
     this.userSelected = true;
   };
 
-  addTodo(pvalue,userId) {
+  addTodo(pvalue, userId) {
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-          this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none',day:this.currentDayIn});
+          this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', day: this.currentDayIn });
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
-          this.selectedDay.push({ username: this.userId, description: pvalue, category: this.categoryForModel ,status:false, relevance: 'none',day:this.currentDayIn});
+          this.selectedDay.push({ username: this.userId, description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', day: this.currentDayIn });
         } else {
           this.error = true;
           this.errorMsg = 'Please select a user first'
