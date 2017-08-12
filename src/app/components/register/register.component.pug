@@ -15,7 +15,7 @@
               type="text", 
               name="name", 
               formControlName="firstName",
-              placeholder="First Name",
+              placeholder="Primer nombre",
               required
             )   
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
@@ -25,7 +25,7 @@
               type="text", 
               name="name", 
               formControlName="lastName",
-              placeholder="Family Name",
+              placeholder="Nombre de la familia",
               required
             )
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
@@ -35,7 +35,7 @@
               type="text", 
               name="email", 
               formControlName="email",
-              placeholder="Email",
+              placeholder="Correo electrónico",
               required
             )
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
@@ -45,10 +45,10 @@
               type="password", 
               name="password", 
               formControlName="password",
-              placeholder="Password",
+              placeholder="Contraseña",
               required
             )
-            .error(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") Password must be 8 characters long
+            .error(*ngIf="myform.controls.password.dirty && !myform.controls.password.valid") La contraseña tiene que tener 8 dígitos como mínimo.
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
             [ngClass]="{'has-danger': myform.controls.repeatPassword.invalid && myform.controls.repeatPassword.dirty, 'has-success': myform.controls.repeatPassword.valid && myform.controls.repeatPassword.dirty}"
             )
@@ -56,10 +56,12 @@
               type="password", 
               name="repeatPassword", 
               formControlName="repeatPassword",
-              placeholder="Repeat Password",
+              placeholder="Repite la contraseña",
               required
             )
             .error(*ngIf="error") {{matchError}}    
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center
-            button.btn.btn-default.register-form_button((click)="register()", [disabled]="myform.invalid") Register 
-
+            .btn-add
+              .eff-4
+              button((click)="register()", [disabled]="myform.invalid") Entrar 
+            //-button.btn.btn-default.register-form_button((click)="register()", [disabled]="myform.invalid") Registrarse 
