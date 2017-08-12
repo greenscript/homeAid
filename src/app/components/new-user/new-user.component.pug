@@ -8,21 +8,21 @@ section.col-xs-12.col-sm-9.no-padding
         path.path(d="M.2.4V242.1S514,358,1085,252.1V0Z")
       h1.header-title  Nuevo usuario
   section.row
+    section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1.flex-center
+      h4.userName Seleccione un usuario
     section.col-xs-12.col-sm-12.container
-      h4
-        section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer
-          .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;")
-              img.users(
-                [src]='avatar.src', 
-                (click)="selectImage($event.target.src); toggleObject.item = i ",
-                [ngClass]="{'selected-user': toggleObject.item == i }")
-                
+      section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer
+        .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;") 
+          img.users(
+            [src]='avatar.src',
+            (click)="selectImage($event.target.src); toggleObject.item = i ",
+            [ngClass]="{'selected-user': toggleObject.item == i }")
                   
     section.col-xs-12.col-md-12.container
       form.flex-center.flex-column([formGroup]="userform")
         .col-xs-10.flex-center.flex-column.no-padding
           .form-group.col-xs-12.col-md-6.offset-md-3
-            label(for='name') Nombre
+            h4(for='name') Nombre
             input.form-control.newuserfield(
               type="text", 
               name='username', 
@@ -31,7 +31,7 @@ section.col-xs-12.col-sm-9.no-padding
               required
             )
           .form-group.col-xs-12.col-md-6.offset-md-3
-            label(for='name') Fecha de nacimiento
+            h4(for='name') Fecha de nacimiento
             input.form-control.newuserfield(
               type="date", 
               name='birthdate', 
@@ -41,10 +41,10 @@ section.col-xs-12.col-sm-9.no-padding
             )
           .form-group.col-xs-12.col-md-6.offset-md-3
             .radio.col-xs-6
-              label Femenino
+              h4 Femenino
                 input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
             .radio.col-xs-6
-               label Masculino
+               h4 Masculino
                 input#optionsRadios2(type='radio', name='optionsRadios', value='option2')  
           
           .form-group.col-xs-12
