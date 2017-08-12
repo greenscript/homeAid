@@ -1,13 +1,16 @@
-$header-color: #EEC337;
-$text-color: #FFF;
 $text-size-mobile: 1.2em;
+$green-color: #35B095;
+$yellow-color: #EEC337;
+$white-color: #FFF;
+$main-font-weigth: 200;
+
 .header {
     margin-top: 0;
     position: absolute;
     z-index: -1;
     top: 0;
     .path {
-        fill: $header-color;
+        fill: $yellow-color;
     }
     &-title {
         color: white;
@@ -113,18 +116,63 @@ select[multiple] {
 .col-sm-12 {
     width: 100%;
 }
+//btns
+.btn-add {
+    width: 115px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
+    cursor: pointer;
+}
 
+.btn-add button {
+    font-weight: 300;
+    color: $white-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 115px;
+    height: 45px;
+    left: -140px;
+    background: $yellow-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover button {
+    color: #fff;
+}
 @media (min-width: 320px) {
     .newuser {
         &-header {
             height: 140px;
-            background-color: $header-color;
+            background-color: $yellow-color;
             border-radius: 50%;
             margin-top: -10%;
         }
         &-title {
             margin-top: 1.2em;
-            color: $text-color;
+            color: $white-color;
             font-weight: lighter;
         }
     }
