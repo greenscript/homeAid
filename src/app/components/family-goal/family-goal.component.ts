@@ -7,8 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./family-goal.component.scss']
 })
 export class FamilyGoalComponent implements OnInit {
-  @Input() titleGoal;
-  @Input() descriptionGoal;
+  @Input() gTitle;
+  @Input() gdescriptionGoal;
   public uid: string;
 
   constructor(public ar: ActivatedRoute) {
@@ -17,12 +17,12 @@ export class FamilyGoalComponent implements OnInit {
 
   ngOnInit() {
   }
-  sendFamGoal(titleGoal,descriptionGoal){
-    console.log('!!!!',titleGoal, ' - ', descriptionGoal);
-    if(titleGoal == null || descriptionGoal == null){
+
+  sendFamGoal(gTitle,gdescriptionGoal){
+    if(gTitle == null && gdescriptionGoal == null){
       console.log('empty fields');
     }else{
-      console.log('!!!!',titleGoal, ' - ', descriptionGoal);
+      console.log('!!!!',gTitle, ' - ', gdescriptionGoal);
 
     }
   }
