@@ -56,10 +56,8 @@ export class RegisterComponent implements OnInit {
   // crea el formGroup o form y le añade sus form controls
   createForm() {
     this.myform = new FormGroup({
-      name: new FormGroup({
-        firstName: this.firstName,
-        lastName: this.lastName,
-      }),
+      firstName: this.firstName,
+      lastName: this.lastName,
       email: this.email,
       password: this.password,
       repeatPassword: this.repeatPassword,

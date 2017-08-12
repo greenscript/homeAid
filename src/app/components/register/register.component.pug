@@ -9,8 +9,8 @@
   section.row.flex-center.register-form
     section.col-xs-12.col-sm-12
       form.register-form.flex-center.flex-column([formGroup]="myform")
-        fieldset.col-xs-10.flex-center.flex-column.no-padding(formGroupName="name", style="padding: 0;")
-          .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center([ngClass]="{'has-danger': myform.controls.name.invalid && myform.controls.name.dirty, 'has-success': myform.controls.name.valid && myform.controls.name.dirty}")
+        fieldset.col-xs-10.flex-center.flex-column.no-padding(fstyle="padding: 0;")
+          .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center([ngClass]="{'has-danger': myform.controls.firstName.invalid && myform.controls.firstName.dirty, 'has-success': myform.controls.firstName.valid && myform.controls.firstName.dirty}")
             input.form-control.register-form_input(
               type="text", 
               name="name", 
@@ -19,7 +19,7 @@
               required
             )   
           .form-group.col-xs-12.col-md-6.col-md-offset-3.register-form_wrapper.flex-center(
-            [ngClass]="{'has-danger': myform.controls.name.invalid && myform.controls.name.dirty, 'has-success': myform.controls.name.valid && myform.controls.name.dirty}"
+            [ngClass]="{'has-danger': myform.controls.lastName.invalid && myform.controls.lastName.dirty, 'has-success': myform.controls.lastName.valid && myform.controls.lastName.dirty}"
             )
             input.form-control.register-form_input(
               type="text", 

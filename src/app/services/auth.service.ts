@@ -19,8 +19,7 @@ export class AuthService {
   public last: any = this.first + 6;
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
-  public goal: string;
-  public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday), this.goal);
+  public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday));
   public users: FirebaseListObservable<any>;
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
@@ -63,7 +62,7 @@ export class AuthService {
         if (props.length > 1) {
           this.router.navigateByUrl('/users')
         } else {
-          this.router.navigateByUrl('/menu')
+          this.router.navigateByUrl('/menu/0')
         }
       })
     })
@@ -85,7 +84,7 @@ export class AuthService {
       .then((user) => {
         this.authState = user
         this.updateFamilyData(pName, [adminUser], [{}], this.currentWeek)
-        this.router.navigateByUrl('/menu')
+        this.router.navigateByUrl('/menu/0')
       })
       .catch(error => console.log(error));
   }
