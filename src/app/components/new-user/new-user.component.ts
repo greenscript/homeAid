@@ -20,7 +20,9 @@ export class NewUserComponent implements OnInit {
   public avatars: Array<any> = [
     { src: 'assets/i-22.png', active: false },
     { src: 'assets/i-24.png', active: false },
-    { src: 'assets/i-23.png', active: false }
+    { src: 'assets/i-23.png', active: false },
+    { src: 'assets/i-25.png', active: false },
+    { src: 'assets/i-42.png', active: false }
   ]
   public selectedImage: string;
   public toggleObject: any = {
