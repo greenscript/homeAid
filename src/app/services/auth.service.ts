@@ -19,7 +19,8 @@ export class AuthService {
   public last: any = this.first + 6;
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
-  public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday));
+  public goal: string;
+  public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday,this.goal));
   public users: FirebaseListObservable<any>;
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
