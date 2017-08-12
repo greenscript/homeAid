@@ -22,9 +22,11 @@ h4 {
     margin: 0px 0px 0px 1em;
 }
 
-.op{
+.op {
     background-color: red;
 }
+
+
 /*classes for ng if to see which user is selected.*/
 
 .selected-user {
@@ -38,7 +40,7 @@ h4 {
     width: 100px;
 }
 
-.users{
+.users {
     width: 7rem;
     height: 7rem;
     border-radius: 50%;
@@ -47,7 +49,7 @@ h4 {
     opacity: 0.5;
 }
 
-.user-form-button{
+.user-form-button {
     background-color: #28BCA7;
     color: #fff;
 }
@@ -130,7 +132,7 @@ select[multiple] {
         padding-left: 1em;
     }
     .header {
-        top: -10vw;
+        top: -12vw;
     }
 }
 
@@ -141,7 +143,6 @@ select[multiple] {
         border: none;
         border-bottom: 1px solid #757575;
     }
-
     .new-user-subcontainer {
         margin-top: 4em;
         margin-left: 25% !important;
