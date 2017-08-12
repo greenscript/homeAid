@@ -7,15 +7,15 @@ section.row.hidden-xs
         svg.admin-header(width='100vw' viewBox='0 0 1085 296')
           path.admin-path(d="M.2.4V200.1S514,330,1085,200.1V0Z")
         h1.admin-md-title Administrador {{adminName | capitalize}} 
-        img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
+        img.admin-img.center-block(src='../../../assets/i-admin.png', alt='')
         .row.admin-md-buttons
           .col-xs-12
             .col-xs-4.flex-center
-              a.btn-card.admin-md-btn((click)="generateReports()") Generar Reportes
+              a.btn-card.admin-md-btn((click)="generateReports()") Generar reportes
             .col-xs-4.flex-center
               a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'createWeek']") Manejar semana
             .col-xs-4.flex-center 
-              a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Crear Usuario
+              a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Crear usuario
         .row.flex-center.admin-md-reports
           .col-xs-10
             app-reports
