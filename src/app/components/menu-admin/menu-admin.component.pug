@@ -11,11 +11,11 @@ section.row.hidden-xs
         .row.admin-md-buttons
           .col-xs-12
             .col-xs-4.flex-center
-              a.btn-card.admin-md-btn((click)="generateReports()") Generar Reportes
+              a.btn-card.admin-md-btn((click)="generateReports()") Generar reportes
             .col-xs-4.flex-center
               a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'createWeek']") Manejar semana
             .col-xs-4.flex-center 
-              a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Crear Usuario
+              a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Crear usuario
         .row.flex-center.admin-md-reports
           .col-xs-10
             app-reports
