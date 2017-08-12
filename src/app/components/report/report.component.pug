@@ -1,6 +1,7 @@
 .report-container.col-xs-12.no-padding.flex-center
-  .col-xs-6
+  .col-xs-3
     img.img-responsive([src]="report.avatar")
-  .col-xs-6
+  .col-xs-9
     p {{report.name}}
+    p {{report.percentage}}% de las tareas completadas. 
     progressbar.progress-striped(active, max="100", [value]="report.percentage") {{report.percentage}}%
