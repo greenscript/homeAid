@@ -1,42 +1,45 @@
-section
-  section.col-xs-12.col-sm-12.no-padding
-    svg.header(viewBox='0 0 1085 296')
-        path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-    h2.text-center.header-title Nueva Tarea
-  section.row
-    section.col-xs-12.col-sm-12.todo-container
-      section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
-        h4.userName Seleccione un usuario
-          section.row.family.col-xs-12.flex-center.col-sm-12
-            .col-xs-4.text-center(*ngFor="let user of usersdata")
-              a(role="button", (click)="selectUser(user.key)")
-                img.users([src]='user.value.avatar')
-                p.perUserName {{user.value.name}}
-        h5(*ngIf="error") {{errorMsg}}
-      section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
-        h4.categories Seleccione una categoría
-        section.col-xs-12.flex-center
-          div
-            .col-xs-4.col-sm-2.col-md-2
-              button.category-btn((click)='acomodar.show()')
-                img.img-category(src='../../../assets/i-29.png')
-                h5 Acomodar
-            .col-xs-4.col-sm-2.col-md-2
-              button.category-btn((click)='limpiar.show()')
-                img.img-category(src='../../../assets/i-30.png')
-                h5 Limpiar
-            .col-xs-4.col-sm-2.col-md-2
-              button.category-btn((click)='cocinar.show()')
-                img.img-category(src='../../../assets/i-31.png')
-                h5 Cocinar
-            .col-xs-4.col-sm-2.col-md-2
-              button.category-btn((click)='mascotas.show()')
-                img.img-category(src='../../../assets/i-27.png')
-                h5 Mascotas
-            .col-xs-4.col-sm-2.col-md-2
-              button.category-btn((click)='personal.show()')
-                img.img-category(src='../../../assets/i-28.png')
-                h5 Personal
+section.col-xs-3.no-padding.hidden-xs
+  app-desktop-bar([adminId]="uid")
+section.col-xs-12.col-sm-9.no-padding.hidden-sm
+  section
+    section.col-xs-12.col-sm-12.no-padding
+      svg.header(viewBox='0 0 1085 296')
+          path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
+      h2.text-center.header-title Nueva Tarea
+    section.row
+      section.col-xs-12.col-sm-12.todo-container
+        section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
+          h4.userName Seleccione un usuario
+            section.row.family.col-xs-12.flex-center.col-sm-12
+              .col-xs-4.text-center(*ngFor="let user of usersdata")
+                a(role="button", (click)="selectUser(user.key)")
+                  img.users([src]='user.value.avatar')
+                  p.perUserName {{user.value.name}}
+          h5(*ngIf="error") {{errorMsg}}
+        section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
+          h4.categories Seleccione una categoría
+          section.col-xs-12.flex-center
+            div
+              .col-xs-4.col-sm-2.col-md-2
+                button.category-btn((click)='acomodar.show()')
+                  img.img-category(src='../../../assets/i-29.png')
+                  h5 Acomodar
+              .col-xs-4.col-sm-2.col-md-2
+                button.category-btn((click)='limpiar.show()')
+                  img.img-category(src='../../../assets/i-30.png')
+                  h5 Limpiar
+              .col-xs-4.col-sm-2.col-md-2
+                button.category-btn((click)='cocinar.show()')
+                  img.img-category(src='../../../assets/i-31.png')
+                  h5 Cocinar
+              .col-xs-4.col-sm-2.col-md-2
+                button.category-btn((click)='mascotas.show()')
+                  img.img-category(src='../../../assets/i-27.png')
+                  h5 Mascotas
+              .col-xs-4.col-sm-2.col-md-2
+                button.category-btn((click)='personal.show()')
+                  img.img-category(src='../../../assets/i-28.png')
+                  h5 Personal
 
 .modal.fade(bsModal="", #acomodar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog

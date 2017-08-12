@@ -1,1 +1,6 @@
-
+.report-container.col-xs-12.no-padding.flex-center
+  .col-xs-6
+    img.img-responsive([src]="report.avatar")
+  .col-xs-6
+    p {{report.name}}
+    progressbar.progress-striped(active, max="100", [value]="report.percentage") {{report.percentage}}%

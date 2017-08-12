@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 @Component({
@@ -7,6 +7,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
+  @Input() reports: Array<any>;
   public uid: string = '';
   public currentFamily: FirebaseListObservable<any>;
   public currentFamilyUsers: FirebaseListObservable<any>;

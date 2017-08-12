@@ -53,8 +53,10 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
           snapshots.forEach(snapshot => {
             this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
-          this.days = this.as.getWeekDays(this.firstday, this.lastday)
-          this.currentDay = this.days[0].day;
+          let a = Object.values(this.weekData.shift())
+          let b = a.splice(1, 1).shift()
+          this.days = b
+          this.currentDay = this.days.shift().day;
           console.log(this.days)
         })
       }

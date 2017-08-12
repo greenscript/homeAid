@@ -16,6 +16,7 @@ import { DataService } from '../../services/data.service';
   providers: [AuthService, DataService]
 })
 export class NewTodoComponent implements OnInit {
+  public uid: string;
   public users: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
   public currentWeek: FirebaseListObservable<any>;
@@ -85,6 +86,7 @@ export class NewTodoComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.currentDayIn = params['index'];
       this.currentDay = params['day'];
+      this.uid = params['id'];
       console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
     });
 

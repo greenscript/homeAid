@@ -2,5 +2,6 @@ section.reports-container
   .row
     .col-xs-10
       h2.reports-title Reportes
-      button((click)="trying()")
-  
+      .col-xs-12.no-padding.reports-spacer
+        .col-xs-12.col-sm-4(*ngFor="let report of reports; let i = index;")
+          app-report([report]="report")

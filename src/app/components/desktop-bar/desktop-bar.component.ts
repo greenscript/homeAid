@@ -17,10 +17,14 @@ export class DesktopBarComponent implements OnInit {
   public alarms: boolean;
   public isAdmin: boolean;
   public uid: string;
+  public day: string;
+  public dayI: string;
   public navText: string = `Admin's Menu`;
 
   constructor(public as: AuthService, public router: Router, public ar: ActivatedRoute) {
     this.uid = ar.snapshot.paramMap.get('id');
+    this.day = ar.snapshot.paramMap.get('day');
+    this.dayI = ar.snapshot.paramMap.get('index');
    }
 
   ngOnInit() {
@@ -30,6 +34,7 @@ export class DesktopBarComponent implements OnInit {
       break;
       case `/menu/${this.uid}/createWeek` :
       case `/menu/${this.uid}/newUser` :
+      case `/newTodo/${this.uid}/${this.day}/${this.dayI}`:
         this.navText = 'Back to Menu';
         this.menu = true;
       break;
@@ -44,12 +49,14 @@ export class DesktopBarComponent implements OnInit {
   }
 
   admin() {
+    console.log(this.adminId)
     switch (this.adminId) {
+
       case '0':
         this.isAdmin = true;
       break;
       default:
-      this.isAdmin = false;
+        this.isAdmin = false;
       break;
     }
   }

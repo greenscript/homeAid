@@ -92,33 +92,38 @@ export class MenuAdminComponent implements OnInit {
 
   getUsersWithTodos() {
     this.usersdata.filter((user)=> {
-      if (!(user.value.todos === undefined)) {
+      if (!(user.value.todos === 0)) {
         this.usersWithTodos.push(user)
-        console.log(this.usersWithTodos);
       }
     })
-    this.getDoneTodos()
+    this.generateReports()
   }
-
-  getDoneTodos() {
-    let a = []
-    let b;
-    this.usersWithTodos.forEach(o => {
-      a.push(Object.values(o.value.todos))
-    })
-    console.log(a)
-
-    a.forEach(array => {
-
-      b = array.filter(array => array.status)
-
-      console.log(b)
-    })
-
-  }
-
 
   generateReports() {
-
+    this.usersWithTodos.forEach(o => {
+      let a =  Object.keys(o.value.todos).length;
+      let b = [];
+      Object.values(o.value.todos).forEach(q => {
+        if (q.status === false) {
+          b.push(q)
+        }
+      })
+      let report = {
+        name: o.value.name,
+        avatar: o.value.avatar,
+        percentage: this.getPercentage(a, b)
+      }
+      this.reports.push(report)
+    })
   }
+
+  getPercentage(pTotal, pUndone) {
+    pUndone = isNaN(pUndone) ? 1 : pUndone
+    let todos = pTotal - pUndone
+    let percentage =  todos / pTotal * 100;
+    console.log(percentage)
+    return percentage
+  }
+
+
 }
