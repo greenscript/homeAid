@@ -20,10 +20,10 @@ export class FamilyGoalComponent implements OnInit {
   sendFamGoal(titleGoal,descriptionGoal){
     console.log('!!!!',titleGoal, ' - ', descriptionGoal);
     if(titleGoal == null || descriptionGoal == null){
+      console.log('empty fields');
+    }else{
       console.log('!!!!',titleGoal, ' - ', descriptionGoal);
 
-    }else{
-      console.log('emppty fields');
     }
   }
 
