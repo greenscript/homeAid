@@ -12,12 +12,11 @@ section.col-xs-12.col-sm-9.no-padding
       h4.userName Seleccione un usuario
     section.col-xs-12.col-sm-12.container
       section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer
-        .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;")
-            img.users(
-              [src]='avatar.src', 
-              (click)="selectImage($event.target.src); toggleObject.item = i ",
-              [ngClass]="{'selected-user': toggleObject.item == i }")
-                
+        .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;") 
+          img.users(
+            [src]='avatar.src',
+            (click)="selectImage($event.target.src); toggleObject.item = i ",
+            [ngClass]="{'selected-user': toggleObject.item == i }")
                   
     section.col-xs-12.col-md-12.container
       form.flex-center.flex-column([formGroup]="userform")
@@ -65,7 +64,10 @@ section.col-xs-12.col-sm-9.no-padding
             option.option(val='2', style='background-color: #FF7C34')
             option.option.yellow(val='3')  
           .form-group.user-form
-            button.btn.user-form-button((click)="createUser()") Crear 
+            .btn-add
+              .eff-4
+              button((click)="createUser()") Crear  
+            //-button.btn.user-form-button((click)="createUser()") Crear 
 
 .hidden-sm.hidden-md.hidden-lg         
   app-mobile-bar

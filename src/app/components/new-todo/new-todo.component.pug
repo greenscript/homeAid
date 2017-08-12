@@ -17,23 +17,23 @@ section
         h4.categories Seleccione una categoría
         section.col-xs-12.flex-center
           div
-            .col-xs-4.col-sm-2.col-md-1
+            .col-xs-4.col-sm-2.col-md-2
               button.category-btn((click)='acomodar.show()')
                 img.img-category(src='../../../assets/i-29.png')
                 h5 Acomodar
-            .col-xs-4.col-sm-2.col-md-1
+            .col-xs-4.col-sm-2.col-md-2
               button.category-btn((click)='limpiar.show()')
                 img.img-category(src='../../../assets/i-30.png')
                 h5 Limpiar
-            .col-xs-4.col-sm-2.col-md-1
+            .col-xs-4.col-sm-2.col-md-2
               button.category-btn((click)='cocinar.show()')
                 img.img-category(src='../../../assets/i-31.png')
                 h5 Cocinar
-            .col-xs-4.col-sm-2.col-md-1
+            .col-xs-4.col-sm-2.col-md-2
               button.category-btn((click)='mascotas.show()')
                 img.img-category(src='../../../assets/i-27.png')
                 h5 Mascotas
-            .col-xs-4.col-sm-2.col-md-1
+            .col-xs-4.col-sm-2.col-md-2
               button.category-btn((click)='personal.show()')
                 img.img-category(src='../../../assets/i-28.png')
                 h5 Personal
@@ -57,7 +57,7 @@ section
       
 .modal.fade(bsModal="", #limpiar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
-    .modal-content
+    .modal-content.modal-content2
       .modal-header
         h4.modal-title.pull-left Categoría Limpiar
         button.close.pull-right(type='button', aria-label='close', (click)='limpiar.hide()')
@@ -74,7 +74,7 @@ section
 
 .modal.fade(bsModal="", #cocinar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
-    .modal-content.modal-content2
+    .modal-content.modal-content3
       .modal-header
         h4.modal-title.pull-left Categoría Cocinar
         button.close.pull-right(type='button', aria-label='close', (click)='cocinar.hide()')
@@ -91,7 +91,7 @@ section
       
 .modal.fade(bsModal="", #mascotas="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
-    .modal-content.modal-content3
+    .modal-content
       .modal-header
         h4.modal-title.pull-left Categoría Mascotas
         button.close.pull-right(type='button', aria-label='close', (click)='mascotas.hide()')
