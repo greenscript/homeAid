@@ -3,7 +3,6 @@ $green-color: #35B095;
 $yellow-color: #EEC337;
 $white-color: #FFF;
 $main-font-weigth: 200;
-
 .btn-menu-admin {
     border-radius: 0;
     text-align: left;
@@ -23,6 +22,10 @@ $main-font-weigth: 200;
 
 .admin-md-title {
     left: 35%;
+}
+
+.col-xs-4 {
+    width: 25%;
 }
 
 @media (min-width: 320px) {
@@ -49,7 +52,7 @@ $main-font-weigth: 200;
             background-color: $white-color;
         }
         &-img {
-            background-color:  $white-color;
+            background-color: $white-color;
             border-radius: 50%;
             border: 6px solid $yellow-color;
             padding: 8px;
@@ -88,9 +91,9 @@ $main-font-weigth: 200;
     .admin {
         top: -18vw;
         &-img {
-          position: absolute;
-          top: 8%;
-          left: 2%;
+            position: absolute;
+            top: 8%;
+            left: 2%;
         }
     }
     .admin-md-title[_ngcontent-c1] {
@@ -129,11 +132,11 @@ $main-font-weigth: 200;
             top: -10em;
         }
     }
-    .admin-md-title{
+    .admin-md-title {
         top: 2px;
         left: 35%;
     }
-    .admin-img{
+    .admin-img {
         top: 12%;
         left: 58%;
         position: fixed;
@@ -162,12 +165,10 @@ $main-font-weigth: 200;
             text-align: center;
             text-decoration: none;
             font-weight: $main-font-weigth;
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25);
-
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
         }
-        &-btn:hover{
-          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
+        &-btn:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         }
         &-reports {
             margin-top: 5%;
