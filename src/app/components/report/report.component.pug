@@ -2,6 +2,6 @@
   .col-xs-3
     img.img-responsive([src]="report.avatar")
   .col-xs-9
-    p {{report.name}}
-    p {{report.percentage}}% de las tareas completadas. 
+    p.report-name {{report.name}}
+    p {{report.percentage}}% de sus tareas completadas. 
     progressbar.progress-striped(active, max="100", [value]="report.percentage") {{report.percentage}}%
