@@ -40,10 +40,16 @@
   .modal-dialog.modal-sm
     .modal-content
       .modal-header
-        h4.modal-title.pull-left Quieres cerrar sesion? 
+        h4.modal-title.pull-left ¿Quieres cerrar sesión?
         button.close.pull-right(type="button", aria-label="close", (click)="smModal.hide()")
           span(aria-hidden="true") &times;
       .modal-body
-        button.btn.btn-warning((click)="logout()") Si
-        button.btn.btn-default((click)="smModal.hide()") No
+        .form-group.user-form
+            .btn-add
+              .eff-4
+              button((click)="logout()") Cerrar
+            .btn-add
+              .eff-4
+              button((click)="smModal.hide()") No Cerrar
+      
         
