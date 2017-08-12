@@ -7,8 +7,8 @@ import * as firebase from 'firebase/app';
 //models
 import { User } from '../models/user.model';
 import { Week } from '../models/week.model';
-import { Family } from '../models/family.model';
-import { Day } from '../models/day.model';
+import { Family } from '../models/family.model';
+import { Day } from '../models/day.model';
 
 @Injectable()
 export class AuthService {
@@ -52,9 +52,9 @@ export class AuthService {
 
   loginWithEmail(pEmail: string, pPassword: string) {
     let props: Array<any> = [];
-    return this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) =>{
+    return this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) => {
       this.authState = response
-      this.users = this.db.list(`/families/${response.uid}/users/`, {preserveSnapshot: true});
+      this.users = this.db.list(`/families/${response.uid}/users/`, { preserveSnapshot: true });
       this.users.subscribe(snapshots => {
         snapshots.forEach(snapshot => {
           props.push({ key: snapshot.key, value: snapshot.val() })
@@ -62,13 +62,13 @@ export class AuthService {
         if (props.length > 1) {
           this.router.navigateByUrl('/users')
         } else {
-          this.router.navigateByUrl('/menu')
+          this.router.navigateByUrl('/menu/0')
         }
       })
     })
-    .catch((error)=> {
-      return error
-    })
+      .catch((error) => {
+        return error
+      })
 
   }
 
@@ -77,14 +77,14 @@ export class AuthService {
     this.router.navigateByUrl('/');
   }
 
-  emailSignUp(pEmail:string, pPassword:string, pName:string) {
-    let adminUser: any = new User(pName,'assets/i-22.png', 0, [], [], '');
+  emailSignUp(pEmail: string, pPassword: string, pName: string) {
+    let adminUser: any = new User(pName, 'assets/i-22.png', 0, [], [], '');
 
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
         this.authState = user
         this.updateFamilyData(pName, [adminUser], [{}], this.currentWeek)
-        this.router.navigateByUrl('/menu')
+        this.router.navigateByUrl('/menu/0')
       })
       .catch(error => console.log(error));
   }
@@ -92,28 +92,14 @@ export class AuthService {
   public getWeekDays(startDate, stopDate) {
     let dateArray: Array<any> = [];
     let currentDate = startDate;
-    if (currentDate > stopDate) {
-      while (currentDate > stopDate) {
-         dateArray.push( new Day (new Date(currentDate)) )
-         for (let i = 0; i < 6; i++) {
-           currentDate = new Date(currentDate)
-           currentDate = currentDate.setDate(currentDate.getDate() + 1);
-           dateArray.push( new Day (new Date(currentDate) ) )
-         }
-         break;
-      }
-    } else {
-      while (currentDate < stopDate) {
-         dateArray.push( new Day (new Date(currentDate)) )
-         for (let i = 0; i < 6; i++) {
-           currentDate = new Date(currentDate)
-           currentDate = currentDate.setDate(currentDate.getDate() + 1);
-           dateArray.push( new Day (new Date(currentDate) ) )
-         }
-         break;
+    if (currentDate <= stopDate) {
+      dateArray.push(new Day(new Date(currentDate)))
+      for (let i = 0; i < 6; i++) {
+        currentDate = new Date(currentDate)
+        currentDate = currentDate.setDate(currentDate.getDate() + 1);
+        dateArray.push(new Day(new Date(currentDate)))
       }
     }
-
     return dateArray;
   }
 
@@ -121,32 +107,32 @@ export class AuthService {
     let path = `families/${this.currentUserId}`;
     let data = new Family(this.authState.email, pName, pUsers, pWeeks, pCurrentWeek)
     this.db.object(path).update(data)
-    .catch(error => console.log(error));
+      .catch(error => console.log(error));
   }
 
   private socialSignIn(provider) {
 
     return this.af.auth.signInWithPopup(provider)
 
-      .then((credential) =>  {
+      .then((credential) => {
         console.log(credential)
-          switch (credential.credential.providerId) {
-            case 'google.com':
-              this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
-                [
-                    new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
-                ], [{}], this.currentWeek)
+        switch (credential.credential.providerId) {
+          case 'google.com':
+            this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
+              [
+                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
+              ], [{}], this.currentWeek)
             break;
-            case 'facebook.com':
-              this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
-                [
-                    new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '')
-                ], [], this.currentWeek)
+          case 'facebook.com':
+            this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
+              [
+                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '')
+              ], [], this.currentWeek)
             break;
-          }
-          this.authState = credential.user
+        }
+        this.authState = credential.user
 
-          this.router.navigateByUrl('/menu')
+        this.router.navigateByUrl('/menu')
       })
       .catch(error => console.log(error));
   }

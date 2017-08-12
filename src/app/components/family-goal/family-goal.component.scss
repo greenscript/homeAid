@@ -5,149 +5,159 @@ $formWidth: 60%;
 $btn-color: #35B095;
 //texts
 .newGoalInput {
-	width: 100%;
+    width: 100%;
 }
 
-input,{
-	height: 30px;
-	width: $formWidth;
-	border: 0;
-	border-bottom: 1px solid #ccc;
-
-	&:focus {
-		border: 0;
-		outline: none;
-		border-bottom: 1px solid #ccc;
-	}
+input,
+{
+    height: 30px;
+    width: $formWidth;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    &:focus {
+        border: 0;
+        outline: none;
+        border-bottom: 1px solid #ccc;
+    }
 }
-textarea,input{
-	color: #1e1d23;
-	background: none;
-	display: block;
-	margin: 40px auto;
-	font-weight: 300;
-	resize: none;
 
+textarea,
+input {
+    color: #1e1d23;
+    background: none;
+    display: block;
+    margin: 40px auto;
+    font-weight: 300;
+    resize: none;
 }
 
 textarea::placeholder {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 .form-container {
-	margin-top: 2em;
+    margin-top: 7em;
 }
 
 h4 {
-	font-weight: 300;
+    font-weight: 300;
 }
 
 textarea {
-	width: 100%;
-	height: 8em;
+    width: 100%;
+    height: 8em;
 }
 
 .titles {
-	padding: 0 30px;
+    padding: 0 30px;
 }
+
 //btns
-.btn-add{
-  width:140px;
-  height:50px;
-	background-color: $btn-color;
-	float:left;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  box-sizing:border-box;
-  overflow:hidden;
-  margin:0 0 40px;
-	border-radius: 2em;
-
-}
-.btn-add a{
-	font-weight: 300;
-  color:$text-color !important;
-  text-decoration:none;
-  line-height:50px;
-  transition:all .5s ease;
-  z-index:2;
-  position:relative;
-}
-.eff-4{
-  width:140px;
-  height:50px;
-  left:-140px;
-  background: $header-color;
-  position:absolute;
-  transition:all .5s ease;
-  z-index:1;
-}
-.btn-add:hover .eff-4{
-  left:0;
-}
-.btn-add:hover a{
-  color:#fff;
+.btn-add {
+    width: 140px;
+    height: 50px;
+    background-color: $btn-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
 }
 
+.btn-add a {
+    font-weight: 300;
+    color: $text-color !important;
+    text-decoration: none;
+    line-height: 50px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+}
+
+.eff-4 {
+    width: 140px;
+    height: 50px;
+    left: -140px;
+    background: $header-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover a {
+    color: #fff;
+}
 
 @media (min-width: 320px) {
-	.familyGoal {
-		&-header {
-			margin-top: 0;
-			position: absolute;
-			z-index: -1;
-			top: 0;
-		}
-
-		&-path {
-			fill: $header-color;
-		}
-
-		&-title {
-			color: white;
-			margin-top: 5vh;
-			font-weight: lighter;
-			text-align: center;
-		}
-	}
-	.btn-add{
-		left:30%;
-	}
+    .familyGoal {
+        &-header {
+            margin-top: 0vw;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+        }
+        &-path {
+            fill: $header-color;
+        }
+        &-title {
+            color: white;
+            margin-top: 5vh;
+            font-weight: lighter;
+            text-align: center;
+        }
+    }
+    .btn-add {
+        left: 30%;
+    }
 }
+
+@media (min-width: 650px) {
+    .main {
+        margin-top: 3em;
+    }
+    textarea {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .familyGoal {
+        &-header {
+            margin-top: -8vw;
+        }
+    }
+}
+
 //desktop
-@media (max-width: 650px) {
-	.main{
-		margin-top: 3em;
-	}
-	textarea{
-		margin-top: 15px;
-		margin-bottom: 15px;
-	}
-}
 @media (max-width: 1000px) {
-	.main{
-		margin-top: 5em;
-	}
+    .main {
+        margin-top: 5em;
+    }
 }
-@media (min-width: 1000px) {
-	.familyGoal{
-		&-header{
-			margin-top: -10vw;
-	  	width: 75vw;
-		}
-	}
-	.main{
-		margin-top: 2em;
-	}
-	.btn-add{
-		left:41%;
-	}
-	textarea::placeholder{
-		font-size: 16px;
-	}
 
+@media (min-width: 1000px) {
+    .familyGoal {
+        &-header {
+            margin-top: -12vw;
+            width: 75vw;
+        }
+    }
+    .main {
+        margin-top: 2em;
+    }
+    .btn-add {
+        left: 41%;
+    }
+    textarea::placeholder {
+        font-size: 16px;
+    }
 }
+
 
 /*@media (min-width: 1000px) {
 
@@ -158,6 +168,7 @@ textarea {
 		margin: 25px auto;
 	}
 }*/
+
 
 /*@media (max-width: 768px) {
 	.main{

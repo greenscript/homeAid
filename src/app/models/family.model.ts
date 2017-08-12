@@ -1,5 +1,5 @@
 import { User } from './user.model';
-import { Week } from './week.model';
+import {  Week } from './week.model';
 
 export class Family {
   private email: string;
@@ -9,17 +9,17 @@ export class Family {
   private currentWeek: any;
 
   constructor(
-    pEmail:string,
+    pEmail: string,
     pName: string,
     pUsers: User[],
     pWeeks: Week[],
     pCurrentWeek: Week) {
-      this.setEmail(pEmail);
-      this.setName(pName);
-      this.setUsers(pUsers);
-      this.setWeeks(pWeeks);
-      this.setCurrentWeek(pCurrentWeek);
-    }
+    this.setEmail(pEmail);
+    this.setName(pName);
+    this.setUsers(pUsers);
+    this.setWeeks(pWeeks);
+    this.setCurrentWeek(pCurrentWeek);
+  }
 
   getEmail() {
     return this.email;
@@ -49,7 +49,7 @@ export class Family {
     this.name = pValue;
   }
 
-  setUsers(pValue) {
+  setUsers(pValue)  {
     this.users = pValue;
   }
 

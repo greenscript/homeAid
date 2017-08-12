@@ -38,6 +38,7 @@ export class ProfileUserComponent implements OnInit {
   public myBooleanValue: boolean = false;
   public d = this.currentDate;
   public userAvatar: string;
+  public currentDayTodosArr: Array<any> = [];
 
   constructor(
     private as: AuthService,
@@ -70,12 +71,14 @@ export class ProfileUserComponent implements OnInit {
             }
           });
           console.log("data!", props.tododata)
-          props.getUser()
           props.loadedUsers = true;
-          props.getTodos(this.day);
-          props.getDay()
-          this.getCurrentDayTodoId()
+
         })
+        props.getTodos(this.day);
+        props.getDay()
+        this.getCurrentDayTodoId()
+        props.getUser()
+
       } else {
         //console.log('user not logged in');
       }
@@ -147,7 +150,6 @@ export class ProfileUserComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
       });
-      console.log(this.weekData)
     //  console.log("weekData ", this.weekData);
     })
   }
@@ -178,22 +180,19 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getCurrentDayTodoId() {
-    let currentDayTodos = []
     this.daysKeys = []
     this.currentDayTodos = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.day}/todos`, { preserveSnapshot: true });
     this.currentDayTodos.subscribe(snapshots =>{
       snapshots.forEach(snapshot => {
-        currentDayTodos.push({ key: snapshot.key, value : snapshot.val()})
+        this.currentDayTodosArr.push({ key: snapshot.key, value : snapshot.val()})
       })
+      let a = this.currentDayTodosArr.filter(todo => todo.value.username === this.userId);
+      a.forEach(o => {
+        this.daysKeys.push(Object.values(o).shift())
+      })
+      console.log(this.daysKeys)
     })
-    currentDayTodos.filter((todo) => {
-      console.log(todo)
-      if (todo.value.username === this.userId) {
-        this.daysKeys.push(todo.key)
-        console.log(this.daysKeys)
 
-      }
-    })
   }
 
   clickHide(){

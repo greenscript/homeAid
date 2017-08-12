@@ -1,13 +1,16 @@
-$header-color: #EEC337;
-$text-color: #FFF;
 $text-size-mobile: 1.2em;
+$green-color: #35B095;
+$yellow-color: #EEC337;
+$white-color: #FFF;
+$main-font-weigth: 200;
+
 .header {
     margin-top: 0;
     position: absolute;
     z-index: -1;
     top: 0;
     .path {
-        fill: $header-color;
+        fill: $yellow-color;
     }
     &-title {
         color: white;
@@ -22,9 +25,11 @@ h4 {
     margin: 0px 0px 0px 1em;
 }
 
-.op{
+.op {
     background-color: red;
 }
+
+
 /*classes for ng if to see which user is selected.*/
 
 .selected-user {
@@ -38,7 +43,7 @@ h4 {
     width: 100px;
 }
 
-.users{
+.users {
     width: 7rem;
     height: 7rem;
     border-radius: 50%;
@@ -47,9 +52,17 @@ h4 {
     opacity: 0.5;
 }
 
-.user-form-button{
+.user-form-button {
     background-color: #28BCA7;
     color: #fff;
+}
+
+.form-control {
+    box-shadow: none;
+}
+
+.info {
+    margin-top: 3em;
 }
 
 .newuserfield {
@@ -100,23 +113,79 @@ select[multiple] {
     float: left;
 }
 
+.col-sm-12 {
+    width: 100%;
+}
+//btns
+.btn-add {
+    width: 115px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.btn-add button {
+    font-weight: 300;
+    color: $white-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 115px;
+    height: 45px;
+    left: -140px;
+    background: $yellow-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover button {
+    color: #fff;
+}
 @media (min-width: 320px) {
     .newuser {
         &-header {
             height: 140px;
-            background-color: $header-color;
+            background-color: $yellow-color;
             border-radius: 50%;
             margin-top: -10%;
         }
         &-title {
             margin-top: 1.2em;
-            color: $text-color;
+            color: $white-color;
             font-weight: lighter;
         }
     }
     .new-user-subcontainer {
         margin: 3em 0px 2em 0px;
     }
+}
+
+.userName {
+    padding: 5em 0em 0em;
+    float: left;
+    position: relative;
+    left: -21.5%;
 }
 
 @media (min-width: 650px) {
@@ -130,7 +199,7 @@ select[multiple] {
         padding-left: 1em;
     }
     .header {
-        top: -10vw;
+        top: -12vw;
     }
 }
 
@@ -141,9 +210,7 @@ select[multiple] {
         border: none;
         border-bottom: 1px solid #757575;
     }
-
     .new-user-subcontainer {
-        margin-top: 4em;
         margin-left: 25% !important;
     }
 }

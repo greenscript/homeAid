@@ -39,7 +39,7 @@ export class DetailTodoComponent implements OnInit {
     public ds: DataService,
     public location: Location) {
     this.todoId = route.snapshot.paramMap.get('todoid');
-    this.userId = route.snapshot.paramMap.get('userId');
+    this.userId = route.snapshot.paramMap.get('id');
     this.dayId = route.snapshot.paramMap.get('dayId');
     this.dayTodoId = route.snapshot.paramMap.get('todoDayId');
   }
@@ -152,18 +152,20 @@ export class DetailTodoComponent implements OnInit {
   }
 
   send() {
-    console.log("select: " + this.userId);
     for (var i = 0; i < this.usersArr.length; i++) {
       if (this.userId == this.usersArr[i]) {
-        this.usersArr.push(this.currentTodo)
-        console.log("user id: ", this.userId);
-        console.log("user array: ", this.usersArr);
-        console.log("user todo: ", this.currentTodo);
-
+        this.usersArr.push(this.todoId);
+        this.usersArr.push(this.dayTodoId);
       } else {
         console.log("select a user first please");
 
       }
     }
+    console.log("select: " + this.userId);
+    console.log("arr: " + this.usersArr[i]);
+    console.log("arr: " + this.usersArr);
+    console.log("day: " + this.dayTodoId);
+    console.log("todo: " + this.todoId);
+
   }
 }

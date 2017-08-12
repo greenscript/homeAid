@@ -1,3 +1,8 @@
+$green-color: #35B095;
+$yellow-color: #EEC337;
+$white-color: #FFF;
+$main-font-weigth: 200;
+
 .login {
   &-background {
     background-image: url(../../../assets/background.png);
@@ -17,6 +22,8 @@
   &-register-md {
     width: 100%;
     color: #FFF;
+    text-decoration: none;
+    font-weight: $main-font-weigth;
   }
   &-login-btn {
     background-color: #28BCA7;
@@ -28,9 +35,11 @@
     margin-bottom: 23px;
     box-shadow: 1px 1px 1px 1px #CFCFCF;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    font-weight: $main-font-weigth;
     &:hover {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
   }
   &-social {
     display: inline-block;
@@ -81,4 +90,64 @@
   text-align: center;
   padding: 25px 10px;
   transition: all .5s;
+}
+
+//btns
+.btn-add {
+    width: 115px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.btn-add button {
+    font-weight: 300;
+    color: $white-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 115px;
+    height: 45px;
+    left: -140px;
+    background: $yellow-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover button {
+    color: #fff;
+}
+
+.modal-body{
+  height: 12em;
+}
+.modal-content{
+  border-radius: 0px !important;
+}
+.form-control{
+  margin-top: 0.5em;
+}
+input{
+  font-weight: $main-font-weigth;
 }

@@ -26,6 +26,7 @@ export class MenuAdminComponent implements OnInit {
   public usersTodos: Array<any> = [];
   public totalWeekTodos: Array<any> = [];
   public completedTodos: Array<Object> = [];
+  public reports: Array<any> = [];
 
   constructor(
     private as: AuthService,
@@ -48,7 +49,6 @@ export class MenuAdminComponent implements OnInit {
           });
           this.assignProperties(this.userdata)
           this.getUsersData();
-          this.getDaysData();
         })
       } else {
         this.router.navigateByUrl('/');
@@ -72,39 +72,6 @@ export class MenuAdminComponent implements OnInit {
     });
   }
 
-  getDaysData() {
-    this.daysData = this.db.list(`families/${this.uid}/currentWeek/days`, {preserveSnapshot: true});
-    this.daysData.subscribe(snapshots => {
-      snapshots.forEach(snapshot => { this.daysdata.push({ key: snapshot.key, value: snapshot.val() }) });
-      this.getDaysWithTodos();
-      this.getWeekPercentage();
-      this.getTotalWeekTodos();
-
-    })
-  }
-
-  getDaysWithTodos() {
-    this.daysdata.filter((day)=>{
-      if (!(day.value.todos === undefined)) {
-        this.daysWithTodos.push(day)
-      }
-    })
-  }
-
-  getTotalWeekTodos() {
-    this.daysWithTodos.filter( day => {
-      if (day.value.todos) {
-        this.totalWeekTodos.push(Object.values(day.value.todos))
-      }
-    })
-    this.totalWeekTodos = this.totalWeekTodos[0].concat(this.totalWeekTodos[1])
-    console.log(this.totalWeekTodos)
-  }
-
-  getWeekPercentage() {
-    
-  }
-
   // getWeekPercentage2() {
   //   let totalTodos = this.totalTodos.filter(todo => {
   //     if (todo.status === false) {
@@ -125,46 +92,38 @@ export class MenuAdminComponent implements OnInit {
 
   getUsersWithTodos() {
     this.usersdata.filter((user)=> {
-      if (!(user.value.todos === undefined)) {
+      if (!(user.value.todos === 0)) {
         this.usersWithTodos.push(user)
-        this.getCompletedTodos(this.usersWithTodos);
       }
     })
-  }
-
-  getUsersWeekTodos(pUsers) {
-    pUsers.forEach(o => {
-      let a = Object.keys(o);
-      // let user: FirebaseListObservable<any> = this.db.list(`families/${this.uid}/users/${a}/days/`)
-    })
-  }
-
-
-  getCompletedTodos(pArray) {
-    pArray.forEach(o => {
-      Object.values(o.value.todos).filter(todo => {
-        if (todo.status === true) {
-          this.completedTodos.push({ user: todo.username, todos: todo })
-        }
-      })
-    })
-  }
-
-  matchUserAndWeek() {
-    this.getCompletedTodos(this.daysWithTodos);
-    this.completedTodos.forEach(o => {
-      let username = Object.values(o).shift()
-      let todoUser = Object.values(o)[1].username;
-      let todoData = Object.values(o)[1];
-
-      if (username === todoUser) {
-
-      }
-    })
-
+    this.generateReports()
   }
 
   generateReports() {
-
+    this.usersWithTodos.forEach(o => {
+      let a =  Object.keys(o.value.todos).length;
+      let b = [];
+      Object.values(o.value.todos).forEach(q => {
+        if (q.status === false) {
+          b.push(q)
+        }
+      })
+      let report = {
+        name: o.value.name,
+        avatar: o.value.avatar,
+        percentage: this.getPercentage(a, b)
+      }
+      this.reports.push(report)
+    })
   }
+
+  getPercentage(pTotal, pUndone) {
+    pUndone = isNaN(pUndone) ? 1 : pUndone
+    let todos = pTotal - pUndone
+    let percentage =  todos / pTotal * 100;
+    console.log(percentage)
+    return percentage
+  }
+
+
 }

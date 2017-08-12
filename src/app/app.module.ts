@@ -35,11 +35,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { DesktopBarComponent } from './components/desktop-bar/desktop-bar.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { ReportComponent } from './components/report/report.component';
+import { BackComponent } from './components/back/back.component';
+
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 // bootstrap
 import { ModalModule } from 'ngx-bootstrap';
 import { DatepickerModule } from 'angular2-material-datepicker';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 // asd
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
@@ -66,12 +69,12 @@ export const ROUTES: Routes = [
   { path: 'menu/:id/newUser', component: NewUserComponent },
   { path: 'menu/:id/createWeek', component: CreateWeekAdminComponent },
   { path: 'user/:id', component: ProfileUserComponent },
-  { path: 'newTodo/:day/:index', component: NewTodoComponent },
+  { path: 'newTodo/:id/:day/:index', component: NewTodoComponent },
   { path: 'familyTodos/:id', component: FamilyComponent },
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detailTodo/:userId/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
-  { path: 'familyGoal', component: FamilyGoalComponent }
+  { path: 'detailTodo/:id/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
+  { path: 'familyGoal/:famid', component: FamilyGoalComponent }
 ];
 
 @NgModule({
@@ -95,7 +98,8 @@ export const ROUTES: Routes = [
     HeaderComponent,
     DesktopBarComponent,
     ReportsComponent,
-    ReportComponent
+    ReportComponent,
+    BackComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +124,8 @@ export const ROUTES: Routes = [
     Angular2FontawesomeModule,
     MomentModule,
     ToastModule.forRoot(),
-    SwiperModule
+    SwiperModule,
+    ProgressbarModule.forRoot()
 
   ],
   providers: [],

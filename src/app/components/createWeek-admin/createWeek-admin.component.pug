@@ -19,7 +19,7 @@ section.row.hidden-xs
           .admin-week
               .col-md--1.flex-center.newTodoMobile
               button.btn.btn-default.btn-admin.btn-newTodo.flex-center(*ngIf="days.length > 0", [disabled]="pastDweller")
-                  a.newTodoBottom([ngClass]="{'disable': pastDweller}", [routerLink]="['/newTodo', currentDay | date:'EEEMMMd',  currentDayIndex]") Nueva tarea
+                  a.newTodoBottom([ngClass]="{'disable': pastDweller}", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]") Nueva tarea
                   .col-xs-6
                   img.addBotton(src='assets/i-37.png', alt='')
               .col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
@@ -45,7 +45,7 @@ section.hidden-lg.hidden-md.hidden-sm.mobile
         section.admin-week
             .col-xs-12.col-md-3.flex-center.newTodoMobile
             button.btn.btn-default.btn-admin.btn-newTodo.flex-center([disabled]="pastDweller")
-                a.newTodoBottom([routerLink]="['/newTodo',currentDay,  currentDayIndex]", [ngClass]="{'disable': pastDweller}") Nueva tarea
+                a.newTodoBottom( [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]", [ngClass]="{'disable': pastDweller}") Nueva tarea
                 .col-xs-6
                 img.addBotton(src='assets/i-37.png', alt='')
             .col-xs-12.col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
