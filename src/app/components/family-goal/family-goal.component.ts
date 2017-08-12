@@ -21,6 +21,7 @@ export class FamilyGoalComponent implements OnInit {
   sendFamGoal(gTitle,gdescriptionGoal){
     if(gTitle == null && gdescriptionGoal == null){
       console.log('empty fields');
+      //validar.
     }else{
       console.log('!!!!',gTitle, ' - ', gdescriptionGoal);
 

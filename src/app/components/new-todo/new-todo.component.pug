@@ -14,7 +14,7 @@ section
                 p.perUserName {{user.value.name}}
         h5(*ngIf="error") {{errorMsg}}
       section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
-        h4.categories Seleccione la tarea
+        h4.categories Seleccione una categoría
         section.col-xs-12.flex-center
           div
             .col-xs-4.col-sm-2.col-md-1
@@ -42,129 +42,83 @@ section
   .modal-dialog
     .modal-content
       .modal-header
-        h4.modal-title.pull-left Acomodar
+        h4.modal-title.pull-left Categoría Acomodar
         button.close.pull-right(type='button', aria-label='close', (click)='acomodar.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div(*ngIf='category.category == "Acomodar"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-          select.form-control
-            option 1
-            option 2
-            option 3
-            option 4
-            option 5
-            option 6
-            option 7
-            option 8
-            option 9
-            option 10
-
       .form-group.flex-center.acomodarBtn
-        hr
-        button#btnAddTodo.btn.btn-default.acomodarButton((click)='addTodo(value)') Agregar
+        .btn-add
+          .eff-4
+          button((click)='addTodo(value)') Agregar
+        //-button#btnAddTodo.btn.btn-default.acomodarButton((click)='addTodo(value)') Agregar
       
 .modal.fade(bsModal="", #limpiar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h4.modal-title.pull-left Limpiar
+        h4.modal-title.pull-left Categoría Limpiar
         button.close.pull-right(type='button', aria-label='close', (click)='limpiar.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div.limpiarTodos(*ngIf='category.category == "Limpiar"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-          select.form-control
-            option 1
-            option 2
-            option 3
-            option 4
-            option 5
-            option 6
-            option 7
-            option 8
-            option 9
-            option 10
       .form-group.flex-center.limpiarBtn
-        hr
-        button#btnAddTodo.btn.btn-default.limpiarButton((click)='addTodo(value)') Agregar
+        .btn-add
+          .eff-4
+          button((click)='addTodo(value)') Agregar
+      //-  button#btnAddTodo.btn.btn-default.limpiarButton((click)='addTodo(value)') Agregar
 
 .modal.fade(bsModal="", #cocinar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
     .modal-content.modal-content2
       .modal-header
-        h4.modal-title.pull-left Cocinar
+        h4.modal-title.pull-left Categoría Cocinar
         button.close.pull-right(type='button', aria-label='close', (click)='cocinar.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div.cocinarTodos(*ngIf='category.category == "Cocinar"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-          select.form-control
-            option 1
-            option 2
-            option 3
-            option 4
-            option 5
-            option 6
-            option 7
-            option 8
-            option 9
-            option 10
       .form-group.flex-center.cocinarBtn
-        hr
-        button#btnAddTodo.btn.btn-default.cocinarButton((click)='addTodo(value)') Agregar
+        .btn-add
+          .eff-4
+          button((click)='addTodo(value)') Agregar
+        //-button#btnAddTodo.btn.btn-default.cocinarButton((click)='addTodo(value)') Agregar
       
 .modal.fade(bsModal="", #mascotas="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
     .modal-content.modal-content3
       .modal-header
-        h4.modal-title.pull-left Mascotas
+        h4.modal-title.pull-left Categoría Mascotas
         button.close.pull-right(type='button', aria-label='close', (click)='mascotas.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div.mascotasTodos(*ngIf='category.category == "Mascotas"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-          select.form-control
-            option 1
-            option 2
-            option 3
-            option 4
-            option 5
-            option 6
-            option 7
-            option 8
-            option 9
-            option 10
       .form-group.flex-center.mascotasBtn
-        hr
-        button#btnAddTodo.btn.btn-default.mascotasButton((click)='addTodo(value)') Agregar
+        .btn-add
+          .eff-4
+          button((click)='addTodo(value)') Agregar
+        //-button#btnAddTodo.btn.btn-default.mascotasButton((click)='addTodo(value)') Agregar
 
 .modal.fade(bsModal="", #personal="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h4.modal-title.pull-left Personal
+        h4.modal-title.pull-left Categoría Personal
         button.close.pull-right(type='button', aria-label='close', (click)='personal.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div.personalTodos(*ngIf='category.category == "Personal"')
           label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription',  [value]='category.description')
-          select.form-control
-            option 1
-            option 2
-            option 3
-            option 4
-            option 5
-            option 6
-            option 7
-            option 8
-            option 9
-            option 10
       .form-group.flex-center.personalBtn
-        hr
-        button#btnAddTodo.btn.btn-default.personalButton((click)='addTodo(value)') Agregar
+        .btn-add
+          .eff-4
+          button((click)='addTodo(value)') Agregar
+        //-button#btnAddTodo.btn.btn-default.personalButton((click)='addTodo(value)') Agregar

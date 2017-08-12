@@ -1,5 +1,7 @@
-$text-color: #FFF;
-$header-color: #28BCA7;
+$green-color: #35B095;
+$yellow-color: #EEC337;
+$white-color: #FFF;
+$main-font-weigth: 200;
 
 section.section-header{
   padding-top: 1rem;
@@ -12,7 +14,7 @@ section.section-header{
   top: 0;
 
   .path{
-    fill:$header-color;
+    fill:$green-color;
   }
 
   &-title {
@@ -63,6 +65,53 @@ input {
   }
 }
 
+//btns
+.btn-add {
+    width: 115px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.btn-add button {
+    font-weight: 300;
+    color: $white-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 115px;
+    height: 45px;
+    left: -140px;
+    background: $yellow-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover button {
+    color: #fff;
+}
+
 @media (min-width: 320px) {
   .register {
     &-header {
@@ -73,7 +122,7 @@ input {
     }
     &-title {
       margin-top: 1.2em;
-      color: $text-color;
+      color: $white-color;
     }
     &-form {
       padding: 1em 15px;
@@ -95,7 +144,7 @@ input {
       &_button {
         width: 100%;
         background-color: #28BCA7;
-        color: $text-color;
+        color: $white-color;
         font-size: 22px;
       }
     }
