@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LOCALE_ID } from '@angular/core';
+
 // models
 import { User } from './models/user.model';
 import { Week } from './models/week.model';
@@ -128,7 +130,7 @@ export const ROUTES: Routes = [
     ProgressbarModule.forRoot()
 
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: "es-CR" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

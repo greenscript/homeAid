@@ -89,7 +89,6 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   }
 
   checkDate() {
-    console.log('asd')
     let actualDate = new Date()
     let currentDay = new Date(this.currentDay)
     this.pastDweller = currentDay < actualDate ? true : false
