@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../services/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.scss'],
-    providers: [AuthService, Validators]
+  providers: [AuthService, Validators]
 })
 export class NewUserComponent implements OnInit {
   public users: FirebaseListObservable<any>;
@@ -18,9 +18,9 @@ export class NewUserComponent implements OnInit {
   public userName: FormControl;
   public birthdate: FormControl;
   public avatars: Array<any> = [
-    {src: 'assets/i-22.png', active: false},
-    {src: 'assets/i-24.png', active: false},
-    {src: 'assets/i-23.png', active: false}
+    { src: 'assets/i-22.png', active: false },
+    { src: 'assets/i-24.png', active: false },
+    { src: 'assets/i-23.png', active: false }
   ]
   public selectedImage: string;
   public toggleObject: any = {
@@ -62,7 +62,7 @@ export class NewUserComponent implements OnInit {
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log('logged in');
-        this.users = this.db.list(`/families/${res.uid}/users/`, {preserveSnapshot: true});
+        this.users = this.db.list(`/families/${res.uid}/users/`, { preserveSnapshot: true });
       } else {
         console.log('user not logged in');
       }
@@ -73,7 +73,7 @@ export class NewUserComponent implements OnInit {
     this.selectedImage = pEvent
     let absPath = window.location.origin + '/'
     if (this.selectedImage.includes(absPath)) {
-        this.selectedImage = this.selectedImage.replace(absPath, '')
+      this.selectedImage = this.selectedImage.replace(absPath, '')
     }
   }
 
@@ -86,7 +86,7 @@ export class NewUserComponent implements OnInit {
   createUser() {
     if (this.userform.valid) {
       if (this.selectedImage) {
-        this.users.push(new User(this.userName.value, this.selectedImage, 0, [], [], this.birthdate.value));
+        this.users.push(new User(this.userName.value, this.selectedImage, [], [], this.birthdate.value, [], ));
         this.toastr.success('Usuario creado!', 'Success!')
       }
     }
