@@ -1,16 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+//import { Component, OnInit } from '@angular/core';
+//import { Http } from '@angular/http';
+//import { AuthService } from '../../services/auth.service';
+//import { AngularFireAuth } from 'angularfire2/auth';
+//import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+//import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+//import { DataService } from '../../services/data.service';
+
+import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { DataService } from '../../services/data.service';
+//import { FormGroup, FormControl, Validators } from '@angular/forms';
+//import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+
+
 @Component({
   selector: 'app-detail-todo',
   templateUrl: './detail-todo.component.html',
   styleUrls: ['./detail-todo.component.scss'],
-  providers: [DataService, AuthService]
+  providers: [AuthService]
 
 })
 export class DetailTodoComponent implements OnInit {
@@ -29,15 +39,19 @@ export class DetailTodoComponent implements OnInit {
   public dayTodoId: string;
   public currentTodoData: Array<any> = [];
   public currentDayData: Array<any> = [];
+  public pathUser: FirebaseListObservable<any>
+  public userSelected: boolean = false;
+
 
   constructor(
     private as: AuthService,
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
-    private http: Http,
+    //private http: Http,
     private route: ActivatedRoute,
-    public ds: DataService,
-    public location: Location) {
+    //public ds: DataService,
+    public location: Location,
+) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('id');
     this.dayId = route.snapshot.paramMap.get('dayId');
@@ -77,6 +91,7 @@ export class DetailTodoComponent implements OnInit {
             });
             this.currentTodoAndDayData();
             props.loadedUsers = true;
+            //console.log('arr de usuarios',this.usersArr);
           })
       } else {
         console.log('user not logged in');
@@ -149,23 +164,57 @@ export class DetailTodoComponent implements OnInit {
 
   selectUser(pUid) {
     this.userId = pUid;
+    console.log('selectedUser',this.userId);
+    this.userSelected = true;
+
   }
 
   send() {
+    let relevanceTodoForUser;
+
+      //this.path.push(goaldObj);
+        //console.log('objeto',goaldObj , ' y parametros', ptitle ,' ',pdescript);
+
     for (var i = 0; i < this.usersArr.length; i++) {
-      if (this.userId == this.usersArr[i]) {
-        this.usersArr.push(this.todoId);
-        this.usersArr.push(this.dayTodoId);
+      console.log('arr de usuarios dentro del for',this.usersArr);
+      if (this.userId == this.usersArr[i].key) {
+        console.log('user id hacen mathccx',this.userId);
+        //path para pararle la tarea a alguien mas.
+        this.pathUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
+        console.log('PATH',this.pathUser);
+        /*relevanceTodoForUser = {
+          "category":,
+          "day":,
+          "description":,
+          "points":,
+          "relevance":,
+          "status":,
+          "username":
+
+        }*/
+        //this.pathUser.push(goaldObj);
+
+        //path para cambiar el estado de tarea del usuario ACTUAL a none.
+
+        //path de current week todo.
+        if(this.userSelected){
+          console.log('ya seleccionaron usuario');
+        }
+        //this.usersArr.push(this.todoId);
+        //this.usersArr.push(this.dayTodoId);
+        //this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
+
+
       } else {
         console.log("select a user first please");
 
       }
     }
-    console.log("select: " + this.userId);
+    /*console.log("select: " + this.userId);
     console.log("arr: " + this.usersArr[i]);
     console.log("arr: " + this.usersArr);
     console.log("day: " + this.dayTodoId);
-    console.log("todo: " + this.todoId);
+    console.log("todo: " + this.todoId);*/
 
   }
 }
