@@ -25,9 +25,12 @@
           i.fa.fa-circle-o-notch.nav-icon
         .col-xs-8.flex-center
           a.nav-links([routerLink]="['/familyGoal', uid]") Premios
+      .row
+        .col-xs-10.nav-spacer.flex-center
+          hr
       .row.flex-center.nav-spacing([ngClass]="{'active': this.alarms}")
         .col-xs-2.flex-center
-          i.fa.fa-bell-o.nav-icon
+          i.fa.fa-address-book-o.nav-icon
         .col-xs-8.flex-center
           a.nav-links([routerLink]="['/users']") Cambiar de usuario
       .row.flex-center.nav-spacing

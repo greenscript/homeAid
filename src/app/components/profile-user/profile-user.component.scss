@@ -140,11 +140,7 @@ btn-user {
     display: none;
 }
 
-.back{
-  position: absolute;
-  top: .8rem;
-  left: .8rem;
-}
+
 .btn-user:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -185,9 +181,7 @@ btn-user {
   }
 }
 
-.back {
-	z-index: 999;
-}
+
 
 .md {
 	&-column {

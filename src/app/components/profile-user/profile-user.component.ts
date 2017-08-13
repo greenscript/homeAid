@@ -217,9 +217,4 @@ export class ProfileUserComponent implements OnInit {
       }
     this.current = percent * completed;
   }
-
-  backButton() {
-    this.location.back();
-  }
-
 }
