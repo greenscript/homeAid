@@ -39,6 +39,7 @@ export class ProfileUserComponent implements OnInit {
   public d = this.currentDate;
   public userAvatar: string;
   public currentDayTodosArr: Array<any> = [];
+  public userColor: string;
 
   constructor(
     private as: AuthService,
@@ -95,13 +96,13 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-           // console.log("user", snapshot)
+            //console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
             })
             // llama a la funcion assignProperties
-            //console.log( "user", props.userdata.values)
+            console.log( "user", props.userdata)
           });
            props.assignProperties(props.userdata)
         })
@@ -175,6 +176,9 @@ export class ProfileUserComponent implements OnInit {
         case 'avatar':
           this.userAvatar = pObject.value
         break;
+        case 'styles':
+           this.userColor = pObject.value
+           console.log("color", this.userColor)
       }
     })
   }
