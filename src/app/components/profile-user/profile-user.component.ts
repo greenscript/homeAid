@@ -39,7 +39,7 @@ export class ProfileUserComponent implements OnInit {
   public d = this.currentDate;
   public userAvatar: string;
   public currentDayTodosArr: Array<any> = [];
-  public userColor: string;
+  public fillAttr:string;
 
   constructor(
     private as: AuthService,
@@ -177,8 +177,8 @@ export class ProfileUserComponent implements OnInit {
           this.userAvatar = pObject.value
         break;
         case 'styles':
-           this.userColor = pObject.value
-           console.log("color", this.userColor)
+           this.fillAttr = pObject.value
+           console.log("color", this.fillAttr)
       }
     })
   }
