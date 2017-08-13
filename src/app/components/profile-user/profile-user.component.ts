@@ -39,7 +39,7 @@ export class ProfileUserComponent implements OnInit {
   public d = this.currentDate;
   public userAvatar: string;
   public currentDayTodosArr: Array<any> = [];
-  public fillAttr:string;
+  public fillAttr:string = '5aabc5';
 
   constructor(
     private as: AuthService,
