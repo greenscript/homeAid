@@ -112,18 +112,15 @@ export class ProfileUserComponent implements OnInit {
   }
 
   next(){
-
-   console.log("next", this.day);
-
-   //this.day += 1;
    if (this.day == 6){
-     //console.log("++++", this.day);
      //me devuelve al lunes de la semana en la que se encutre.
      this.dayView = this.d.setDate(this.d.getDate() - 6)
      this.day = 0;
+     console.log("++++", this.day);
    }else{
     this.dayView = this.d.setDate(this.d.getDate() + 1)
     this.day += 1;
+    console.log("++++", this.day);
    }
 
    this.getTodos(this.day)
@@ -132,13 +129,15 @@ export class ProfileUserComponent implements OnInit {
   }
 
   back(){
-    console.log("back", this.day);
-    if (this.day == 1){
+    //console.log("back", this.day);
+    if (this.day == 0){
      this.dayView = this.d.setDate(this.d.getDate() + 6)
      this.day = 6
+     console.log("--", this.day);
     }else{
       this.dayView = this.d.setDate(this.d.getDate() - 1)
       this.day -= 1;
+      console.log("--", this.day);
     }
 
     this.getTodos(this.day)
