@@ -28,6 +28,7 @@ export class DesktopBarComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.router.url)
     switch (this.router.url) {
       case `/menu/${this.uid}`:
         this.menu = true;
@@ -38,7 +39,8 @@ export class DesktopBarComponent implements OnInit {
         this.navText = 'Regresar al Menu';
         this.menu = true;
         break;
-      case '/familyTodos':
+
+      case `/familyTodos/${this.uid}`:
         this.family = true;
         break;
       case `/user/${this.uid}`:
