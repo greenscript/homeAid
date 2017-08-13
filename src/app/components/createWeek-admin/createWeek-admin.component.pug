@@ -16,7 +16,7 @@ section.row.hidden-xs
                   button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
                       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
 
-          .admin-week
+          .admin-week.col-xs-12.no-padding.flex-center.flex-column
               .col-md--1.flex-center.newTodoMobile
               a.newTodoBottom.button.btn.btn-default.btn-admin.btn-newTodo.flex-center(*ngIf="currentDay", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]", [ngClass]="{'disable': pastDweller}") Nueva tarea
                   .col-xs-6
