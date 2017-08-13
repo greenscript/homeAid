@@ -1,11 +1,3 @@
-//import { Component, OnInit } from '@angular/core';
-//import { Http } from '@angular/http';
-//import { AuthService } from '../../services/auth.service';
-//import { AngularFireAuth } from 'angularfire2/auth';
-//import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-//import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-//import { DataService } from '../../services/data.service';
-
 import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -14,7 +6,6 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 //import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-
 
 @Component({
   selector: 'app-detail-todo',
@@ -41,6 +32,9 @@ export class DetailTodoComponent implements OnInit {
   public currentDayData: Array<any> = [];
   public pathUser: FirebaseListObservable<any>
   public userSelected: boolean = false;
+  public currentUserTodoForRemove: FirebaseObjectObservable<any>;
+  public newUserIdForTodo: string;
+
 
 
   constructor(
@@ -103,7 +97,7 @@ export class DetailTodoComponent implements OnInit {
     //let isCompleted_todo= false;
 
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
-    console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
+  //  console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
     this.currentDayTodo = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
@@ -163,58 +157,51 @@ export class DetailTodoComponent implements OnInit {
   }
 
   selectUser(pUid) {
-    this.userId = pUid;
-    console.log('selectedUser',this.userId);
+    this.newUserIdForTodo = pUid;
+  //  console.log('selectedUser',this.userId);
     this.userSelected = true;
 
   }
 
   send() {
     let relevanceTodoForUser;
+    let relevanceFirst = false;
+    //let currentTodoRemoved;
+    if(this.userSelected){
+      console.log('ya seleccionaron usuario');
+      for (var i = 0; i < this.usersArr.length; i++) {
+        if (this.newUserIdForTodo == this.usersArr[i].key) {
+          //path para pararle la tarea a alguien mas.
+          this.pathUser = this.db.list(`/families/${this.currentFamily}/users/${this.newUserIdForTodo}/todos/`, { preserveSnapshot: true });
 
-      //this.path.push(goaldObj);
-        //console.log('objeto',goaldObj , ' y parametros', ptitle ,' ',pdescript);
+          this.currentUserTodoForRemove = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
 
-    for (var i = 0; i < this.usersArr.length; i++) {
-      console.log('arr de usuarios dentro del for',this.usersArr);
-      if (this.userId == this.usersArr[i].key) {
-        console.log('user id hacen mathccx',this.userId);
-        //path para pararle la tarea a alguien mas.
-        this.pathUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-        console.log('PATH',this.pathUser);
-        /*relevanceTodoForUser = {
-          "category":,
-          "day":,
-          "description":,
-          "points":,
-          "relevance":,
-          "status":,
-          "username":
+          relevanceTodoForUser = {
+            "category":this.currentTodoData[0].value,
+            "day":this.currentTodoData[1].value,
+            "description":this.currentTodoData[2].value,
+            "points":this.currentTodoData[3].value,
+            "relevance":this.usersArr[i].value.name,
+            "status":this.currentTodoData[5].value,
+            "username":this.userId
+            //id de persona quien se la releva.
+          }
+          this.pathUser.push(relevanceTodoForUser);
+          relevanceFirst = true;
 
-        }*/
-        //this.pathUser.push(goaldObj);
+          if(relevanceFirst){
+            console.log('holi',this.currentUserTodoForRemove);
+            this.currentUserTodoForRemove.remove();
+            //
+          }
+          //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
+          //path de current week todo/editar userId.
+        } else {
+          console.log("select a user first please");
 
-        //path para cambiar el estado de tarea del usuario ACTUAL a none.
-
-        //path de current week todo.
-        if(this.userSelected){
-          console.log('ya seleccionaron usuario');
         }
-        //this.usersArr.push(this.todoId);
-        //this.usersArr.push(this.dayTodoId);
-        //this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-
-
-      } else {
-        console.log("select a user first please");
-
       }
     }
-    /*console.log("select: " + this.userId);
-    console.log("arr: " + this.usersArr[i]);
-    console.log("arr: " + this.usersArr);
-    console.log("day: " + this.dayTodoId);
-    console.log("todo: " + this.todoId);*/
 
   }
 }
