@@ -105,14 +105,12 @@ export class NewTodoComponent implements OnInit {
           .subscribe(snapshots => {
             snapshots.forEach(snapshot => {
               console.log(snapshot.key)
-              if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
                 props.usersdata.push(
                   ({
                     key: snapshot.key,
                     value: snapshot.val()
                   })
                 )
-              }
             });
             props.loadedUsers = true;
           })

@@ -21,6 +21,7 @@ export class AuthService {
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
   public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday));
   public users: FirebaseListObservable<any>;
+  public currentWeekUpdate: FirebaseListObservable<any>;
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.af.authState.subscribe((auth) => {
@@ -55,6 +56,7 @@ export class AuthService {
     return this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) => {
       this.authState = response
       this.users = this.db.list(`/families/${response.uid}/users/`, { preserveSnapshot: true });
+      this.checkWeek(response.uid)
       this.users.subscribe(snapshots => {
         snapshots.forEach(snapshot => {
           props.push({ key: snapshot.key, value: snapshot.val() })
@@ -70,6 +72,27 @@ export class AuthService {
         return error
       })
 
+  }
+
+  checkWeek(pUid) {
+    let props = [];
+    if (pUid) {
+      this.currentWeekUpdate = this.db.list(`families/${pUid}/currentWeek`, { preserveSnapshot: true });
+      this.currentWeekUpdate.subscribe(snapshots => {
+        snapshots.forEach(snapshot => {
+          props.push({ key: snapshot.key, value: snapshot.val() })
+        });
+        props = props.filter(prop =>  prop.key === 'firstDay' || prop.key === 'lastDay')
+        let a = props.shift().value;
+        let b = new Date();
+
+        console.log(a, 'asdasd')
+        console.log(a, b, 123123)
+        if (a < new Date()) {
+          console.log(true)
+        }
+      })
+    }
   }
 
   logout() {
