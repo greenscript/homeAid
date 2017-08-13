@@ -93,9 +93,11 @@ export class MenuAdminComponent implements OnInit {
           b.push(q)
         }
       })
+      console.log(o.value.styles)
       let report = {
         name: o.value.name,
         avatar: o.value.avatar,
+        color: o.value.styles,
         percentage: this.getPercentage(a, b)
       }
       this.reports.push(report)
