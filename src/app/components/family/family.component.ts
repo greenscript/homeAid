@@ -37,6 +37,10 @@ export class FamilyComponent implements OnInit {
   public dayView = this.currentDate.setDate(this.currentDate.getDate());
   public myBooleanValue: boolean = false;
   public d = this.currentDate;
+  public selectedImage: string;
+  public toggleObject: any = {
+    item: -1
+  }
 
   constructor(
     private as: AuthService,
@@ -111,6 +115,14 @@ export class FamilyComponent implements OnInit {
     console.log("select: " + pUid);
     this.userId = pUid;
     this.userTodo(this.userId);
+  }
+
+  selectImage(pEvent, pActive) {
+    this.selectedImage = pEvent
+    let absPath = window.location.origin + '/'
+    if (this.selectedImage.includes(absPath)) {
+      this.selectedImage = this.selectedImage.replace(absPath, '')
+    }
   }
 
   next() {

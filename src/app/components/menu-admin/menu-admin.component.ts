@@ -93,7 +93,6 @@ export class MenuAdminComponent implements OnInit {
           b.push(q)
         }
       })
-      console.log(o.value.styles)
       let report = {
         name: o.value.name,
         avatar: o.value.avatar,
@@ -105,12 +104,14 @@ export class MenuAdminComponent implements OnInit {
   }
 
   getPercentage(pTotal, pUndone) {
-    pUndone = pUndone.length > 0 ? pUndone.length : pTotal
+    pUndone = pUndone.length > 0 ? pUndone.length : 0
+    console.log(pUndone)
     let todos = pTotal - pUndone
     let percentage =  todos / pTotal * 100;
     if (!Number.isInteger(percentage)) {
       percentage = Math.floor(percentage)
     }
+    console.log(percentage)
     return percentage
   }
 }

@@ -111,3 +111,7 @@ h1, h2, input {
 .week-day {
   text-transform: capitalize;
 }
+
+.selected-user {
+    opacity: 1 !important;
+}
