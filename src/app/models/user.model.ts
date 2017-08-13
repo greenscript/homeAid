@@ -4,13 +4,13 @@ export class User {
   private todos: Array<any>;
   private alerts: Array<any>;
   private birthdate: string;
-  private styles: Array<any>;
+  private styles: string;
 
   constructor(pName, pAvatar, pTodos, pAlerts, pBirthdate, pStyles) {
     this.setName(pName);
     this.setAvatar(pAvatar);
     this.setTodos(pTodos);
-    this.setAlerts(pAlerts);
+    this.setAlerts(pAlerts );
     this.setBirthdate(pBirthdate);
     this.setStyles(pStyles);
   }

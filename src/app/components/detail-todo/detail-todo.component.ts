@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { DataService } from '../../services/data.service';
+//import { FormGroup, FormControl, Validators } from '@angular/forms';
+//import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-detail-todo',
   templateUrl: './detail-todo.component.html',
   styleUrls: ['./detail-todo.component.scss'],
-  providers: [DataService, AuthService]
+  providers: [AuthService]
 
 })
 export class DetailTodoComponent implements OnInit {
@@ -29,15 +30,22 @@ export class DetailTodoComponent implements OnInit {
   public dayTodoId: string;
   public currentTodoData: Array<any> = [];
   public currentDayData: Array<any> = [];
+  public pathUser: FirebaseListObservable<any>
+  public userSelected: boolean = false;
+  public currentUserTodoForRemove: FirebaseObjectObservable<any>;
+  public newUserIdForTodo: string;
+
+
 
   constructor(
     private as: AuthService,
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
-    private http: Http,
+    //private http: Http,
     private route: ActivatedRoute,
-    public ds: DataService,
-    public location: Location) {
+    //public ds: DataService,
+    public location: Location,
+) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('id');
     this.dayId = route.snapshot.paramMap.get('dayId');
@@ -77,6 +85,7 @@ export class DetailTodoComponent implements OnInit {
             });
             this.currentTodoAndDayData();
             props.loadedUsers = true;
+            //console.log('arr de usuarios',this.usersArr);
           })
       } else {
         console.log('user not logged in');
@@ -88,7 +97,7 @@ export class DetailTodoComponent implements OnInit {
     //let isCompleted_todo= false;
 
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
-    console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
+  //  console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
     this.currentDayTodo = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
@@ -148,24 +157,51 @@ export class DetailTodoComponent implements OnInit {
   }
 
   selectUser(pUid) {
-    this.userId = pUid;
+    this.newUserIdForTodo = pUid;
+  //  console.log('selectedUser',this.userId);
+    this.userSelected = true;
+
   }
 
   send() {
-    for (var i = 0; i < this.usersArr.length; i++) {
-      if (this.userId == this.usersArr[i]) {
-        this.usersArr.push(this.todoId);
-        this.usersArr.push(this.dayTodoId);
-      } else {
-        console.log("select a user first please");
+    let relevanceTodoForUser;
+    let relevanceFirst = false;
+    //let currentTodoRemoved;
+    if(this.userSelected){
+      console.log('ya seleccionaron usuario');
+      for (var i = 0; i < this.usersArr.length; i++) {
+        if (this.newUserIdForTodo == this.usersArr[i].key) {
+          //path para pararle la tarea a alguien mas.
+          this.pathUser = this.db.list(`/families/${this.currentFamily}/users/${this.newUserIdForTodo}/todos/`, { preserveSnapshot: true });
 
+          this.currentUserTodoForRemove = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
+
+          relevanceTodoForUser = {
+            "category":this.currentTodoData[0].value,
+            "day":this.currentTodoData[1].value,
+            "description":this.currentTodoData[2].value,
+            "points":this.currentTodoData[3].value,
+            "relevance":this.usersArr[i].value.name,
+            "status":this.currentTodoData[5].value,
+            "username":this.userId
+            //id de persona quien se la releva.
+          }
+          this.pathUser.push(relevanceTodoForUser);
+          relevanceFirst = true;
+
+          if(relevanceFirst){
+            console.log('holi',this.currentUserTodoForRemove);
+            this.currentUserTodoForRemove.remove();
+            //
+          }
+          //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
+          //path de current week todo/editar userId.
+        } else {
+          console.log("select a user first please");
+
+        }
       }
     }
-    console.log("select: " + this.userId);
-    console.log("arr: " + this.usersArr[i]);
-    console.log("arr: " + this.usersArr);
-    console.log("day: " + this.dayTodoId);
-    console.log("todo: " + this.todoId);
 
   }
 }

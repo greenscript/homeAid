@@ -39,6 +39,7 @@ export class ProfileUserComponent implements OnInit {
   public d = this.currentDate;
   public userAvatar: string;
   public currentDayTodosArr: Array<any> = [];
+  public fillAttr:string = '5aabc5';
 
   constructor(
     private as: AuthService,
@@ -95,13 +96,13 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-           // console.log("user", snapshot)
+            //console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
             })
             // llama a la funcion assignProperties
-            //console.log( "user", props.userdata.values)
+            console.log( "user", props.userdata)
           });
            props.assignProperties(props.userdata)
         })
@@ -112,18 +113,15 @@ export class ProfileUserComponent implements OnInit {
   }
 
   next(){
-
-   console.log("next", this.day);
-
-   //this.day += 1;
    if (this.day == 6){
-     //console.log("++++", this.day);
      //me devuelve al lunes de la semana en la que se encutre.
      this.dayView = this.d.setDate(this.d.getDate() - 6)
      this.day = 0;
+     console.log("++++", this.day);
    }else{
     this.dayView = this.d.setDate(this.d.getDate() + 1)
     this.day += 1;
+    console.log("++++", this.day);
    }
 
    this.getTodos(this.day)
@@ -132,16 +130,19 @@ export class ProfileUserComponent implements OnInit {
   }
 
   back(){
-    console.log("back", this.day);
-    if (this.day == 1){
+    //console.log("back", this.day);
+    if (this.day == 0){
      this.dayView = this.d.setDate(this.d.getDate() + 6)
      this.day = 6
+     console.log("--", this.day);
     }else{
       this.dayView = this.d.setDate(this.d.getDate() - 1)
       this.day -= 1;
+      console.log("--", this.day);
     }
 
     this.getTodos(this.day)
+    this.getCurrentDayTodoId()
   }
 
    getDay() {
@@ -175,6 +176,9 @@ export class ProfileUserComponent implements OnInit {
         case 'avatar':
           this.userAvatar = pObject.value
         break;
+        case 'styles':
+           this.fillAttr = pObject.value
+           console.log("color", this.fillAttr)
       }
     })
   }

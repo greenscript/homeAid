@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   emailSignUp(pEmail: string, pPassword: string, pName: string) {
-    let adminUser: any = new User(pName, 'assets/i-22.png', 0, [], [], '');
+    let adminUser: any = new User(pName, 'assets/i-22.png', 0, [], [], '#5aabc5');
 
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
@@ -91,15 +91,16 @@ export class AuthService {
 
   public getWeekDays(startDate, stopDate) {
     let dateArray: Array<any> = [];
+
     let currentDate = startDate;
-    if (currentDate <= stopDate) {
+    console.log(currentDate, stopDate)
+      console.log('entered')
       dateArray.push(new Day(new Date(currentDate)))
       for (let i = 0; i < 6; i++) {
         currentDate = new Date(currentDate)
         currentDate = currentDate.setDate(currentDate.getDate() + 1);
         dateArray.push(new Day(new Date(currentDate)))
       }
-    }
     return dateArray;
   }
 
@@ -120,13 +121,13 @@ export class AuthService {
           case 'google.com':
             this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
               [
-                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
+                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '#5aabc5')
               ], [{}], this.currentWeek)
             break;
           case 'facebook.com':
             this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
               [
-                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '')
+                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '#5aabc5')
               ], [], this.currentWeek)
             break;
         }

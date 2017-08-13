@@ -7,7 +7,7 @@ import { NewTodoComponent } from '../../components/new-todo/new-todo.component';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class FamilyComponent implements OnInit {
   public users: FirebaseListObservable<any>;
   public selectedUser: FirebaseListObservable<any>;
   public userId: string = '';
+  public routeId: string;
   public tododata: Array<any> = [];
   public todosView: Array<any> = [];
   public usersdata: Array<any> = [];
@@ -30,39 +31,37 @@ export class FamilyComponent implements OnInit {
   public currentFamily: string = '';
   public loadedUsers: boolean = false;
   public weekData: Array<any> = [];
-  userName;
-  currentDate: Date = new Date();
-  day: number = this.currentDate.getDay();
-  dayView = this.currentDate.setDate(this.currentDate.getDate());
-  myBooleanValue: boolean = false;
-  d = this.currentDate;
+  public userName;
+  public currentDate: Date = new Date();
+  public day: number = this.currentDate.getDay();
+  public dayView = this.currentDate.setDate(this.currentDate.getDate());
+  public myBooleanValue: boolean = false;
+  public d = this.currentDate;
 
-  constructor(private as: AuthService, public auth: AngularFireAuth, public db: AngularFireDatabase, private route: ActivatedRoute, public ds: DataService) {
+  constructor(
+    private as: AuthService,
+    public auth: AngularFireAuth,
+    public db: AngularFireDatabase,
+    private route: ActivatedRoute,
+    public ds: DataService) {
+    this.routeId = route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
     this.auth.authState.subscribe(res => {
-      let props = this;
       if (res && res.uid) {
-        props.currentFamily = res.uid;
+        this.currentFamily = res.uid;
         console.log('logged in');
-        this.users = this.db.list(`/families/${props.currentFamily}/users`, { preserveSnapshot: true });
-        this.users
-          .subscribe(snapshots => {
+        this.users = this.db.list(`/families/${this.currentFamily}/users`, { preserveSnapshot: true });
+        this.users.subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
-                props.usersdata.push(
-                  ({
-                    key: snapshot.key,
-                    value: snapshot.val()
-                  })
-                )
+              if (!(snapshot.key === '0') && (this.loadedUsers === false)) {
+                this.usersdata.push( ({ key: snapshot.key, value: snapshot.val() }) )
               }
             });
-            console.log(props.usersdata[0].key);
-            this.selectUser(props.usersdata[0].key)
+            this.selectUser(this.usersdata[0].key)
             this.getDay();
-            props.loadedUsers = true;
+            this.loadedUsers = true;
           })
       } else {
         console.log('user not logged in');
@@ -72,22 +71,20 @@ export class FamilyComponent implements OnInit {
 
   userTodo(userId) {
     this.auth.authState.subscribe(res => {
-      let props = this;
-      props.tododata = [];
+      this.tododata = [];
       if (res && res.uid) {
-        props.currentFamily = res.uid;
-        this.todos = this.db.list(`/families/${props.currentFamily}/users/${props.userId}/todos`, { preserveSnapshot: true });
-        this.todos
-          .subscribe(snapshots => {
+        this.currentFamily = res.uid;
+        this.todos = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos`, { preserveSnapshot: true });
+        this.todos.subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              props.tododata.push(
+              this.tododata.push(
                 ({
                   key: snapshot.key,
                   value: snapshot.val()
                 })
               )
             });
-            console.log("lla", props.tododata);
+            console.log("lla", this.tododata);
             this.getTodos(this.day)
           })
       } else {

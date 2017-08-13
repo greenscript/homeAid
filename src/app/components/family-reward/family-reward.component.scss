@@ -1,0 +1,33 @@
+$white: #FFF;
+$yellow: #EEC337;
+$turquoise: #35B095;
+.familyReward {
+    &-header {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+    }
+    &-path {
+        fill: $turquoise;
+    }
+    &-title {
+        color: white;
+        font-weight: lighter;
+        text-align: center;
+    }
+}
+
+@media (min-width: 380px) {
+    .familyReward {
+        &-header {
+            margin-top: 0vw;
+        }
+        &-title {
+            margin-top: 5vh;
+        }
+    }
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 1080px) {}

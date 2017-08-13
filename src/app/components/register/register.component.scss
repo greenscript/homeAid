@@ -61,7 +61,10 @@ input {
     height: 90vh;
   }
   &-img{
-    background-color: red;
+    background-image: url(../../../assets/background.png);
+    background-size: cover;
+    background-position: center center;
+    background-clip: padding-box;
   }
 }
 

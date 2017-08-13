@@ -107,3 +107,7 @@ h1, h2, input {
   height: 100vh;
   overflow: scroll;
 }
+
+.week-day {
+  text-transform: capitalize;
+}

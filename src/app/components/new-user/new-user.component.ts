@@ -25,10 +25,12 @@ export class NewUserComponent implements OnInit {
     { src: 'assets/i-42.png', active: false }
   ]
   public selectedImage: string;
+  public selectedColor: string = '#5aabc5';
   public toggleObject: any = {
     item: -1
   }
   public uid: string;
+  public theme : boolean = true; 
 
   constructor(
     private as: AuthService,
@@ -79,6 +81,13 @@ export class NewUserComponent implements OnInit {
     }
   }
 
+  selectColor(pEvent){
+    this.selectedColor = pEvent
+     console.log(pEvent);
+      this.theme = !this.theme;
+      console.log(this.theme);
+  }
+
   currentImage(pObjs) {
     let unactiveImage = this.avatars.filter((avatar) => {
       console.log(avatar)
@@ -86,9 +95,10 @@ export class NewUserComponent implements OnInit {
   }
 
   createUser() {
+    console.log("co", this.selectedColor);
     if (this.userform.valid) {
       if (this.selectedImage) {
-        this.users.push(new User(this.userName.value, this.selectedImage, [], [], this.birthdate.value, [], ));
+        this.users.push(new User(this.userName.value, this.selectedImage, [], [], this.birthdate.value, this.selectedColor, ));
         this.toastr.success('Usuario creado!', 'Success!')
       }
     }
