@@ -56,8 +56,9 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
           let a = Object.values(this.weekData.shift())
           let b = a.splice(1, 1).shift()
           this.days = b
-          this.currentDay = this.days.shift().day;
-          console.log(this.days)
+          if (this.days.length > 0) {
+            this.currentDay = this.days.shift().day;
+          }
         })
       }
     })

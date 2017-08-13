@@ -78,7 +78,7 @@ export class MenuAdminComponent implements OnInit {
         this.usersWithTodos.push(user)
       }
     })
-
+    console.log(this.usersWithTodos)
     if (this.usersWithTodos.length > 0) {
       this.generateReports()
     }
@@ -103,11 +103,12 @@ export class MenuAdminComponent implements OnInit {
   }
 
   getPercentage(pTotal, pUndone) {
-    pUndone = isNaN(pUndone) ? 1 : pUndone
+    pUndone = pUndone.length > 0 ? pUndone.length : pTotal
     let todos = pTotal - pUndone
     let percentage =  todos / pTotal * 100;
+    if (!Number.isInteger(percentage)) {
+      percentage = Math.floor(percentage)
+    }
     return percentage
   }
-
-
 }
