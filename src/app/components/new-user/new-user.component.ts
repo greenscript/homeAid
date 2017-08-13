@@ -29,6 +29,7 @@ export class NewUserComponent implements OnInit {
     item: -1
   }
   public uid: string;
+  public group1 : boolean = true; 
 
   constructor(
     private as: AuthService,
@@ -79,8 +80,10 @@ export class NewUserComponent implements OnInit {
     }
   }
 
-  selectColor(pEvent, pActive){
-     console.log(pEvent, '/', pActive);
+  selectColor(pEvent){
+     console.log(pEvent);
+      this.group1 = !this.group1;
+      console.log(this.group1);
   }
 
   currentImage(pObjs) {

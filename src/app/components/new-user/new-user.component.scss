@@ -121,23 +121,19 @@ select[multiple] {
 
 .options{
     cursor:pointer;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .option {
     height: 4rem;
     margin: 1%;
-    margin-bottom: 2rem;
     width: 48%;
     float: left;
 }
 
-option:checked {
-   opacity: 0.5;
-   border: 1px solid #000;
-   color: rgba(0,0,0,0);
-   -moz-appearance: none; 
-	-webkit-appearance: none; 
-	appearance: none;
+.selected-color{
+    border: 2px solid#9d9d9d;
 }
 
 .col-sm-12 {

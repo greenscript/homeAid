@@ -141,6 +141,7 @@ export class ProfileUserComponent implements OnInit {
     }
 
     this.getTodos(this.day)
+    this.getCurrentDayTodoId()
   }
 
    getDay() {
