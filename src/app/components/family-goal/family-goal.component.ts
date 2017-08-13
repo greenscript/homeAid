@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+//import { FormGroup, FormControl, Validators } from '@angular/forms';
 //import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 //import { Http } from '@angular/http';
@@ -12,7 +12,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
   styleUrls: ['./family-goal.component.scss'],
-  providers: [AuthService, Validators]
+  providers: [AuthService]
 })
 
 export class FamilyGoalComponent implements OnInit {
@@ -34,10 +34,11 @@ export class FamilyGoalComponent implements OnInit {
 
 ) {
       //fam_id:
-    this.uid = ar.snapshot.paramMap.get('uid');
+    this.uid = ar.snapshot.paramMap.get('famid');
   }
 
   ngOnInit() {
+    console.log('fm id',this.uid);
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log('logged in');
@@ -56,21 +57,22 @@ export class FamilyGoalComponent implements OnInit {
     });*/
   }
 
-  sendFamGoal(gTitle, gdescriptionGoal) {
+  sendFamGoal(ptitle, pdescript) {
     let goaldObj;
+  //  let title;
+  //  let descr;
 
-    if (gTitle == null && gdescriptionGoal == null) {
+    if (ptitle == null && pdescript == null) {
       console.log('empty fields');
-      //validar.
     } else {
-      console.log('!!!!', gTitle, ' - ', gdescriptionGoal);
+      //console.log('!!!!', gTitle, ' - ', gdescriptionGoal);
       goaldObj = {
-        "title": this.gTitle,
-        "description": this.gdescriptionGoal
+        "title": ptitle,
+        "description": pdescript
       }
-      this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek/goals/`, { preserveSnapshot: true });
-      this.currentWeek.push(goaldObj);
-      console.log(goaldObj);
+    this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek/goals/`, { preserveSnapshot: true });
+    this.currentWeek.push(goaldObj);
+      //console.log('objeto',goaldObj , ' y parametros', ptitle ,' ',pdescript);
       console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
 
 
