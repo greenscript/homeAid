@@ -22,7 +22,7 @@ section.col-xs-12.col-sm-9.no-padding.md-column
       svg.header(viewBox='0 0 1085 296')
           path(d="M.2.4V242.1S514,358,1085,242.1V0Z", [attr.fill]="fillAttr")
       h4.header-title(*ngIf="userdata.length > 0") {{userName}}
-      img.user-img.center-block(*ngIf="userdata.length > 0", [src]='userAvatar', alt='', (click)="clickHide()")  
+      img.user-img.center-block(*ngIf="userdata.length > 0", [src]='userAvatar', alt='', (click)="clickHide()", [style.border-color]="fillAttr")  
   section.row.week 
       .col-xs-4.flex-center
           button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
