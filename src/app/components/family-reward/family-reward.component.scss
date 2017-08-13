@@ -1,6 +1,7 @@
 $white: #FFF;
 $yellow: #EEC337;
 $turquoise: #35B095;
+$light-blue: #5aabc5;
 .familyReward {
     &-header {
         position: absolute;
@@ -8,13 +9,17 @@ $turquoise: #35B095;
         top: 0;
     }
     &-path {
-        fill: $turquoise;
+        fill: $light-blue;
     }
     &-title {
         color: white;
         font-weight: lighter;
         text-align: center;
     }
+}
+
+.reward {
+    padding: 40px 15px;
 }
 
 @media (min-width: 380px) {
