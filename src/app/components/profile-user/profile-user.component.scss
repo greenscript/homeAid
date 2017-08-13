@@ -27,9 +27,9 @@ $yellow: #EEC337;
 }
 
 .percent{
- width: 100vw;
- height: 24vh;
- background-color: $header-color;
+  width: 100%;
+  position: absolute;
+  top: 5vh;
 }
 
 .circle{
@@ -40,9 +40,7 @@ $yellow: #EEC337;
 .head{
   background-color: red;
 }
-.path{
-    fill:$header-color;
-  }
+
 
 .header {
   margin-top: -1px;
@@ -70,9 +68,8 @@ $yellow: #EEC337;
       background-color: white;
       border-radius: 50%;
       border: 6px solid;
-      border-block-end-color: #5aabc5;
-      padding: 8px;
-      height: 90px;
+      padding: 4px;
+      height: 100px;
       margin: auto;
       position: relative;
       top: -4rem;
@@ -182,6 +179,9 @@ btn-user {
   .header{
   margin-top: -10vw;
   width: 75vw;
+  }
+  .percent {
+    top: 8.7vh;
   }
 }
 
