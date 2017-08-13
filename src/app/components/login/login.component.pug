@@ -71,11 +71,13 @@ section.row.flex-center.flex-column.full-height.hidden-sm
               placeholder="Contraseña",
               required
             )
-            .error(*ngIf="loginForm.controls.password.dirty && !loginForm.controls.password.valid") La contraseña tiene que tener 8 dígitos como mínimo.
-            .error(*ngIf="error.length > 0") {{error}}
+
           .form-group
             .btn-add
               .eff-4
               button((click)="login()", [disabled]="loginForm.invalid") Entrar 
-            //-button.btn.btn-success((click)="login()", [disabled]="loginForm.invalid") Login
+      .error.flex-center(*ngIf="loginForm.controls.password.dirty && !loginForm.controls.password.valid") 
+        p La contraseña tiene que tener 8 dígitos como mínimo.
+      .error.flex-center(*ngIf="error.length > 0") 
+        p {{error}}
       
