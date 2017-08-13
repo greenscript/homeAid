@@ -69,7 +69,8 @@ $yellow: #EEC337;
     &-img{
       background-color: white;
       border-radius: 50%;
-      border: 6px solid #5aabc5;
+      border: 6px solid;
+      border-block-end-color: #5aabc5;
       padding: 8px;
       height: 90px;
       margin: auto;

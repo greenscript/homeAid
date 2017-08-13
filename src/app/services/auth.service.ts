@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   emailSignUp(pEmail: string, pPassword: string, pName: string) {
-    let adminUser: any = new User(pName, 'assets/i-22.png', 0, [], [], '');
+    let adminUser: any = new User(pName, 'assets/i-22.png', 0, [], [], '#5aabc5');
 
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
@@ -120,13 +120,13 @@ export class AuthService {
           case 'google.com':
             this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
               [
-                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '')
+                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '#5aabc5')
               ], [{}], this.currentWeek)
             break;
           case 'facebook.com':
             this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
               [
-                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '')
+                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '#5aabc5')
               ], [], this.currentWeek)
             break;
         }
