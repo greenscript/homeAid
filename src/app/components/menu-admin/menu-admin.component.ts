@@ -72,31 +72,16 @@ export class MenuAdminComponent implements OnInit {
     });
   }
 
-  // getWeekPercentage2() {
-  //   let totalTodos = this.totalTodos.filter(todo => {
-  //     if (todo.status === false) {
-  //       this.undoneTodos.push(todo);
-  //       console.log(this.undoneTodos)
-  //     }
-  //   })
-  //
-  //   let todos = this.totalTodos.length - this.undoneTodos.length
-  //   console.log(this.totalTodos.length, this.undoneTodos.length)
-  //   console.log(todos)
-  //   let percentage =  todos / this.totalTodos.length * this.max;
-  //   console.log(percentage)
-  //   this.current = percentage;
-  //   this.percentage = `${percentage}%`
-  //   console.log(this.percentage)
-  // }
-
   getUsersWithTodos() {
     this.usersdata.filter((user)=> {
-      if (!(user.value.todos === 0)) {
+      if (user.value.todos != 0 && user.value.todos != undefined) {
         this.usersWithTodos.push(user)
       }
     })
-    this.generateReports()
+
+    if (this.usersWithTodos.length > 0) {
+      this.generateReports()
+    }
   }
 
   generateReports() {
@@ -121,7 +106,6 @@ export class MenuAdminComponent implements OnInit {
     pUndone = isNaN(pUndone) ? 1 : pUndone
     let todos = pTotal - pUndone
     let percentage =  todos / pTotal * 100;
-    console.log(percentage)
     return percentage
   }
 

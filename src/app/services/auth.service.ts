@@ -91,15 +91,16 @@ export class AuthService {
 
   public getWeekDays(startDate, stopDate) {
     let dateArray: Array<any> = [];
+
     let currentDate = startDate;
-    if (currentDate <= stopDate) {
+    console.log(currentDate, stopDate)
+      console.log('entered')
       dateArray.push(new Day(new Date(currentDate)))
       for (let i = 0; i < 6; i++) {
         currentDate = new Date(currentDate)
         currentDate = currentDate.setDate(currentDate.getDate() + 1);
         dateArray.push(new Day(new Date(currentDate)))
       }
-    }
     return dateArray;
   }
 

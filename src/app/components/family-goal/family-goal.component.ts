@@ -32,9 +32,9 @@ export class FamilyGoalComponent implements OnInit {
     public ar: ActivatedRoute
     //private http: Http,
 
-) {
+  ) {
       //fam_id:
-    this.uid = ar.snapshot.paramMap.get('famid');
+    this.uid = ar.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
