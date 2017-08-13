@@ -34,7 +34,10 @@ export class NewTodoComponent implements OnInit {
   public userSelected: boolean = false;
   public error: boolean = false;
   public errorMsg: string;
-
+  public selectedImage: string;
+  public toggleObject: any = {
+    item: -1
+  }
 
   //todosArray : NewTodo [];
 
@@ -123,6 +126,14 @@ export class NewTodoComponent implements OnInit {
     this.userId = pUid;
     this.userSelected = true;
   };
+
+  selectImage(pEvent, pActive) {
+    this.selectedImage = pEvent
+    let absPath = window.location.origin + '/'
+    if (this.selectedImage.includes(absPath)) {
+      this.selectedImage = this.selectedImage.replace(absPath, '')
+    }
+  }
 
   addTodo(pvalue, userId) {
     for (var index = 0; index < this.todos.length; index++) {

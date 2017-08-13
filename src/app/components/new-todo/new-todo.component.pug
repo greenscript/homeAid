@@ -12,9 +12,11 @@ section.col-xs-12.col-sm-9.no-padding.hidden-sm
         section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
           h4.userName Seleccione un usuario
             section.row.family.col-xs-12.flex-center.col-sm-12
-              .col-xs-4.text-center(*ngFor="let user of usersdata")
+              .col-xs-4.text-center(*ngFor="let user of usersdata; let i = index;")
                 a(role="button", (click)="selectUser(user.key)")
-                  img.users([src]='user.value.avatar')
+                  img.users([src]='user.value.avatar',            
+                            (click)="selectImage($event.target.src); toggleObject.item = i ",
+                            [ngClass]="{'selected-user': toggleObject.item == i }")
                   p.perUserName {{user.value.name}}
           h5(*ngIf="error") {{errorMsg}}
         section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1

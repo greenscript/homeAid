@@ -32,9 +32,6 @@ h4 {
 
 /*classes for ng if to see which user is selected.*/
 
-.selected-user {
-    opacity: 1 !important;
-}
 
 .user-image {
     border: 0.2em solid grey;
@@ -110,8 +107,8 @@ input:focus {
 }
 
 select[multiple] {
-    -moz-appearance: none; 
-	-webkit-appearance: none; 
+    -moz-appearance: none;
+	-webkit-appearance: none;
 	appearance: none;
     height: 10rem;
     margin-bottom: 2rem;
