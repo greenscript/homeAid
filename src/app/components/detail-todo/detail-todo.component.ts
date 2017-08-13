@@ -32,6 +32,10 @@ export class DetailTodoComponent implements OnInit {
   public currentDayData: Array<any> = [];
   public pathUser: FirebaseListObservable<any>
   public userSelected: boolean = false;
+  public currentUserTodoForRemove: FirebaseObjectObservable<any>;
+  public newUserIdForTodo: string;
+
+
 
   constructor(
     private as: AuthService,
@@ -93,7 +97,7 @@ export class DetailTodoComponent implements OnInit {
     //let isCompleted_todo= false;
 
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
-    console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
+  //  console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
     this.currentDayTodo = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
@@ -153,7 +157,7 @@ export class DetailTodoComponent implements OnInit {
   }
 
   selectUser(pUid) {
-    this.userId = pUid;
+    this.newUserIdForTodo = pUid;
   //  console.log('selectedUser',this.userId);
     this.userSelected = true;
 
@@ -161,14 +165,16 @@ export class DetailTodoComponent implements OnInit {
 
   send() {
     let relevanceTodoForUser;
+    let relevanceFirst = false;
+    //let currentTodoRemoved;
     if(this.userSelected){
       console.log('ya seleccionaron usuario');
       for (var i = 0; i < this.usersArr.length; i++) {
-        console.log('arr de usuarios dentro del for',this.usersArr);
-        if (this.userId == this.usersArr[i].key) {
-          console.log('user id hacen mathccx');
+        if (this.newUserIdForTodo == this.usersArr[i].key) {
           //path para pararle la tarea a alguien mas.
-          this.pathUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
+          this.pathUser = this.db.list(`/families/${this.currentFamily}/users/${this.newUserIdForTodo}/todos/`, { preserveSnapshot: true });
+
+          this.currentUserTodoForRemove = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
 
           relevanceTodoForUser = {
             "category":this.currentTodoData[0].value,
@@ -181,9 +187,14 @@ export class DetailTodoComponent implements OnInit {
             //id de persona quien se la releva.
           }
           this.pathUser.push(relevanceTodoForUser);
-          //console.log('objeto!',relevanceTodoForUser);
-          //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
+          relevanceFirst = true;
 
+          if(relevanceFirst){
+            console.log('holi',this.currentUserTodoForRemove);
+            this.currentUserTodoForRemove.remove();
+            //
+          }
+          //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
           //path de current week todo/editar userId.
         } else {
           console.log("select a user first please");
