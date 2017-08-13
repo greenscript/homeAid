@@ -33,6 +33,38 @@ $light-blue: #5aabc5;
     }
 }
 
-@media (min-width: 768px) {}
+@media (min-width: 640px) {
+    .familyReward {
+        &-header {
+            margin-top: -10vw;
+            width: 100%;
+        }
+        &-title {
+            margin-top: 5vh;
+        }
+    }
+}
 
-@media (min-width: 1080px) {}
+@media (min-width: 768px) {
+    .familyReward {
+        &-header {
+            margin-top: -0vw;
+            width: 100%;
+        }
+        &-title {
+            margin-top: 5vh;
+        }
+    }
+}
+
+@media (min-width: 1080px) {
+    .familyReward {
+        &-header {
+            margin-top: -12vw;
+            width: 100%;
+        }
+        &-title {
+            margin-top: 5vh;
+        }
+    }
+}
