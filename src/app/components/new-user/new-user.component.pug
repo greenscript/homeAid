@@ -39,30 +39,17 @@ section.col-xs-12.col-sm-9.no-padding
               placeholder='Fecha de nacimiento',
               required 
             )
-          .form-group.col-xs-12.col-md-6.offset-md-3
-            .radio.col-xs-6
-              h4 Femenino
-                input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
-            .radio.col-xs-6
-               h4 Masculino
-                input#optionsRadios2(type='radio', name='optionsRadios', value='option2')  
-          
-          .form-group.col-xs-12
-            select
-              option
-                 .op ladasd
-              option 
-                 .op ladasd2
-              option
-                 .op ladasd3
 
-          select.col-xs-12.col-md-6.offset-md-3(multiple='')
-            option.option.blue(val='1') sfsd
-            option.option.yellow(val='2')
-            option.option.green(val='3')
-            option.option(val='1', style='background-color: #FF3D7F')
-            option.option(val='2', style='background-color: #FF7C34')
-            option.option.yellow(val='3')  
+          .form-group.col-xs-12.col-md-6.offset-md-3.row 
+            h4(for='color') Seleccione un color
+            .row
+               .col-xs-12.options((click)="selectColor('#5aabc5', 0)")
+                 span.option.blue
+                 span.option.green
+               .col-xs-12.options((click)="selectColor('#ff2461', 1)")
+                 span.option.pink
+                 span.option.orange
+              
           .form-group.user-form
             .btn-add
               .eff-4

@@ -79,6 +79,10 @@ export class NewUserComponent implements OnInit {
     }
   }
 
+  selectColor(pEvent, pActive){
+     console.log(pEvent, '/', pActive);
+  }
+
   currentImage(pObjs) {
     let unactiveImage = this.avatars.filter((avatar) => {
       console.log(avatar)
