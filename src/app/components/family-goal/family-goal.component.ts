@@ -3,15 +3,16 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+//import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Http } from '@angular/http';
-import { DataService } from '../../services/data.service';
+//import { Http } from '@angular/http';
+//import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
-  styleUrls: ['./family-goal.component.scss']
+  styleUrls: ['./family-goal.component.scss'],
+  providers: [AuthService, Validators]
 })
 
 export class FamilyGoalComponent implements OnInit {
@@ -21,11 +22,18 @@ export class FamilyGoalComponent implements OnInit {
   public currentWeek: FirebaseListObservable<any>;
   public path;
 
-  constructor(public ar: ActivatedRoute, private as: AuthService,
-    private ds: DataService,
+  constructor(
+    private as: AuthService,
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
-    private http: Http) {
+    //public toastr: ToastsManager,
+    //vcr: ViewContainerRef,
+    private router: Router,
+    public ar: ActivatedRoute
+    //private http: Http,
+
+) {
+      //fam_id:
     this.uid = ar.snapshot.paramMap.get('uid');
   }
 
@@ -33,11 +41,19 @@ export class FamilyGoalComponent implements OnInit {
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log('logged in');
+        this.path = this.db.list(`/families/${res.uid}/currentWeek/goals`, { preserveSnapshot: true });
+      } else {
+        console.log('user not logged in from goal component');
+      }
+    });
+    /*this.auth.authState.subscribe(res => {
+      if (res && res.uid) {
+        console.log('logged in');
         this.path = this.db.list(`/families/${res.uid}/currentWeek/goals/`, { preserveSnapshot: true });
       } else {
         console.log('user not logged in');
       }
-    });
+    });*/
   }
 
   sendFamGoal(gTitle, gdescriptionGoal) {
@@ -55,6 +71,8 @@ export class FamilyGoalComponent implements OnInit {
       this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek/goals/`, { preserveSnapshot: true });
       this.currentWeek.push(goaldObj);
       console.log(goaldObj);
+      console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
+
 
       // /families/uid/currenWeek/goals
     }
