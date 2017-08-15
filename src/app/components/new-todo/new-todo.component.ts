@@ -131,14 +131,38 @@ export class NewTodoComponent implements OnInit {
 
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
+        console.log('got in');
         this.categoryForModel = this.todos[index].category;
         this.points = this.todos[index].points;
 
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-          this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', day: this.currentDayIn, points:this.points });
+          this.selectedUser.push({
+            username: this.userId,
+            description: pvalue,
+            category: this.categoryForModel,
+            status: false,
+            relevance: 'none',
+            day: this.currentDayIn,
+            points:this.points,
+            revelanceBy:" ",
+            nameOfNewUser:" ",
+            priority:false
+          });
+
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
-          this.selectedDay.push({ username: this.userId, description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', day: this.currentDayIn, points:this.points });
+          this.selectedDay.push({
+             username: this.userId,
+             description: pvalue,
+             category: this.categoryForModel,
+             status: false,
+             relevance: 'none',
+             day: this.currentDayIn,
+             points:this.points,
+             revelanceBy:" ",
+             nameOfNewUser:" ",
+             priority:false
+          });
         } else {
           this.error = true;
           this.errorMsg = 'Please select a user first'
