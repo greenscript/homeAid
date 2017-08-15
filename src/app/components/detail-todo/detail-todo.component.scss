@@ -131,6 +131,28 @@ $yellow: #EEC337;
             width: 3.5rem;
         }
     }
+    .modal-dialog {
+        width: 80vw;
+    }
+    .modal {
+        text-align: center;
+        padding: 0!important;
+    }
+    .modal:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+    .modal-content {
+        border-radius: 0px !important;
+    }
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
     .btn-menu-admin,
     .card {
         margin-top: 4em;
@@ -167,10 +189,16 @@ $yellow: #EEC337;
     .admin-header {
         top: -8vw;
     }
+    .modal-dialog {
+        width: 60vw;
+    }
 }
 
 @media (min-width: 1000px) {
     .admin-header {
         top: -18vw;
+    }
+    .modal-dialog {
+        width: 50vw;
     }
 }
