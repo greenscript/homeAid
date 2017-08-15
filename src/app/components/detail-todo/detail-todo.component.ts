@@ -118,19 +118,60 @@ export class DetailTodoComponent implements OnInit {
   completetask() {
     this.currentTodo.set({
       'category': this.currentTodoData[0].value,
-      'day': this.currentTodoData[1].value,
-      'description': this.currentTodoData[2].value,
-      'relevance': this.currentTodoData[3].value,
-      'status': true,
-      'username': this.currentTodoData[5].value
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': this.currentTodoData[6].value,
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
+      'status':  true,//cambiar [9]
+      'username': this.currentTodoData[10].value
     })
     this.currentDayTodo.set({
-      'category': this.currentDayData[0].value,
-      'day': this.currentDayData[1].value,
-      'description': this.currentDayData[2].value,
-      'relevance': this.currentDayData[3].value,
-      'status': true,
-      'username': this.currentDayData[5].value
+      'category': this.currentTodoData[0].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': this.currentTodoData[6].value,
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
+      'status':  true,//cambiar [9]
+      'username': this.currentTodoData[10].value
+    })
+    this.location.back();
+  }
+
+  prioritytask() {
+    //console.log(this.currentTodoData);
+    this.currentTodo.set({
+      'category': this.currentTodoData[0].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': true,//cambiar [6]
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
+      'status': this.currentTodoData[9].value,
+      'username': this.currentTodoData[10].value
+    })
+    this.currentDayTodo.set({
+      'category': this.currentTodoData[0].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': true,//cambiar 
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
+      'status': this.currentTodoData[9].value,
+      'username': this.currentTodoData[10].value
     })
     this.location.back();
   }
