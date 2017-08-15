@@ -96,23 +96,17 @@ export class NewTodoComponent implements OnInit {
     console.log(this.ds.regularUsers);
 
     this.auth.authState.subscribe(res => {
-      let props = this;
       if (res && res.uid) {
-        props.currentFamily = res.uid;
+        this.currentFamily = res.uid;
         console.log('logged in');
-        this.users = this.db.list(`/families/${props.currentFamily}/users/`, { preserveSnapshot: true });
-        this.users
-          .subscribe(snapshots => {
+        this.users = this.db.list(`/families/${this.currentFamily}/users/`, { preserveSnapshot: true });
+        this.users.subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              console.log(snapshot.key)
-                props.usersdata.push(
-                  ({
-                    key: snapshot.key,
-                    value: snapshot.val()
-                  })
-                )
+              if (!this.loadedUsers)  {
+                this.usersdata.push({ key: snapshot.key, value: snapshot.val() })
+              }
             });
-            props.loadedUsers = true;
+            this.loadedUsers = true;
           })
       } else {
         console.error('user not logged in');
@@ -133,7 +127,8 @@ export class NewTodoComponent implements OnInit {
     }
   }
 
-  addTodo(pvalue, userId) {
+  addTodo(e: Event, pvalue) {
+
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         this.categoryForModel = this.todos[index].category;
@@ -152,5 +147,7 @@ export class NewTodoComponent implements OnInit {
         console.log('todo didnt made any match with a todo of the local object.');
       }
     }
+    e.stopPropagation();
+
   }
 }
