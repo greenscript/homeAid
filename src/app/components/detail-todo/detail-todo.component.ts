@@ -202,11 +202,10 @@ export class DetailTodoComponent implements OnInit {
           this.pathUser.push(relevanceTodoForUser);
           relevanceFirst = true;
 
+          //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
           if(relevanceFirst){
             this.currentUserTodoForRemove.remove();
           }
-          //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
-          //path de current week todo/editar userId.
         } else {
           console.log("select a user first please");
 
