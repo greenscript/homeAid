@@ -131,6 +131,7 @@ export class NewTodoComponent implements OnInit {
 
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
+        console.log('got in');
         this.categoryForModel = this.todos[index].category;
         this.points = this.todos[index].points;
 
@@ -139,27 +140,28 @@ export class NewTodoComponent implements OnInit {
           this.selectedUser.push({
             username: this.userId,
             description: pvalue,
+            category: this.categoryForModel,
+            status: false, //completada
+            relevance: false, //si es relevada o no
+            day: this.currentDayIn,
+            points:this.points,
+            revelanceBy:" ", //por quien es relevada
+            nameOfNewUser:" ", //a quien va
+            priority:false //urgencia
+          });
+
+          this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
+          this.selectedDay.push({
+             username: this.userId,
+             description: pvalue,
              category: this.categoryForModel,
              status: false,
-             relevance: 'none',
+             relevance: false,
              day: this.currentDayIn,
              points:this.points,
              revelanceBy:" ",
              nameOfNewUser:" ",
              priority:false
-            });
-          this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
-          this.selectedDay.push({
-            username: this.userId,
-            description: pvalue,
-            category: this.categoryForModel,
-            status: false,
-            relevance: false,
-            day: this.currentDayIn,
-            points:this.points,
-            revelanceBy:" ",
-            nameOfNewUser:" ",
-            priority:false
           });
         } else {
           this.error = true;

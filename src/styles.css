@@ -10,6 +10,13 @@ h1, h2, input {
   font-weight: lighter;
 }
 
+*{
+  font-weight: 200;
+}
+a, p{
+  text-decoration: none !important;
+}
+
 /*
   Centra todos los hijos de un contenedor con display: flex;
 */
