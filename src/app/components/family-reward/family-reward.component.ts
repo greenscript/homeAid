@@ -17,6 +17,7 @@ export class FamilyRewardComponent implements OnInit {
   @Input() currentDay: any;
   public day = 0;
   public days = [];
+  public routeId: string;
   public weekData: Array<any> = [];
   public currentWeek: FirebaseListObservable<any>;
   public uid: string;
@@ -26,13 +27,13 @@ export class FamilyRewardComponent implements OnInit {
   public last: any = this.first + 6;
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
+
   public pastDays = 0;
   public percentWeek = 0;
   public current = 0;
   public d = new Date()
   public currDay = this.d.getDay();
-  public test = [];
-  public routeId: string;
+
   constructor(
     private http: Http,
     private db: AngularFireDatabase,
@@ -53,6 +54,18 @@ export class FamilyRewardComponent implements OnInit {
           snapshots.forEach(snapshot => {
             this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
+          var getAllDays = this.weekData[0].value;
+          console.log("fuera", getAllDays);
+          for (var i = 0; i < getAllDays.length; i++) {
+            if (getAllDays[i] < this.currDay) {
+              this.pastDays += 1;
+              this.percentWeek = (100 / 7);
+            }
+          }
+          this.current = this.percentWeek * this.pastDays;
+          console.log("percentweek", this.percentWeek);
+          console.log("pastDays", this.pastDays);
+          console.log("current", this.current);
           // let a = Object.values(this.weekData.shift())
           // let b = a.splice(1, 1).shift()
           // this.days = b
@@ -63,26 +76,5 @@ export class FamilyRewardComponent implements OnInit {
       }
     })
 
-
-    this.getPercent()
-  }
-
-  getPercent() {
-    console.log("sin indice", this.weekData)
-    console.log("fuera", this.weekData.filter(weekData => weekData.value === 0)[0]);
-
-    for (var i = 0; i < this.days.length; i++) {
-
-
-      if (this.days[i].key < this.currDay) {
-        this.pastDays += 1;
-        this.percentWeek = (100 / 7);
-      }
-    }
-    this.current = this.percentWeek * this.pastDays;
-    console.log("percentweek", this.percentWeek);
-    console.log("pastDays", this.pastDays);
-    console.log("current", this.current);
-    // console.log("today", this.currentDayNum);
   }
 }
