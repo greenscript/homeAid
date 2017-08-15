@@ -2,6 +2,7 @@ $text-color: #FFF;
 $text-color-completed: green;
 $text-color-not-completed: #D21049;
 $header-color: #409CB8;
+$green-color: #35B095;
 $text-size-mobile: 1.2em;
 $yellow: #EEC337;
 //texts.
@@ -93,6 +94,90 @@ $yellow: #EEC337;
 .relevanceButton {
     background-color: $header-color;
     color: $text-color;
+    position: relative;
+    top: -42em;
+}
+
+.modal-dialog {
+    width: 80vw;
+}
+
+.modal {
+    text-align: center;
+    padding: 0!important;
+}
+
+.modal-content {
+    height: 36em;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-content {
+    border-radius: 0px !important;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+//btns
+.btn-add {
+    width: 115px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.btn-add button {
+    font-weight: 300;
+    color: $text-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 115px;
+    height: 45px;
+    left: -140px;
+    background: $header-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover button {
+    color: #fff;
+}
+
+.relevanceBtn {
+    width: 100%;
 }
 
 @media (min-width: 320px) {
@@ -131,28 +216,6 @@ $yellow: #EEC337;
             width: 3.5rem;
         }
     }
-    .modal-dialog {
-        width: 80vw;
-    }
-    .modal {
-        text-align: center;
-        padding: 0!important;
-    }
-    .modal:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        margin-right: -4px;
-    }
-    .modal-content {
-        border-radius: 0px !important;
-    }
-    .modal-dialog {
-        display: inline-block;
-        text-align: left;
-        vertical-align: middle;
-    }
     .btn-menu-admin,
     .card {
         margin-top: 4em;
@@ -181,7 +244,10 @@ $yellow: #EEC337;
         }
     }
     .relevanceBtn {
-        padding-top: 20px;
+        padding-top: 45px;
+    }
+    .modal-content {
+        height: 20em;
     }
 }
 
@@ -192,6 +258,12 @@ $yellow: #EEC337;
     .modal-dialog {
         width: 60vw;
     }
+    .relevanceBtn {
+        padding-top: 45px;
+    }
+    .modal-content {
+        height: 20em;
+    }
 }
 
 @media (min-width: 1000px) {
@@ -200,5 +272,11 @@ $yellow: #EEC337;
     }
     .modal-dialog {
         width: 50vw;
+    }
+    .relevanceBtn {
+        padding-top: 45px;
+    }
+    .modal-content {
+        height: 25em;
     }
 }
