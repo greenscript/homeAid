@@ -32,7 +32,6 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
   public goal: string;
 
-
   constructor(
     private http: Http,
     private ds: DataService,

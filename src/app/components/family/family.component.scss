@@ -52,6 +52,8 @@ $header-color: #EEC337;
     border: 2px solid #000;
     padding: .5rem;
     opacity: 0.5;
+    transition: all 0.5s;
+    transform: translateZ(0);
 }
 .perUserName{
   font-size: 16px;
@@ -59,8 +61,10 @@ $header-color: #EEC337;
 }
 .users:hover{
   opacity: 1;
-  width:8rem;
-  height: 8rem;
+  transform: scale(1.1);
+}
+.users:not(:hover) {
+    transform: scale(1.0);
 }
 
 
