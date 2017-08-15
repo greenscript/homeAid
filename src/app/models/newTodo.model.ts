@@ -9,16 +9,23 @@ export class NewTodo {
   private points: string;
   //todos temporal
   private todos: Array<any>;
+  private revelanceBy: string;
+  private nameOfNewUser: string;
+  private priority: string;
 
 
 
-  constructor(pCategory, pTodo, pStatus, pDay, pPoints) {
+  constructor(pCategory, pTodo, pStatus, pDay, pPoints,pRelevanceBy,pnameOfNewUser,pPriority) {
     //  this.setUser(pUser);
     this.setCategory(pCategory);
     this.setTodo(pTodo);
     this.setStatus(pStatus);
     this.setDay(pDay);
     this.setPoints(pPoints);
+    this.setRelevanceBy(pRelevanceBy);
+    this.setNameOfNewUser(pnameOfNewUser);
+    this.setPriority(pPriority);
+
   }
   //  getUser() { return this.user; }
   getCategory() { return this.category; }
@@ -26,6 +33,10 @@ export class NewTodo {
   getStatus() { return this.status; }
   getDay() { return this.day; }
   getPoints() { return this.points; }
+  getRevelanceBy() { return this.revelanceBy; }
+  getNameOfNewUser() { return this.nameOfNewUser; }
+  getPriority() { return this.priority; }
+
 
   //  setUser(pValue) { this.user = pValue; }
   setCategory(pValue) { this.category = pValue; }
@@ -33,6 +44,10 @@ export class NewTodo {
   setStatus(pValue) { this.status = pValue; }
   setDay(pValue) { this.day = pValue; }
   setPoints(pValue) { this.points = pValue; }
+  setRelevanceBy(pValue) { this.points = pValue; }
+  setNameOfNewUser(pValue) { this.points = pValue; }
+  setPriority(pValue) { this.points = pValue; }
+
   //  push para tareas?
   addTodoToTodos(Objtodo) { this.todos.push(Objtodo) }
 }
