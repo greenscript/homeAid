@@ -37,7 +37,15 @@ export class NewTodoComponent implements OnInit {
   public selectedImage: string;
   public toggleObject: any = {
     item: -1
-  }
+  };
+  public categoryImgs: Array<any> = [
+    { src: '../../../assets/i-29.png', category: "Acomodar"},
+    { src: '../../../assets/i-30.png', category: "Limpiar"},
+    { src: '../../../assets/i-31.png', category: "Cocinar"},
+    { src: '../../../assets/i-27.png', category: "Mascotas"},
+    { src: '../../../assets/i-28.png', category: "Personal"}
+  ]
+
 
   //todosArray : NewTodo [];
 
@@ -96,25 +104,17 @@ export class NewTodoComponent implements OnInit {
     console.log(this.ds.regularUsers);
 
     this.auth.authState.subscribe(res => {
-      let props = this;
       if (res && res.uid) {
-        props.currentFamily = res.uid;
+        this.currentFamily = res.uid;
         console.log('logged in');
-        this.users = this.db.list(`/families/${props.currentFamily}/users/`, { preserveSnapshot: true });
-        this.users
-          .subscribe(snapshots => {
+        this.users = this.db.list(`/families/${this.currentFamily}/users/`, { preserveSnapshot: true });
+        this.users.subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              console.log(snapshot.key)
-              if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
-                props.usersdata.push(
-                  ({
-                    key: snapshot.key,
-                    value: snapshot.val()
-                  })
-                )
+              if (!this.loadedUsers)  {
+                this.usersdata.push({ key: snapshot.key, value: snapshot.val() })
               }
             });
-            props.loadedUsers = true;
+            this.loadedUsers = true;
           })
       } else {
         console.error('user not logged in');
@@ -135,17 +135,51 @@ export class NewTodoComponent implements OnInit {
     }
   }
 
-  addTodo(pvalue, userId) {
+  addTodo(e: Event, pvalue) {
+    let imgsrc;
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
+        console.log('got in');
         this.categoryForModel = this.todos[index].category;
         this.points = this.todos[index].points;
 
+        for(var y=0; y < this.categoryImgs.length; y++){
+          if(this.categoryImgs[y].category == this.todos[index].category){
+            console.log('categoryImgs');
+            imgsrc = this.categoryImgs[y].src;
+          }
+        }
+
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
-          this.selectedUser.push({ username: this.userId, description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', day: this.currentDayIn, points:this.points });
+          this.selectedUser.push({
+            username: this.userId,
+            description: pvalue,
+            category: this.categoryForModel,
+            status: false, //completada
+            relevance: false, //si es relevada o no
+            day: this.currentDayIn,
+            points:this.points,
+            revelanceBy:" ", //por quien es relevada
+            nameOfNewUser:" ", //a quien va
+            priority:false, //urgencia
+            categoryImg: imgsrc
+          });
+
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
-          this.selectedDay.push({ username: this.userId, description: pvalue, category: this.categoryForModel, status: false, relevance: 'none', day: this.currentDayIn, points:this.points });
+          this.selectedDay.push({
+             username: this.userId,
+             description: pvalue,
+             category: this.categoryForModel,
+             status: false,
+             relevance: false,
+             day: this.currentDayIn,
+             points:this.points,
+             revelanceBy:" ",
+             nameOfNewUser:" ",
+             priority:false,
+             categoryImg: imgsrc
+          });
         } else {
           this.error = true;
           this.errorMsg = 'Please select a user first'
@@ -154,5 +188,7 @@ export class NewTodoComponent implements OnInit {
         console.log('todo didnt made any match with a todo of the local object.');
       }
     }
+    e.stopPropagation();
+
   }
 }

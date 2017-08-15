@@ -7,8 +7,25 @@ section.col-xs-12.col-sm-9
             path.familyReward-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
         h1.familyReward-title ¡Premios en familia!
     section.row.col-xs-0.col-md-0.col-lg-3
+    section.row.flex-center.col-xs-12
+        h2.reward ¡Premios
     section.row
-        h4.reward ¡Premios
+        .percentWeek
+          .col-xs-12.flex-center.flex-column.dashboard-xs-section.circle
+              round-progress(
+              [current]="current",
+              [max]="100",
+              [color]="'#45ccce'",
+              [background]="'#eaeaea'",
+              [radius]="150",
+              [stroke]="15",
+              [rounded]="true",
+              [clockwise]="true",
+              [responsive]="false",
+              [duration]="800",
+              [animation]="'easeInOutQuart'",
+              [animationDelay]="0") 
+              
 
 section.hidden-lg.hidden-md.hidden-sm.mobile   
   app-mobile-bar

@@ -34,6 +34,7 @@ export class DetailTodoComponent implements OnInit {
   public userSelected: boolean = false;
   public currentUserTodoForRemove: FirebaseObjectObservable<any>;
   public newUserIdForTodo: string;
+  public currentUserInfo:FirebaseObjectObservable<any>;
 
 
 
@@ -74,7 +75,7 @@ export class DetailTodoComponent implements OnInit {
         this.users
           .subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
+              if (props.loadedUsers === false && !(snapshot.key === this.userId)) {
                 props.usersArr.push(
                   ({
                     key: snapshot.key,
@@ -134,27 +135,6 @@ export class DetailTodoComponent implements OnInit {
     this.location.back();
   }
 
-  updateOnBothEnds(pUserTodo, pDayTodo) {
-    let targets = []
-    let currentTodoData = []
-    let currentDayData = []
-    targets.push(pUserTodo, pDayTodo);
-    targets.forEach((o) => {
-      o.subscribe(snapshots => {
-        snapshots.forEach(snapshot => {
-          o.push({ key: snapshot.key, value: snapshot.val() })
-        });
-      })
-      o.currentTodo.set({
-        'category': currentTodoData[0].value,
-        'day': currentTodoData[1].value,
-        'description': currentTodoData[2].value,
-        'relevance': currentTodoData[3].value,
-        'status': true,
-        'username': currentTodoData[5].value
-      })
-    })
-  }
 
   selectUser(pUid) {
     this.newUserIdForTodo = pUid;
@@ -166,6 +146,10 @@ export class DetailTodoComponent implements OnInit {
   send() {
     let relevanceTodoForUser;
     let relevanceFirst = false;
+    let currentUserId;
+    let currentUserData: Array<any> = [];
+    currentUserId = this.currentTodoData[10].value;
+
     //let currentTodoRemoved;
     if(this.userSelected){
       console.log('ya seleccionaron usuario');
@@ -176,26 +160,32 @@ export class DetailTodoComponent implements OnInit {
 
           this.currentUserTodoForRemove = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
 
-          relevanceTodoForUser = {
-            "category":this.currentTodoData[0].value,
-            "day":this.currentTodoData[1].value,
-            "description":this.currentTodoData[2].value,
-            "points":this.currentTodoData[3].value,
-            "relevance":this.usersArr[i].value.name,
-            "status":this.currentTodoData[5].value,
-            "username":this.userId
-            //id de persona quien se la releva.
-          }
-          this.pathUser.push(relevanceTodoForUser);
-          relevanceFirst = true;
+          this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${currentUserId}`, { preserveSnapshot: true });
+          this.currentUserInfo.subscribe(snapshots => {
+            snapshots.forEach(snapshot => {
+              currentUserData.push({ key: snapshot.key, value: snapshot.val() })
+            });
+          })
 
-          if(relevanceFirst){
-            console.log('holi',this.currentUserTodoForRemove);
-            this.currentUserTodoForRemove.remove();
-            //
+          relevanceTodoForUser = {
+            "category":this.currentTodoData[0].value, //listo
+            "day":this.currentTodoData[2].value, //listo
+            "description":this.currentTodoData[3].value, //listo
+            "nameOfNewUser":this.usersArr[i].value.name,
+            "points":this.currentTodoData[5].value, // listo
+            "priority":false, //listo
+            "relevance":true, //listo
+          //  "revelanceBy": currentUserData[2].value,//quien la releva.
+            "status":this.currentTodoData[9].value,
+            "username": this.userId, //listo
           }
+          //this.pathUser.push(relevanceTodoForUser);
+          relevanceFirst = true;
+          console.log('data relevane',relevanceTodoForUser);
           //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
-          //path de current week todo/editar userId.
+          if(relevanceFirst){
+            this.currentUserTodoForRemove.remove();
+          }
         } else {
           console.log("select a user first please");
 

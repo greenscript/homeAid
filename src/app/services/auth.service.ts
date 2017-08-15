@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router } from "@angular/router";
 import * as firebase from 'firebase/app';
 
@@ -21,6 +21,8 @@ export class AuthService {
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
   public currentWeek: any = new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday));
   public users: FirebaseListObservable<any>;
+  public currentWeekUpdate: FirebaseObjectObservable<any>;
+  public currentWeekDays: FirebaseListObservable<any>;
 
   constructor(public af: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.af.authState.subscribe((auth) => {
@@ -55,6 +57,7 @@ export class AuthService {
     return this.af.auth.signInWithEmailAndPassword(pEmail, pPassword).then((response) => {
       this.authState = response
       this.users = this.db.list(`/families/${response.uid}/users/`, { preserveSnapshot: true });
+      // this.checkWeek(response.uid)
       this.users.subscribe(snapshots => {
         snapshots.forEach(snapshot => {
           props.push({ key: snapshot.key, value: snapshot.val() })
@@ -72,13 +75,35 @@ export class AuthService {
 
   }
 
+  checkWeek(pUid) {
+    let props = [];
+    if (pUid) {
+      this.currentWeekUpdate = this.db.object(`families/${pUid}/currentWeek`, { preserveSnapshot: true });
+      this.currentWeekUpdate.subscribe(snapshots => {
+        snapshots.forEach(snapshot => {
+          props.push({ key: snapshot.key, value: snapshot.val() })
+        });
+        props = props.filter(prop => prop.key === 'lastDay')
+        // let a = new Date(props.shift().value);
+        // let b = new Date();
+        // let c = this.getWeekDays(this.firstday, this.lastday);
+        //   this.currentWeekUpdate.set(
+        //     new Week({}, this.firstday, this.lastday, this.getWeekDays(this.firstday, this.lastday))
+        //   )
+      })
+      console.log(props)
+      this.currentWeekDays = this.db.list(`families/${pUid}/currentWeek/days`);
+      this.currentWeekDays.push({name: '123'});
+    }
+  }
+
   logout() {
     this.af.auth.signOut();
     this.router.navigateByUrl('/');
   }
 
   emailSignUp(pEmail: string, pPassword: string, pName: string) {
-    let adminUser: any = new User(pName, 'assets/i-22.png', 0, [], [], '#5aabc5');
+    let adminUser: any = new User(pName, 'assets/i-22.png', {}, [], [], '#EEC337');
 
     return this.af.auth.createUserWithEmailAndPassword(pEmail, pPassword)
       .then((user) => {
@@ -93,8 +118,6 @@ export class AuthService {
     let dateArray: Array<any> = [];
 
     let currentDate = startDate;
-    console.log(currentDate, stopDate)
-      console.log('entered')
       dateArray.push(new Day(new Date(currentDate)))
       for (let i = 0; i < 6; i++) {
         currentDate = new Date(currentDate)
@@ -121,13 +144,13 @@ export class AuthService {
           case 'google.com':
             this.updateFamilyData(credential.additionalUserInfo.profile.family_name,
               [
-                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '#5aabc5')
+                new User(credential.additionalUserInfo.profile.given_name, 'assets/i-22.png', 0, [], [], '#EEC337')
               ], [{}], this.currentWeek)
             break;
           case 'facebook.com':
             this.updateFamilyData(credential.additionalUserInfo.profile.last_name,
               [
-                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '#5aabc5')
+                new User(credential.additionalUserInfo.profile.first_name, 'assets/i-22.png', 0, [], [], '#EEC337')
               ], [], this.currentWeek)
             break;
         }

@@ -41,9 +41,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-        this.as.loginWithEmail(this.email.value, this.password.value).then((error) => {
+      this.as.loginWithEmail(this.email.value, this.password.value).then((error) => {
+        if (error) {
           this.error = error.message;
-        })
+        }
+      })
     }
   }
 

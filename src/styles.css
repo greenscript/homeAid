@@ -10,6 +10,13 @@ h1, h2, input {
   font-weight: lighter;
 }
 
+*{
+  font-weight: 200;
+}
+a, p{
+  text-decoration: none !important;
+}
+
 /*
   Centra todos los hijos de un contenedor con display: flex;
 */
@@ -114,4 +121,33 @@ h1, h2, input {
 
 .selected-user {
     opacity: 1 !important;
+}
+
+.completed{
+  color: #28bca7;
+  margin-top: .4rem;
+  display: block !important;
+}
+
+.completed-txt{
+  color: #c3c3c3;
+}
+.completed-img{
+   opacity: 0.5;
+}
+
+.icompleted{
+    display: none;
+}
+
+@media (min-width: 320px) {
+  .flex-xs-column {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-xs-column {
+    flex-direction: row;
+  }
 }
