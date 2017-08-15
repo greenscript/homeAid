@@ -24,10 +24,9 @@ $header-color: #EEC337;
 }
 
 .no-selected-ux {
-    border: 0.2em solid grey;
-    border-radius: 5em;
-    opacity: 0.5;
-    width: 40% !important;
+  opacity: 0.5;
+  filter: alpha(opacity=40);
+
 }
 
 .week {
@@ -46,19 +45,6 @@ $header-color: #EEC337;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.selected-ux {
-    border: 0.2em solid black;
-    border-radius: 5em;
-    width: 60% !important;
-}
-
-.no-selected-ux {
-    border: 0.2em solid grey;
-    border-radius: 5em;
-    opacity: 0.5;
-    width: 60% !important;
-}
-
 .users{
     width: 7rem;
     height: 7rem;
@@ -68,9 +54,16 @@ $header-color: #EEC337;
     opacity: 0.5;
 }
 .perUserName{
-     font-size: 16px;
-    color: black;
+  font-size: 16px;
+  color: black;
 }
+.users:hover{
+  opacity: 1;
+  width:8rem;
+  height: 8rem;
+}
+
+
 .completed{
   color: #28bca7;
   margin-top: .4rem;
@@ -107,7 +100,7 @@ $header-color: #EEC337;
         width: 75vw;
     }
 
-  
+
 }
 
 @media (min-width: 320px) {
