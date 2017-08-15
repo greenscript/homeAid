@@ -26,14 +26,13 @@ export class FamilyRewardComponent implements OnInit {
   public last: any = this.first + 6;
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
-
   public pastDays = 0;
   public percentWeek = 0;
   public current = 0;
   public d = new Date()
   public currDay = this.d.getDay();
   public test = [];
-
+  public routeId: string;
   constructor(
     private http: Http,
     private db: AngularFireDatabase,
@@ -42,6 +41,7 @@ export class FamilyRewardComponent implements OnInit {
     public ar: ActivatedRoute,
     public as: AuthService
   ) {
+    this.routeId = ar.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {

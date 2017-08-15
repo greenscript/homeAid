@@ -156,7 +156,7 @@ export class AuthService {
         }
         this.authState = credential.user
 
-        this.router.navigateByUrl('/menu')
+        this.router.navigateByUrl('/menu/0')
       })
       .catch(error => console.log(error));
   }
