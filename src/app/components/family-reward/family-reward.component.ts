@@ -16,22 +16,16 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 export class FamilyRewardComponent implements OnInit {
   @Input() currentDay: any;
   public day = 0;
-  public actualDay = "";
   public days = [];
   public weekData: Array<any> = [];
   public currentWeek: FirebaseListObservable<any>;
-  public currentTodos: FirebaseListObservable<any>;
   public uid: string;
   public currentDayIndex: number = 0;
-  public pastDweller: boolean;
-  public routeId: string;
   public curr: any = new Date;
   public first: any = this.curr.getDate() - this.curr.getDay();
   public last: any = this.first + 6;
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
-  public goal: string;
-
 
   public pastDays = 0;
   public percentWeek = 0;
@@ -70,10 +64,10 @@ export class FamilyRewardComponent implements OnInit {
     })
 
 
-    this.gedBLa()
+    this.getPercent()
   }
 
-  gedBLa() {
+  getPercent() {
     console.log("sin indice", this.test)
     console.log("fuera", this.test[0]);
     for (var i = 0; i < this.days.length; i++) {
