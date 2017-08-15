@@ -11,7 +11,7 @@ section.row
       .admin-md-buttons.col-xs-12.flex-center.flex-xs-column.admin-xs-height
         .col-xs-12.flex-center.flex-xs-column
           .col-xs-12.col-sm-4.flex-center.admin-md-row-btn
-            a.btn-card.admin-md-btn((click)="generateReports()") Generar reportes
+            a.btn-card.admin-md-btn([routerLink]="['/familyGoal', uid]") Crear Premio
           .col-xs-12.col-sm-4.flex-center.admin-md-row-btn
             a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'createWeek']") Manejar semana
           .col-xs-12.col-sm-4.flex-center.admin-md-row-btn 
