@@ -51,7 +51,7 @@ export class FamilyRewardComponent implements OnInit {
         this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek`, { preserveSnapshot: true });
         this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            this.test.push({ key: snapshot.key, value: snapshot.val() })
+            this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
           // let a = Object.values(this.weekData.shift())
           // let b = a.splice(1, 1).shift()
@@ -68,8 +68,9 @@ export class FamilyRewardComponent implements OnInit {
   }
 
   getPercent() {
-    console.log("sin indice", this.test)
-    console.log("fuera", this.test[0]);
+    console.log("sin indice", this.weekData)
+    console.log("fuera", this.weekData.filter(weekData => weekData.value === 0)[0]);
+
     for (var i = 0; i < this.days.length; i++) {
 
 
