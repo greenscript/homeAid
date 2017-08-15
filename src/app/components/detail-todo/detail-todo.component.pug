@@ -38,8 +38,10 @@ section.col-xs-12.col-sm-9.no-padding
                     a(role="button", (click)="selectUser(user.key)")
                       img.user([src]='user.value.avatar')
                       span.perUserName {{user.value.name}}
-                .form-group.relevanceBtn
-                  button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
+                  .form-group.relevanceBtn.flex-center
+                    .btn-add
+                      .eff-4
+                      button((click)='send(value)') Enviar
                   
 .hidden-sm.hidden-lg.hidden-md
   app-mobile-bar
