@@ -22,7 +22,10 @@ export class NewUserComponent implements OnInit {
     { src: 'assets/i-24.png', active: false },
     { src: 'assets/i-23.png', active: false },
     { src: 'assets/i-25.png', active: false },
-    { src: 'assets/i-42.png', active: false }
+    { src: 'assets/i-42.png', active: false },
+    { src: 'assets/i-26.png', active: false },
+    { src: 'assets/i-41.png', active: false },
+    { src: 'assets/i-43.png', active: false }
   ]
   public selectedImage: string;
   public selectedColor: string = '#5aabc5';
