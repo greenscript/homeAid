@@ -36,16 +36,6 @@ label{
   margin-top: 4rem;
 }
 
-.users{
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    border: 2px solid #000;
-    padding: .5rem;
-    opacity: 0.5;
-    margin-top: 2rem;
-}
-
 /*classes for ng if to see which user is selected.*/
 .selected-ux {
     border: 0.2em solid black;
@@ -56,11 +46,6 @@ label{
 .no-selected-ux {
   opacity: 0.5;
   filter: alpha(opacity=40);
-}
-.users:hover{
-  opacity: 1;
-  width:6rem;
-  height: 6rem;
 }
 
 .categories, .userName {
