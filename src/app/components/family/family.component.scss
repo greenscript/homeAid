@@ -67,13 +67,20 @@ $header-color: #EEC337;
     transform: scale(1.0);
 }
 
+@media (min-width: 320px) {
+    .family {
+        padding-left: 2em;
+        margin: 4em 0px 2em 0px;
+    }
+}
+
 @media (min-width: 650px) {
     .header {
         top: -10vw;
     }
       .family {
         padding-left: 1em;
-        margin: 6em 0px 2em 0px !important;
+        margin-top: 15%;
     }
     .user-week{
         margin-left: 15px;
@@ -84,15 +91,12 @@ $header-color: #EEC337;
 @media (min-width: 1000px) {
     .header {
         top: -11vw;
-        width: 75vw;
+        width: 85vw;
     }
-
-
 }
 
-@media (min-width: 320px) {
-    .family {
-        padding-left: 2em;
-        margin: 4em 0px 2em 0px;
-    }
+@media (min-width: 1440px) {
+  .family {
+    margin-top: 10%;
+}
 }

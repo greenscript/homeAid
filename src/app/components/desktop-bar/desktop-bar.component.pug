@@ -1,6 +1,6 @@
 .desktop-bar-container 
   .col-xs-12.flex-center.no-padding
-    .col-xs-12.col-sm-6.no-padding
+    .col-xs-12.col-sm-10.col-md-6.no-padding
       img.img-responsive(src="assets/homeAid-logo.png")
 
   .col-xs-12.nav-container
@@ -8,22 +8,22 @@
       .row.flex-center.nav-spacing(*ngIf="isAdmin", [ngClass]="{'active': this.menu}")
         .col-xs-12.col-sm-2.flex-center
           i.fa.fa-unlock-alt.nav-icon([routerLink]="['/menu', adminId]")  
-        .hidden-xs.col-sm-8.flex-center
+        .hidden-sm.hidden-xs.col-sm-8.flex-center
           a.nav-links([routerLink]="['/menu', adminId]")  {{navText}}
       .row.flex-center.nav-spacing([ngClass]="{'active': this.profile}")
         .col-xs-12.col-sm-2.flex-center
           i.fa.fa-user.nav-icon([routerLink]="['/user', uid]")
-        .hidden-xs.col-xs-8.flex-center
+        .hidden-sm.hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/user', uid]") Mi Perfil
       .row.flex-center.nav-spacing([ngClass]="{'active': this.family}")
         .col-xs-12.col-sm-2.flex-center
           i.fa.fa-users.nav-icon([routerLink]="['/familyTodos', uid]")
-        .hidden-xs.col-xs-8.flex-center
+        .hidden-sm.hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/familyTodos', uid]") Familia
       .row.flex-center.nav-spacing([ngClass]="{'active': this.familyTodo}")
         .col-xs-12.col-sm-2.flex-center
           i.fa.fa-circle-o-notch.nav-icon([routerLink]="['/familyGoal', uid]")
-        .hidden-xs.col-xs-8.flex-center
+        .hidden-sm.hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/familyGoal', uid]") Premios
       .row
         .col-xs-10.nav-spacer.flex-center
@@ -31,12 +31,12 @@
       .row.flex-center.nav-spacing([ngClass]="{'active': this.alarms}")
         .col-xs-12.col-sm-2.flex-center
           i.fa.fa-address-book-o.nav-icon([routerLink]="['/users']")
-        .hidden-xs.col-xs-8.flex-center
+        .hidden-sm.hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/users']") Cambiar de usuario
       .row.flex-center.nav-spacing
         .col-xs-12.col-sm-2.flex-center
           i.fa.fa-sign-out.nav-icon((click)="smModal.show()")
-        .hidden-xs.col-xs-8.flex-center
+        .hidden-sm.hidden-xs.col-xs-8.flex-center
           a.nav-links((click)="smModal.show()") Cerrar Sesion
           
 .modal.fade(bsModal="", #smModal="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true")
