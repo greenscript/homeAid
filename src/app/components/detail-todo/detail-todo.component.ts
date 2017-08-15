@@ -75,7 +75,7 @@ export class DetailTodoComponent implements OnInit {
         this.users
           .subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
+              if (!(snapshot.key === '0') && (props.loadedUsers === false && !(snapshot.key === this.userId))) {
                 props.usersArr.push(
                   ({
                     key: snapshot.key,
@@ -135,27 +135,6 @@ export class DetailTodoComponent implements OnInit {
     this.location.back();
   }
 
-  updateOnBothEnds(pUserTodo, pDayTodo) {
-    let targets = []
-    let currentTodoData = []
-    let currentDayData = []
-    targets.push(pUserTodo, pDayTodo);
-    targets.forEach((o) => {
-      o.subscribe(snapshots => {
-        snapshots.forEach(snapshot => {
-          o.push({ key: snapshot.key, value: snapshot.val() })
-        });
-      })
-      o.currentTodo.set({
-        'category': currentTodoData[0].value,
-        'day': currentTodoData[1].value,
-        'description': currentTodoData[2].value,
-        'relevance': currentTodoData[3].value,
-        'status': true,
-        'username': currentTodoData[5].value
-      })
-    })
-  }
 
   selectUser(pUid) {
     this.newUserIdForTodo = pUid;
