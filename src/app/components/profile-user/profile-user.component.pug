@@ -1,6 +1,6 @@
-section.col-xs-3.hidden-xs.no-padding
+section.col-xs-2.no-padding
   app-desktop-bar([adminId]="userId")
-section.col-xs-12.col-sm-9.no-padding.md-column
+section.col-xs-10.col-sm-9.no-padding.md-column
   app-back
   section
       .percent([class.hidden]="myBooleanValue")
@@ -38,5 +38,5 @@ section.col-xs-12.col-sm-9.no-padding.md-column
               p.todoName([ngClass]="{'completed-txt': todo.value.status }") {{todo.value.description}}
               i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
 
-.hidden-sm.hidden-md.hidden-lg
-  app-mobile-bar
+//- .hidden-sm.hidden-md.hidden-lg
+//-   app-mobile-bar

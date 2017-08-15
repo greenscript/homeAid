@@ -12,6 +12,7 @@ export class ReportsComponent implements OnInit {
   public currentFamily: FirebaseListObservable<any>;
   public currentFamilyUsers: FirebaseListObservable<any>;
   public familyUsersData: Array<any> = [];
+  public noReports: boolean  = false;
 
   constructor(public auth: AngularFireAuth, public db: AngularFireDatabase) { }
 
@@ -20,6 +21,7 @@ export class ReportsComponent implements OnInit {
       if (res.uid) {
         this.uid = res.uid;
         this.getUsers();
+        this.checkForReports();
       }
     })
   }
@@ -33,18 +35,13 @@ export class ReportsComponent implements OnInit {
           value: snapshot.val()
         })
       });
-      console.log(this.familyUsersData)
     });
   }
 
-  trying() {
-
-    let data = {
-      description: 'asd',
-      name: 'asd'
+  checkForReports() {
+    if (this.reports.length > 0) {
+      this.noReports = true;
     }
-
-    this.currentFamily = this.db.list(`families/${this.uid}/reports`)
-    this.currentFamily.push(data);
   }
+
 }
