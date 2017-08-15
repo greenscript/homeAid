@@ -148,6 +148,8 @@ export class DetailTodoComponent implements OnInit {
     let relevanceFirst = false;
     let currentUserId;
     let currentUserData: Array<any> = [];
+    currentUserId = this.currentTodoData[10].value;
+
     //let currentTodoRemoved;
     if(this.userSelected){
       console.log('ya seleccionaron usuario');
@@ -158,7 +160,6 @@ export class DetailTodoComponent implements OnInit {
 
           this.currentUserTodoForRemove = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
 
-          currentUserId = this.currentTodoData[9].value;
           this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${currentUserId}`, { preserveSnapshot: true });
           this.currentUserInfo.subscribe(snapshots => {
             snapshots.forEach(snapshot => {
@@ -167,20 +168,20 @@ export class DetailTodoComponent implements OnInit {
           })
 
           relevanceTodoForUser = {
-            "category":this.currentTodoData[0].value,
-            "day":this.currentTodoData[1].value,
-            "description":this.currentTodoData[2].value,
+            "category":this.currentTodoData[0].value, //listo
+            "day":this.currentTodoData[2].value, //listo
+            "description":this.currentTodoData[3].value, //listo
             "nameOfNewUser":this.usersArr[i].value.name,
-            "points":this.currentTodoData[4].value,
-            "priority":false,
-            "relevance":true,
-            "revelanceBy": currentUserData[2].value,//quien la releva.
-            "status":this.currentTodoData[5].value,
-            "username": this.userId, //nuevo id
+            "points":this.currentTodoData[5].value, // listo
+            "priority":false, //listo
+            "relevance":true, //listo
+          //  "revelanceBy": currentUserData[2].value,//quien la releva.
+            "status":this.currentTodoData[9].value,
+            "username": this.userId, //listo
           }
-          this.pathUser.push(relevanceTodoForUser);
+          //this.pathUser.push(relevanceTodoForUser);
           relevanceFirst = true;
-
+          console.log('data relevane',relevanceTodoForUser);
           //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
           if(relevanceFirst){
             this.currentUserTodoForRemove.remove();
