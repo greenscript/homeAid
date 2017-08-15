@@ -48,16 +48,19 @@ label{
 
 /*classes for ng if to see which user is selected.*/
 .selected-ux {
-  border: 0.2em solid black;
-  border-radius: 5em;
-  width: 60% !important;
-
+    border: 0.2em solid black;
+    border-radius: 5em;
+    width: 40% !important;
 }
+
 .no-selected-ux {
-  border: 0.2em solid grey;
-  border-radius: 5em;
   opacity: 0.5;
-  width: 60% !important;
+  filter: alpha(opacity=40);
+}
+.users:hover{
+  opacity: 1;
+  width:6rem;
+  height: 6rem;
 }
 
 .categories, .userName {
