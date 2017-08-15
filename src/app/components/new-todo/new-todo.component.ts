@@ -37,7 +37,15 @@ export class NewTodoComponent implements OnInit {
   public selectedImage: string;
   public toggleObject: any = {
     item: -1
-  }
+  };
+  public categoryImgs: Array<any> = [
+    { src: '../../../assets/i-29.png', category: "Acomodar"},
+    { src: '../../../assets/i-30.png', category: "Limpiar"},
+    { src: '../../../assets/i-31.png', category: "Cocinar"},
+    { src: '../../../assets/i-27.png', category: "Mascotas"},
+    { src: '../../../assets/i-28.png', category: "Personal"}
+  ]
+
 
   //todosArray : NewTodo [];
 
@@ -128,12 +136,19 @@ export class NewTodoComponent implements OnInit {
   }
 
   addTodo(e: Event, pvalue) {
-
+    let imgsrc;
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
         console.log('got in');
         this.categoryForModel = this.todos[index].category;
         this.points = this.todos[index].points;
+
+        for(var y=0; y < this.categoryImgs.length; y++){
+          if(this.categoryImgs[y].category == this.todos[index].category){
+            console.log('categoryImgs');
+            imgsrc = this.categoryImgs[y].src;
+          }
+        }
 
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
@@ -147,7 +162,8 @@ export class NewTodoComponent implements OnInit {
             points:this.points,
             revelanceBy:" ", //por quien es relevada
             nameOfNewUser:" ", //a quien va
-            priority:false //urgencia
+            priority:false, //urgencia
+            categoryImg: imgsrc
           });
 
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
@@ -161,7 +177,8 @@ export class NewTodoComponent implements OnInit {
              points:this.points,
              revelanceBy:" ",
              nameOfNewUser:" ",
-             priority:false
+             priority:false,
+             categoryImg: imgsrc
           });
         } else {
           this.error = true;

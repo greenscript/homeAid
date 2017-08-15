@@ -12,10 +12,11 @@ export class NewTodo {
   private revelanceBy: string;
   private nameOfNewUser: string;
   private priority: string;
+  private categoryImg: string;
 
 
 
-  constructor(pCategory, pTodo, pStatus, pDay, pPoints,pRelevanceBy,pnameOfNewUser,pPriority) {
+  constructor(pCategory, pTodo, pStatus, pDay, pPoints,pRelevanceBy,pnameOfNewUser,pPriority,pCategoryImg) {
     //  this.setUser(pUser);
     this.setCategory(pCategory);
     this.setTodo(pTodo);
@@ -25,7 +26,7 @@ export class NewTodo {
     this.setRelevanceBy(pRelevanceBy);
     this.setNameOfNewUser(pnameOfNewUser);
     this.setPriority(pPriority);
-
+    this.setCategoryImg(pCategoryImg);
   }
   //  getUser() { return this.user; }
   getCategory() { return this.category; }
@@ -36,6 +37,8 @@ export class NewTodo {
   getRevelanceBy() { return this.revelanceBy; }
   getNameOfNewUser() { return this.nameOfNewUser; }
   getPriority() { return this.priority; }
+  getCategoryImg() { return this.categoryImg; }
+
 
 
   //  setUser(pValue) { this.user = pValue; }
@@ -47,6 +50,8 @@ export class NewTodo {
   setRelevanceBy(pValue) { this.points = pValue; }
   setNameOfNewUser(pValue) { this.points = pValue; }
   setPriority(pValue) { this.points = pValue; }
+  setCategoryImg(pValue) { this.categoryImg = pValue; }
+
 
   //  push para tareas?
   addTodoToTodos(Objtodo) { this.todos.push(Objtodo) }
