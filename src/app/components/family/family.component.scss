@@ -67,23 +67,6 @@ $header-color: #EEC337;
     transform: scale(1.0);
 }
 
-
-.completed{
-  color: #28bca7;
-  margin-top: .4rem;
-  display: block !important;
-  &-txt{
-    color: #c3c3c3;
-  }
-  &-img{
-     opacity: 0.5;
-  }
-}
-
-.icompleted{
-    display: none;
-}
-
 @media (min-width: 650px) {
     .header {
         top: -10vw;

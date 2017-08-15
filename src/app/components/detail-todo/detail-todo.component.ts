@@ -75,7 +75,7 @@ export class DetailTodoComponent implements OnInit {
         this.users
           .subscribe(snapshots => {
             snapshots.forEach(snapshot => {
-              if (!(snapshot.key === '0') && (props.loadedUsers === false && !(snapshot.key === this.userId))) {
+              if (props.loadedUsers === false && !(snapshot.key === this.userId)) {
                 props.usersArr.push(
                   ({
                     key: snapshot.key,
