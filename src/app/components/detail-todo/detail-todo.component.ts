@@ -185,6 +185,8 @@ export class DetailTodoComponent implements OnInit {
             "status":this.currentTodoData[5].value,
             "username":this.userId
             //id de persona quien se la releva.
+            //nombre a la pp relevada
+            //prioridad
           }
           this.pathUser.push(relevanceTodoForUser);
           relevanceFirst = true;
