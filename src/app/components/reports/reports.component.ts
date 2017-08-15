@@ -12,7 +12,6 @@ export class ReportsComponent implements OnInit {
   public currentFamily: FirebaseListObservable<any>;
   public currentFamilyUsers: FirebaseListObservable<any>;
   public familyUsersData: Array<any> = [];
-  public noReports: boolean  = false;
 
   constructor(public auth: AngularFireAuth, public db: AngularFireDatabase) { }
 
@@ -21,7 +20,7 @@ export class ReportsComponent implements OnInit {
       if (res.uid) {
         this.uid = res.uid;
         this.getUsers();
-        this.checkForReports();
+
       }
     })
   }
@@ -37,11 +36,4 @@ export class ReportsComponent implements OnInit {
       });
     });
   }
-
-  checkForReports() {
-    if (this.reports.length > 0) {
-      this.noReports = true;
-    }
-  }
-
 }

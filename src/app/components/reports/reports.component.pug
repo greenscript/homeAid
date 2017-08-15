@@ -2,7 +2,7 @@ section.reports-container
   .row
     .col-xs-12
       h2.reports-title Reportes
-      p.no-reports(*ngIf="!noReports") Tan pronto como anadas usuarios y tareas, !podras ver sus reportes!
+      p.no-reports(*ngIf="!reports.length > 0") Tan pronto como anadas usuarios y tareas, !podras ver sus reportes!
       .col-xs-12.no-padding.reports-spacer
         .col-xs-12.col-sm-6.reports-repeater(*ngFor="let report of reports; let i = index;", [ngClass]="{'another-row': i > 1 }")
           

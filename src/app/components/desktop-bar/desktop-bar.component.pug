@@ -21,7 +21,7 @@
         .hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/familyTodos', uid]") Familia
       .row.flex-center.nav-spacing([ngClass]="{'active': this.familyTodo}")
-        .col-xs-12.col-sm-8.flex-center
+        .col-xs-12.col-sm-2.flex-center
           i.fa.fa-circle-o-notch.nav-icon([routerLink]="['/familyGoal', uid]")
         .hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/familyGoal', uid]") Premios
@@ -29,7 +29,7 @@
         .col-xs-10.nav-spacer.flex-center
           hr
       .row.flex-center.nav-spacing([ngClass]="{'active': this.alarms}")
-        .col-xs-12.col-sm-8.flex-center
+        .col-xs-12.col-sm-2.flex-center
           i.fa.fa-address-book-o.nav-icon([routerLink]="['/users']")
         .hidden-xs.col-xs-8.flex-center
           a.nav-links([routerLink]="['/users']") Cambiar de usuario

@@ -139,3 +139,15 @@ a, p{
 .icompleted{
     display: none;
 }
+
+@media (min-width: 320px) {
+  .flex-xs-column {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-xs-column {
+    flex-direction: row;
+  }
+}
