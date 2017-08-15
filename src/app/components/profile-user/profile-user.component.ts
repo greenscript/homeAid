@@ -71,11 +71,10 @@ export class ProfileUserComponent implements OnInit {
               )
             }
           });
-          console.log("data!", props.tododata)
+          console.log("data todo!", props.tododata)
           props.loadedUsers = true;
-
+                  props.getTodos(this.day);
         })
-        props.getTodos(this.day);
         props.getDay()
         this.getCurrentDayTodoId()
         props.getUser()
@@ -156,13 +155,13 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getTodos(pday){
-    //console.log("get", pday)
+    console.log("get", pday)
     this.todosView = [];
-    //console.log("pday", pday);
+    console.log("todoData", this.tododata);
     for (var i in this.tododata){
       if(this.tododata[i].value.day == pday)
       this.todosView.push(this.tododata[i])
-    //  console.log("todoView", this.todosView)
+      console.log("todoView", this.todosView)
   }
   this.getCompleted();
 }
