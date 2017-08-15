@@ -141,13 +141,13 @@ export class NewTodoComponent implements OnInit {
             username: this.userId,
             description: pvalue,
             category: this.categoryForModel,
-            status: false,
-            relevance: 'none',
+            status: false, //completada
+            relevance: false, //si es relevada o no
             day: this.currentDayIn,
             points:this.points,
-            revelanceBy:" ",
-            nameOfNewUser:" ",
-            priority:false
+            revelanceBy:" ", //por quien es relevada
+            nameOfNewUser:" ", //a quien va
+            priority:false //urgencia
           });
 
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
@@ -156,7 +156,7 @@ export class NewTodoComponent implements OnInit {
              description: pvalue,
              category: this.categoryForModel,
              status: false,
-             relevance: 'none',
+             relevance: false,
              day: this.currentDayIn,
              points:this.points,
              revelanceBy:" ",
