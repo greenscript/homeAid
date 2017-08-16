@@ -204,7 +204,6 @@ export class DetailTodoComponent implements OnInit {
             });
           })
 
-
           relevanceTodoForUser = {
             "category":this.currentTodoData[0].value, //listo
             "categoryImg": this.currentTodoData[1].value,//listo
