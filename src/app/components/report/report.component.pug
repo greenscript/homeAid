@@ -3,7 +3,7 @@
     img.img-responsive([src]="report.avatar")
   .col-xs-9
     p.report-name([style.color]="report.color") {{report.name}}
-    p.report-todos Tareas realizadas: 
+    p.report-todos.hidden-xs Tareas realizadas: 
       span([style.color]="report.color") {{report.done}} 
       span de 
       span([style.color]="report.color") {{report.total}}
