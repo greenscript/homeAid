@@ -189,7 +189,7 @@ export class DetailTodoComponent implements OnInit {
 
     //let currentTodoRemoved;
     if(this.userSelected){
-      console.log('ya seleccionaron usuario');
+      //console.log('ya seleccionaron usuario');
       for (var i = 0; i < this.usersArr.length; i++) {
         if (this.newUserIdForTodo == this.usersArr[i].key) {
           //path para pararle la tarea a alguien mas.

@@ -21,7 +21,7 @@ export class NewTodoComponent implements OnInit {
   public selectedUser: FirebaseListObservable<any>;
   public currentWeek: FirebaseListObservable<any>;
   public selectedDay: FirebaseListObservable<any>;
-  public currentUserInfo:FirebaseObjectObservable<any>;
+  public currentUserInfo: FirebaseObjectObservable<any>;
 
 
   public userId: string = '';
@@ -42,11 +42,11 @@ export class NewTodoComponent implements OnInit {
     item: -1
   };
   public categoryImgs: Array<any> = [
-    { src: '../../../assets/i-29.png', category: "Acomodar"},
-    { src: '../../../assets/i-30.png', category: "Limpiar"},
-    { src: '../../../assets/i-31.png', category: "Cocinar"},
-    { src: '../../../assets/i-27.png', category: "Mascotas"},
-    { src: '../../../assets/i-28.png', category: "Personal"}
+    { src: '../../../assets/i-29.png', category: "Acomodar" },
+    { src: '../../../assets/i-30.png', category: "Limpiar" },
+    { src: '../../../assets/i-31.png', category: "Cocinar" },
+    { src: '../../../assets/i-27.png', category: "Mascotas" },
+    { src: '../../../assets/i-28.png', category: "Personal" }
   ];
 
 
@@ -102,10 +102,10 @@ export class NewTodoComponent implements OnInit {
       this.currentDayIn = params['index'];
       this.currentDay = params['day'];
       this.uid = params['id'];
-      console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
+      //console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
     });
 
-    console.log(this.ds.regularUsers);
+    //console.log(this.ds.regularUsers);
 
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
@@ -113,13 +113,13 @@ export class NewTodoComponent implements OnInit {
         console.log('logged in');
         this.users = this.db.list(`/families/${this.currentFamily}/users/`, { preserveSnapshot: true });
         this.users.subscribe(snapshots => {
-            snapshots.forEach(snapshot => {
-              if (!this.loadedUsers)  {
-                this.usersdata.push({ key: snapshot.key, value: snapshot.val() })
-              }
-            });
-            this.loadedUsers = true;
-          })
+          snapshots.forEach(snapshot => {
+            if (!this.loadedUsers) {
+              this.usersdata.push({ key: snapshot.key, value: snapshot.val() })
+            }
+          });
+          this.loadedUsers = true;
+        })
       } else {
         console.error('user not logged in');
       }
@@ -140,7 +140,7 @@ export class NewTodoComponent implements OnInit {
   }
 
   addTodo(e: Event, pvalue) {
-    let userData;
+    let currentUserData: Array<any> = [];
     let imgsrc;
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
@@ -148,12 +148,19 @@ export class NewTodoComponent implements OnInit {
         this.categoryForModel = this.todos[index].category;
         this.points = this.todos[index].points;
 
-        for(var y=0; y < this.categoryImgs.length; y++){
-          if(this.categoryImgs[y].category == this.todos[index].category){
-            console.log('categoryImgs');
+        for (var y = 0; y < this.categoryImgs.length; y++) {
+          if (this.categoryImgs[y].category == this.todos[index].category) {
             imgsrc = this.categoryImgs[y].src;
           }
         }
+
+        this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}`, { preserveSnapshot: true });
+        this.currentUserInfo.subscribe(snapshots => {
+          snapshots.forEach(snapshot => {
+            currentUserData.push({ key: snapshot.key, value: snapshot.val() })
+          });
+        })
+
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
           this.selectedUser.push({
@@ -163,19 +170,13 @@ export class NewTodoComponent implements OnInit {
             status: false, //completada
             relevance: false, //si es relevada o no
             day: this.currentDayIn,
-            points:this.points,
-            revelanceBy:" ", //por quien es relevada
-            priority:false, //urgencia
+            points: this.points,
+            revelanceBy: " ", //por quien es relevada
+            priority: false, //urgencia
             categoryImg: imgsrc,
-            nameUser:this.usersdata[2].value.name
+            nameUser: currentUserData[2].value
           });
 
-          this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}`, { preserveSnapshot: true });
-          this.currentUserInfo.subscribe(snapshots => {
-            snapshots.forEach(snapshot => {
-              userData.push({ key: snapshot.key, value: snapshot.val() })
-            });
-          })
 
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
           this.selectedDay.push({
@@ -189,7 +190,7 @@ export class NewTodoComponent implements OnInit {
             revelanceBy: " ",
             priority: false,
             categoryImg: imgsrc,
-            nameUser: userData[2].value
+            nameUser: currentUserData[2].value
           });
 
         } else {
