@@ -10,7 +10,8 @@ section.col-xs-10
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
       h4.titles.main Que deseas dar de premio familiar?
-        input.form-control.newGoalInput(placeholder="Salida al cine", [(ngModel)]="titleGoal", type="text",required="true")
+        input.form-control.newGoalInput(
+          type='text', placeholder="Salida al cine", [(ngModel)]="titleGoal", required)
       h4.titles Describe el premio
         section.col-xs-12
           textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
