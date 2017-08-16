@@ -9,8 +9,8 @@ section.col-xs-10.no-padding.md-column
   section.row.md-sm-spacer
     section.col-xs-12.col-sm-12.flex-center.md-xs-spacer
       h4.select-title Selecciona un avatar para el nuevo usuario
-    section.col-xs-12.col-sm-12.container.md-xs-spacer
-      section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer
+    section.col-xs-12.col-sm-12.container.md-xs-spacer.avatars
+      section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer.row
         .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;") 
           img.users(
             [src]='avatar.src',
