@@ -17,26 +17,17 @@ section.row
           .col-xs-12.col-sm-4.flex-center.admin-md-row-btn 
             a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Crear usuario
           .col-xs-12.col-sm-4.flex-center.admin-md-row-btn.flex-center.hidden-sm.hidden-md.hidden-lg
-            a.btn-card.admin-md-btn((click)="generateReports()") Ver reportes
+            a.btn-card.admin-md-btn((click)="smModal.show()") Ver reportes
       .col-xs-12.admin-md-reports.flex-center.no-padding
         .col-xs-11.hidden-xs
           app-reports([reports]="reports")
 
             
-
-//- /*section.hidden-sm.hidden-md.hidden-lg
-//-   section.row
-//-     svg.admin-header(width='100vw' viewBox='0 0 1085 296')
-//-       path.admin-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
-//-     h1.admin-title Administrador {{adminName | capitalize}} 
-//-     img.admin-img.center-block(src='../../../assets/i-admin.png', alt='')
-//-   section.row
-//-     section.col-xs-12.col-sm-12
-//-       button.btn-menu-admin Ver mis tareas 
-//-       button.btn-menu-admin
-//-         a([routerLink]="['/menu', adminId, 'createWeek']")  Manejar semana
-//-       button.btn-menu-admin 
-//-         a([routerLink]="['/menu', adminId, 'newUser']") Crear usuario
-//-       button.btn-menu-admin 
-//-         a([routerLink]="['/familyGoal',uid]") Crear premio familiar
-//-       button.btn-menu-admin Reportes*/
+.modal.fade(bsModal="", #smModal="bs-modal", tabindex="-1", role="dialog", aria-labelledby="mySmallModalLabel", aria-hidden="true")
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close.pull-right(type="button", aria-label="close", (click)="smModal.hide()")
+          span(aria-hidden="true") &times;
+      .modal-body
+        app-reports([reports]="reports")
