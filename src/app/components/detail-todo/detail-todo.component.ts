@@ -121,7 +121,9 @@ export class DetailTodoComponent implements OnInit {
       'priority': this.currentTodoData[6].value,
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
+      'status': true,
       'userId': this.currentTodoData[10].value
+
     })
     this.currentDayTodo.set({
       'category': this.currentTodoData[0].value,
