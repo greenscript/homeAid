@@ -29,6 +29,11 @@ input {
     margin: 40px auto;
     font-weight: 300;
     resize: none;
+    height: 40px;
+}
+
+.form-control {
+    box-shadow: none;
 }
 
 textarea::placeholder {
@@ -36,7 +41,7 @@ textarea::placeholder {
 }
 
 .form-container {
-    margin-top: 7em;
+    margin-top: 10em;
 }
 
 h4 {
@@ -123,8 +128,8 @@ textarea {
         margin-top: 3em;
     }
     textarea {
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
     .familyGoal {
         &-header {
@@ -157,7 +162,6 @@ textarea {
         font-size: 16px;
     }
 }
-
 
 
 /*@media (min-width: 1000px) {

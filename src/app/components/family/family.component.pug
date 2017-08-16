@@ -8,7 +8,7 @@ section.col-xs-10.no-padding
     h2.text-center.header-title Familia
     section.goal
         button.modalGoal((click)='goalFamily.show()')
-            img(src='../../../assets/i-33.png', alt='')
+            img.goalImg(src='../../../assets/i-33.png', alt='')
 
     section.row.family.col-xs-12.flex-center.col-sm-12
         .col-xs-4.col-md-2.text-center(*ngFor="let user of usersdata; let i = index;")
@@ -41,9 +41,11 @@ section.col-xs-10.no-padding
                 h4.modal-title.pull-left ¡Premio Familiar!
                 button.close.pull-right(type='button', aria-label='close', (click)='goalFamily.hide()')
                     span(aria-hidden='true') 
-            .modal-body.flex-center(*ngFor="let goal of familyGoal")
-                h1.familyGoalTitle {{goal.value.title}}
-                p.familyGoalDesc {{goal.value.description}}
+            .modal-body(*ngFor="let goal of familyGoal")
+                .familyGoalTitle.flex-center
+                    h1 {{goal.value.title}}
+                .familyGoalDesc.flex-center
+                    h4 {{goal.value.description}}
 
             .form-group.flex-center.limpiarBtn
                 .btn-add

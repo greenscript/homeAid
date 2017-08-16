@@ -41,12 +41,12 @@ $white-color: #FFF;
 .week {
     padding: 5vh 0;
     &-day {
-        margin-top: 18%;
+        margin-top: 5%;
     }
 }
 
 .arrow {
-    margin-top: 18%;
+    margin-top: 5%;
     border: none;
 }
 
@@ -73,6 +73,14 @@ $white-color: #FFF;
 
 .icompleted {
     display: none;
+}
+
+.modal-dialog {
+    margin: 15% auto;
+    .familyGoalTitle,
+    .familyGoalDesc {
+        width: 100%;
+    }
 }
 
 //btns
@@ -128,7 +136,7 @@ $white-color: #FFF;
         margin: 4em 0px 2em 0px;
     }
     .goal button,
-    img {
+    .goalImg {
         top: -80px;
         left: 10px;
         width: 40px;
@@ -155,7 +163,7 @@ $white-color: #FFF;
         width: 85vw;
     }
     .goal button,
-    img {
+    .goalImg {
         top: -80px;
         left: 20px;
         width: 50px;
@@ -164,11 +172,11 @@ $white-color: #FFF;
 
 @media (min-width: 1440px) {
     .family {
-        margin-top: 10%;
+        margin-top: 7%;
     }
     .goal button,
-    img {
-        top: -105px;
+    .goalImg {
+        top: -90px;
         left: 5px;
         width: 50px;
     }
