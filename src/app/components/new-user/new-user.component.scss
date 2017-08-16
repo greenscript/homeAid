@@ -28,7 +28,9 @@ h4 {
 .op {
     background-color: red;
 }
-
+.avatars{
+  overflow: scroll !important;
+}
 
 /*classes for ng if to see which user is selected.*/
 
@@ -179,6 +181,9 @@ select[multiple] {
 .btn-add:hover .eff-4 {
     left: 0;
 }
+.select-title {
+   margin-top: 4rem;
+  }
 
 .btn-add:hover button {
     color: #fff;

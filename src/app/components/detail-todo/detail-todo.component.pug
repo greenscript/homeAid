@@ -17,6 +17,7 @@ section.col-xs-12.col-sm-9.no-padding
             p.todoNotCompleted No completada
             button.btn-menu-admin((click)='completetask()') Completar tarea
             button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
+            button.btn-menu-admin((click)='prioritytask()') Ley de la priority
 
             //-si la tarea ya esta completa no ense;ar el boton?
           div.showstatus-container(*ngIf="data.value == true")

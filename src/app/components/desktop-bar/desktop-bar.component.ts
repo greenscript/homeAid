@@ -15,6 +15,7 @@ export class DesktopBarComponent implements OnInit {
   public profile: boolean;
   public family: boolean;
   public alarms: boolean;
+  public reward: boolean;
   public isAdmin: boolean;
   public uid: string;
   public day: string;
@@ -36,15 +37,18 @@ export class DesktopBarComponent implements OnInit {
       case `/menu/${this.uid}/createWeek`:
       case `/menu/${this.uid}/newUser`:
       case `/newTodo/${this.uid}/${this.day}/${this.dayI}`:
+      case `/familyGoal/${this.uid}`:
         this.navText = 'Regresar al Menu';
         this.menu = true;
         break;
-
       case `/familyTodos/${this.uid}`:
         this.family = true;
         break;
       case `/user/${this.uid}`:
         this.profile = true;
+        break;
+      case `/familyReward/${this.uid}`:
+        this.reward = true;
         break;
     }
     this.admin();

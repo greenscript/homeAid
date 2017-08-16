@@ -39,8 +39,11 @@ export class FamilyComponent implements OnInit {
   public d = this.currentDate;
   public selectedImage: string;
   public toggleObject: any = {
-    item: -1
+    item: 0
   }
+  public goals: FirebaseListObservable<any>;
+  public currentWeekGoal;
+  public familyGoal: Array<any> = [];
 
   constructor(
     private as: AuthService,
@@ -58,19 +61,20 @@ export class FamilyComponent implements OnInit {
         console.log('logged in');
         this.users = this.db.list(`/families/${this.currentFamily}/users`, { preserveSnapshot: true });
         this.users.subscribe(snapshots => {
-            snapshots.forEach(snapshot => {
-              if (!(snapshot.key === '0') && (this.loadedUsers === false)) {
-                this.usersdata.push( ({ key: snapshot.key, value: snapshot.val() }) )
-              }
-            });
-            this.selectUser(this.usersdata[0].key)
-            this.getDay();
-            this.loadedUsers = true;
-          })
+          snapshots.forEach(snapshot => {
+            if (!(snapshot.key === '0') && (this.loadedUsers === false)) {
+              this.usersdata.push(({ key: snapshot.key, value: snapshot.val() }))
+            }
+          });
+          this.selectUser(this.usersdata[0].key)
+          this.getDay();
+          this.loadedUsers = true;
+        })
       } else {
         console.log('user not logged in');
       }
     });
+    this.getFamilyGoal();
   }
 
   userTodo(userId) {
@@ -80,17 +84,17 @@ export class FamilyComponent implements OnInit {
         this.currentFamily = res.uid;
         this.todos = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos`, { preserveSnapshot: true });
         this.todos.subscribe(snapshots => {
-            snapshots.forEach(snapshot => {
-              this.tododata.push(
-                ({
-                  key: snapshot.key,
-                  value: snapshot.val()
-                })
-              )
-            });
-            console.log("lla", this.tododata);
-            this.getTodos(this.day)
-          })
+          snapshots.forEach(snapshot => {
+            this.tododata.push(
+              ({
+                key: snapshot.key,
+                value: snapshot.val()
+              })
+            )
+          });
+          console.log("lla", this.tododata);
+          this.getTodos(this.day)
+        })
       } else {
         console.log('todos not logged in');
       }
@@ -126,19 +130,27 @@ export class FamilyComponent implements OnInit {
   }
 
   next() {
-    this.dayView = this.d.setDate(this.d.getDate() + 1)
-    this.day += 1;
-    if (this.day == 7)
-      this.day = 0
+    if (this.day == 6) {
+      //me devuelve al lunes de la semana en la que se encutre.
+      this.dayView = this.d.setDate(this.d.getDate() - 6)
+      this.day = 0;
+    } else {
+      this.dayView = this.d.setDate(this.d.getDate() + 1)
+      this.day += 1;
+    }
 
     this.getTodos(this.day)
   }
 
   back() {
-    this.dayView = this.d.setDate(this.d.getDate() - 1)
-    this.day -= 1;
-    if (this.day == -1)
+    if (this.day == 0) {
+      this.dayView = this.d.setDate(this.d.getDate() + 6)
       this.day = 6
+    } else {
+      this.dayView = this.d.setDate(this.d.getDate() - 1)
+      this.day -= 1;
+
+    }
 
     this.getTodos(this.day)
   }
@@ -146,11 +158,28 @@ export class FamilyComponent implements OnInit {
   getTodos(pday) {
     this.todosView = [];
     console.log("pday", pday);
-    for (var i in this.tododata){
-      if(this.tododata[i].value.day == pday)
-      this.todosView.push(this.tododata[i])
+    for (var i in this.tododata) {
+      if (this.tododata[i].value.day == pday)
+        this.todosView.push(this.tododata[i])
       console.log("todoView", this.todosView)
     }
   }
 
+  getFamilyGoal() {
+    this.auth.authState.subscribe(res => {
+      if (res && res.uid) {
+        this.currentWeekGoal = this.db.list(`/families/${res.uid}/currentWeek/goals`, { preserveSnapshot: true });
+        this.currentWeekGoal.subscribe(snapshots => {
+          snapshots.forEach(snapshot => {
+            console.log("sh", snapshot.val());
+            this.familyGoal.push(({ key: snapshot.key, value: snapshot.val() }))
+            console.log("fG", this.familyGoal);
+
+          });
+        })
+      } else {
+        console.log('noo');
+      }
+    });
+  }
 }

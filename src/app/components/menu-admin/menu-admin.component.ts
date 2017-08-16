@@ -97,6 +97,8 @@ export class MenuAdminComponent implements OnInit {
         name: o.value.name,
         avatar: o.value.avatar,
         color: o.value.styles,
+        total: a,
+        done: a - b.length,
         percentage: this.getPercentage(a, b)
       }
       this.reports.push(report)

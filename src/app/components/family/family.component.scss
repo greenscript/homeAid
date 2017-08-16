@@ -1,11 +1,12 @@
 $header-color: #EEC337;
+$green-color: #35B095;
+$white-color: #FFF;
 .header {
     margin-top: 0;
     position: absolute;
     z-index: -1;
     top: 0;
     width: 100vw;
-
     .path {
         fill: $header-color;
     }
@@ -24,20 +25,28 @@ $header-color: #EEC337;
 }
 
 .no-selected-ux {
-  opacity: 0.5;
-  filter: alpha(opacity=40);
+    opacity: 0.5;
+    filter: alpha(opacity=40);
+}
 
+.modalGoal {
+    background-color: transparent;
+    border: none;
+}
+
+.goal button {
+    position: relative;
 }
 
 .week {
     padding: 5vh 0;
     &-day {
-        margin-top: 18%;
+        margin-top: 5%;
     }
 }
 
 .arrow {
-    margin-top: 18%;
+    margin-top: 5%;
     border: none;
 }
 
@@ -45,9 +54,80 @@ $header-color: #EEC337;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.perUserName{
-  font-size: 16px;
-  color: black;
+.perUserName {
+    font-size: 16px;
+    color: black;
+}
+
+.completed {
+    color: #28bca7;
+    margin-top: .4rem;
+    display: block !important;
+    &-txt {
+        color: #c3c3c3;
+    }
+    &-img {
+        opacity: 0.5;
+    }
+}
+
+.icompleted {
+    display: none;
+}
+
+.modal-dialog {
+    margin: 15% auto;
+    .familyGoalTitle,
+    .familyGoalDesc {
+        width: 100%;
+    }
+}
+
+//btns
+.btn-add {
+    width: 115px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 10px;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.btn-add button {
+    font-weight: 300;
+    color: $white-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 115px;
+    height: 45px;
+    left: -140px;
+    background: $header-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.btn-add:hover button {
+    color: #fff;
 }
 
 @media (min-width: 320px) {
@@ -55,17 +135,23 @@ $header-color: #EEC337;
         padding-left: 2em;
         margin: 4em 0px 2em 0px;
     }
+    .goal button,
+    .goalImg {
+        top: -80px;
+        left: 10px;
+        width: 40px;
+    }
 }
 
 @media (min-width: 650px) {
     .header {
         top: -10vw;
     }
-      .family {
+    .family {
         padding-left: 1em;
         margin-top: 15%;
     }
-    .user-week{
+    .user-week {
         margin-left: 15px;
         margin-right: 15px;
     }
@@ -76,10 +162,22 @@ $header-color: #EEC337;
         top: -11vw;
         width: 85vw;
     }
+    .goal button,
+    .goalImg {
+        top: -80px;
+        left: 20px;
+        width: 50px;
+    }
 }
 
 @media (min-width: 1440px) {
-  .family {
-    margin-top: 10%;
-}
+    .family {
+        margin-top: 7%;
+    }
+    .goal button,
+    .goalImg {
+        top: -90px;
+        left: 5px;
+        width: 50px;
+    }
 }

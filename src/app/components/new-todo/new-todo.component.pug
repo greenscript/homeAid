@@ -1,6 +1,6 @@
 section.col-xs-2.no-padding
   app-desktop-bar([adminId]="uid")
-section.col-xs-12.col-sm-10.no-padding
+section.col-xs-10.col-sm-10.no-padding
   app-back
   section
     section.col-xs-12.col-sm-12.no-padding
@@ -122,7 +122,7 @@ section.col-xs-12.col-sm-10.no-padding
       .modal-body(*ngFor='let category of todos')
         div.personalTodos(*ngIf='category.category == "Personal"')
           label.radioName-xs-3(for='category') {{category.description}}
-          input.radioInput(type='radio', name='catDescription',  [value]='category.description')
+          input.radioInput(type='radio', name='catDescription',[(ngModel)]='value',  [value]='category.description')
       .form-group.flex-center.personalBtn
         .btn-add
           .eff-4

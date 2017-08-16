@@ -40,9 +40,10 @@ img {
 .users {
     &-gradient {
         position: absolute;
-        height: 15vh;
+        height: 10vh;
         width: 100vw;
         &_top {
+            z-index: 10;
             top: 16vh;
             /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100 */
             background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
@@ -72,8 +73,10 @@ img {
         width: 100vw;
         height: 80vh;
         z-index: -3;
-        margin-top: 15vh;
+        margin-top: 8vh;
         overflow: scroll;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
     }
     &-user {
         margin-bottom: 3vh;

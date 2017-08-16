@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialogModule } from '@angular/material';
 import { NewTodo } from '../../models/newTodo.model';
@@ -13,7 +13,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./createWeek-admin.component.scss'],
   providers: [DataService, AuthService]
 })
-export class CreateWeekAdminComponent implements OnInit, OnChanges {
+export class CreateWeekAdminComponent implements OnInit {
   @Input() currentDay: any;
   public day = 0;
   public actualDay = "";
@@ -54,44 +54,41 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
           });
           let a = Object.values(this.weekData.shift())
           let b = a.splice(1, 1).shift()
+          b = b.filter(o => new Date(o.day).getTime() > new Date().getTime() || new Date(o.day).toDateString() === new Date().toDateString())
           this.days = b
           if (this.days.length > 0) {
             this.currentDay = this.days.shift().day;
+            this.days.unshift({'day' : this.currentDay});
+            console.log("currenInit", this.days)
           }
+
+          console.log(this.days)
         })
+        this.getTodos(this.currentDayIndex)
+
       }
     })
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-
-  }
-
   next() {
-    if (this.currentDayIndex == 6) {
+    if (this.currentDayIndex == this.days.length) {
       this.currentDayIndex = -1;
-    } else if (this.currentDayIndex === 7) {
+    }
+    if (this.currentDayIndex === this.days.length - 1) {
       this.currentDayIndex = -1;
     }
     this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
-    this.checkDate()
+
     this.getTodos(this.currentDayIndex)
   }
 
   back() {
     if (this.currentDayIndex === -1 || this.currentDayIndex === 0) {
-      this.currentDayIndex = 7;
+      this.currentDayIndex = this.days.length;
     }
     this.currentDay = this.currentDayIndex > 0 ? this.days[this.currentDayIndex = this.currentDayIndex - 1].day : this.days[0].day
 
-    this.checkDate()
     this.getTodos(this.currentDayIndex)
-  }
-
-  checkDate() {
-    let actualDate = new Date()
-    let currentDay = new Date(this.currentDay)
-    this.pastDweller = currentDay < actualDate ? true : false
   }
 
   getTodos(pDayIndex) {

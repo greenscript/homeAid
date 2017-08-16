@@ -4,10 +4,12 @@ import { CreateWeekAdminComponent } from '../../components/createWeek-admin/crea
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Http } from '@angular/http';
 import { DataService } from '../../services/data.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-new-todo',
@@ -21,6 +23,9 @@ export class NewTodoComponent implements OnInit {
   public selectedUser: FirebaseListObservable<any>;
   public currentWeek: FirebaseListObservable<any>;
   public selectedDay: FirebaseListObservable<any>;
+  public currentUserInfo: FirebaseObjectObservable<any>;
+
+
   public userId: string = '';
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
@@ -39,12 +44,13 @@ export class NewTodoComponent implements OnInit {
     item: -1
   };
   public categoryImgs: Array<any> = [
-    { src: '../../../assets/i-29.png', category: "Acomodar"},
-    { src: '../../../assets/i-30.png', category: "Limpiar"},
-    { src: '../../../assets/i-31.png', category: "Cocinar"},
-    { src: '../../../assets/i-27.png', category: "Mascotas"},
-    { src: '../../../assets/i-28.png', category: "Personal"}
-  ]
+    { src: '../../../assets/i-29.png', category: "Acomodar" },
+    { src: '../../../assets/i-30.png', category: "Limpiar" },
+    { src: '../../../assets/i-31.png', category: "Cocinar" },
+    { src: '../../../assets/i-27.png', category: "Mascotas" },
+    { src: '../../../assets/i-28.png', category: "Personal" }
+  ];
+
 
 
   //todosArray : NewTodo [];
@@ -90,7 +96,9 @@ export class NewTodoComponent implements OnInit {
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
     private http: Http,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public location: Location
+
   ) { }
 
   ngOnInit() {
@@ -98,10 +106,10 @@ export class NewTodoComponent implements OnInit {
       this.currentDayIn = params['index'];
       this.currentDay = params['day'];
       this.uid = params['id'];
-      console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
+      //console.log("@#@#@#@#@# CURRENT DAY", this.currentDayIn);
     });
 
-    console.log(this.ds.regularUsers);
+    //console.log(this.ds.regularUsers);
 
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
@@ -109,13 +117,13 @@ export class NewTodoComponent implements OnInit {
         console.log('logged in');
         this.users = this.db.list(`/families/${this.currentFamily}/users/`, { preserveSnapshot: true });
         this.users.subscribe(snapshots => {
-            snapshots.forEach(snapshot => {
-              if (!this.loadedUsers)  {
-                this.usersdata.push({ key: snapshot.key, value: snapshot.val() })
-              }
-            });
-            this.loadedUsers = true;
-          })
+          snapshots.forEach(snapshot => {
+            if (!this.loadedUsers) {
+              this.usersdata.push({ key: snapshot.key, value: snapshot.val() })
+            }
+          });
+          this.loadedUsers = true;
+        })
       } else {
         console.error('user not logged in');
       }
@@ -136,6 +144,8 @@ export class NewTodoComponent implements OnInit {
   }
 
   addTodo(e: Event, pvalue) {
+    let todoAdded=false;
+    let currentUserData: Array<any> = [];
     let imgsrc;
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
@@ -143,49 +153,61 @@ export class NewTodoComponent implements OnInit {
         this.categoryForModel = this.todos[index].category;
         this.points = this.todos[index].points;
 
-        for(var y=0; y < this.categoryImgs.length; y++){
-          if(this.categoryImgs[y].category == this.todos[index].category){
-            console.log('categoryImgs');
+        for (var y = 0; y < this.categoryImgs.length; y++) {
+          if (this.categoryImgs[y].category == this.todos[index].category) {
             imgsrc = this.categoryImgs[y].src;
           }
         }
 
+        this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}`, { preserveSnapshot: true });
+        this.currentUserInfo.subscribe(snapshots => {
+          snapshots.forEach(snapshot => {
+            currentUserData.push({ key: snapshot.key, value: snapshot.val() })
+          });
+        })
+
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
           this.selectedUser.push({
-            username: this.userId,
+            userId: this.userId,
             description: pvalue,
             category: this.categoryForModel,
             status: false, //completada
             relevance: false, //si es relevada o no
             day: this.currentDayIn,
-            points:this.points,
-            revelanceBy:" ", //por quien es relevada
-            nameOfNewUser:" ", //a quien va
-            priority:false, //urgencia
-            categoryImg: imgsrc
+            points: this.points,
+            revelanceBy: " ", //por quien es relevada
+            priority: false, //urgencia
+            categoryImg: imgsrc,
+            nameUser: currentUserData[2].value
           });
+
 
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
           this.selectedDay.push({
-             username: this.userId,
-             description: pvalue,
-             category: this.categoryForModel,
-             status: false,
-             relevance: false,
-             day: this.currentDayIn,
-             points:this.points,
-             revelanceBy:" ",
-             nameOfNewUser:" ",
-             priority:false,
-             categoryImg: imgsrc
+            userId: this.userId,
+            description: pvalue,
+            category: this.categoryForModel,
+            status: false,
+            relevance: false,
+            day: this.currentDayIn,
+            points: this.points,
+            revelanceBy: " ",
+            priority: false,
+            categoryImg: imgsrc,
+            nameUser: currentUserData[2].value
           });
+          todoAdded = true;
+          if(todoAdded){
+            console.log('New todo is added properly to the databse');
+            this.location.back();
+          }
         } else {
           this.error = true;
           this.errorMsg = 'Please select a user first'
         }
       } else {
-        console.log('todo didnt made any match with a todo of the local object.');
+        console.error('todo didnt made any match with a todo of the local object.');
       }
     }
     e.stopPropagation();

@@ -5,13 +5,13 @@ body {
   overflow: hidden;
 }
 
-h1, h2, input {
+/*h1, h2, input, {
   overflow: hidden;
   font-weight: lighter;
-}
+}*/
 
 *{
-  font-weight: 200;
+  font-weight: 200 !important;
 }
 a, p{
   text-decoration: none !important;
@@ -144,10 +144,19 @@ a, p{
   .flex-xs-column {
     flex-direction: column;
   }
+  .flex-sm-column {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 768px) {
   .flex-xs-column {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flex-sm-column {
     flex-direction: row;
   }
 }
