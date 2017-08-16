@@ -116,25 +116,27 @@ export class DetailTodoComponent implements OnInit {
       'categoryImg': this.currentTodoData[1].value,
       'day': this.currentTodoData[2].value,
       'description': this.currentTodoData[3].value,
-      'nameOfNewUser': this.currentTodoData[4].value,
+      'nameUser': this.currentTodoData[4].value,
       'points': this.currentTodoData[5].value,
       'priority': this.currentTodoData[6].value,
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
-      'username': this.currentTodoData[10].value
+      'status': true,
+      'userId': this.currentTodoData[10].value
+
     })
     this.currentDayTodo.set({
       'category': this.currentTodoData[0].value,
       'categoryImg': this.currentTodoData[1].value,
       'day': this.currentTodoData[2].value,
       'description': this.currentTodoData[3].value,
-      'nameOfNewUser': this.currentTodoData[4].value,
+      'nameUser': this.currentTodoData[4].value,
       'points': this.currentTodoData[5].value,
       'priority': this.currentTodoData[6].value,
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
       'status':  true,//cambiar [9]
-      'username': this.currentTodoData[10].value
+      'userId': this.currentTodoData[10].value
     })
     this.location.back();
   }
@@ -146,26 +148,26 @@ export class DetailTodoComponent implements OnInit {
       'categoryImg': this.currentTodoData[1].value,
       'day': this.currentTodoData[2].value,
       'description': this.currentTodoData[3].value,
-      'nameOfNewUser': this.currentTodoData[4].value,
+      'nameUser': this.currentTodoData[4].value,
       'points': this.currentTodoData[5].value,
       'priority': true,//cambiar [6]
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
       'status': this.currentTodoData[9].value,
-      'username': this.currentTodoData[10].value
+      'userId': this.currentTodoData[10].value
     })
     this.currentDayTodo.set({
       'category': this.currentTodoData[0].value,
       'categoryImg': this.currentTodoData[1].value,
       'day': this.currentTodoData[2].value,
       'description': this.currentTodoData[3].value,
-      'nameOfNewUser': this.currentTodoData[4].value,
+      'nameUser': this.currentTodoData[4].value,
       'points': this.currentTodoData[5].value,
       'priority': true,//cambiar
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
       'status': this.currentTodoData[9].value,
-      'username': this.currentTodoData[10].value
+      'userId': this.currentTodoData[10].value
     })
     this.location.back();
   }
@@ -202,27 +204,29 @@ export class DetailTodoComponent implements OnInit {
             });
           })
 
+
           relevanceTodoForUser = {
             "category":this.currentTodoData[0].value, //listo
             "categoryImg": this.currentTodoData[1].value,//listo
             "day":this.currentTodoData[2].value, //listo
             "description":this.currentTodoData[3].value, //listo
-            "nameOfNewUser":this.usersArr[i].value.name, //nombre de la pp a la que le va
-            "points":this.currentTodoData[5].value, // listo
+            "nameUser":this.usersArr[i].value.name, //nombre de la pp a la que le va
+            "points":this.currentTodoData[6].value, // listo
             "priority":false, //listo
             "relevance":true, //listo
             "revelanceBy": currentUserData[2].value,//quien la releva.
             "status":this.currentTodoData[9].value,
-            "username": this.userId, //listo
+            "userId": this.usersArr[i].key //nuevo id
           }
-          console.log('data relevance',relevanceTodoForUser);
+          console.log('@#@#@#@',relevanceTodoForUser)
 
 
-          //this.pathUser.push(relevanceTodoForUser);
+          this.pathUser.push(relevanceTodoForUser);
           relevanceFirst = true;
           //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
           if(relevanceFirst){
             this.currentUserTodoForRemove.remove();
+            this.location.back();
           }
         } else {
           console.log("select a user first please");
