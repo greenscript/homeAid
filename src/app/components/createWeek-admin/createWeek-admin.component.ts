@@ -57,6 +57,8 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
           this.days = b
           if (this.days.length > 0) {
             this.currentDay = this.days.shift().day;
+            this.days.unshift({'day' : this.currentDay});
+            console.log("currenInit", this.days)
           }
         })
       }
@@ -68,12 +70,17 @@ export class CreateWeekAdminComponent implements OnInit, OnChanges {
   }
 
   next() {
+    console.log("antesIndex", this.currentDayIndex);
+    console.log("currDay", this.currentDay);
     if (this.currentDayIndex == 6) {
       this.currentDayIndex = -1;
     } else if (this.currentDayIndex === 7) {
       this.currentDayIndex = -1;
     }
     this.currentDay = this.days[this.currentDayIndex = this.currentDayIndex + 1].day;
+    console.log("Days", this.days)
+     console.log("despusIndex", this.currentDayIndex);
+    console.log("pespuesCurrDay", this.currentDay);
     this.checkDate()
     this.getTodos(this.currentDayIndex)
   }
