@@ -38,7 +38,6 @@ import { DesktopBarComponent } from './components/desktop-bar/desktop-bar.compon
 import { ReportsComponent } from './components/reports/reports.component';
 import { ReportComponent } from './components/report/report.component';
 import { BackComponent } from './components/back/back.component';
-import { FamilyRewardComponent } from './components/family-reward/family-reward.component';
 
 // pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
@@ -78,8 +77,7 @@ export const ROUTES: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detailTodo/:id/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
-  { path: 'familyGoal/:id', component: FamilyGoalComponent },
-  { path: 'familyReward/:id', component: FamilyRewardComponent }
+  { path: 'familyGoal/:id', component: FamilyGoalComponent }
 ];
 
 @NgModule({
@@ -104,8 +102,7 @@ export const ROUTES: Routes = [
     DesktopBarComponent,
     ReportsComponent,
     ReportComponent,
-    BackComponent,
-    FamilyRewardComponent
+    BackComponent
   ],
   imports: [
     BrowserModule,
