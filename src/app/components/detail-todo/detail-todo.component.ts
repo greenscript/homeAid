@@ -95,42 +95,48 @@ export class DetailTodoComponent implements OnInit {
   }
 
   currentTodoAndDayData() {
-    //let isCompleted_todo= false;
-
     this.currentTodo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`, { preserveSnapshot: true });
-  //  console.log(`/families/${this.currentFamily}/users/${this.userId}/todos/${this.todoId}`)
     this.currentDayTodo = this.db.object(`/families/${this.currentFamily}/currentWeek/days/${this.dayId}/todos/${this.dayTodoId}`, { preserveSnapshot: true });
     this.currentTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         this.currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
       });
 
-      //console.log(this.currentTodoData)
     })
     this.currentDayTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         this.currentDayData.push({ key: snapshot.key, value: snapshot.val() })
       });
-      //console.log(this.currentDayData)
     })
   }
 
   completetask() {
+    console.log('$$$%%%',this.currentTodoData);
     this.currentTodo.set({
       'category': this.currentTodoData[0].value,
-      'day': this.currentTodoData[1].value,
-      'description': this.currentTodoData[2].value,
-      'relevance': this.currentTodoData[3].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': this.currentTodoData[6].value,
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
       'status': true,
-      'username': this.currentTodoData[5].value
+      'username': this.currentTodoData[10].value
     })
     this.currentDayTodo.set({
-      'category': this.currentDayData[0].value,
-      'day': this.currentDayData[1].value,
-      'description': this.currentDayData[2].value,
-      'relevance': this.currentDayData[3].value,
+      'category': this.currentTodoData[0].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': this.currentTodoData[6].value,
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
       'status': true,
-      'username': this.currentDayData[5].value
+      'username': this.currentTodoData[10].value
     })
     this.location.back();
   }
@@ -175,11 +181,11 @@ export class DetailTodoComponent implements OnInit {
             "points":this.currentTodoData[5].value, // listo
             "priority":false, //listo
             "relevance":true, //listo
-          //  "revelanceBy": currentUserData[2].value,//quien la releva.
+            "revelanceBy": currentUserData[2].value,//quien la releva.
             "status":this.currentTodoData[9].value,
             "username": this.userId, //listo
           }
-          //this.pathUser.push(relevanceTodoForUser);
+          this.pathUser.push(relevanceTodoForUser);
           relevanceFirst = true;
           console.log('data relevane',relevanceTodoForUser);
           //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
