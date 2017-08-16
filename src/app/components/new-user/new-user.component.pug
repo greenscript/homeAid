@@ -6,11 +6,11 @@ section.col-xs-10.no-padding.md-column
       svg.header(width='100%' viewBox='0 0 1085 296')
         path.path(d="M.2.4V242.1S514,358,1085,252.1V0Z")
       h1.header-title.md-sm-spacer  Nuevo usuario
-  section.row.md-sm-spacer
+  section.md-sm-spacer
     section.col-xs-12.col-sm-12.flex-center.md-xs-spacer
       h4.select-title Selecciona un avatar para el nuevo usuario
     section.col-xs-12.col-sm-12.container.md-xs-spacer.avatars
-      section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer.row
+      section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer.no-padding
         .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;") 
           img.users(
             [src]='avatar.src',
