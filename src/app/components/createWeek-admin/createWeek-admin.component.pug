@@ -18,13 +18,14 @@ section.col-xs-12.no-padding
 
         .admin-week.col-xs-12.no-padding.flex-center.flex-column
             .col-md--1.flex-center.newTodoMobile
-            a.newTodoBottom.button.btn.btn-default.btn-admin.btn-newTodo.flex-center(*ngIf="currentDay", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]", [ngClass]="{'disable': pastDweller}") Nueva tarea
+            a.newTodoBottom.button.btn.btn-default.btn-admin.btn-newTodo.flex-center(*ngIf="currentDay", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]") Nueva tarea
                 .col-xs-6
                 img.addBotton(src='assets/i-37.png', alt='')
             .col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
                 a.btn-default.btn-card(href='/')
-                    img.todoImg([src]="todo.categoryImg", alt='')
+                    img.todoImg([src]="todo.categoryImg", [popover]="todo.category", popoverTitle="Categoria de la tarea:", container="body", triggers="mouseenter:mouseleave")
                     p.todoName {{todo.description}}
+                    p.todoName.pull-left Usuario asignado: {{todo.nameUser}}
                     i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.status }")
                         
 

@@ -144,10 +144,19 @@ a, p{
   .flex-xs-column {
     flex-direction: column;
   }
+  .flex-sm-column {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 768px) {
   .flex-xs-column {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flex-sm-column {
     flex-direction: row;
   }
 }

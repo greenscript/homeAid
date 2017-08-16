@@ -51,7 +51,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
 import { MomentModule } from 'angular2-moment';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { SwiperModule } from 'angular2-useful-swiper';
-
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 // services
@@ -128,8 +128,8 @@ export const ROUTES: Routes = [
     MomentModule,
     ToastModule.forRoot(),
     SwiperModule,
-    ProgressbarModule.forRoot()
-
+    ProgressbarModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: "es-CR" }],
   bootstrap: [AppComponent]

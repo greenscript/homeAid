@@ -37,10 +37,10 @@ export class DesktopBarComponent implements OnInit {
       case `/menu/${this.uid}/createWeek`:
       case `/menu/${this.uid}/newUser`:
       case `/newTodo/${this.uid}/${this.day}/${this.dayI}`:
+      case `/familyGoal/${this.uid}`:
         this.navText = 'Regresar al Menu';
         this.menu = true;
         break;
-
       case `/familyTodos/${this.uid}`:
         this.family = true;
         break;

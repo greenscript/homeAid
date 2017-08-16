@@ -8,18 +8,18 @@ section.row
         path.admin-path(d="M.2.4V200.1S514,330,1085,200.1V0Z")
       h1.admin-md-title Administrador {{adminName | capitalize}} 
       img.admin-img.center-block(src='../../../assets/i-admin.png', alt='')
-      .admin-md-buttons.col-xs-12.flex-center.flex-xs-column.admin-xs-height
-        .col-xs-12.flex-center.flex-xs-column
-          .col-xs-12.col-sm-4.flex-center.admin-md-row-btn
-            a.btn-card.admin-md-btn([routerLink]="['/familyGoal', uid]") Crear Premio
-          .col-xs-12.col-sm-4.flex-center.admin-md-row-btn
+      .admin-md-buttons.col-xs-12.flex-center.flex-sm-column.admin-xs-height
+        .col-xs-12.flex-center.flex-sm-column
+          .col-xs-12.col-sm-12.col-md-4.flex-center.admin-md-row-btn
+            a.btn-card.admin-md-btn([routerLink]="['/familyGoal', adminId]") Crear Premio
+          .col-xs-12.col-sm-12.col-md-4.flex-center.admin-md-row-btn
             a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'createWeek']") Manejar semana
-          .col-xs-12.col-sm-4.flex-center.admin-md-row-btn 
+          .col-xs-12.col-sm-12.col-md-4.flex-center.admin-md-row-btn 
             a.btn-card.admin-md-btn([routerLink]="['/menu', adminId, 'newUser']") Crear usuario
-          .col-xs-12.col-sm-4.flex-center.admin-md-row-btn.flex-center.hidden-sm.hidden-md.hidden-lg
+          .col-xs-12.col-sm-12.col-md-4.flex-center.admin-md-row-btn.flex-center.hidden-md.hidden-lg
             a.btn-card.admin-md-btn((click)="smModal.show()") Ver reportes
       .col-xs-12.admin-md-reports.flex-center.no-padding
-        .col-xs-11.hidden-xs
+        .col-xs-11.hidden-xs.hidden-sm
           app-reports([reports]="reports")
 
             
