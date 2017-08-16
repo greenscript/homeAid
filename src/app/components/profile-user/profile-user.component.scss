@@ -21,7 +21,6 @@ $yellow: #EEC337;
 
 }
 
-
 .none {
   display: none;
 }
@@ -40,7 +39,6 @@ $yellow: #EEC337;
 .head{
   background-color: red;
 }
-
 
 .header {
   margin-top: -1px;
@@ -137,9 +135,16 @@ btn-user {
 }
 
 .icompleted{
-    display: none;
+    display: none ;
 }
 
+.notpriority{
+    display: none !important;
+}
+.ipriority{
+  color: $yellow;
+  display: block;
+}
 
 .btn-user:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);

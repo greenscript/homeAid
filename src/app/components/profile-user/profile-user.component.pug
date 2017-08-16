@@ -37,6 +37,6 @@ section.col-xs-10.no-padding.md-column
               img.todoImg([ngClass]="{'completed-img': todo.value.status }", [src]="todo.value.categoryImg", alt='')
               p.todoName([ngClass]="{'completed-txt': todo.value.status }") {{todo.value.description}}
               i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
-
+              i.fa.fa-exclamation-circle.fa-3x.pull-right.icompleted([ngClass]="{'ipriority': todo.value.priority , 'notpriority': todo.value.status}")
 //- .hidden-sm.hidden-md.hidden-lg
 //-   app-mobile-bar
