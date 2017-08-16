@@ -27,16 +27,15 @@ $header-color: #EEC337;
 }
 
 .week {
-    padding: 6vh 0 0;
+    padding: 5vh 0 3vh;
     &-day {
-        margin-top: 18%;
+        margin-top: 5%;
     }
 }
 
-.arrow {
+.arrow{
     margin-top: 18%;
     border: none;
-    background-color: transparent;
 }
 
 .btn {
@@ -147,9 +146,6 @@ button a {
     }
 }
 
-.glyphicon {
-    line-height: 5;
-}
 
 
 
@@ -165,6 +161,9 @@ button a {
 @media (min-width: 650px) {
     .header {
         top: -8vw;
+    }
+    .week {
+        margin-top: 5em;
     }
 }
 

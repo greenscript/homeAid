@@ -41,10 +41,11 @@ section.col-xs-10.no-padding.md-column
               span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
   section.row.user-week
       .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView; let i = index;')
-          a.btn-default.btn-card([routerLink]="['/detailTodo', userId, todo.key, day, daysKeys[i]]", role="button")
+          a.btn-default.btn-card([routerLink]="['/detailTodo', userId, todo.key, day, daysKeys[i]]", role="button", [ngClass]="{'relevance': todo.value.relevance }")
               img.todoImg([ngClass]="{'completed-img': todo.value.status }", [src]="todo.value.categoryImg", alt='')
               p.todoName([ngClass]="{'completed-txt': todo.value.status }") {{todo.value.description}}
               i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
               i.fa.fa-exclamation-circle.fa-3x.pull-right.icompleted([ngClass]="{'ipriority': todo.value.priority , 'notpriority': todo.value.status}")
+              p.todoName.relevance-txt.icompleted([ngClass]="{'relevance-txt': todo.value.relevance }") Tarea relevada por: {{todo.value.revelanceBy}}
 //- .hidden-sm.hidden-md.hidden-lg
 //-   app-mobile-bar

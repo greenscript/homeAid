@@ -20,7 +20,7 @@ label{
     position: absolute;
     z-index: -1;
     top: 0;
-    width: 100vw;
+    width: 100%;
 
     .path {
         fill: $yellow-color;
@@ -51,6 +51,7 @@ label{
 .categories, .userName {
   padding: 0px 30px;
 }
+
 .img-category{
   border: 0.1em solid lightgrey;
   width: 70% !important;
@@ -86,9 +87,13 @@ input[type=radio][_ngcontent-c1] {
   background-color: white;
   border: 1px solid #cfcfcf;
   border-radius: 5px;
-  padding-top: .8rem;
+  padding: .8rem;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+.div-cate{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .category-btn :hover{
@@ -275,12 +280,16 @@ input[type=radio] {
     .modal-dialog{
       width: 60vw;
     }
+    .div-cate{
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 }
 
   @media (min-width: 1000px) {
     .header {
-        top: -16vw;
+        top: -15rem;
     }
     .modal-dialog{
       width: 50vw;
@@ -288,6 +297,9 @@ input[type=radio] {
     .family[_ngcontent-c1] {
         padding-left: 1em;
         margin: 2em 0px 2em 0px !important;
+    }
+    .userName{
+      margin-top: 4rem;
     }
 
   }
