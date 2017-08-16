@@ -8,6 +8,8 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Http } from '@angular/http';
 import { DataService } from '../../services/data.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-new-todo',
@@ -94,7 +96,9 @@ export class NewTodoComponent implements OnInit {
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
     private http: Http,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public location: Location
+
   ) { }
 
   ngOnInit() {
@@ -140,6 +144,7 @@ export class NewTodoComponent implements OnInit {
   }
 
   addTodo(e: Event, pvalue) {
+    let todoAdded=false;
     let currentUserData: Array<any> = [];
     let imgsrc;
     for (var index = 0; index < this.todos.length; index++) {
@@ -192,13 +197,17 @@ export class NewTodoComponent implements OnInit {
             categoryImg: imgsrc,
             nameUser: currentUserData[2].value
           });
-
+          todoAdded = true;
+          if(todoAdded){
+            console.log('New todo is added properly to the databse');
+            this.location.back();
+          }
         } else {
           this.error = true;
           this.errorMsg = 'Please select a user first'
         }
       } else {
-        console.log('todo didnt made any match with a todo of the local object.');
+        console.error('todo didnt made any match with a todo of the local object.');
       }
     }
     e.stopPropagation();
