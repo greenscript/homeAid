@@ -3,8 +3,8 @@ section.col-xs-12.no-padding
         app-desktop-bar([adminId]="routeId")
     section.col-xs-10.no-padding.desktop-column
         app-back
-        svg.header(width='105vw' viewBox='0 0 1085 296')
-            path.path(d="M.2.4V250.1S410,348,850,245.1V0Z")
+        svg.header(width='100%' viewBox='0 0 1085 296')
+            path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
         h1.header-title Manejar Semana
         .week
             .col-xs-4.flex-center
@@ -18,7 +18,11 @@ section.col-xs-12.no-padding
 
         .admin-week.col-xs-12.no-padding.flex-center.flex-column
             .col-md--1.flex-center.newTodoMobile
-            a.newTodoBottom.button.btn.btn-default.btn-admin.btn-newTodo.flex-center(*ngIf="currentDay", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]") Nueva tarea
+            .btn-add
+              .eff-4
+              button(*ngIf="currentDay", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]") Nueva tarea 
+                i.fa.fa-plus-circle.fa-lg 
+            //a.newTodoBottom.button.btn.btn-default.btn-admin.btn-newTodo.flex-center(*ngIf="currentDay", [routerLink]="['/newTodo', 0, currentDay | date:'EEEMMMd',  currentDayIndex]") Nueva tarea
                 .col-xs-6
                 img.addBotton(src='assets/i-37.png', alt='')
             .col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
