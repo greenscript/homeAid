@@ -168,7 +168,6 @@ export class FamilyComponent implements OnInit {
   getFamilyGoal() {
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
-        console.log('logged in');
         this.currentWeekGoal = this.db.list(`/families/${res.uid}/currentWeek/goals`, { preserveSnapshot: true });
         this.currentWeekGoal.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
@@ -179,7 +178,7 @@ export class FamilyComponent implements OnInit {
           });
         })
       } else {
-        console.log('jj');
+        console.log('noo');
       }
     });
   }

@@ -42,8 +42,8 @@ section.col-xs-10.no-padding
                 button.close.pull-right(type='button', aria-label='close', (click)='goalFamily.hide()')
                     span(aria-hidden='true') 
             .modal-body.flex-center(*ngFor="let goal of familyGoal")
-                h1 {{goal.value.title}}
-                p {{goal.value.description}}
+                h1.familyGoalTitle {{goal.value.title}}
+                p.familyGoalDesc {{goal.value.description}}
 
             .form-group.flex-center.limpiarBtn
                 .btn-add
