@@ -23,7 +23,7 @@ section.col-xs-12.no-padding
                 img.addBotton(src='assets/i-37.png', alt='')
             .col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
                 a.btn-default.btn-card(href='/')
-                    img.todoImg(src='assets/i-22.png', alt='')
+                    img.todoImg([src]="todo.categoryImg", alt='')
                     p.todoName {{todo.description}}
                     i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.status }")
                         
