@@ -8,7 +8,7 @@ section.col-xs-10.no-padding
     h2.text-center.header-title Familia
     section.goal
         button.modalGoal((click)='goalFamily.show()')
-            img(src='../../../assets/i-33.png', alt='')
+            img.goalImg(src='../../../assets/i-33.png', alt='')
 
     section.row.family.col-xs-12.flex-center.col-sm-12
         .col-xs-4.col-md-2.text-center(*ngFor="let user of usersdata; let i = index;")
