@@ -34,8 +34,13 @@ section.col-xs-12.col-sm-9.no-padding
                   button.close.pull-right(type='button', aria-label='close', (click)='relevanceLaw.hide()')
                     span(aria-hidden='true') 
                 .modal-body
-                  h5.selectUser Seleccione a un usuario.
-                  div.col-xs-4.users(*ngFor='let user of usersArr')
+                  h5.selectUser.text-center Seleccione a un usuario.
+                  .flex-center
+                    .col-xs-4.col-md-2.text-center(*ngFor="let user of usersArr; let i = index;")
+                      a(role="button", (click)="selectUser(user.key)")
+                          img.users([src]='user.value.avatar')
+                          span.perUserName {{user.value.name}}
+                  //div.col-xs-4.users(*ngFor='let user of usersArr')
                     a(role="button", (click)="selectUser(user.key)")
                       img.user([src]='user.value.avatar')
                       span.perUserName {{user.value.name}}
