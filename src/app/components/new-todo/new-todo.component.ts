@@ -4,7 +4,7 @@ import { CreateWeekAdminComponent } from '../../components/createWeek-admin/crea
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Http } from '@angular/http';
 import { DataService } from '../../services/data.service';
@@ -21,6 +21,9 @@ export class NewTodoComponent implements OnInit {
   public selectedUser: FirebaseListObservable<any>;
   public currentWeek: FirebaseListObservable<any>;
   public selectedDay: FirebaseListObservable<any>;
+  public currentUserInfo:FirebaseObjectObservable<any>;
+
+
   public userId: string = '';
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
@@ -44,7 +47,8 @@ export class NewTodoComponent implements OnInit {
     { src: '../../../assets/i-31.png', category: "Cocinar"},
     { src: '../../../assets/i-27.png', category: "Mascotas"},
     { src: '../../../assets/i-28.png', category: "Personal"}
-  ]
+  ];
+
 
 
   //todosArray : NewTodo [];
@@ -136,6 +140,7 @@ export class NewTodoComponent implements OnInit {
   }
 
   addTodo(e: Event, pvalue) {
+    let userData;
     let imgsrc;
     for (var index = 0; index < this.todos.length; index++) {
       if (pvalue == this.todos[index].description) {
@@ -149,11 +154,10 @@ export class NewTodoComponent implements OnInit {
             imgsrc = this.categoryImgs[y].src;
           }
         }
-
         if (this.userSelected) {
           this.selectedUser = this.db.list(`/families/${this.currentFamily}/users/${this.userId}/todos/`, { preserveSnapshot: true });
           this.selectedUser.push({
-            username: this.userId,
+            userId: this.userId,
             description: pvalue,
             category: this.categoryForModel,
             status: false, //completada
@@ -161,25 +165,33 @@ export class NewTodoComponent implements OnInit {
             day: this.currentDayIn,
             points:this.points,
             revelanceBy:" ", //por quien es relevada
-            nameOfNewUser:" ", //a quien va
             priority:false, //urgencia
-            categoryImg: imgsrc
+            categoryImg: imgsrc,
+            nameUser:this.usersdata[2].value.name
           });
+
+          this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}`, { preserveSnapshot: true });
+          this.currentUserInfo.subscribe(snapshots => {
+            snapshots.forEach(snapshot => {
+              userData.push({ key: snapshot.key, value: snapshot.val() })
+            });
+          })
 
           this.selectedDay = this.db.list(`/families/${this.currentFamily}/currentWeek/days/${this.currentDayIn}/todos/`, { preserveSnapshot: true });
           this.selectedDay.push({
-             username: this.userId,
-             description: pvalue,
-             category: this.categoryForModel,
-             status: false,
-             relevance: false,
-             day: this.currentDayIn,
-             points:this.points,
-             revelanceBy:" ",
-             nameOfNewUser:" ",
-             priority:false,
-             categoryImg: imgsrc
+            userId: this.userId,
+            description: pvalue,
+            category: this.categoryForModel,
+            status: false,
+            relevance: false,
+            day: this.currentDayIn,
+            points: this.points,
+            revelanceBy: " ",
+            priority: false,
+            categoryImg: imgsrc,
+            nameUser: userData[2].value
           });
+
         } else {
           this.error = true;
           this.errorMsg = 'Please select a user first'
