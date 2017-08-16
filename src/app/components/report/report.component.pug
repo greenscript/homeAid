@@ -3,6 +3,9 @@
     img.img-responsive([src]="report.avatar")
   .col-xs-9
     p.report-name([style.color]="report.color") {{report.name}}
-    p.report-todos Tareas hechas: {{report.done}} de {{report.total}}
+    p.report-todos Tareas realizadas: 
+      span([style.color]="report.color") {{report.done}} 
+      span de 
+      span([style.color]="report.color") {{report.total}}
     p {{report.percentage}}% de sus tareas completadas. 
     progressbar.progress-striped(active, max="100", [value]="report.percentage", type="success") {{report.percentage}}%

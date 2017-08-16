@@ -22,7 +22,7 @@ section.col-xs-12.no-padding
                 .col-xs-6
                 img.addBotton(src='assets/i-37.png', alt='')
             .col-md-6.flex-center.dayTodos(*ngFor='let todo of currentTodos | async')
-                a.btn-default.btn-card(href='/')
+                a.btn-default.btn-card([ngClass]="{'btn-card-completed': todo.status }")
                     img.todoImg([src]="todo.categoryImg", [popover]="todo.category", popoverTitle="Categoria de la tarea:", container="body", triggers="mouseenter:mouseleave")
                     p.todoName {{todo.description}}
                     p.todoName.pull-left Usuario asignado: {{todo.nameUser}}
