@@ -41,9 +41,11 @@ section.col-xs-10.no-padding
                 h4.modal-title.pull-left ¡Premio Familiar!
                 button.close.pull-right(type='button', aria-label='close', (click)='goalFamily.hide()')
                     span(aria-hidden='true') 
-            .modal-body.flex-center(*ngFor="let goal of familyGoal")
-                h1.familyGoalTitle {{goal.value.title}}
-                p.familyGoalDesc {{goal.value.description}}
+            .modal-body(*ngFor="let goal of familyGoal")
+                .familyGoalTitle.flex-center
+                    h1 {{goal.value.title}}
+                .familyGoalDesc.flex-center
+                    h4 {{goal.value.description}}
 
             .form-group.flex-center.limpiarBtn
                 .btn-add

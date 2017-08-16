@@ -171,7 +171,7 @@ export class FamilyComponent implements OnInit {
         this.currentWeekGoal = this.db.list(`/families/${res.uid}/currentWeek/goals`, { preserveSnapshot: true });
         this.currentWeekGoal.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            console.log("dsh", snapshot.val());
+            console.log("sh", snapshot.val());
             this.familyGoal.push(({ key: snapshot.key, value: snapshot.val() }))
             console.log("fG", this.familyGoal);
 
