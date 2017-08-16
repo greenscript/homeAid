@@ -39,7 +39,7 @@ export class FamilyComponent implements OnInit {
   public d = this.currentDate;
   public selectedImage: string;
   public toggleObject: any = {
-    item: -1
+    item: 0
   }
 
   constructor(
@@ -126,19 +126,27 @@ export class FamilyComponent implements OnInit {
   }
 
   next() {
+   if (this.day == 6){
+     //me devuelve al lunes de la semana en la que se encutre.
+     this.dayView = this.d.setDate(this.d.getDate() - 6)
+     this.day = 0;
+   }else{
     this.dayView = this.d.setDate(this.d.getDate() + 1)
     this.day += 1;
-    if (this.day == 7)
-      this.day = 0
+   }
 
     this.getTodos(this.day)
   }
 
   back() {
-    this.dayView = this.d.setDate(this.d.getDate() - 1)
-    this.day -= 1;
-    if (this.day == -1)
-      this.day = 6
+    if (this.day == 0){
+     this.dayView = this.d.setDate(this.d.getDate() + 6)
+     this.day = 6
+    }else{
+      this.dayView = this.d.setDate(this.d.getDate() - 1)
+      this.day -= 1;
+
+    }
 
     this.getTodos(this.day)
   }

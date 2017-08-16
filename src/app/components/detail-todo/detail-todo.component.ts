@@ -45,7 +45,7 @@ export class DetailTodoComponent implements OnInit {
     //private http: Http,
     private route: ActivatedRoute,
     //public ds: DataService,
-    public location: Location,
+    public location: Location
 ) {
     this.todoId = route.snapshot.paramMap.get('todoid');
     this.userId = route.snapshot.paramMap.get('id');
@@ -111,7 +111,6 @@ export class DetailTodoComponent implements OnInit {
   }
 
   completetask() {
-    console.log('$$$%%%',this.currentTodoData);
     this.currentTodo.set({
       'category': this.currentTodoData[0].value,
       'categoryImg': this.currentTodoData[1].value,
@@ -122,7 +121,6 @@ export class DetailTodoComponent implements OnInit {
       'priority': this.currentTodoData[6].value,
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
-      'status': true,
       'username': this.currentTodoData[10].value
     })
     this.currentDayTodo.set({
@@ -135,7 +133,38 @@ export class DetailTodoComponent implements OnInit {
       'priority': this.currentTodoData[6].value,
       'relevance': this.currentTodoData[7].value,
       'relevanceBy': this.currentTodoData[8].value,
-      'status': true,
+      'status':  true,//cambiar [9]
+      'username': this.currentTodoData[10].value
+    })
+    this.location.back();
+  }
+
+  prioritytask() {
+    //console.log(this.currentTodoData);
+    this.currentTodo.set({
+      'category': this.currentTodoData[0].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': true,//cambiar [6]
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
+      'status': this.currentTodoData[9].value,
+      'username': this.currentTodoData[10].value
+    })
+    this.currentDayTodo.set({
+      'category': this.currentTodoData[0].value,
+      'categoryImg': this.currentTodoData[1].value,
+      'day': this.currentTodoData[2].value,
+      'description': this.currentTodoData[3].value,
+      'nameOfNewUser': this.currentTodoData[4].value,
+      'points': this.currentTodoData[5].value,
+      'priority': true,//cambiar
+      'relevance': this.currentTodoData[7].value,
+      'relevanceBy': this.currentTodoData[8].value,
+      'status': this.currentTodoData[9].value,
       'username': this.currentTodoData[10].value
     })
     this.location.back();
@@ -175,9 +204,10 @@ export class DetailTodoComponent implements OnInit {
 
           relevanceTodoForUser = {
             "category":this.currentTodoData[0].value, //listo
+            "categoryImg": this.currentTodoData[1].value,//listo
             "day":this.currentTodoData[2].value, //listo
             "description":this.currentTodoData[3].value, //listo
-            "nameOfNewUser":this.usersArr[i].value.name,
+            "nameOfNewUser":this.usersArr[i].value.name, //nombre de la pp a la que le va
             "points":this.currentTodoData[5].value, // listo
             "priority":false, //listo
             "relevance":true, //listo
@@ -185,9 +215,11 @@ export class DetailTodoComponent implements OnInit {
             "status":this.currentTodoData[9].value,
             "username": this.userId, //listo
           }
-          this.pathUser.push(relevanceTodoForUser);
+          console.log('data relevance',relevanceTodoForUser);
+
+
+          //this.pathUser.push(relevanceTodoForUser);
           relevanceFirst = true;
-          console.log('data relevane',relevanceTodoForUser);
           //path para cambiar el estado de tarea del usuario ACTUAL a none/borrarla.
           if(relevanceFirst){
             this.currentUserTodoForRemove.remove();

@@ -17,6 +17,7 @@ section.col-xs-12.col-sm-9.no-padding
             p.todoNotCompleted No completada
             button.btn-menu-admin((click)='completetask()') Completar tarea
             button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
+            button.btn-menu-admin((click)='prioritytask()') Ley de la priority
 
             //-si la tarea ya esta completa no ense;ar el boton?
           div.showstatus-container(*ngIf="data.value == true")
@@ -38,8 +39,10 @@ section.col-xs-12.col-sm-9.no-padding
                     a(role="button", (click)="selectUser(user.key)")
                       img.user([src]='user.value.avatar')
                       span.perUserName {{user.value.name}}
-                .form-group.relevanceBtn
-                  button.btn.btn-default.btn-block.relevanceButton((click)='send(value)') Enviar
+                  .form-group.relevanceBtn.flex-center
+                    .btn-add
+                      .eff-4
+                      button((click)='send(value)') Enviar
                   
 .hidden-sm.hidden-lg.hidden-md
   app-mobile-bar

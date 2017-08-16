@@ -79,7 +79,7 @@ export const ROUTES: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detailTodo/:id/:todoid/:dayId/:todoDayId', component: DetailTodoComponent },
   { path: 'familyGoal/:id', component: FamilyGoalComponent },
-  { path: 'familyReward', component: FamilyRewardComponent }
+  { path: 'familyReward/:id', component: FamilyRewardComponent }
 ];
 
 @NgModule({

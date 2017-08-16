@@ -20,154 +20,209 @@ $main-font-weigth: 200;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.admin-md-title {
-    left: 35%;
-}
-
-.col-xs-4 {
-    width: 25%;
-}
 
 @media (min-width: 320px) {
-    .admin {
-        &-header {
-            margin-top: 0;
-            position: absolute;
-            z-index: -1;
-            top: 0;
-        }
-        &-path {
-            fill: $yellow-color;
-        }
-        &-title {
-            color: white;
-            font-weight: lighter;
-            text-align: center;
-        }
-        &-userAvatar {
-            width: 20%;
-            margin-top: -3em;
-        }
-        &-avatarBackgroundWhite {
-            background-color: $white-color;
-        }
-        &-img {
-            background-color: $white-color;
-            border-radius: 50%;
-            border: 6px solid $yellow-color;
-            padding: 8px;
-            width: 90px;
-            height: 90px;
-            margin: 0 auto;
-        }
+  .admin-img {
+    position: absolute;
+    left: 0;
+    top: calc(100vh - 93vh);
+    right: 0;
+  }
+  .admin {
+    &-xs {
+      &-height {
+        height: 100vh;
+      }
     }
-    .btn-menu-admin {
-        margin-top: 1.2em;
-        margin-left: 2em;
-        margin-bottom: 10px;
-        height: 4em;
-        width: 80%;
-        font-size: $text-size-mobile;
-        padding-left: 2em;
-    }
+  }
+  .admin {
+      &-header {
+          margin-top: 0;
+          position: absolute;
+          z-index: -1;
+          top: 0;
+      }
+      &-path {
+          fill: $yellow-color;
+      }
+      &-title {
+          color: white;
+          font-weight: lighter;
+          text-align: center;
+      }
+      &-userAvatar {
+          width: 20%;
+          margin-top: -3em;
+      }
+      &-avatarBackgroundWhite {
+          background-color: $white-color;
+      }
+      &-img {
+          background-color: $white-color;
+          border-radius: 50%;
+          border: 6px solid $yellow-color;
+          padding: 8px;
+          width: 90px;
+          height: 90px;
+          margin: 0 auto;
+      }
+  }
+  .btn-menu-admin {
+      margin-top: 1.2em;
+      margin-left: 2em;
+      margin-bottom: 10px;
+      height: 4em;
+      width: 80%;
+      font-size: $text-size-mobile;
+      padding-left: 2em;
+  }
+  .admin {
+      &-md {
+          overflow: scroll;
+          height: 100vh;
+          overflow-x: hidden;
+          &-title {
+              font-size: 26px;
+              margin-top: 20px;
+              color: #FFF;
+              position: relative;
+              text-align: center;
+          }
+          &-buttons {
+              margin-top: -5%;
+          }
+          &-btn {
+              font-size: 16px;
+              color: #000;
+              padding: 15px;
+              border-radius: 1em;
+              text-align: center;
+              text-decoration: none;
+              font-weight: $main-font-weigth;
+              box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+          }
+          &-btn:hover {
+              box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          }
+
+      }
+  }
 }
 
 @media (min-width: 650px) {
-    .admin {
-        top: -8vw;
-    }
-    .admin-md-title[_ngcontent-c1] {
-        top: 2px;
-        left: 35%;
-    }
-    .admin-img[_ngcontent-c1] {
-        top: 8%;
-        left: 58%;
-    }
-}
 
-@media (min-width: 1000px) {
-    .admin {
-        top: -18vw;
-        &-img {
-            position: absolute;
-            top: 8%;
-            left: 2%;
-        }
-    }
-    .admin-md-title[_ngcontent-c1] {
-        top: 5px;
-        left: 35%;
-    }
-    .admin-img[_ngcontent-c1] {
-        top: 12%;
-        left: 49%;
-    }
 }
 
 @media (min-width: 768px) {
-    .admin {
-        &-header {
-            width: 100%;
-            position: relative;
-            top: -5em;
-        }
+  .admin {
+    &-xs {
+      &-height {
+        height: auto;
+      }
     }
-    .admin-md-title {
-        top: 2px;
-        left: 35%;
+  }
+  .admin {
+      &-header {
+          width: 100%;
+          position: relative;
+          top: -5em;
+      }
+  }
+  .admin-md-title {
+      top: 2px;
+      left: 35%;
+  }
+
+  .admin {
+      &-md {
+          overflow: scroll;
+          height: 100vh;
+          overflow-x: hidden;
+          &-title {
+              position: absolute;
+              top: 5%;
+              left: 10%;
+              color: #FFF;
+          }
+          &-buttons {
+              margin-top: -3%;
+          }
+          &-btn {
+              font-size: 25px;
+              color: #000;
+              padding: 20px;
+              border-radius: 1em;
+              text-align: center;
+              text-decoration: none;
+              font-weight: $main-font-weigth;
+              box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+          }
+          &-btn:hover {
+              box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          }
+
+          &-buttons {
+            padding: 0 2em;
+          }
+          &-row-btn {
+            padding: 0 2em;
+          }
+      }
+  }
+}
+
+@media (min-width: 1000px) {
+
+}
+
+@media (min-width: 1024px) {
+  .admin-img {
+    top: calc(100vh - 84vh);
+  }
+  .admin {
+    &-md {
+      &-title {
+        margin-top: 1em;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 5%;
+        font-size: 36px;
+        font-weight: 200;
+      }
+      &-reports {
+        margin-top: 3em;
+      }
     }
-    .admin-img {
-        top: 15%;
-        left: 58%;
-    }
+  }
 }
 
 @media (min-width: 1440px) {
-    .admin {
-        &-header {
-            top: -10em;
-        }
+  .admin-img {
+    top: calc(100vh - 79vh);
+  }
+  .admin {
+    &-md {
+      &-title {
+        top: 5%;
+        font-size: 42px;
+      }
+      &-buttons {
+          margin-top: -5%;
+      }
     }
-    .admin-md-title {
-        top: 2px;
-        left: 35%;
-    }
-    .admin-img {
-        top: 12%;
-        left: 49%;
-    }
+  }
 }
 
-.admin {
+@media (min-width: 1700px) {
+  .admin-img {
+    top: calc(100vh - 72vh);
+  }
+  .admin {
     &-md {
-        overflow: scroll;
-        height: 100vh;
-        overflow-x: hidden;
-        &-title {
-            position: absolute;
-            top: 5%;
-            left: 10%;
-            color: #FFF;
-        }
-        &-buttons {
-            margin-top: -5%;
-        }
-        &-btn {
-            font-size: 25px;
-            color: #000;
-            padding: 20px;
-            border-radius: 1em;
-            text-align: center;
-            text-decoration: none;
-            font-weight: $main-font-weigth;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
-        }
-        &-btn:hover {
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        }
-        &-reports {
-            margin-top: 5%;
-        }
+      &-title {
+        top: 10%;
+      }
     }
+  }
 }

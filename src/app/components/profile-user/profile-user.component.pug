@@ -1,6 +1,6 @@
-section.col-xs-3.hidden-xs.no-padding
+section.col-xs-2.no-padding
   app-desktop-bar([adminId]="userId")
-section.col-xs-12.col-sm-9.no-padding.md-column
+section.col-xs-10.no-padding.md-column
   app-back
   section
       .percent([class.hidden]="myBooleanValue")
@@ -27,16 +27,16 @@ section.col-xs-12.col-sm-9.no-padding.md-column
           button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="back()") 
               span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
       .col-xs-4.flex-center
-          h3.week-day(*ngIf="weekData.length > 0")  {{ dayView | date:'EEEE MMMM d'}}
+          h3.week-day.text-center(*ngIf="weekData.length > 0")  {{ dayView | date:'EEEE MMMM d'}}
       .col-xs-4.flex-center
           button.btn.btn-default.btn-lg.arrow(type='button', aria-label='Left Align', (click)="next()")
               span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
   section.row.user-week
       .col-xs-12.col-md-6.flex-center(*ngFor='let todo of todosView; let i = index;')
           a.btn-default.btn-card([routerLink]="['/detailTodo', userId, todo.key, day, daysKeys[i]]", role="button")
-              img.todoImg([ngClass]="{'completed-img': todo.value.status }", src='assets/i-29.png', alt='')
+              img.todoImg([ngClass]="{'completed-img': todo.value.status }", [src]="todo.value.categoryImg", alt='')
               p.todoName([ngClass]="{'completed-txt': todo.value.status }") {{todo.value.description}}
               i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
 
-.hidden-sm.hidden-md.hidden-lg
-  app-mobile-bar
+//- .hidden-sm.hidden-md.hidden-lg
+//-   app-mobile-bar

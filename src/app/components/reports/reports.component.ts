@@ -20,6 +20,7 @@ export class ReportsComponent implements OnInit {
       if (res.uid) {
         this.uid = res.uid;
         this.getUsers();
+
       }
     })
   }
@@ -33,18 +34,6 @@ export class ReportsComponent implements OnInit {
           value: snapshot.val()
         })
       });
-      console.log(this.familyUsersData)
     });
-  }
-
-  trying() {
-
-    let data = {
-      description: 'asd',
-      name: 'asd'
-    }
-
-    this.currentFamily = this.db.list(`families/${this.uid}/reports`)
-    this.currentFamily.push(data);
   }
 }

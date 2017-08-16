@@ -29,7 +29,7 @@ $yellow: #EEC337;
 .percent{
   width: 100%;
   position: absolute;
-  top: 5vh;
+  top: 3.5rem;
 }
 
 .circle{
@@ -174,14 +174,13 @@ btn-user {
 @media (min-width: 1000px) {
   .header{
   margin-top: -10vw;
-  width: 75vw;
+  width: 85vw;
   }
   .percent {
     top: 13rem;
   }
 
 }
-
 
 
 .md {
