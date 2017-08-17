@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Router, ActivatedRoute } from "@angular/router";
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -33,7 +35,7 @@ export class NewUserComponent implements OnInit {
     item: -1
   }
   public uid: string;
-  public theme : boolean = true; 
+  public theme : boolean = true;
 
   constructor(
     private as: AuthService,
@@ -42,7 +44,9 @@ export class NewUserComponent implements OnInit {
     public toastr: ToastsManager,
     vcr: ViewContainerRef,
     private router: Router,
-    public ar: ActivatedRoute
+    public ar: ActivatedRoute,
+    public location: Location
+
   ) {
     this.toastr.setRootViewContainerRef(vcr);
     this.uid = ar.snapshot.paramMap.get('id');
@@ -102,7 +106,9 @@ export class NewUserComponent implements OnInit {
     if (this.userform.valid) {
       if (this.selectedImage) {
         this.users.push(new User(this.userName.value, this.selectedImage, [], [], this.birthdate.value, this.selectedColor, ));
-        this.toastr.success('Usuario creado!', 'Success!')
+        this.toastr.success('Usuario creado!', 'Success!');
+        this.location.back();
+
       }
     }
   }
