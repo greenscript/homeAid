@@ -4,6 +4,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 
 
@@ -20,8 +22,10 @@ export class FamilyGoalComponent implements OnInit {
   public adminId: string;
   public currentWeek: FirebaseListObservable<any>;
   public path;
-  public famData : Array<any> = [];
+  public famData: Array<any> = [];
   public loadedUsers: boolean = false;
+  public goalForm: FormGroup;
+  public goalTitle: FormControl;
 
 
   constructor(
@@ -37,11 +41,13 @@ export class FamilyGoalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createFormCts();
+    this.createGoalForm();
     this.ar.params.subscribe((params: Params) => {
       this.adminId = params['adminId'];
     });
 
-    console.log('adminId ',this.adminId);
+    console.log('adminId ', this.adminId);
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log('logged in');
@@ -60,13 +66,23 @@ export class FamilyGoalComponent implements OnInit {
     });
   }
 
+  createFormCts() {
+    this.goalTitle = new FormControl('', Validators.required);
+  }
+  createGoalForm() {
+    this.goalForm = new FormGroup({
+      goalTitle: this.goalTitle,
+    });
+  }
+
+
   sendFamGoal(ptitle, pdescript) {
     let goaldObj;
     let goalAdded: boolean = false;
     console.log('famData', this.famData);
-    if(this.famData.length > 1){
+    if (this.famData.length > 1) {
       this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
-    }else if(ptitle.value == " " || pdescript.value == " "){
+    } else if (ptitle.value == " " || pdescript.value == " ") {
       console.log('empty fields');
       this.toastr.error('Tienes que llenar todos los campos!', 'Error');
     } else {
