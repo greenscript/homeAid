@@ -9,19 +9,35 @@ section.col-xs-10
   section.row.col-xs-0.col-md-0.col-lg-3
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
-      form
+      form([formGroup]="awardForm")
         h4.titles.main Que deseas dar de premio familiar?
-          .form-group([ngClass]="{'has-danger': goalForm.controls.goalTitle.invalid && goalForm.controls.goalTitle.dirty, 'has-success': goalForm.controls.goalTitle.valid && goalForm.controls.goalTitle.dirty}", [formGroup]="goalForm")
+          .form.group(
+            [ngClass]="{
+              'has-danger': awardForm.controls.awardTitle.invalid && awardForm.controls.awardTitle.dirty, 
+              'has-success': awardForm.controls.awardTitle.valid && awardForm.controls.awardTitle.dirty
+              }"
+            )
             input.form-control.newGoalInput(
               type='text', 
               placeholder="Salida al cine", 
               [(ngModel)]="titleGoal", 
-              name="titleGoal", 
-              required)
+              name="awardTitle", 
+              formControlName="awardTitle", 
+              required
+              )
         h4.titles Describe el premio
           section.col-xs-12
-            textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
-      .btn-add
-        .eff-4
-        button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="goalForm.invalid")  Agregar 
+            textarea(
+              placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",
+              [(ngModel)]="descriptionGoal",
+              name="awardDescription", 
+              formControlName="awardDescription", 
+              required
+              )
+            small(*ngIf="!awardForm.controls.awardTitle.valid")
+              Tienes que dar una descripcion del premio semanal!
+          
+              .btn-add
+                .eff-4
+                  button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="awardForm.invalid")  Agregar 
   section.row.col-xs-0.col-md-0.col-lg-3

@@ -6,9 +6,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-
-
-
 @Component({
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
@@ -26,7 +23,9 @@ export class FamilyGoalComponent implements OnInit {
   public loadedUsers: boolean = false;
   public goalForm: FormGroup;
   public goalTitle: FormControl;
-
+  public awardForm: FormGroup;
+  public awardTitle: FormControl;
+  public awardDescription: FormControl;
 
   constructor(
     private as: AuthService,
@@ -39,10 +38,26 @@ export class FamilyGoalComponent implements OnInit {
   ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
+  createFormControls() {
+    this.awardTitle = new FormControl('', [
+      Validators.required,
+      Validators.pattern("[^ @]*@[^ @]*")
+    ]);
+    this.awardDescription = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+  }
+  createForm() {
+    this.awardForm = new FormGroup({
+      awardTitle: this.awardTitle,
+      awardDescription: this.awardDescription
+    });
+  }
 
   ngOnInit() {
-    this.createFormCts();
-    this.createGoalForm();
+    this.createFormControls();
+    this.createForm();
     this.ar.params.subscribe((params: Params) => {
       this.adminId = params['adminId'];
     });
@@ -66,20 +81,15 @@ export class FamilyGoalComponent implements OnInit {
     });
   }
 
-  createFormCts() {
-    this.goalTitle = new FormControl('', Validators.required);
-  }
-  createGoalForm() {
-    this.goalForm = new FormGroup({
-      goalTitle: this.goalTitle,
-    });
-  }
-
 
   sendFamGoal(ptitle, pdescript) {
     let goaldObj;
     let goalAdded: boolean = false;
     console.log('famData', this.famData);
+    if (this.awardForm.valid) {
+      console.log('es valid');
+    }
+    /*
     if (this.famData.length > 1) {
       this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
     } else if (ptitle.value == " " || pdescript.value == " ") {
@@ -95,7 +105,7 @@ export class FamilyGoalComponent implements OnInit {
       this.toastr.success('Premio creado exitosamente!', 'Success');
       console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
 
-    }
+    }*/
   }
 
 }
