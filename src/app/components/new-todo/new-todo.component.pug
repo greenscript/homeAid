@@ -53,8 +53,8 @@ section.col-xs-10.col-sm-10.no-padding
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos')
         div(*ngIf='category.category == "Acomodar"')
-          label.radioName-xs-3(for='category') {{category.description}}
           input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          label.radioName-xs-3(for='category') {{category.description}}
       .form-group.flex-center.acomodarBtn
         .btn-add
           .eff-4
