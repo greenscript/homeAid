@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
 
 
 @Component({
@@ -26,11 +28,12 @@ export class FamilyGoalComponent implements OnInit {
     private as: AuthService,
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
-    //public toastr: ToastsManager,
-    //vcr: ViewContainerRef,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
     private router: Router,
     public ar: ActivatedRoute
   ) {
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
@@ -61,9 +64,11 @@ export class FamilyGoalComponent implements OnInit {
     let goaldObj;
     let goalAdded: boolean = false;
     console.log('famData', this.famData);
-
-    if (ptitle == null && pdescript == null) {
+    if(this.famData.length > 1){
+      this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
+    }else if(ptitle == null && pdescript == null){
       console.log('empty fields');
+      this.toastr.error('Tienes que llenar todos los campos!', 'Error');
     } else {
       goaldObj = {
         "title": ptitle,
@@ -71,6 +76,7 @@ export class FamilyGoalComponent implements OnInit {
       }
       this.path.push(goaldObj);
       goalAdded = true;
+      this.toastr.success('Premio creado exitosamente!', 'Success');
       console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
 
     }
