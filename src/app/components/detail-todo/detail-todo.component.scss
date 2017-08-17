@@ -40,6 +40,11 @@ $yellow: #EEC337;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
+.users:hover{
+  opacity: 1;
+  width:6rem;
+  height: 6rem;
+}
 .perUserName{
     color: #000;
 }

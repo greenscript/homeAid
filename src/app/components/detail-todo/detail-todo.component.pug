@@ -40,10 +40,6 @@ section.col-xs-12.col-sm-9.no-padding
                       a(role="button", (click)="selectUser(user.key)")
                           img.users([src]='user.value.avatar')
                           span.perUserName {{user.value.name}}
-                  //div.col-xs-4.users(*ngFor='let user of usersArr')
-                    a(role="button", (click)="selectUser(user.key)")
-                      img.user([src]='user.value.avatar')
-                      span.perUserName {{user.value.name}}
                   .form-group.relevanceBtn.flex-center
                     .btn-add
                       .eff-4
