@@ -10,12 +10,12 @@ section.col-xs-10
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
       form([formGroup]="goalForm")
-      h4.titles.main Que deseas dar de premio familiar?
-        .form-group([ngClass]="{'has-danger': goalForm.controls.firstName.invalid && goalForm.controls.titleGoal.dirty, 'has-success': goalForm.controls.titleGoal.valid && goalForm.controls.titleGoal.dirty}")
-          input.form-control.newGoalInput(type='text', placeholder="Salida al cine", [(ngModel)]="titleGoal", formControlName="titleGoal", required)
-      h4.titles Describe el premio
-        section.col-xs-12
-          textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
+        h4.titles.main Que deseas dar de premio familiar?
+          .form-group([ngClass]="{'has-danger': goalForm.controls.titleGoal.invalid && goalForm.controls.titleGoal.dirty, 'has-success': goalForm.controls.titleGoal.valid && goalForm.controls.titleGoal.dirty}")
+            input.form-control.newGoalInput(type='text', placeholder="Salida al cine", [(ngModel)]="titleGoal", formControlName="titleGoal", required)
+        h4.titles Describe el premio
+          section.col-xs-12
+            textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
       .btn-add
         .eff-4
         button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="goalForm.invalid")  Agregar 
