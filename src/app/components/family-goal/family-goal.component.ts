@@ -21,8 +21,6 @@ export class FamilyGoalComponent implements OnInit {
   public path;
   public famData: Array<any> = [];
   public loadedUsers: boolean = false;
-  public goalForm: FormGroup;
-  public goalTitle: FormControl;
   public awardForm: FormGroup;
   public awardTitle: FormControl;
   public awardDescription: FormControl;
@@ -39,14 +37,12 @@ export class FamilyGoalComponent implements OnInit {
     this.toastr.setRootViewContainerRef(vcr);
   }
   createFormControls() {
-    this.awardTitle = new FormControl('', [
+    this.awardTitle = new FormControl('',
       Validators.required,
-      Validators.pattern("[^ @]*@[^ @]*")
-    ]);
-    this.awardDescription = new FormControl('', [
+    );
+    this.awardDescription = new FormControl('',
       Validators.required,
-      Validators.minLength(8)
-    ]);
+    );
   }
   createForm() {
     this.awardForm = new FormGroup({
@@ -89,23 +85,23 @@ export class FamilyGoalComponent implements OnInit {
     if (this.awardForm.valid) {
       console.log('es valid');
     }
-    /*
-    if (this.famData.length > 1) {
-      this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
-    } else if (ptitle.value == " " || pdescript.value == " ") {
-      console.log('empty fields');
-      this.toastr.error('Tienes que llenar todos los campos!', 'Error');
-    } else {
-      goaldObj = {
-        "title": ptitle,
-        "description": pdescript
-      }
-      this.path.push(goaldObj);
-      goalAdded = true;
-      this.toastr.success('Premio creado exitosamente!', 'Success');
-      console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
 
-    }*/
+    // if (this.famData.length > 1) {
+    //   this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
+    // } else if (ptitle.value == " " || pdescript.value == " ") {
+    //   console.log('empty fields');
+    //   this.toastr.error('Tienes que llenar todos los campos!', 'Error');
+    // } else {
+    //   goaldObj = {
+    //     "title": ptitle,
+    //     "description": pdescript
+    //   }
+    //   this.path.push(goaldObj);
+    //   goalAdded = true;
+    //   this.toastr.success('Premio creado exitosamente!', 'Success');
+    //   console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
+
+    // }
   }
 
 }
