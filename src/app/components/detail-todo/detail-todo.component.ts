@@ -39,7 +39,7 @@ export class DetailTodoComponent implements OnInit {
   public toggleObject: any = {
     item: -1
   }
-   public selectedImage: string;
+  public selectedImage: string;
 
   constructor(
     private as: AuthService,
