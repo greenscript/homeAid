@@ -6,17 +6,13 @@ section.col-xs-10
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
       path.familyGoal-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h1.familyGoal-title Premio familiar
+    img.admin-img.center-block(src='../../../assets/i-35.png', alt='')
   section.row.col-xs-0.col-md-0.col-lg-3
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
       form([formGroup]="awardForm")
         h4.titles.main Que deseas dar de premio familiar?
-          .form.group(
-            [ngClass]="{
-              'has-danger': awardForm.controls.awardTitle.invalid && awardForm.controls.awardTitle.dirty, 
-              'has-success': awardForm.controls.awardTitle.valid && awardForm.controls.awardTitle.dirty
-              }"
-            )
+          .form.group
             input.form-control.newGoalInput(
               type='text', 
               placeholder="Salida al cine", 
@@ -34,9 +30,7 @@ section.col-xs-10
               formControlName="awardDescription", 
               required
               )
-            small(*ngIf="!awardForm.controls.awardTitle.valid")
-              Tienes que dar una descripcion del premio semanal!
-          
+            small(*ngIf="!awardForm.controls.awardTitle.valid") Tienes que dar una descripcion del premio semanal!
               .btn-add
                 .eff-4
                   button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="awardForm.invalid")  Agregar 

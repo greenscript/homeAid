@@ -38,8 +38,10 @@ section.col-xs-12.col-sm-9.no-padding
                   .flex-center
                     .col-xs-4.col-md-2.text-center(*ngFor="let user of usersArr; let i = index;")
                       a(role="button", (click)="selectUser(user.key)")
-                          img.users([src]='user.value.avatar')
-                          span.perUserName {{user.value.name}}
+                         //img.users([src]='user.value.avatar')
+                         img.users([src]='user.value.avatar',
+                         (click)="selectImage($event.target.src); toggleObject.item = i ", [ngClass]="{'selected-user': toggleObject.item == i }")
+                         span.perUserName {{user.value.name}}
                   .form-group.relevanceBtn.flex-center
                     .btn-add
                       .eff-4

@@ -36,6 +36,10 @@ export class DetailTodoComponent implements OnInit {
   public newUserIdForTodo: string;
   public currentUserInfo:FirebaseObjectObservable<any>;
   public todoImg;
+  public toggleObject: any = {
+    item: -1
+  }
+   public selectedImage: string;
 
   constructor(
     private as: AuthService,
@@ -235,6 +239,14 @@ export class DetailTodoComponent implements OnInit {
       }
     }
 
+  }
+
+   selectImage(pEvent, pActive) {
+    this.selectedImage = pEvent
+    let absPath = window.location.origin + '/'
+    if (this.selectedImage.includes(absPath)) {
+      this.selectedImage = this.selectedImage.replace(absPath, '')
+    }
   }
 
   assignProperties(pData: Array<any>) {
