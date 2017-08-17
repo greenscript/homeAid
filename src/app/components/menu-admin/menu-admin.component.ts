@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./menu-admin.component.scss'],
   providers: [AuthService, DataService]
 })
-export class MenuAdminComponent implements OnInit {
+export class MenuAdminComponent implements OnInit, OnDestroy {
   public families: FirebaseListObservable<any>;
   public userdata: Array<Object> = [];
   public adminName: string;
@@ -27,7 +27,9 @@ export class MenuAdminComponent implements OnInit {
   public totalWeekTodos: Array<any> = [];
   public completedTodos: Array<Object> = [];
   public reports: Array<any> = [];
-
+  public a
+  public b
+  public c
   constructor(
     private as: AuthService,
     public auth: AngularFireAuth,
@@ -39,21 +41,32 @@ export class MenuAdminComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.auth.authState.subscribe(res => {
+    this.b =  this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         this.uid = res.uid;
         this.families = this.db.list(`/families/${this.uid}`, {preserveSnapshot: true});
-        this.families.subscribe(snapshots => {
+        this.a = this.families.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
             this.userdata.push({ key: snapshot.key, value: snapshot.val() })
           });
-          this.assignProperties(this.userdata)
-          this.getUsersData();
+          if (this.router.url === `/menu/${this.adminId}`) {
+            this.assignProperties(this.userdata)
+            this.getUsersData();
+
+          }
         })
       } else {
         this.router.navigateByUrl('/');
       }
+
     });
+  }
+
+  ngOnDestroy() {
+
+    this.a.unsubscribe()
+    this.b.unsubscribe()
+    this.c.unsubscribe()
   }
 
   assignProperties(pData: Array<any>) {
@@ -66,7 +79,9 @@ export class MenuAdminComponent implements OnInit {
 
   getUsersData() {
     this.usersData = this.db.list(`families/${this.uid}/users/`, {preserveSnapshot: true});
-    this.usersData.subscribe(snapshots => {
+    this.c = this.usersData.subscribe(snapshots => {
+      console.log(snapshots, "es")
+
       snapshots.forEach(snapshot => { this.usersdata.push({ key: snapshot.key, value: snapshot.val() }) });
       this.getUsersWithTodos();
     });
@@ -86,8 +101,9 @@ export class MenuAdminComponent implements OnInit {
 
   generateReports() {
     this.usersWithTodos.forEach(o => {
-      let a =  Object.keys(o.value.todos).length;
+      let a = Object.keys(o.value.todos).length;
       let b = [];
+      console.log(o.value.todos)
       Object.values(o.value.todos).forEach(q => {
         if (q.status === false) {
           b.push(q)

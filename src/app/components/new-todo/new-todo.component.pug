@@ -24,23 +24,23 @@ section.col-xs-10.col-sm-10.no-padding
           section.col-xs-12.flex-center.no-padding
             div
               .col-xs-4.col-sm-2.col-md-2.div-cate.abtn
-                button.category-btn((click)='acomodar.show()')
+                button.category-btn((click)='acomodar.show(); assignCategory("Acomodar", 1)')
                   img.img-category(src='../../../assets/i-29.png')
                   h5 Acomodar
               .col-xs-4.col-sm-2.col-md-2.div-cate.lbtn
-                button.category-btn((click)='limpiar.show()')
+                button.category-btn((click)='limpiar.show(); assignCategory("Limpiar", 1)')
                   img.img-category(src='../../../assets/i-30.png')
                   h5 Limpiar
               .col-xs-4.col-sm-2.col-md-2.div-cate.cbtn
-                button.category-btn((click)='cocinar.show()')
+                button.category-btn((click)='cocinar.show(); assignCategory("Cocinar", 1)')
                   img.img-category(src='../../../assets/i-31.png')
                   h5 Cocinar
               .col-xs-4.col-sm-2.col-md-2.div-cate.mbtn
-                button.category-btn((click)='mascotas.show()')
+                button.category-btn((click)='mascotas.show(); assignCategory("Mascotas", 1)')
                   img.img-category(src='../../../assets/i-27.png')
                   h5 Mascotas
               .col-xs-4.col-sm-2.col-md-2.div-cate.pbtn
-                button.category-btn((click)='personal.show()')
+                button.category-btn((click)='personal.show(); assignCategory("Personal", 1)')
                   img.img-category(src='../../../assets/i-28.png')
                   h5 Personal
 

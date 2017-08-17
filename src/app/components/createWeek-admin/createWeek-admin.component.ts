@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialogModule } from '@angular/material';
 import { NewTodo } from '../../models/newTodo.model';
@@ -13,7 +13,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./createWeek-admin.component.scss'],
   providers: [DataService, AuthService]
 })
-export class CreateWeekAdminComponent implements OnInit {
+export class CreateWeekAdminComponent implements OnInit, OnDestroy {
   @Input() currentDay: any;
   public day = 0;
   public actualDay = "";
@@ -31,7 +31,8 @@ export class CreateWeekAdminComponent implements OnInit {
   public firstday: any = new Date(this.curr.setDate(this.first)).toUTCString();
   public lastday: any = new Date(this.curr.setDate(this.last)).toUTCString();
   public goal: string;
-
+  public a;
+  public b;
   constructor(
     private http: Http,
     private ds: DataService,
@@ -44,11 +45,11 @@ export class CreateWeekAdminComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.afa.authState.subscribe(res => {
+    this.a = this.afa.authState.subscribe(res => {
       if (res.uid) {
         this.uid = res.uid;
         this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek`, { preserveSnapshot: true });
-        this.currentWeek.subscribe(snapshots => {
+        this.b = this.currentWeek.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
             this.weekData.push({ key: snapshot.key, value: snapshot.val() })
           });
@@ -64,6 +65,11 @@ export class CreateWeekAdminComponent implements OnInit {
         this.getTodos(this.currentDayIndex)
       }
     })
+  }
+
+  ngOnDestroy() {
+    this.a.unsubscribe()
+    this.b.unsubscribe()
   }
 
   next() {
