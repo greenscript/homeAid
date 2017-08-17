@@ -3,16 +3,16 @@ $green-color: #35B095;
 $yellow-color: #EEC337;
 $white-color: #FFF;
 $main-font-weigth: 200;
-
 h4 {
-  font-weight: 300;
+    font-weight: 300;
 }
 
 h5 {
-  text-align: center;
+    text-align: center;
 }
-label{
-  font-weight: 400;
+
+label {
+    font-weight: 400;
 }
 
 .header {
@@ -21,7 +21,6 @@ label{
     z-index: -1;
     top: 0;
     width: 100%;
-
     .path {
         fill: $yellow-color;
     }
@@ -32,11 +31,14 @@ label{
         text-align: center
     }
 }
-.todo-container{
-  margin-top: 4rem;
+
+.todo-container {
+    margin-top: 4rem;
 }
 
+
 /*classes for ng if to see which user is selected.*/
+
 .selected-ux {
     border: 0.2em solid black;
     border-radius: 5em;
@@ -44,70 +46,74 @@ label{
 }
 
 .no-selected-ux {
-  opacity: 0.5;
-  filter: alpha(opacity=40);
+    opacity: 0.5;
+    filter: alpha(opacity=40);
 }
 
-.categories, .userName {
-  padding: 0px 30px;
+.categories,
+.userName {
+    padding: 0px 30px;
 }
 
-.img-category{
-  border: 0.1em solid lightgrey;
-  width: 70% !important;
+.img-category {
+    border: 0.1em solid lightgrey;
+    width: 70% !important;
 }
-.modal-dialog{
-  width: 80vw;
+
+.modal-dialog {
+    width: 80vw;
 }
+
 .modal-content {
-  height: 36em;
+    height: 36em;
 }
 
 .modal-content2 {
-  height: 37em;
+    height: 37em;
 }
 
 .modal-content3 {
-  height: 29em;
+    height: 29em;
 }
 
 input[type=radio][_ngcontent-c1] {
     margin: 4px 8px;
 }
+
 .radioInput {
-  float: left;
+    float: left;
 }
 
-.btn-category:hover{
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  opacity: initial;
+.btn-category:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    opacity: initial;
 }
 
-.category-btn{
-  background-color: white;
-  border: 1px solid #cfcfcf;
-  border-radius: 5px;
-  padding: .8rem;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-.div-cate{
-  padding-left: 10px !important;
-  padding-right: 10px !important;
+.category-btn {
+    background-color: white;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    padding: .8rem;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
-.category-btn :hover{
-  opacity: 0.5;
+.div-cate {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
-.btn-add-todo{
-  background-color: $light-green;
-  color: white;
-  height: 2em;
-  width: 80%;
-  border: aliceblue;
-  font-weight: 300;
+.category-btn :hover {
+    opacity: 0.5;
+}
 
+.btn-add-todo {
+    background-color: $light-green;
+    color: white;
+    height: 2em;
+    width: 80%;
+    border: aliceblue;
+    font-weight: 300;
 }
 
 input[type=radio] {
@@ -115,79 +121,87 @@ input[type=radio] {
 }
 
 .modal {
-  text-align: center;
-  padding: 0!important;
+    text-align: center;
+    padding: 0!important;
 }
 
 .img-category {
-  border: none;
+    border: none;
 }
 
 .modal:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
 }
-.modal-content{
-  border-radius: 0px !important;
+
+.modal-content {
+    border-radius: 0px !important;
 }
 
 .modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
 }
 
-.acomodarBtn, .limpiarBtn, .personalBtn {
-  position: relative;
-  top: -42em;
+.acomodarBtn,
+.limpiarBtn,
+.personalBtn {
+    position: relative;
+    top: -42em;
 }
 
-.acomodarButton, .limpiarButton, .cocinarButton, .mascotasButton, .personalButton{
-  width: 90%;
-  margin-right: 5%;
-  background-color: $light-green;
-  color: $white-color;
-  font-size: 20px;
+.acomodarButton,
+.limpiarButton,
+.cocinarButton,
+.mascotasButton,
+.personalButton {
+    width: 90%;
+    margin-right: 5%;
+    background-color: $light-green;
+    color: $white-color;
+    font-size: 20px;
 }
 
 .limpiarTodos {
-  position: relative;
-  top: -12em;
+    position: relative;
+    top: -12em;
 }
 
 .cocinarTodos {
-  position: relative;
-  top: -25em;
+    position: relative;
+    top: -25em;
 }
 
-.cocinarBtn{
-  position: relative;
-  top: -47em;
+.cocinarBtn {
+    position: relative;
+    top: -47em;
 }
 
 .mascotasTodos {
-  position: relative;
-  top: -34em;
+    position: relative;
+    top: -34em;
 }
 
-.mascotasBtn{
-  position: relative;
-  top: -43.9em;
+.mascotasBtn {
+    position: relative;
+    top: -43.9em;
 }
 
 .personalTodos {
-  position: relative;
-  top: -45em;
+    position: relative;
+    top: -45em;
 }
 
 .form-control {
-  display: -webkit-inline-box;
-  width: 40px;
-  height: 20px;
+    display: -webkit-inline-box;
+    width: 40px;
+    height: 20px;
 }
+
 //btns
 .btn-add {
     width: 115px;
@@ -234,73 +248,69 @@ input[type=radio] {
 .btn-add:hover button {
     color: #fff;
 }
+
 @media (min-width: 320px) {
-  .newtodo {
-    &-header {
-      height: 140px;
-      background-color: $yellow-color;
-      border-radius: 50%;
-      margin-top: -10%;
+    .newtodo {
+        &-header {
+            height: 140px;
+            background-color: $yellow-color;
+            border-radius: 50%;
+            margin-top: -10%;
+        }
+        &-title {
+            margin-top: 1.2em;
+            color: $white-color;
+            font-weight: lighter;
+        }
     }
-
-    &-title {
-      margin-top: 1.2em;
-      color: $white-color;
-      font-weight: lighter;
+    .perUserName {
+        font-size: 16px;
+        color: black;
     }
-  }
-  .perUserName {
-    font-size: 16px;
-    color: black;
-  }
-  .todo-user {
-    padding-left: 2em;
-    margin: 2em 0px 2em 0px;
-  }
-
-  .todo-category {
-    margin: 2em 0px 2em 0px;
-
-  }
-
-  .select-ux {}
-
-  @media (min-width: 650px) {
-    .header {
-        top: -10vw;
+    .todo-user {
+        padding-left: 2em;
+        margin: 2em 0px 2em 0px;
     }
-      .family {
-        padding-left: 1em;
-        margin: 6em 0px 2em 0px !important;
+    .todo-category {
+        margin: 2em 0px 2em 0px;
     }
-    .user-week{
-        margin-left: 15px;
-        margin-right: 15px;
+    .select-ux {}
+    @media (min-width: 650px) {
+        .header {
+            top: -10vw;
+        }
+        .family {
+            padding-left: 1em;
+            margin: 6em 0px 2em 0px !important;
+        }
+        .user-week {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        .modal-dialog {
+            width: 60vw;
+        }
+        .div-cate {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
-    .modal-dialog{
-      width: 60vw;
+    @media (min-width: 1000px) {
+        .header {
+            top: -15rem;
+        }
+        .modal-dialog {
+            width: 50vw;
+        }
+        .family[_ngcontent-c1] {
+            padding-left: 1em;
+            margin: 2em 0px 2em 0px !important;
+        }
+        .userName {
+            margin-top: 4rem;
+        }
+        .col-md-2 {
+            width: 20%;
+        }
     }
-    .div-cate{
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-}
-
-  @media (min-width: 1000px) {
-    .header {
-        top: -15rem;
-    }
-    .modal-dialog{
-      width: 50vw;
-    }
-    .family[_ngcontent-c1] {
-        padding-left: 1em;
-        margin: 2em 0px 2em 0px !important;
-    }
-    .userName{
-      margin-top: 4rem;
-    }
-
-  }
 }
