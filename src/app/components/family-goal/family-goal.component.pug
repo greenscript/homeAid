@@ -12,12 +12,12 @@ section.col-xs-10
     section.col-xs-12.col-md-6.col-lg-6.form-container
       form([formGroup]="awardForm")
         h4.titles.main Que deseas dar de premio familiar?
-          .form.group([ngClass]="{'has-danger': awardForm.controls.awardTitle.invalid && awardForm.controls.awardTitle.dirty,'has-success': awardForm.controls.awardTitle.valid && awardForm.controls.awardTitle.dirty}")
+          .form.group
             input.form-control.newGoalInput(
               type='text', 
               placeholder="Salida al cine", 
               name="awardTitle", 
-              formControlName="awardTitle", 
+              [(ngModel)]="gTitle", 
               required
               )
         h4.titles Describe el premio
@@ -25,15 +25,10 @@ section.col-xs-10
             textarea(
               placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",
               name="awardDescription", 
-              formControlName="awardDescription", 
+              [(ngModel)]="gdescriptionGoal", 
               required
               )
-            small(*ngIf="!awardForm.controls.awardTitle.valid") Tienes que dar una descripcion del premio semanal!
-<<<<<<< HEAD
-          
-=======
->>>>>>> 80a6be6544a0a9d592901d4ddf513f48b57a3264
-              .btn-add
-                .eff-4
-                  button.btnGoal((click)="sendFamGoal()", [disabled]="awardForm.invalid")  Agregar 
+        .btn-add
+          .eff-4
+            button.btnGoal((click)="sendFamGoal(gTitle,gdescriptionGoal)")  Agregar 
   section.row.col-xs-0.col-md-0.col-lg-3
