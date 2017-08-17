@@ -36,8 +36,10 @@ section.col-xs-10.no-padding.md-column
               type="date", 
               name='birthdate', 
               formControlName="birthdate", 
-              placeholder='Fecha de nacimiento',
+              placeholder='yyyy-MM-dd',
               required,
+              min="1960-01-01",
+              max="2017-08-15",
               [ngClass]="{'has-danger': userform.controls.userName.invalid && userform.controls.userName.dirty, 'has-success': userform.controls.userName.valid && userform.controls.userName.dirty}"
             )
 
