@@ -274,7 +274,9 @@ input[type=radio] {
     .todo-category {
         margin: 2em 0px 2em 0px;
     }
-    .select-ux {}
+    .div-cate {
+        width: 50%;
+    }
     @media (min-width: 650px) {
         .header {
             top: -10vw;
