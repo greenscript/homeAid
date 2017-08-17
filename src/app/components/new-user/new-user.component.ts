@@ -32,7 +32,7 @@ export class NewUserComponent implements OnInit {
   public selectedImage: string;
   public selectedColor: string = '#5aabc5';
   public toggleObject: any = {
-    item: -1
+    item: 0
   }
   public uid: string;
   public theme : boolean = true;

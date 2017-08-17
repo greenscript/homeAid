@@ -27,7 +27,8 @@ section.col-xs-10.no-padding.md-column
               name='username', 
               formControlName="userName", 
               placeholder='Nombre', 
-              required
+              required,
+              [ngClass]="{'has-danger': userform.controls.userName.invalid && userform.controls.userName.dirty, 'has-success': userform.controls.userName.valid && userform.controls.userName.dirty}"
             )
           .form-group.col-xs-12.col-md-6.offset-md-3.md-xs-spacer
             h4.md-label(for='name') Fecha de nacimiento
@@ -36,7 +37,8 @@ section.col-xs-10.no-padding.md-column
               name='birthdate', 
               formControlName="birthdate", 
               placeholder='Fecha de nacimiento',
-              required 
+              required,
+              [ngClass]="{'has-danger': userform.controls.userName.invalid && userform.controls.userName.dirty, 'has-success': userform.controls.userName.valid && userform.controls.userName.dirty}"
             )
 
           .form-group.col-xs-12.col-md-6.offset-md-3.row.md-sm-spacer
