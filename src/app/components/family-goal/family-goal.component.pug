@@ -9,13 +9,19 @@ section.col-xs-10
   section.row.col-xs-0.col-md-0.col-lg-3
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
-      h4.titles.main Que deseas dar de premio familiar?
-        .form-group([ngClass]="{'has-danger': goalForm.controls.goalTitle.dirty, 'has-success':  goalForm.controls.goalTitle.dirty}", [formGroup]="goalForm")
-          input.form-control.newGoalInput(type='text', placeholder="Salida al cine", [(ngModel)]="titleGoal", [ngModelOptions]="{standalone: true}", required)
-      h4.titles Describe el premio
-        section.col-xs-12
-          textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
-    .btn-add
-      .eff-4
-      button.btnGoal((click)="sendFamGoal(goalTitle,descriptionGoal)", [disabled]="goalForm.invalid")  Agregar 
+      form
+        h4.titles.main Que deseas dar de premio familiar?
+          .form-group([ngClass]="{'has-danger': goalForm.controls.goalTitle.invalid && goalForm.controls.goalTitle.dirty, 'has-success': goalForm.controls.goalTitle.valid && goalForm.controls.goalTitle.dirty}", [formGroup]="goalForm")
+            input.form-control.newGoalInput(
+              type='text', 
+              placeholder="Salida al cine", 
+              [(ngModel)]="titleGoal", 
+              name="titleGoal", 
+              required)
+        h4.titles Describe el premio
+          section.col-xs-12
+            textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
+      .btn-add
+        .eff-4
+        button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="goalForm.invalid")  Agregar 
   section.row.col-xs-0.col-md-0.col-lg-3
