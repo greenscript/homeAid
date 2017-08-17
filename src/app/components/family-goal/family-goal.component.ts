@@ -4,13 +4,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
   styleUrls: ['./family-goal.component.scss'],
-  providers: [AuthService, Validators]
+  providers: [AuthService]
 })
 
 export class FamilyGoalComponent implements OnInit {
@@ -21,11 +22,7 @@ export class FamilyGoalComponent implements OnInit {
   public path;
   public famData: Array<any> = [];
   public loadedUsers: boolean = false;
-  public goalForm: FormGroup;
-  public goalTitle: FormControl;
-  public awardForm: FormGroup;
-  public awardTitle: FormControl;
-  public awardDescription: FormControl;
+
 
   constructor(
     private as: AuthService,
@@ -38,26 +35,8 @@ export class FamilyGoalComponent implements OnInit {
   ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
-  createFormControls() {
-    this.awardTitle = new FormControl('', [
-      Validators.required,
-      Validators.pattern("[^ @]*@[^ @]*")
-    ]);
-    this.awardDescription = new FormControl('', [
-      Validators.required,
-      Validators.minLength(8)
-    ]);
-  }
-  createForm() {
-    this.awardForm = new FormGroup({
-      awardTitle: this.awardTitle,
-      awardDescription: this.awardDescription
-    });
-  }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
     this.ar.params.subscribe((params: Params) => {
       this.adminId = params['adminId'];
     });
@@ -81,20 +60,12 @@ export class FamilyGoalComponent implements OnInit {
     });
   }
 
-
   sendFamGoal(ptitle, pdescript) {
     let goaldObj;
     let goalAdded: boolean = false;
     console.log('famData', this.famData);
-    if (this.awardForm.valid) {
-      console.log('es valid');
-    }
-    /*
     if (this.famData.length > 1) {
       this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
-    } else if (ptitle.value == " " || pdescript.value == " ") {
-      console.log('empty fields');
-      this.toastr.error('Tienes que llenar todos los campos!', 'Error');
     } else {
       goaldObj = {
         "title": ptitle,
@@ -105,7 +76,7 @@ export class FamilyGoalComponent implements OnInit {
       this.toastr.success('Premio creado exitosamente!', 'Success');
       console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
 
-    }*/
+    }
   }
 
 }

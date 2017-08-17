@@ -16,22 +16,19 @@ section.col-xs-10
             input.form-control.newGoalInput(
               type='text', 
               placeholder="Salida al cine", 
-              [(ngModel)]="titleGoal", 
               name="awardTitle", 
-              formControlName="awardTitle", 
+              [(ngModel)]="gTitle", 
               required
               )
         h4.titles Describe el premio
           section.col-xs-12
             textarea(
               placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",
-              [(ngModel)]="descriptionGoal",
               name="awardDescription", 
-              formControlName="awardDescription", 
+              [(ngModel)]="gdescriptionGoal", 
               required
               )
-            small(*ngIf="!awardForm.controls.awardTitle.valid") Tienes que dar una descripcion del premio semanal!
-              .btn-add
-                .eff-4
-                  button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="awardForm.invalid")  Agregar 
+        .btn-add
+          .eff-4
+            button.btnGoal((click)="sendFamGoal(gTitle,gdescriptionGoal)")  Agregar 
   section.row.col-xs-0.col-md-0.col-lg-3
