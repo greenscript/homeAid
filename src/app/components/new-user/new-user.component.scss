@@ -135,7 +135,9 @@ select[multiple] {
 .selected-color{
     border: 2px solid#9d9d9d;
 }
-
+.has-danger{
+    border-bottom: 2px solid #d6275d !important;
+}
 .col-sm-12 {
     width: 100%;
 }

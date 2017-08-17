@@ -39,7 +39,6 @@ $main-font-weigth: 200;
     &:hover {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
-
   }
   &-social {
     display: inline-block;
@@ -80,11 +79,12 @@ $main-font-weigth: 200;
   &-facebook {
     background-color: #4267b2;
     color: #FFF;
-    &_icon {
-    }
   }
 }
 
+.fa-facebook {
+  margin-top: 13px;
+}
 .error {
   color: #ff0033;
   padding: 0 15px 15px;
@@ -94,6 +94,9 @@ $main-font-weigth: 200;
 }
 
 //btns
+.log{
+  background-color: #509ABB !important;
+}
 .btn-add {
     width: 115px;
     height: 45px;

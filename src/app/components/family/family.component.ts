@@ -62,8 +62,8 @@ export class FamilyComponent implements OnInit {
         this.users = this.db.list(`/families/${this.currentFamily}/users`, { preserveSnapshot: true });
         this.users.subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            if (!(snapshot.key === '0') && (this.loadedUsers === false)) {
-              this.usersdata.push(({ key: snapshot.key, value: snapshot.val() }))
+            if (!this.loadedUsers) {
+               this.usersdata.push(({ key: snapshot.key, value: snapshot.val() }))
             }
           });
           this.selectUser(this.usersdata[0].key)

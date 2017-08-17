@@ -7,7 +7,7 @@ section.col-xs-10.no-padding.md-column
         path.path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h2.text-center.header-title Familia
     section.goal
-        button.modalGoal((click)='goalFamily.show()')
+        button.modalGoal((click)='goalFamily.show()' popover="Mira el premio de la semana!" placement="right"  triggers="mouseenter:mouseleave")
             img.goalImg(src='../../../assets/i-33.png', alt='')
 
     section.row.family.col-xs-12.flex-center.col-sm-12
@@ -34,7 +34,7 @@ section.col-xs-10.no-padding.md-column
                 p.todoName([ngClass]="{'completed-txt': todo.value.status }", *ngIf="tododata.length > 0") {{todo.value.description}}
                 i.fa.fa-check-circle-o.fa-3x.pull-right.icompleted([ngClass]="{'completed': todo.value.status }")
                 i.fa.fa-exclamation-circle.fa-3x.pull-right.icompleted([ngClass]="{'ipriority': todo.value.priority , 'notpriority': todo.value.status}")
-                p.todoName.relevance-txt.icompleted([ngClass]="{'relevance-txt': todo.value.relevance }") Tarea relevada por: {{todo.value.revelanceBy}}
+                p.todoName.relevance-txt.icompleted([ngClass]="{'relevance-txt': todo.value.relevance  , 'notrelevance': todo.value.priority }") Tarea relevada por: {{todo.value.revelanceBy}}
 
 .modal.fade(bsModal="", #goalFamily="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
     .modal-dialog

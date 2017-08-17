@@ -72,7 +72,7 @@ textarea {
     border-radius: 2em;
 }
 
-.btn-add a {
+.btn-add .btnGoal {
     font-weight: 300;
     color: $text-color !important;
     text-decoration: none;
@@ -80,6 +80,8 @@ textarea {
     transition: all .5s ease;
     z-index: 2;
     position: relative;
+    background-color: transparent;
+    border: none;
 }
 
 .eff-4 {

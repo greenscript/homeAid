@@ -8,7 +8,7 @@ section.col-xs-10.no-padding.md-column
       h1.header-title.md-sm-spacer  Nuevo usuario
   section.md-sm-spacer
     section.col-xs-12.col-sm-12.flex-center.md-xs-spacer
-      h4.select-title Selecciona un avatar para el nuevo usuario
+      h4.select-title Seleccione un avatar para el nuevo usuario
     section.col-xs-12.col-sm-12.container.md-xs-spacer.avatars
       section.col-xs-12.col-md-6.offset-md-3.flex-center.new-user-subcontainer.no-padding
         .col-xs-4.col-sm-4.flex-center(*ngFor="let avatar of avatars; let i = index;") 
@@ -27,7 +27,8 @@ section.col-xs-10.no-padding.md-column
               name='username', 
               formControlName="userName", 
               placeholder='Nombre', 
-              required
+              required,
+              [ngClass]="{'has-danger': userform.controls.userName.invalid && userform.controls.userName.dirty, 'has-success': userform.controls.userName.valid && userform.controls.userName.dirty}"
             )
           .form-group.col-xs-12.col-md-6.offset-md-3.md-xs-spacer
             h4.md-label(for='name') Fecha de nacimiento
@@ -35,8 +36,11 @@ section.col-xs-10.no-padding.md-column
               type="date", 
               name='birthdate', 
               formControlName="birthdate", 
-              placeholder='Fecha de nacimiento',
-              required 
+              placeholder='yyyy-MM-dd',
+              required,
+              min="1960-01-01",
+              max="2017-08-15",
+              [ngClass]="{'has-danger': userform.controls.userName.invalid && userform.controls.userName.dirty, 'has-success': userform.controls.userName.valid && userform.controls.userName.dirty}"
             )
 
           .form-group.col-xs-12.col-md-6.offset-md-3.row.md-sm-spacer

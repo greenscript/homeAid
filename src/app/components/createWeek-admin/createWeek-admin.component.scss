@@ -4,7 +4,6 @@ $yellow-color: #EEC337;
 $white-color: #FFF;
 $main-font-weigth: 200;
 $header-color: #EEC337;
-
 .disable {
     pointer-events: none;
     cursor: default;
@@ -33,7 +32,7 @@ $header-color: #EEC337;
     }
 }
 
-.arrow{
+.arrow {
     margin-top: 18%;
     border: none;
 }
@@ -41,9 +40,11 @@ $header-color: #EEC337;
 .btn {
     margin-top: 0px;
 }
-.fa-plus-circle{
+
+.fa-plus-circle {
     margin-left: .8rem;
 }
+
 //btns
 .btn-add {
     width: 150px;
@@ -86,9 +87,10 @@ $header-color: #EEC337;
 .btn-add:hover .eff-4 {
     left: 0;
 }
+
 .select-title {
-   margin-top: 4rem;
-  }
+    margin-top: 4rem;
+}
 
 .btn-add:hover button {
     color: #fff;
@@ -146,9 +148,6 @@ button a {
     }
 }
 
-
-
-
 @media (min-width: 320px) {
     .mobile {
         margin-top: -50px;
@@ -169,7 +168,7 @@ button a {
 
 @media (min-width: 1000px) {
     .header {
-        top: -15rem;
+        top: -15vw;
     }
     .btn-newTodo {
         width: 300px;
@@ -182,11 +181,11 @@ button a {
 }
 
 .desktop {
-  &-column {
-    overflow: scroll;
-    height: 100vh;
-    overflow-x: hidden;
-  }
+    &-column {
+        overflow: scroll;
+        height: 100vh;
+        overflow-x: hidden;
+    }
 }
 
 .btn-card-completed {

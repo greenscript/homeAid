@@ -2,82 +2,110 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-//import { FormGroup, FormControl, Validators } from '@angular/forms';
-//import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//import { Http } from '@angular/http';
-//import { DataService } from '../../services/data.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
   styleUrls: ['./family-goal.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, Validators]
 })
 
 export class FamilyGoalComponent implements OnInit {
   @Input() gTitle;
   @Input() gdescriptionGoal;
-  public uid: string;
+  public adminId: string;
   public currentWeek: FirebaseListObservable<any>;
   public path;
+  public famData: Array<any> = [];
+  public loadedUsers: boolean = false;
+  public goalForm: FormGroup;
+  public goalTitle: FormControl;
+  public awardForm: FormGroup;
+  public awardTitle: FormControl;
+  public awardDescription: FormControl;
 
   constructor(
     private as: AuthService,
     public auth: AngularFireAuth,
     public db: AngularFireDatabase,
-    //public toastr: ToastsManager,
-    //vcr: ViewContainerRef,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
     private router: Router,
     public ar: ActivatedRoute
-    //private http: Http,
-
   ) {
-      //fam_id:
-    this.uid = ar.snapshot.paramMap.get('id');
+    this.toastr.setRootViewContainerRef(vcr);
+  }
+  createFormControls() {
+    this.awardTitle = new FormControl('', [
+      Validators.required,
+      Validators.pattern("[^ @]*@[^ @]*")
+    ]);
+    this.awardDescription = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+  }
+  createForm() {
+    this.awardForm = new FormGroup({
+      awardTitle: this.awardTitle,
+      awardDescription: this.awardDescription
+    });
   }
 
   ngOnInit() {
-    console.log('fm id',this.uid);
+    this.createFormControls();
+    this.createForm();
+    this.ar.params.subscribe((params: Params) => {
+      this.adminId = params['adminId'];
+    });
+
+    console.log('adminId ', this.adminId);
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log('logged in');
         this.path = this.db.list(`/families/${res.uid}/currentWeek/goals`, { preserveSnapshot: true });
+        this.path.subscribe(snapshots => {
+          snapshots.forEach(snapshot => {
+            if (!this.loadedUsers) {
+              this.famData.push({ key: snapshot.key, value: snapshot.val() })
+            }
+          });
+          this.loadedUsers = true;
+        })
       } else {
         console.log('user not logged in from goal component');
       }
     });
-    /*this.auth.authState.subscribe(res => {
-      if (res && res.uid) {
-        console.log('logged in');
-        this.path = this.db.list(`/families/${res.uid}/currentWeek/goals/`, { preserveSnapshot: true });
-      } else {
-        console.log('user not logged in');
-      }
-    });*/
   }
+
 
   sendFamGoal(ptitle, pdescript) {
     let goaldObj;
-  //  let title;
-  //  let descr;
-
-    if (ptitle == null && pdescript == null) {
+    let goalAdded: boolean = false;
+    console.log('famData', this.famData);
+    if (this.awardForm.valid) {
+      console.log('es valid');
+    }
+    /*
+    if (this.famData.length > 1) {
+      this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
+    } else if (ptitle.value == " " || pdescript.value == " ") {
       console.log('empty fields');
+      this.toastr.error('Tienes que llenar todos los campos!', 'Error');
     } else {
-      //console.log('!!!!', gTitle, ' - ', gdescriptionGoal);
       goaldObj = {
         "title": ptitle,
         "description": pdescript
       }
-    this.currentWeek = this.db.list(`/families/${this.uid}/currentWeek/goals/`, { preserveSnapshot: true });
-    this.currentWeek.push(goaldObj);
-      //console.log('objeto',goaldObj , ' y parametros', ptitle ,' ',pdescript);
+      this.path.push(goaldObj);
+      goalAdded = true;
+      this.toastr.success('Premio creado exitosamente!', 'Success');
       console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
 
-
-      // /families/uid/currenWeek/goals
-    }
+    }*/
   }
 
 }
