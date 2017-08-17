@@ -54,18 +54,14 @@ export class CreateWeekAdminComponent implements OnInit {
           });
           let a = Object.values(this.weekData.shift())
           let b = a.splice(1, 1).shift()
-          b = b.filter(o => new Date(o.day).getTime() > new Date().getTime() || new Date(o.day).toDateString() === new Date().toDateString())
           this.days = b
           if (this.days.length > 0) {
             this.currentDay = this.days.shift().day;
             this.days.unshift({'day' : this.currentDay});
-            console.log("currenInit", this.days)
           }
 
-          console.log(this.days)
         })
         this.getTodos(this.currentDayIndex)
-
       }
     })
   }
