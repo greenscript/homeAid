@@ -6,8 +6,7 @@ section.col-xs-10.no-padding.md-column
       .percent([class.hidden]="myBooleanValue")
           .img-circle
             img.user-img.center-block(*ngIf="userdata.length > 0", 
-                                      [src]='userAvatar', 
-                                      (click)="clickHide()", 
+                                      [src]='userAvatar',  
                                       [style.border-color]="fillAttr",
                                       popoverTitle="Progreso por dia.", 
                                       popover="Completar tareas llenara el circulo."

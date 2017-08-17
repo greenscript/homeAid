@@ -65,6 +65,16 @@ $yellow: #EEC337;
 .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+.selected-ux {
+    border: 0.2em solid black;
+    border-radius: 5em;
+    width: 40% !important;
+}
+
+.no-selected-ux {
+    opacity: 0.5;
+    filter: alpha(opacity=40);
+}
 
 //botones
 .btn-menu-admin {

@@ -3,6 +3,7 @@ $header-color: #EEC337;
 $text-size-mobile: 1.2em;
 $formWidth: 60%;
 $btn-color: #35B095;
+
 //texts
 .newGoalInput {
     width: 100%;
@@ -20,6 +21,16 @@ input,
         border-bottom: 1px solid #ccc;
     }
 }
+
+.admin-img {
+          background-color:$header-color;
+          border-radius: 50%;
+          border: 2px solid $header-color;
+          padding: 8px;
+          width: 95px;
+          height: 95px;
+          margin: 0 auto;
+      }
 
 textarea,
 input {

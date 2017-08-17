@@ -6,6 +6,7 @@ section.col-xs-10
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
       path.familyGoal-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h1.familyGoal-title Premio familiar
+    img.admin-img.center-block(src='../../../assets/i-35.png', alt='')
   section.row.col-xs-0.col-md-0.col-lg-3
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
@@ -28,8 +29,11 @@ section.col-xs-10
               required
               )
             small(*ngIf="!awardForm.controls.awardTitle.valid") Tienes que dar una descripcion del premio semanal!
+<<<<<<< HEAD
           
+=======
+>>>>>>> 80a6be6544a0a9d592901d4ddf513f48b57a3264
               .btn-add
                 .eff-4
-                  button.btnGoal((click)="sendFamGoal(titleGoal,descriptionGoal)", [disabled]="awardForm.invalid")  Agregar 
+                  button.btnGoal((click)="sendFamGoal()", [disabled]="awardForm.invalid")  Agregar 
   section.row.col-xs-0.col-md-0.col-lg-3
