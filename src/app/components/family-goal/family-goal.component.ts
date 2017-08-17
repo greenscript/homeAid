@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
   styleUrls: ['./family-goal.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, Validators]
 })
 
 export class FamilyGoalComponent implements OnInit {
