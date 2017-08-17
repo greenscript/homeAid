@@ -66,7 +66,7 @@ export class FamilyGoalComponent implements OnInit {
     console.log('famData', this.famData);
     if(this.famData.length > 1){
       this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
-    }else if(ptitle == null && pdescript == null){
+    }else if(ptitle.value == " " || pdescript.value == " "){
       console.log('empty fields');
       this.toastr.error('Tienes que llenar todos los campos!', 'Error');
     } else {
