@@ -1,5 +1,5 @@
 section.col-xs-2.no-padding
-  app-desktop-bar([adminId]="uid")
+  app-desktop-bar([adminId]="adminId")
 section.col-xs-10
   app-back
   section.row 
@@ -17,7 +17,7 @@ section.col-xs-10
               type='text', 
               placeholder="Salida al cine", 
               name="awardTitle", 
-              [(ngModel)]="gTitle", 
+              formControlName="title", 
               required
               )
         h4.titles Describe el premio
@@ -25,7 +25,7 @@ section.col-xs-10
             textarea(
               placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",
               name="awardDescription", 
-              [(ngModel)]="gdescriptionGoal", 
+              formControlName="content", 
               required
               )
         .btn-add

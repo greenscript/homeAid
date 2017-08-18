@@ -4,24 +4,25 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-family-goal',
   templateUrl: './family-goal.component.html',
   styleUrls: ['./family-goal.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, Validators]
 })
 
 export class FamilyGoalComponent implements OnInit {
-  @Input() gTitle;
-  @Input() gdescriptionGoal;
   public adminId: string;
   public currentWeek: FirebaseListObservable<any>;
   public path;
   public famData: Array<any> = [];
   public loadedUsers: boolean = false;
+  public awardForm: FormGroup;
+  public title: FormControl;
+  public content: FormControl;
 
 
   constructor(
@@ -34,12 +35,13 @@ export class FamilyGoalComponent implements OnInit {
     public ar: ActivatedRoute
   ) {
     this.toastr.setRootViewContainerRef(vcr);
+      this.adminId = ar.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-    this.ar.params.subscribe((params: Params) => {
-      this.adminId = params['adminId'];
-    });
+    this.createFormControls();
+    this.createForm();
+
 
     console.log('adminId ', this.adminId);
     this.auth.authState.subscribe(res => {
@@ -60,23 +62,37 @@ export class FamilyGoalComponent implements OnInit {
     });
   }
 
-  sendFamGoal(ptitle, pdescript) {
-    let goaldObj;
-    let goalAdded: boolean = false;
-    console.log('famData', this.famData);
-    if (this.famData.length > 1) {
-      this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
-    } else {
-      goaldObj = {
-        "title": ptitle,
-        "description": pdescript
-      }
-      this.path.push(goaldObj);
-      goalAdded = true;
-      this.toastr.success('Premio creado exitosamente!', 'Success');
-      console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
-
-    }
+  createFormControls() {
+    this.title = new FormControl('', Validators.required);
+    this.content = new FormControl('', Validators.required);
+  }
+  // crea el formGroup o form y le añade sus form controls
+  createForm() {
+    this.awardForm = new FormGroup({
+      title: this.title,
+      content: this.content
+    });
   }
 
+
+  sendFamGoal(ptitle, pdescript) {
+    console.log(this.awardForm.valid)
+    if (this.awardForm.valid) {
+      let goaldObj;
+      let goalAdded: boolean = false;
+      if (this.famData.length > 1) {
+        this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
+      } else {
+        goaldObj = {
+          "title": this.title.value,
+          "description": this.content.value
+        }
+        this.path.push(goaldObj);
+        goalAdded = true;
+        this.toastr.success('Premio creado exitosamente!', 'Success');
+        console.log('SE TUVO QUE HABER CREADO EL PREMIO!');
+
+      }
+    }
+  }
 }
