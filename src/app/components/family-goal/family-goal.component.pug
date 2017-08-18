@@ -1,20 +1,34 @@
 section.col-xs-2.no-padding
-  app-desktop-bar([adminId]="uid")
+  app-desktop-bar([adminId]="adminId")
 section.col-xs-10
   app-back
   section.row 
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
       path.familyGoal-path(d="M.2.4V242.1S514,358,1085,242.1V0Z")
     h1.familyGoal-title Premio familiar
+    img.admin-img.center-block(src='../../../assets/i-35.png', alt='')
   section.row.col-xs-0.col-md-0.col-lg-3
   section.row
     section.col-xs-12.col-md-6.col-lg-6.form-container
-      h4.titles.main Que deseas dar de premio familiar?
-        input.form-control.newGoalInput(placeholder="Salida al cine", [(ngModel)]="titleGoal", type="text",required="true")
-      h4.titles Describe el premio
-        section.col-xs-12
-          textarea(placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",[(ngModel)]="descriptionGoal")
-      .btn-add
-        .eff-4
-        a(role="button",(click)="sendFamGoal(titleGoal,descriptionGoal)")  Agregar 
+      form([formGroup]="awardForm")
+        h4.titles.main Que deseas dar de premio familiar?
+          .form.group
+            input.form-control.newGoalInput(
+              type='text', 
+              placeholder="Salida al cine", 
+              name="awardTitle", 
+              formControlName="title", 
+              required
+              )
+        h4.titles Describe el premio
+          section.col-xs-12
+            textarea(
+              placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",
+              name="awardDescription", 
+              formControlName="content", 
+              required
+              )
+        .btn-add
+          .eff-4
+            button.btnGoal((click)="sendFamGoal(gTitle,gdescriptionGoal)")  Agregar 
   section.row.col-xs-0.col-md-0.col-lg-3

@@ -35,8 +35,11 @@ export class DetailTodoComponent implements OnInit {
   public currentUserTodoForRemove: FirebaseObjectObservable<any>;
   public newUserIdForTodo: string;
   public currentUserInfo:FirebaseObjectObservable<any>;
-
-
+  public todoImg;
+  public toggleObject: any = {
+    item: -1
+  }
+  public selectedImage: string;
 
   constructor(
     private as: AuthService,
@@ -86,7 +89,7 @@ export class DetailTodoComponent implements OnInit {
             });
             this.currentTodoAndDayData();
             props.loadedUsers = true;
-            //console.log('arr de usuarios',this.usersArr);
+            //console.log('arr de usuarios',this.currentTodoData[1].value);
           })
       } else {
         console.log('user not logged in');
@@ -101,7 +104,9 @@ export class DetailTodoComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.currentTodoData.push({ key: snapshot.key, value: snapshot.val() })
       });
-
+      console.log(this.currentTodoData[1].value);
+      this.todoImg = this.currentTodoData[1].value;
+     // this.assignProperties(this.currentTodoData)
     })
     this.currentDayTodo.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
@@ -235,4 +240,29 @@ export class DetailTodoComponent implements OnInit {
     }
 
   }
+
+   selectImage(pEvent, pActive) {
+    this.selectedImage = pEvent
+    let absPath = window.location.origin + '/'
+    if (this.selectedImage.includes(absPath)) {
+      this.selectedImage = this.selectedImage.replace(absPath, '')
+    }
+  }
+
+  assignProperties(pData: Array<any>) {
+   /* pData.forEach((pObject) => {
+      switch (pObject.key) {
+        case 'name':
+          this.userName = pObject.value
+        break;
+        case 'avatar':
+          this.userAvatar = pObject.value
+        break;
+        case 'styles':
+           this.fillAttr = pObject.value
+           console.log("color", this.fillAttr)
+      }
+    })*/
+  }
+
 }

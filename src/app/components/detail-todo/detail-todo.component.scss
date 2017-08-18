@@ -26,9 +26,28 @@ $yellow: #EEC337;
     font-weight: lighter;
     text-align: center;
     font-size: 2em;
-    margin-top: 2em;
+    margin-top: 1.5em;
 }
-
+.users {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 2px solid #000;
+    padding: .5rem;
+    opacity: 0.5;
+    margin-top: 2rem;
+    transition: all 0.5s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.users:hover{
+  opacity: 1;
+  width:6rem;
+  height: 6rem;
+}
+.perUserName{
+    color: #000;
+}
 .card {
     border-radius: 0;
     text-align: left;
@@ -46,15 +65,29 @@ $yellow: #EEC337;
 .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+.selected-ux {
+    border: 0.2em solid black;
+    border-radius: 5em;
+    width: 40% !important;
+}
+
+.no-selected-ux {
+    opacity: 0.5;
+    filter: alpha(opacity=40);
+}
 
 //botones
 .btn-menu-admin {
-    border-radius: 0;
-    text-align: left;
+    margin: 1.8rem 10%;
+    height: 4em;
+    width: 80%;
+    font-size: $text-size-mobile;
+    border-radius: 30px;
+    text-align: center;
     background-color: $text-color;
     border: aliceblue;
     border-color: grey;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.25);
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     a {
         color: #000;
@@ -216,7 +249,6 @@ $yellow: #EEC337;
             width: 3.5rem;
         }
     }
-    .btn-menu-admin,
     .card {
         margin-top: 4em;
         margin-bottom: 10px;
@@ -235,19 +267,11 @@ $yellow: #EEC337;
         font-size: $text-size-mobile;
         padding-left: 2em;
     }
-    .users {
-        width: 50%;
-        float: left;
-        padding: 10px 10px;
-        img {
-            width: 30%;
-        }
-    }
     .relevanceBtn {
         padding-top: 45px;
     }
     .modal-content {
-        height: 20em;
+        height: 24em;
     }
 }
 
@@ -268,7 +292,7 @@ $yellow: #EEC337;
 
 @media (min-width: 1000px) {
     .admin-header {
-        top: -18vw;
+        top: -18rem;
     }
     .modal-dialog {
         width: 50vw;
@@ -279,4 +303,20 @@ $yellow: #EEC337;
     .modal-content {
         height: 25em;
     }
+    .btn-menu-admin {
+        width: 60%;
+        margin-left: 20%;
+    }
+     .admin {
+         &-title {
+           margin-top: 3rem;
+        }
+        &-img {
+          margin-top: 3rem;
+        }
+     }
+    #todo-title{
+        margin-top: 1.6rem;
+    }
+
 }

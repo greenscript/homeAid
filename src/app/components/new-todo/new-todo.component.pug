@@ -21,26 +21,26 @@ section.col-xs-10.col-sm-10.no-padding
           h5(*ngIf="error") {{errorMsg}}
         section.col-xs-12.col-sm-12.col-md-10.col-md-offset-1
           h4.categories Seleccione una categoría
-          section.col-xs-12.flex-center
+          section.col-xs-12.flex-center.no-padding
             div
-              .col-xs-4.col-sm-2.col-md-2
-                button.category-btn((click)='acomodar.show()')
+              .col-xs-4.col-sm-2.col-md-2.div-cate.abtn
+                button.category-btn((click)='acomodar.show(); assignCategory("Acomodar", 1)')
                   img.img-category(src='../../../assets/i-29.png')
                   h5 Acomodar
-              .col-xs-4.col-sm-2.col-md-2
-                button.category-btn((click)='limpiar.show()')
+              .col-xs-4.col-sm-2.col-md-2.div-cate.lbtn
+                button.category-btn((click)='limpiar.show(); assignCategory("Limpiar", 1)')
                   img.img-category(src='../../../assets/i-30.png')
                   h5 Limpiar
-              .col-xs-4.col-sm-2.col-md-2
-                button.category-btn((click)='cocinar.show()')
+              .col-xs-4.col-sm-2.col-md-2.div-cate.cbtn
+                button.category-btn((click)='cocinar.show(); assignCategory("Cocinar", 1)')
                   img.img-category(src='../../../assets/i-31.png')
                   h5 Cocinar
-              .col-xs-4.col-sm-2.col-md-2
-                button.category-btn((click)='mascotas.show()')
+              .col-xs-4.col-sm-2.col-md-2.div-cate.mbtn
+                button.category-btn((click)='mascotas.show(); assignCategory("Mascotas", 1)')
                   img.img-category(src='../../../assets/i-27.png')
                   h5 Mascotas
-              .col-xs-4.col-sm-2.col-md-2
-                button.category-btn((click)='personal.show()')
+              .col-xs-4.col-sm-2.col-md-2.div-cate.pbtn
+                button.category-btn((click)='personal.show(); assignCategory("Personal", 1)')
                   img.img-category(src='../../../assets/i-28.png')
                   h5 Personal
 
@@ -51,10 +51,10 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Acomodar
         button.close.pull-right(type='button', aria-label='close', (click)='acomodar.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos')
+      .modal-body(*ngFor='let category of todos; let item = index;')
         div(*ngIf='category.category == "Acomodar"')
-          label.radioName-xs-3(for='category') {{category.description}}
-          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          label.radioName-xs-3(for='{{item}}') {{category.description}}
+          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
       .form-group.flex-center.acomodarBtn
         .btn-add
           .eff-4
@@ -68,10 +68,10 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Limpiar
         button.close.pull-right(type='button', aria-label='close', (click)='limpiar.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos')
+      .modal-body(*ngFor='let category of todos, let item = index;')
         div.limpiarTodos(*ngIf='category.category == "Limpiar"')
-          label.radioName-xs-3(for='category') {{category.description}}
-          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          label.radioName-xs-3(for='{{item}}') {{category.description}}
+          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
       .form-group.flex-center.limpiarBtn
         .btn-add
           .eff-4
@@ -85,10 +85,10 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Cocinar
         button.close.pull-right(type='button', aria-label='close', (click)='cocinar.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos')
+      .modal-body(*ngFor='let category of todos, let item = index;')
         div.cocinarTodos(*ngIf='category.category == "Cocinar"')
-          label.radioName-xs-3(for='category') {{category.description}}
-          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          label.radioName-xs-3(for='{{item}}') {{category.description}}
+          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
       .form-group.flex-center.cocinarBtn
         .btn-add
           .eff-4
@@ -102,10 +102,10 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Mascotas
         button.close.pull-right(type='button', aria-label='close', (click)='mascotas.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos')
+      .modal-body(*ngFor='let category of todos; let item = index;')
         div.mascotasTodos(*ngIf='category.category == "Mascotas"')
-          label.radioName-xs-3(for='category') {{category.description}}
-          input.radioInput(type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+          label.radioName-xs-3(for='{{item}}') {{category.description}} 
+          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
       .form-group.flex-center.mascotasBtn
         .btn-add
           .eff-4
@@ -119,10 +119,10 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Personal
         button.close.pull-right(type='button', aria-label='close', (click)='personal.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos')
+      .modal-body(*ngFor='let category of todos; let item = index;')
         div.personalTodos(*ngIf='category.category == "Personal"')
-          label.radioName-xs-3(for='category') {{category.description}}
-          input.radioInput(type='radio', name='catDescription',[(ngModel)]='value',  [value]='category.description')
+          label.radioName-xs-3(for='{{item}}') {{category.description}}
+          input.radioInput(id='{{item}}', type='radio', name='catDescription',[(ngModel)]='value',  [value]='category.description')
       .form-group.flex-center.personalBtn
         .btn-add
           .eff-4

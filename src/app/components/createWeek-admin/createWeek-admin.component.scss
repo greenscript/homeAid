@@ -1,3 +1,8 @@
+$text-size-mobile: 1.2em;
+$green-color: #35B095;
+$yellow-color: #EEC337;
+$white-color: #FFF;
+$main-font-weigth: 200;
 $header-color: #EEC337;
 .disable {
     pointer-events: none;
@@ -21,20 +26,74 @@ $header-color: #EEC337;
 }
 
 .week {
-    padding: 6vh 0 0;
+    padding: 5vh 0 3vh;
     &-day {
-        margin-top: 18%;
+        margin-top: 5%;
     }
 }
 
 .arrow {
     margin-top: 18%;
     border: none;
-    background-color: transparent;
 }
 
 .btn {
     margin-top: 0px;
+}
+
+.fa-plus-circle {
+    margin-left: .8rem;
+}
+
+//btns
+.btn-add {
+    width: 150px;
+    height: 45px;
+    background-color: $green-color;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 40px;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.btn-add button {
+    font-weight: 300;
+    color: $white-color !important;
+    text-decoration: none;
+    line-height: 40px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.eff-4 {
+    width: 150px;
+    height: 45px;
+    left: -152px;
+    background: $yellow-color;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
+.btn-add:hover .eff-4 {
+    left: 0;
+}
+
+.select-title {
+    margin-top: 4rem;
+}
+
+.btn-add:hover button {
+    color: #fff;
 }
 
 .addBotton {
@@ -89,10 +148,6 @@ button a {
     }
 }
 
-.glyphicon {
-    line-height: 5;
-}
-
 @media (min-width: 320px) {
     .mobile {
         margin-top: -50px;
@@ -106,11 +161,14 @@ button a {
     .header {
         top: -8vw;
     }
+    .week {
+        margin-top: 5em;
+    }
 }
 
 @media (min-width: 1000px) {
     .header {
-        top: -18vw;
+        top: -15vw;
     }
     .btn-newTodo {
         width: 300px;
@@ -123,13 +181,17 @@ button a {
 }
 
 .desktop {
-  &-column {
-    overflow: scroll;
-    height: 100vh;
-    overflow-x: hidden;
-  }
+    &-column {
+        overflow: scroll;
+        height: 100vh;
+        overflow-x: hidden;
+    }
 }
 
 .btn-card-completed {
   background-color: rgba(160, 253, 188, 0.22);
+}
+
+.completed-content {
+  opacity: 0.5;
 }

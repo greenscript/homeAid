@@ -2,11 +2,11 @@ section.col-xs-3.hidden-xs.no-padding
   app-desktop-bar([adminId]="userId")
 section.col-xs-12.col-sm-9.no-padding
   app-back
-  section.row 
+  section
     svg.admin-header(width='100vw' viewBox='0 0 1085 296')
       path.admin-path(d="M.2.4V250.1S504,358,1085,225.1V0Z")
-    h1.admin-title 
-    img.admin-img.center-block(src='../../../assets/i-22.png', alt='')
+    h1.admin-title(*ngIf="currentTodoData.length > 0") {{currentTodoData[3].value}}
+    img.admin-img.center-block([src]='todoImg', alt='')
 
   section.row
     section.col-xs-12.col-sm-12
@@ -17,7 +17,7 @@ section.col-xs-12.col-sm-9.no-padding
             p.todoNotCompleted No completada
             button.btn-menu-admin((click)='completetask()') Completar tarea
             button.btn-menu-admin((click)='relevanceLaw.show()') Ley de la relevancia
-            button.btn-menu-admin((click)='prioritytask()') Ley de la priority
+            button.btn-menu-admin((click)='prioritytask()') Ley de la prioridad
 
             //-si la tarea ya esta completa no ense;ar el boton?
           div.showstatus-container(*ngIf="data.value == true")
@@ -34,15 +34,16 @@ section.col-xs-12.col-sm-9.no-padding
                   button.close.pull-right(type='button', aria-label='close', (click)='relevanceLaw.hide()')
                     span(aria-hidden='true') 
                 .modal-body
-                  h5.selectUser Seleccione a un usuario.
-                  div.col-xs-4.users(*ngFor='let user of usersArr')
-                    a(role="button", (click)="selectUser(user.key)")
-                      img.user([src]='user.value.avatar')
-                      span.perUserName {{user.value.name}}
+                  h5.selectUser.text-center Seleccione a un usuario.
+                  .flex-center
+                    .col-xs-4.col-md-2.text-center(*ngFor="let user of usersArr; let i = index;")
+                      a(role="button", (click)="selectUser(user.key)")
+                         //img.users([src]='user.value.avatar')
+                         img.users([src]='user.value.avatar',
+                         (click)="selectImage($event.target.src); toggleObject.item = i ", [ngClass]="{'selected-user': toggleObject.item == i }")
+                         span.perUserName {{user.value.name}}
                   .form-group.relevanceBtn.flex-center
                     .btn-add
                       .eff-4
                       button((click)='send(value)') Enviar
                   
-.hidden-sm.hidden-lg.hidden-md
-  app-mobile-bar

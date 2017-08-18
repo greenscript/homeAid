@@ -4,6 +4,7 @@ $text-color-completed: green;
 $text-color-not-completed: red;
 $text-size-mobile: 1.2em;
 $yellow: #EEC337;
+$orange: #ef8114;
 //mari cambios
 
 .img-circle {
@@ -143,13 +144,22 @@ btn-user {
     display: none;
 }
 
-.notpriority {
+.notpriority, .notrelevance {
     display: none !important;
 }
 
 .ipriority {
     color: $yellow;
     display: block;
+}
+
+.relevance{
+  border-bottom: 5px solid $orange;
+  display: block;
+  &-txt {
+        color: $orange !important;
+        display: block;
+    }
 }
 
 .btn-user:hover {

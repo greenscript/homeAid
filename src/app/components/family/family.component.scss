@@ -1,6 +1,9 @@
 $header-color: #EEC337;
 $green-color: #35B095;
 $white-color: #FFF;
+$yellow: #EEC337;
+$orange: #ef8114;
+
 .header {
     margin-top: 0;
     position: absolute;
@@ -46,7 +49,7 @@ $white-color: #FFF;
 }
 
 .arrow {
-    margin-top: 5%;
+    margin-top: 18%;
     border: none;
 }
 
@@ -73,6 +76,24 @@ $white-color: #FFF;
 
 .icompleted {
     display: none;
+}
+
+.notpriority, .notrelevance {
+    display: none !important;
+}
+
+.ipriority {
+    color: $yellow;
+    display: block;
+}
+
+.relevance{
+  border-bottom: 5px solid $orange;
+  display: block;
+  &-txt {
+        color: $orange !important;
+        display: block;
+    }
 }
 
 .modal-dialog {
