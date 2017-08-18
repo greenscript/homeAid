@@ -35,15 +35,13 @@ export class FamilyGoalComponent implements OnInit {
     public ar: ActivatedRoute
   ) {
     this.toastr.setRootViewContainerRef(vcr);
-      this.adminId = ar.snapshot.paramMap.get('id');
+    this.adminId = ar.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
 
-
-    console.log('adminId ', this.adminId);
     this.auth.authState.subscribe(res => {
       if (res && res.uid) {
         console.log('logged in');
@@ -80,7 +78,7 @@ export class FamilyGoalComponent implements OnInit {
     if (this.awardForm.valid) {
       let goaldObj;
       let goalAdded: boolean = false;
-      if (this.famData.length > 1) {
+      if (this.famData.length > 0) {
         this.toastr.warning('Solamente puedes tener un premio por semana!', 'Warning');
       } else {
         goaldObj = {
