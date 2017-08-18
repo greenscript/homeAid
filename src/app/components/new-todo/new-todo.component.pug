@@ -1,6 +1,6 @@
 section.col-xs-2.no-padding
   app-desktop-bar([adminId]="uid")
-section.col-xs-10.col-sm-10.no-padding
+section.col-xs-10.col-sm-10.no-padding.md-column
   app-back
   section
     section.col-xs-12.col-sm-12.no-padding
@@ -51,10 +51,11 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Acomodar
         button.close.pull-right(type='button', aria-label='close', (click)='acomodar.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos; let item = index;')
-        div(*ngIf='category.category == "Acomodar"')
-          label.radioName-xs-3(for='{{item}}') {{category.description}}
-          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+      .modal-body
+        div(*ngFor='let category of todos; let item = index;')
+          div(*ngIf='category.category == "Acomodar"')
+            input.option-input.radio(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+            label.radioName-xs-3(for='{{item}}') {{category.description}}
       .form-group.flex-center.acomodarBtn
         .btn-add
           .eff-4
@@ -68,15 +69,16 @@ section.col-xs-10.col-sm-10.no-padding
         h4.modal-title.pull-left Categoría Limpiar
         button.close.pull-right(type='button', aria-label='close', (click)='limpiar.hide()')
           span(aria-hidden='true') 
-      .modal-body(*ngFor='let category of todos, let item = index;')
-        div.limpiarTodos(*ngIf='category.category == "Limpiar"')
-          label.radioName-xs-3(for='{{item}}') {{category.description}}
-          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-      .form-group.flex-center.limpiarBtn
-        .btn-add
-          .eff-4
-          button((click)='addTodo($event, value)') Agregar
-      //-  button#btnAddTodo.btn.btn-default.limpiarButton((click)='addTodo(value)') Agregar
+      .modal-body
+        div(*ngFor='let category of todos, let item = index;')
+          div(*ngIf='category.category == "Limpiar"')
+            input.option-input.radio(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+            label.radioName-xs-3(for='{{item}}') {{category.description}}
+        .form-group.flex-center
+          .btn-add.btn-add2
+            .eff-4
+            button((click)='addTodo($event, value)') Agregar
+        //-  button#btnAddTodo.btn.btn-default.limpiarButton((click)='addTodo(value)') Agregar
 
 .modal.fade(bsModal="", #cocinar="bs-modal" tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
   .modal-dialog
@@ -86,10 +88,10 @@ section.col-xs-10.col-sm-10.no-padding
         button.close.pull-right(type='button', aria-label='close', (click)='cocinar.hide()')
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos, let item = index;')
-        div.cocinarTodos(*ngIf='category.category == "Cocinar"')
-          label.radioName-xs-3(for='{{item}}') {{category.description}}
-          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
-      .form-group.flex-center.cocinarBtn
+          div.cocinarTodos(*ngIf='category.category == "Cocinar"')
+            input.option-input.radio(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
+            label.radioName-xs-3(for='{{item}}') {{category.description}}
+    .form-group.flex-center.cocinarBtn
         .btn-add
           .eff-4
           button((click)='addTodo($event, value)') Agregar
@@ -104,8 +106,8 @@ section.col-xs-10.col-sm-10.no-padding
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos; let item = index;')
         div.mascotasTodos(*ngIf='category.category == "Mascotas"')
+          input.option-input.radio(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
           label.radioName-xs-3(for='{{item}}') {{category.description}} 
-          input.radioInput(id='{{item}}', type='radio', name='catDescription', [(ngModel)]='value', [value]='category.description')
       .form-group.flex-center.mascotasBtn
         .btn-add
           .eff-4
@@ -121,8 +123,8 @@ section.col-xs-10.col-sm-10.no-padding
           span(aria-hidden='true') 
       .modal-body(*ngFor='let category of todos; let item = index;')
         div.personalTodos(*ngIf='category.category == "Personal"')
+          input.option-input.radio(id='{{item}}', type='radio', name='catDescription',[(ngModel)]='value',  [value]='category.description')
           label.radioName-xs-3(for='{{item}}') {{category.description}}
-          input.radioInput(id='{{item}}', type='radio', name='catDescription',[(ngModel)]='value',  [value]='category.description')
       .form-group.flex-center.personalBtn
         .btn-add
           .eff-4
