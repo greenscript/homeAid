@@ -29,6 +29,7 @@ export class NewTodoComponent implements OnInit {
   public userId: string = '';
   public usersdata: Array<any> = [];
   public currentFamily: string = '';
+  public currentCategory: any;
   public loadedUsers: boolean = false;
   public categoryForModel;
   public newTodoObj;
@@ -101,6 +102,13 @@ export class NewTodoComponent implements OnInit {
 
   ) { }
 
+
+  assignCategory(category, points) {
+      this.currentCategory = this.categoryImgs.find( (e: any, i: any) => {
+      return e.category === category
+    })
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.currentDayIn = params['index'];
@@ -147,17 +155,17 @@ export class NewTodoComponent implements OnInit {
     let todoAdded=false;
     let currentUserData: Array<any> = [];
     let imgsrc;
-    for (var index = 0; index < this.todos.length; index++) {
-      if (pvalue == this.todos[index].description) {
-        console.log('got in');
-        this.categoryForModel = this.todos[index].category;
-        this.points = this.todos[index].points;
-
-        for (var y = 0; y < this.categoryImgs.length; y++) {
-          if (this.categoryImgs[y].category == this.todos[index].category) {
-            imgsrc = this.categoryImgs[y].src;
-          }
-        }
+    // for (var index = 0; index < this.todos.length; index++) {
+    //   if (pvalue == this.todos[index].description) {
+    //     console.log('got in');
+    //     this.categoryForModel = this.todos[index].category;
+    //     this.points = this.todos[index].points;
+    //
+    //     for (var y = 0; y < this.categoryImgs.length; y++) {
+    //       if (this.categoryImgs[y].category == this.todos[index].category) {
+    //         imgsrc = this.categoryImgs[y].src;
+    //       }
+    //     }
 
         this.currentUserInfo = this.db.object(`/families/${this.currentFamily}/users/${this.userId}`, { preserveSnapshot: true });
         this.currentUserInfo.subscribe(snapshots => {
@@ -171,14 +179,14 @@ export class NewTodoComponent implements OnInit {
           this.selectedUser.push({
             userId: this.userId,
             description: pvalue,
-            category: this.categoryForModel,
+            category: this.currentCategory.category,
             status: false, //completada
             relevance: false, //si es relevada o no
             day: this.currentDayIn,
-            points: this.points,
+            points: 2,
             revelanceBy: " ", //por quien es relevada
             priority: false, //urgencia
-            categoryImg: imgsrc,
+            categoryImg: this.currentCategory.src,
             nameUser: currentUserData[2].value
           });
 
@@ -187,14 +195,14 @@ export class NewTodoComponent implements OnInit {
           this.selectedDay.push({
             userId: this.userId,
             description: pvalue,
-            category: this.categoryForModel,
+            category: this.currentCategory.category,
             status: false,
             relevance: false,
             day: this.currentDayIn,
-            points: this.points,
+            points: 2,
             revelanceBy: " ",
             priority: false,
-            categoryImg: imgsrc,
+            categoryImg: this.currentCategory.src,
             nameUser: currentUserData[2].value
           });
           todoAdded = true;
@@ -206,10 +214,10 @@ export class NewTodoComponent implements OnInit {
           this.error = true;
           this.errorMsg = 'Please select a user first'
         }
-      } else {
-        console.error('todo didnt made any match with a todo of the local object.');
-      }
-    }
+    //   } else {
+    //     console.error('todo didnt made any match with a todo of the local object.');
+    //   }
+    // }
     e.stopPropagation();
 
   }

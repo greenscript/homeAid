@@ -1,6 +1,6 @@
 section.col-xs-2.no-padding
-  app-desktop-bar([adminId]="uid")
-section.col-xs-10.md-column
+  app-desktop-bar([adminId]="adminId")
+section.col-xs-10
   app-back
   section.row 
     svg.familyGoal-header(width='100vw' viewBox='0 0 1085 296')
@@ -17,7 +17,7 @@ section.col-xs-10.md-column
               type='text', 
               placeholder="Salida al cine", 
               name="awardTitle", 
-              formControlName="awardTitle", 
+              formControlName="title", 
               required
               )
         h4.titles Describe el premio
@@ -25,11 +25,11 @@ section.col-xs-10.md-column
             textarea(
               placeholder="El sabado todos vamos ir al cine porque completamos todas las tareas de la semana!",
               name="awardDescription", 
-              formControlName="awardDescription", 
+              formControlName="content", 
               required
               )
+            
             small(*ngIf="!awardForm.controls.awardTitle.valid") Tienes que dar una descripcion del premio semanal!
               .btn-add
                 .eff-4
                 button.btnGoal((click)="sendFamGoal()", [disabled]="awardForm.invalid")  Agregar 
-  section.row.col-xs-0.col-md-0.col-lg-3

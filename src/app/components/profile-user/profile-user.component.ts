@@ -63,15 +63,9 @@ export class ProfileUserComponent implements OnInit {
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
             if (!(snapshot.key === '0') && (props.loadedUsers === false)) {
-              props.tododata.push(
-                ({
-                  key: snapshot.key,
-                  value: snapshot.val()
-                })
-              )
+              props.tododata.push({ key: snapshot.key, value: snapshot.val()})
             }
           });
-          console.log("data todo!", props.tododata)
           props.loadedUsers = true;
           props.getTodos(this.day);
           props.getDay()
@@ -85,8 +79,6 @@ export class ProfileUserComponent implements OnInit {
   }
 
   getUser(){
-     this.ds.allUsers();
-     //console.log(this.ds.allUsers());
       this.auth.authState.subscribe(res => {
       let props = this;
       if (res && res.uid) {
@@ -94,32 +86,29 @@ export class ProfileUserComponent implements OnInit {
         this.selectedUser
         .subscribe(snapshots => {
           snapshots.forEach(snapshot => {
-            //console.log("user", snapshot)
             props.userdata.push({
               key: snapshot.key,
               value: snapshot.val()
             })
-            // llama a la funcion assignProperties
-            console.log( "user", props.userdata)
           });
            props.assignProperties(props.userdata)
         })
       } else {
-      //  console.log('user not logged in');
+        //  console.log('user not logged in');
       }
     });
   }
 
-  next(){
+  next() {
+    console.log(this.d.setDate(this.d.getDate() )  )
+    console.log(this.dayView)
    if (this.day == 6){
-     //me devuelve al lunes de la semana en la que se encutre.
+      console.log(this.d.setDate(this.d.getDate()))
      this.dayView = this.d.setDate(this.d.getDate() - 6)
      this.day = 0;
-     console.log("++++", this.day);
    }else{
     this.dayView = this.d.setDate(this.d.getDate() + 1)
     this.day += 1;
-    console.log("++++", this.day);
    }
 
    this.getTodos(this.day)
@@ -128,15 +117,12 @@ export class ProfileUserComponent implements OnInit {
   }
 
   back(){
-    //console.log("back", this.day);
     if (this.day == 0){
-     this.dayView = this.d.setDate(this.d.getDate() + 6)
-     this.day = 6
-     console.log("--", this.day);
+      this.dayView = this.d.setDate(this.d.getDate() + 6)
+      this.day = 6
     }else{
       this.dayView = this.d.setDate(this.d.getDate() - 1)
       this.day -= 1;
-      console.log("--", this.day);
     }
 
     this.getTodos(this.day)
@@ -149,21 +135,17 @@ export class ProfileUserComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.weekData.push({ key: snapshot.key, value : snapshot.val().day})
       });
-    //  console.log("weekData ", this.weekData);
     })
   }
 
   getTodos(pday){
-    console.log("get", pday)
     this.todosView = [];
-    console.log("todoData", this.tododata);
-    for (var i in this.tododata){
+    for (var i in this.tododata)  {
       if(this.tododata[i].value.day == pday)
-      this.todosView.push(this.tododata[i])
-      console.log("todoView", this.todosView)
+        this.todosView.push(this.tododata[i])
+    }
+    this.getCompleted();
   }
-  this.getCompleted();
-}
 
   assignProperties(pData: Array<any>) {
     pData.forEach((pObject) => {
@@ -176,7 +158,6 @@ export class ProfileUserComponent implements OnInit {
         break;
         case 'styles':
            this.fillAttr = pObject.value
-           console.log("color", this.fillAttr)
       }
     })
   }
@@ -188,11 +169,10 @@ export class ProfileUserComponent implements OnInit {
       snapshots.forEach(snapshot => {
         this.currentDayTodosArr.push({ key: snapshot.key, value : snapshot.val()})
       })
-      let a = this.currentDayTodosArr.filter(todo => todo.value.username === this.userId);
+      let a = this.currentDayTodosArr.filter(todo => todo.value.userId === this.userId);
       a.forEach(o => {
         this.daysKeys.push(Object.values(o).shift())
       })
-      console.log(this.daysKeys)
     })
 
   }
