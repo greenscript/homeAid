@@ -67,15 +67,15 @@ label {
 }
 
 .modal-content {
-    height: 36em;
+    height: 39em;
 }
 
 .modal-content2 {
-    height: 37em;
+    height: 41em;
 }
 
 .modal-content3 {
-    height: 29em;
+    height: 35em;
 }
 
 input[type=radio][_ngcontent-c1] {
@@ -149,11 +149,11 @@ input[type=radio] {
     vertical-align: middle;
 }
 
-.acomodarBtn,
+
 .limpiarBtn,
 .personalBtn {
     position: relative;
-    top: -42em;
+    top: -49em;
 }
 
 .acomodarButton,
@@ -175,27 +175,27 @@ input[type=radio] {
 
 .cocinarTodos {
     position: relative;
-    top: -25em;
+    top: -29em;
 }
 
 .cocinarBtn {
     position: relative;
-    top: -47em;
+    top: -5em;
 }
 
 .mascotasTodos {
     position: relative;
-    top: -34em;
+    top: -38em;
 }
 
 .mascotasBtn {
     position: relative;
-    top: -43.9em;
+    top: -49em;
 }
 
 .personalTodos {
     position: relative;
-    top: -45em;
+    top: -48em;
 }
 
 .form-control {
@@ -215,9 +215,13 @@ input[type=radio] {
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
-    margin: 0 0 40px;
+    margin: 0px 0 40px;
     border-radius: 2em;
     cursor: pointer;
+}
+//btns
+.btn-add2 {
+    margin: 20px 0px 0 40px !important;
 }
 
 .btn-add button {
@@ -250,6 +254,136 @@ input[type=radio] {
 .btn-add:hover button {
     color: #fff;
 }
+
+
+/* ------radios---- */
+@-webkit-keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+@-moz-keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+@-o-keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+@keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+
+.option-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  position: relative;
+  top: 13.33333px;
+  width: 40px;
+  height: 40px;
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  margin-right: 0.5rem;
+  z-index: 1000;
+}
+
+.option-input:focus{
+	outline:0px;
+}
+
+.option-input:hover { background: #9faab7; }
+
+.option-input:checked { background: #40e0d0; }
+
+.option-input:checked::before {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  content: '\2716';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+
+.option-input.radio { border-radius: 50%; }
+
+.option-input.radio::after { border-radius: 50%; }
+
+body .demo { padding: 5rem; display:block; }
+
+body label {
+  display: block;
+  line-height: 40px;
+}
+/* ------radios---- */
+
 
 @media (min-width: 320px) {
     .newtodo {
