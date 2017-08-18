@@ -29,7 +29,7 @@ section.col-xs-10
               required
               )
             
-            small(*ngIf="!awardForm.controls.awardTitle.valid") Tienes que dar una descripcion del premio semanal!
-              .btn-add
-                .eff-4
-                button.btnGoal((click)="sendFamGoal()", [disabled]="awardForm.invalid")  Agregar 
+      small
+        .btn-add
+          .eff-4
+          button.btnGoal((click)="sendFamGoal()")  Agregar 
